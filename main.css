@@ -1,0 +1,16 @@
+#title
+{
+    text-align: center;
+    width: 100%;
+}
+#portrait-picture
+{
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+}
+.page-header
+{
+    overflow: auto;
+    box-shadow: 0 8px 12px -12px black;
+}
