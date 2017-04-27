@@ -1,16 +1,65 @@
+/*Roboto Regular*/
+@font-face
+{
+    font-family: 'Roboto';
+    src: 
+        local('Roboto-Regular'),
+        url('fonts/Roboto-Regular.ttf')
+        format('truetype');
+}
+/*Robot Bold*/
+@font-face
+{
+    font-family: 'Roboto';
+    src: 
+        local('Roboto-Bold'),
+        url('fonts/Roboto-Bold.ttf')
+        format('truetype');
+    font-weight: bold;
+}
+/*Robot Italic*/
+@font-face
+{
+    font-family: 'Roboto';
+    src: 
+        local('Roboto-Italic'),
+        url('fonts/Roboto-Italic.ttf')
+        format('truetype');
+    font-style: italic;
+}
+
+body
+{
+    font-family: 'Roboto', sans-serif;
+}
+
 #title
 {
+    font-weight: bold;
     text-align: center;
     width: 100%;
 }
+
 #portrait-picture
 {
     display: block;
     margin: 0 auto;
     width: 100px;
 }
+
+#aboutme-header
+{
+    text-align: center;
+}
+
 .page-header
 {
     overflow: auto;
     box-shadow: 0 8px 12px -12px black;
+}
+
+.row
+{
+    margin-left: 0px;
+    margin-right: 0px;
 }
