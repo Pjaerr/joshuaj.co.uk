@@ -4,7 +4,7 @@
     font-family: 'Roboto';
     src: 
         local('Roboto-Regular'),
-        url('fonts/Roboto-Regular.ttf')
+        url('../fonts/Roboto-Regular.ttf')
         format('truetype');
 }
 /*Robot Bold*/
@@ -13,7 +13,7 @@
     font-family: 'Roboto';
     src: 
         local('Roboto-Bold'),
-        url('fonts/Roboto-Bold.ttf')
+        url('../fonts/Roboto-Bold.ttf')
         format('truetype');
     font-weight: bold;
 }
@@ -23,7 +23,7 @@
     font-family: 'Roboto';
     src: 
         local('Roboto-Italic'),
-        url('fonts/Roboto-Italic.ttf')
+        url('../fonts/Roboto-Italic.ttf')
         format('truetype');
     font-style: italic;
 }
@@ -33,7 +33,7 @@
     font-family: 'MorePerfectDOSVGA';
     src: 
         local('MorePerfectDOSCGA'),
-        url('fonts/MorePerfectDOSVGA.ttf')
+        url('../fonts/MorePerfectDOSVGA.ttf')
         format('truetype');
 }
 
@@ -71,9 +71,14 @@ h2
     max-width: 75%;
     margin: 0 auto;
 }
-#aboutme-body
+#aboutme-body, #project-content
 {
     text-align: justify;
+}
+#project-content
+{
+    max-width: 95%;
+    margin: 0 auto;
 }
 
 .page-header
