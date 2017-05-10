@@ -1,3 +1,5 @@
+
+/*FONT FACES*/
 /*Roboto Regular*/
 @font-face
 {
@@ -37,6 +39,8 @@
         format('truetype');
 }
 
+
+/*HTML ELEMENT STYLING*/
 body
 {
     font-family: 'MorePerfectDosVGA', 'Roboto', sans-serif;
@@ -46,6 +50,7 @@ h2
     font-weight: bold;
 }
 
+/*ID STYLING*/
 #title
 {
     font-weight: bold;
@@ -87,6 +92,12 @@ h2
     box-shadow: 0 8px 12px -12px black;
 }
 
+#footer-content
+{
+    text-align: center;
+}
+
+/*BOOTSTRAP STYLING*/
 .row
 {
     margin-left: 0px;
