@@ -50,9 +50,21 @@ h2
     font-weight: bold;
 }
 
-/*ID STYLING*/
+/*HEADER STYLING*/
+.page-header
+{
+    overflow: auto;
+    box-shadow: 0 8px 12px -12px black;
+}
+.page-header a
+{
+    text-decoration: none;
+    color: black;
+}
+
 #title
 {
+    text-decoration: none;
     font-weight: bold;
     text-align: center;
     width: 100%;
@@ -65,33 +77,39 @@ h2
     width: 100px;
 }
 
-#aboutme
+/*CONTENT STYLING*/
+#description
 {
     overflow: auto;
     box-shadow: 0 6px 12px -12px black;
 }
-#aboutme-header, #aboutme-body
+
+#description-header, #description-body
 {
     text-align: center;
     max-width: 75%;
     margin: 0 auto;
 }
-#aboutme-body, #project-content
+
+#description-body
 {
     text-align: justify;
 }
-#project-content
-{
-    max-width: 95%;
-    margin: 0 auto;
-}
 
-.page-header
+#content
 {
+    text-align: justify;
     overflow: auto;
-    box-shadow: 0 8px 12px -12px black;
+    box-shadow: 0 6px 12px -12px black;
+}
+#text
+{
+    text-align: justify;
+    overflow: auto;
+    box-shadow: 0 6px 12px -12px black;
 }
 
+/*FOOTER STYLING*/
 #footer-content
 {
     text-align: center;
@@ -103,8 +121,3 @@ h2
 }
 
 /*BOOTSTRAP STYLING*/
-.row
-{
-    margin-left: 0px;
-    margin-right: 0px;
-}
