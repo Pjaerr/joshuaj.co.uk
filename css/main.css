@@ -80,6 +80,8 @@ h2
 /*CONTENT STYLING*/
 #description
 {
+    max-width: 75%;
+    margin: 0 auto;
     overflow: auto;
     box-shadow: 0 6px 12px -12px black;
 }
@@ -118,4 +120,24 @@ h2
 #footer a
 {
     text-decoration: none;
+}
+
+a:link
+{
+    text-decoration: none;
+}
+
+#info
+{
+    color: black;
+}
+
+#info-tech
+{
+    color: red;
+}
+
+#info:hover
+{
+    border: 1px solid blue;
 }
