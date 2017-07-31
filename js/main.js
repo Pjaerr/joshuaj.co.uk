@@ -1,4 +1,5 @@
-function collapse(id)
+$(".enlarge").on("click", function()
 {
-    $(id).collapse('toggle');
-}
+    $('.enlargedimage').attr('src', $(this).find('img').attr('src'));
+    $('#imagemodal').modal('show');
+})

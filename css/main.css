@@ -49,6 +49,10 @@ h2
 {
     font-weight: bold;
 }
+h4
+{
+    font-weight: bold;
+}
 
 /*HEADER STYLING*/
 .page-header
@@ -70,6 +74,11 @@ h2
     width: 100%;
 }
 
+#project-links
+{
+    
+}
+
 #portrait-picture
 {
     display: block;
@@ -80,15 +89,26 @@ h2
 /*CONTENT STYLING*/
 #description
 {
+    max-width: 60%;
     margin: 0 auto;
     overflow: auto;
     box-shadow: 0 6px 12px -12px black;
 }
 
+.well
+{
+   box-shadow: 0 6px 12px -12px black; 
+}
+
+#information
+{
+    text-align: left;
+}
+
 #description-header, #description-body
 {
     text-align: center;
-    max-width: 75%;
+    
     margin: 0 auto;
 }
 
@@ -105,7 +125,7 @@ h2
 }
 #text
 {
-    text-align: justify;
+    text-align: center;
     overflow: auto;
     box-shadow: 0 6px 12px -12px black;
 }
