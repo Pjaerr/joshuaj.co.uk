@@ -80,7 +80,6 @@ h2
 /*CONTENT STYLING*/
 #description
 {
-    max-width: 75%;
     margin: 0 auto;
     overflow: auto;
     box-shadow: 0 6px 12px -12px black;
@@ -140,4 +139,14 @@ a:link
 #info:hover
 {
     border: 1px solid blue;
+}
+
+#panel > a
+{
+    color: black;
+    text-decoration: none;
+}
+#panel:hover
+{
+    border: 1px solid blue;   
 }
