@@ -141,12 +141,7 @@ a:link
     border: 1px solid blue;
 }
 
-#panel > a
+#navigationbar
 {
-    color: black;
-    text-decoration: none;
-}
-#panel:hover
-{
-    border: 1px solid blue;   
+    margin: 0 auto;
 }
