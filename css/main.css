@@ -9,7 +9,7 @@
         url('../fonts/Roboto-Regular.ttf')
         format('truetype');
 }
-/*Robot Bold*/
+/*Roboto Bold*/
 @font-face
 {
     font-family: 'Roboto';
@@ -29,15 +29,6 @@
         format('truetype');
     font-style: italic;
 }
-/*MorePerfectDOSVGA*/
-@font-face
-{
-    font-family: 'MorePerfectDOSVGA';
-    src: 
-        local('MorePerfectDOSCGA'),
-        url('../fonts/MorePerfectDOSVGA.ttf')
-        format('truetype');
-}
 
 
 /*HTML ELEMENT STYLING*/
@@ -45,11 +36,7 @@ body
 {
     font-family: 'Roboto', sans-serif;
 }
-h2
-{
-    font-weight: bold;
-}
-h4
+h2, h4
 {
     font-weight: bold;
 }
@@ -74,11 +61,6 @@ h4
     width: 100%;
 }
 
-#project-links
-{
-    
-}
-
 #portrait-picture
 {
     display: block;
@@ -89,15 +71,10 @@ h4
 /*CONTENT STYLING*/
 #description
 {
-    max-width: 60%;
+    max-width: 65%;
     margin: 0 auto;
     overflow: auto;
     box-shadow: 0 6px 12px -12px black;
-}
-
-.well
-{
-   box-shadow: 0 6px 12px -12px black; 
 }
 
 #information
@@ -108,7 +85,6 @@ h4
 #description-header, #description-body
 {
     text-align: center;
-    
     margin: 0 auto;
 }
 
@@ -119,6 +95,7 @@ h4
 
 #content
 {
+    margin: 0 auto;
     text-align: justify;
     overflow: auto;
     box-shadow: 0 6px 12px -12px black;
@@ -136,11 +113,6 @@ h4
     text-align: center;
 }
 
-#footer a
-{
-    text-decoration: none;
-}
-
 a:link
 {
     text-decoration: none;
@@ -151,7 +123,7 @@ a:link
     color: black;
 }
 
-#info-tech
+.info-tech, .project-dates
 {
     color: red;
 }
@@ -161,7 +133,13 @@ a:link
     border: 1px solid blue;
 }
 
-#navigationbar
+.proj-img
 {
-    margin: 0 auto;
+    width: 300px;
+    height: 200px;
+}
+
+.contact-info
+{
+    margin-top: 12px;
 }
