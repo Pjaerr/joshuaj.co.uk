@@ -41,16 +41,16 @@ h2, h4
     font-weight: bold;
 }
 
+a:link
+{
+    text-decoration: none;
+}
+
 /*HEADER STYLING*/
 .page-header
 {
     overflow: auto;
     box-shadow: 0 8px 12px -12px black;
-}
-.page-header a
-{
-    text-decoration: none;
-    color: black;
 }
 
 #title
@@ -75,47 +75,36 @@ h2, h4
     margin: 0 auto;
     overflow: auto;
     box-shadow: 0 6px 12px -12px black;
-}
-
-#information
-{
-    text-align: left;
-}
-
+    margin-bottom: 24px;
+} 
 #description-header, #description-body
 {
     text-align: center;
     margin: 0 auto;
 }
-
 #description-body
 {
+    margin-top: 12px;
+    margin-bottom: 12px;
     text-align: justify;
 }
 
+#contact-info
+{
+    margin-top: 24px;
+}
+
+.contact-link
+{
+    margin-right: 24px;
+}
+
+/*CONTENT STYLING*/
 #content
 {
     margin: 0 auto;
     text-align: justify;
     overflow: auto;
-    box-shadow: 0 6px 12px -12px black;
-}
-#text
-{
-    text-align: center;
-    overflow: auto;
-    box-shadow: 0 6px 12px -12px black;
-}
-
-/*FOOTER STYLING*/
-#footer-content
-{
-    text-align: center;
-}
-
-a:link
-{
-    text-decoration: none;
 }
 
 #info
@@ -139,7 +128,8 @@ a:link
     height: 200px;
 }
 
-.contact-info
+.proj-img-sm
 {
-    margin-top: 12px;
+    width: 300px;
+    height: 200px;
 }

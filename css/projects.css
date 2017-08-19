@@ -1,0 +1,11 @@
+#information
+{
+    text-align: left;
+}
+
+#text
+{
+    text-align: center;
+    overflow: auto;
+    box-shadow: 0 6px 12px -12px black;
+}
