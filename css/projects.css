@@ -1,11 +1,24 @@
-#information
+#project-information > .information
 {
-    text-align: left;
+    margin-bottom: 12px;
 }
 
-#text
+#project-information > .external-links
+{
+    margin-right: 12px;
+}
+
+#project-information, #description
+{
+    margin-bottom: 12px;
+}
+
+.back-button
 {
     text-align: center;
-    overflow: auto;
-    box-shadow: 0 6px 12px -12px black;
+}
+
+.description
+{
+    max-width: 90%;
 }
