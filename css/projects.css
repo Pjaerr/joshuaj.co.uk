@@ -22,3 +22,10 @@
 {
     max-width: 90%;
 }
+
+#j-gallery
+{
+    display: block;
+    margin: 0 auto;
+}
+
