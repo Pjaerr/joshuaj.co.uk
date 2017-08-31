@@ -110,11 +110,9 @@ a:link
 
 .info
 {
-    min-height: 420px;
+    min-height: 256px;
     color: black;
 }
-
-
 
 .info-tech, .project-dates
 {
@@ -124,6 +122,15 @@ a:link
 .info:hover
 {
     border: 1px solid blue;
+}
+
+.project-thumbnail
+{
+    max-width: 512px;
+}
+.project-thumbnail-sm
+{
+    max-width: 288px;
 }
 
 .proj-img
