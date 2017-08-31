@@ -131,6 +131,7 @@ a:link
 .project-thumbnail-sm
 {
     max-width: 288px;
+    margin: 0 auto;
 }
 
 .proj-img
