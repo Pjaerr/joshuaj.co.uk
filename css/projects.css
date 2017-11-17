@@ -28,5 +28,14 @@
     margin-bottom: 12px;
 }
 
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
+.item > img
+{
+    margin: 0 auto;
+}
+
 
 
