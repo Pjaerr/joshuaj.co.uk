@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/projects.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Joshua Jackson | Socket Rummy</title>
-    </head>
-    <body>
-        <div class="page-header">
-            <h1 id="title">Socket Rummy (WIP)</h1>
-            <h6 class="back-button"><a href="index.html">Go Back</a></h6>
-        </div>
 
-        <div class="description">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <p id="project-description" style="text-align: justify;">
-                            Socket Rummy is a recreation of the classic card game Rummy, but in the browser. It is created using JavaScript and NodeJS
-                            as well as Socket.IO for the networking. 
-                        </br></br>
-                            The game is a work in progress and I am using it to teach myself NodeJS and various modules.
-                        </p>
-                    </div>
-                    <div class="col-lg-3">
-                        <div id="project-information">
-                            <p class="information">Made with <span class="info-tech">JavaScript, NodeJS and Socket.IO</span>.</p>
-                            <p class="information">Timespan: <span class="info-tech">WIP</span>.</p>
-                            <a href="https://github.com/Pjaerr/Socket-Rummy" target="_blank" class="external-links"><span><img src="images/iconmonstr-github-1.svg" alt="github image"></span> Github</a>
-                        </div>
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Jackson | Socket Rummy</title>
+</head>
+
+<body>
+    <div class="page-header">
+        <h1 id="title">Socket Rummy (WIP)</h1>
+        <h6 class="back-button"><a href="index.html">Go Back</a></h6>
+    </div>
+
+    <div class="description">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-9">
+                    <p id="project-description" style="text-align: justify;">
+                        Socket Rummy is a recreation of the classic card game Rummy, but in the browser. It is created using JavaScript and NodeJS
+                        as well as Socket.IO for the networking.
+                        </br>
+                        </br>
+                        The game is a work in progress and I am using it to teach myself NodeJS and various modules.
+                    </p>
+                </div>
+                <div class="col-lg-3">
+                    <div id="project-information">
+                        <p class="information">Made with <span class="info-tech">JavaScript, NodeJS and Socket.IO</span>.</p>
+                        <p class="information">Timespan: <span class="info-tech">WIP</span>.</p>
+                        <a href="https://github.com/Pjaerr/Socket-Rummy" target="_blank" class="external-links"><span><img src="images/iconmonstr-github-1.svg" alt="github image"></span> Github</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="content">
-           <div class="container">
-                <div id="image-gallery" class="carousel slide" data-ride="carousel"  data-interval="false">
+    <div id="content">
+        <div class="container">
+            <div id="image-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
 
                 <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#image-gallery" data-slide-to="0" class="active"></li>
-                    </ol>
-                
+                <ol class="carousel-indicators">
+                    <li data-target="#image-gallery" data-slide-to="0" class="active"></li>
+                </ol>
+
                 <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="http://via.placeholder.com/800x480?text=No+Images+Yet!" alt="">
-                        </div>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="images/project/socket-rummy/Screenshot_2.png" alt="">
                     </div>
-                
+                </div>
+
                 <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#image-gallery" data-slide="prev">
+                <a class="left carousel-control" href="#image-gallery" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     <span class="sr-only">Previous</span>
                     </a>
-                    <a class="right carousel-control" href="#image-gallery" data-slide="next">
+                <a class="right carousel-control" href="#image-gallery" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right"></span>
                     <span class="sr-only">Next</span>
                     </a>
@@ -66,8 +69,9 @@
         <script src="js/bootstrap.min.js"></script>
         <script>
             $('.carousel-control').click(function (e) {
-            e.preventDefault();
+                e.preventDefault();
             });
         </script>
-    </body>
+</body>
+
 </html>
