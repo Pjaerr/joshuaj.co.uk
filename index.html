@@ -7,34 +7,38 @@
     <title>Joshua Jackson</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="global.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="navbar.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="content.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="mediaqueries.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div class="whole-thing">
+
         <div class="content">
             <div class="project-cards" id="project-cards">
                 <div class="row">
                     <div class="card">
                         <div class="card-media">
-                            <img src="http://via.placeholder.com/400x300" />
+                            <img src="http://joshcharlesjackson.com/images/project/1935/cameramovementgif.gif" />
                         </div>
                         <div class="card-title">
-                            <h3 class="card-title-text">Project #1</h3>
+                            <h3 class="card-title-text">Project 1935</h3>
                             <div class="card-description">
-                                This is a placeholder project. It was made with multiple technologies such as P# and ReactBS.
+                                A real-time multiplayer grand strategy game inspired by RISK and Diplomacy made using Unity and C#.
                             </div>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-media">
-                            <img src="http://via.placeholder.com/400x300" />
+                            <img src="http://joshcharlesjackson.com/images/project/productivity-timer-img.PNG" />
                         </div>
                         <div class="card-title">
-                            <h3 class="card-title-text">Project #1</h3>
+                            <h3 class="card-title-text">Productivity Timer</h3>
                             <div class="card-description">
-                                This is a placeholder project. It was made with multiple technologies such as P# and ReactBS.
+                                Productivity Timer is a single-page web app that helps you keep track of the time spent working on a project/task.
                             </div>
                         </div>
                     </div>
@@ -43,12 +47,12 @@
                 <div class="row ">
                     <div class="card">
                         <div class="card-media">
-                            <img src="http://via.placeholder.com/400x300" />
+                            <img src="http://joshcharlesjackson.com/images/project/pwa-timer-img.png" />
                         </div>
                         <div class="card-title">
-                            <h3 class="card-title-text">Project #1</h3>
+                            <h3 class="card-title-text">PWA Timer</h3>
                             <div class="card-description">
-                                This is a placeholder project. It was made with multiple technologies such as P# and ReactBS.
+                                A progressive web app that keeps track of time and will remind you everytime a set interval has passed.
                             </div>
                         </div>
                     </div>
@@ -108,23 +112,40 @@
                 </div>
             </div>
 
-            <div class="contact-me" id="contact-me"></div>
+            <div class="contact-me" id="contact-me">
+                <div class="links-card">
+                    Email: joshcharlesjackson@gmail.com
+                </div>
+            </div>
         </div>
 
-        <div class="navigation-bar ">
+        <div class="navigation-bar-vertical">
             <ul class="navbar-options ">
-                <li class="active" id="portfolio">
+                <li class="active portfolio" id="portfolio">
                     <a href="#">Portfolio</a>
                 </li>
-                <li id="about">
+                <li class="about" id="about">
                     <a href="#">About Me</a>
                 </li>
-                <li id="contact">
+                <li class="contact" id="contact">
                     <a href="#">Contact Me</a>
                 </li>
             </ul>
         </div>
 
+        <div class="navigation-bar-horizontal">
+            <ul class="navbar-options ">
+                <li class="active portfolio" id="portfolio">
+                    <a href="#">Portfolio</a>
+                </li>
+                <li class="about" id="about">
+                    <a href="#">About Me</a>
+                </li>
+                <li class="contact" id="contact">
+                    <a href="#">Contact Me</a>
+                </li>
+            </ul>
+        </div>
 
     </div>
 

@@ -1,61 +1,8 @@
-/*The flexbox that holds the project cards and the navigation bar.*/
-
-.whole-thing {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    overflow: hidden;
-    height: 100vh;
-}
-
-/*The flexbox that holds the navigation bar elements.*/
-
-.navigation-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    background-color: #E0E0E0;
-}
-
-.navbar-options {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    text-align: center;
-}
-
-.navbar-options>li a {
-    text-decoration: none;
-    color: #212121;
-    display: block;
-    padding: 8px 16px;
-    width: 100%;
-    font-size: 18pt;
-}
-
-.navbar-options>li {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    opacity: 0.7;
-}
-
-.navbar-options>li:hover {
-    opacity: 1;
-    background-color: #F5F5F5;
-}
-
-.active {
-    background-color: #F5F5F5;
-}
-
 .content {
     display: flex;
     justify-content: center;
     overflow-y: scroll;
-    flex: 3;
+    flex: 8;
 }
 
 /*The flexbox that holds the rows of cards.*/
@@ -95,51 +42,8 @@ columns under row elements.*/
     justify-content: center;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .card {
-        min-width: 300px;
-        max-width: 300px;
-        flex: 1 0 300px;
-    }
-    .card-media {
-        width: 300px;
-        height: 200px;
-    }
-    .card-media>img {
-        width: 100%;
-        height: 100%;
-    }
-    .project-cards {
-        overflow-x: hidden;
-    }
-}
-
 .card:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-/* width */
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-/* Handle */
-
-::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-/* Handle on hover */
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
 }
 
 .card-title {
@@ -201,4 +105,10 @@ columns under row elements.*/
 
 .contact-me {
     display: none;
+}
+
+.contact-me>.links-card {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-height: 200px;
 }

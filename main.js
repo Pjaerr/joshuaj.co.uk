@@ -1,13 +1,13 @@
-let portfolio = $("#portfolio");
-let about = $("#about");
-let contact = $("#contact");
+let portfolio = $(".portfolio");
+let about = $(".about");
+let contact = $(".contact");
 
-let portfolioContent = $("#project-cards");
-let aboutContent = $("#about-me");
-let contactContent = $("#contact-me");
+let portfolioContent = $(".project-cards");
+let aboutContent = $(".about-me");
+let contactContent = $(".contact-me");
 
 
-$("#portfolio").click(function ()
+portfolio.click(function ()
 {
     if (!portfolio.hasClass("active"))
     {
@@ -18,7 +18,7 @@ $("#portfolio").click(function ()
     }
 });
 
-$("#about").click(function ()
+about.click(function ()
 {
     if (!about.hasClass("active"))
     {
@@ -29,7 +29,7 @@ $("#about").click(function ()
     }
 });
 
-$("#contact").click(function ()
+contact.click(function ()
 {
     if (!contact.hasClass("active"))
     {
@@ -73,18 +73,27 @@ function updateOtherElements(thisElement)
     }
 }
 
-$(window).resize(function ()
-{
 
-    if ($(this).width() < 635)
+function setupNavigationBar()
+{
+    if ($(window).width() < 635)
     {
 
-        $('.navigation-bar').hide();
+        $('.navigation-bar-vertical').css('display', 'none');
+        $('.navigation-bar-horizontal').css('display', 'flex');
+        $('.whole-thing').css('flex-direction', 'column');
 
     } else
     {
-
-        $('.navigation-bar').show();
-
+        $('.navigation-bar-vertical').css('display', 'flex');
+        $('.navigation-bar-horizontal').css('display', 'none');
+        $('.whole-thing').css('flex-direction', 'row');
     }
+}
+
+$(window).resize(function ()
+{
+    setupNavigationBar();
 });
+
+$(document).ready(setupNavigationBar);
