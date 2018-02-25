@@ -1,0 +1,156 @@
+/*FONT FACES*/
+
+
+/*Roboto Regular*/
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+
+/*Roboto Bold*/
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto-Bold'), url('../fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+
+/*Robot Italic*/
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto-Italic'), url('../fonts/Roboto-Italic.ttf') format('truetype');
+    font-style: italic;
+}
+
+
+/*HTML ELEMENT STYLING*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h2,
+h4 {
+    font-weight: bold;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+
+/*HEADER STYLING*/
+
+.page-header {
+    margin-top: -4px;
+    overflow: auto;
+    box-shadow: 0 8px 12px -12px black;
+}
+
+#portrait-picture-div {
+    margin-top: 14px;
+}
+
+#title {
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+#portrait-picture {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+}
+
+
+/*CONTENT STYLING*/
+
+.description {
+    max-width: 65%;
+    margin: 0 auto;
+    overflow: auto;
+    box-shadow: 0 6px 12px -12px black;
+    margin-bottom: 24px;
+}
+
+.description-header,
+.description-body {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.description-body {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    text-align: justify;
+}
+
+#contact-info {
+    margin-top: 24px;
+}
+
+
+/*CONTENT STYLING*/
+
+.content {
+    margin: 0 auto;
+    text-align: justify;
+    overflow: auto;
+}
+
+.info {
+    min-height: 256px;
+    color: black;
+}
+
+.info-tech,
+.project-dates {
+    color: red;
+}
+
+.info:hover {
+    border: 1px solid blue;
+}
+
+.project-thumbnail-lg {
+    max-width: 388px;
+    margin: 0 auto;
+}
+
+.project-thumbnail-sm {
+    max-width: 288px;
+    margin: 0 auto;
+}
+
+.project-thumbnail-md {
+    max-width: 324px;
+    margin: 0 auto;
+}
+
+.proj-img {
+    width: 360px;
+    height: 200px;
+}
+
+.project-container {
+    margin-bottom: 48px;
+}
+
+.selected img {
+    opacity: 0.5;
+}
+
+.small-gallery-img {
+    width: 80px;
+    height: 60px;
+}
+
+#project-1-sm {
+    margin: 0 auto;
+}
