@@ -1,0 +1,41 @@
+#project-information > .information
+{
+    margin-bottom: 12px;
+}
+
+#project-information > .external-links
+{
+    margin-right: 12px;
+}
+
+#project-information, #description
+{
+    margin-bottom: 12px;
+}
+
+.back-button
+{
+    text-align: center;
+}
+
+.description
+{
+    max-width: 90%;
+}
+
+#content
+{
+    margin-bottom: 12px;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
+.item > img
+{
+    margin: 0 auto;
+}
+
+
+
