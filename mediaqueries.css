@@ -1,42 +1,28 @@
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .card {
-        min-width: 300px;
-        max-width: 300px;
-        flex: 1 0 300px;
+/*If the screen width goes below 420px make the project images go into a single
+column layout.*/
+
+@media (max-width: 420px) {
+    .project-card>.images {
+        display: block;
     }
-    .card-media {
-        width: 300px;
-        height: 200px;
-    }
-    .card-media>img {
+    .project-card>.images>.image {
         width: 100%;
         height: 100%;
-    }
-    .project-cards {
-        overflow-x: hidden;
+        margin: 0 0 10px 0;
     }
 }
 
-/* width */
+/*If the width of the screen goes below 925px, hide the left hand side panel and enable 
+the title at the top of the page and the footer at the bottom of the page.*/
 
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-/* Handle */
-
-::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-/* Handle on hover */
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
+@media only screen and (max-width: 1215px) {
+    #mobile-page-title {
+        display: inline-block;
+    }
+    .main {
+        display: none;
+    }
+    #footer {
+        display: flex;
+    }
 }

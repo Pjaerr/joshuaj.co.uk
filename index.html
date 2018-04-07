@@ -5,149 +5,226 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Joshua Jackson</title>
+    <link rel=icon href=./favicon.png>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="global.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="navbar.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="content.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="mediaqueries.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+    <link href="project.css" rel="stylesheet">
+    <link href="mediaqueries.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="whole-thing">
 
-        <div class="content">
-            <div class="project-cards" id="project-cards">
-                <div class="row">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="http://joshcharlesjackson.com/images/project/1935/cameramovementgif.gif" />
-                        </div>
-                        <div class="card-title">
-                            <h3 class="card-title-text">Project 1935</h3>
-                            <div class="card-description">
-                                A real-time multiplayer grand strategy game inspired by RISK and Diplomacy made using Unity and C#.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="http://joshcharlesjackson.com/images/project/productivity-timer-img.PNG" />
-                        </div>
-                        <div class="card-title">
-                            <h3 class="card-title-text">Productivity Timer</h3>
-                            <div class="card-description">
-                                Productivity Timer is a single-page web app that helps you keep track of the time spent working on a project/task.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row ">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="http://joshcharlesjackson.com/images/project/pwa-timer-img.png" />
-                        </div>
-                        <div class="card-title">
-                            <h3 class="card-title-text">PWA Timer</h3>
-                            <div class="card-description">
-                                A progressive web app that keeps track of time and will remind you everytime a set interval has passed.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="http://via.placeholder.com/400x300" />
-                        </div>
-                        <div class="card-title">
-                            <h3 class="card-title-text">Project #1</h3>
-                            <div class="card-description">
-                                This is a placeholder project. It was made with multiple technologies such as P# and ReactBS.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row ">
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="http://via.placeholder.com/400x300" />
-                        </div>
-                        <div class="card-title">
-                            <h3 class="card-title-text">Project #1</h3>
-                            <div class="card-description">
-                                This is a placeholder project. It was made with multiple technologies such as P# and ReactBS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-media">
-                            <img src="http://via.placeholder.com/400x300" />
-                        </div>
-                        <div class="card-title">
-                            <h3 class="card-title-text">Project #1</h3>
-                            <div class="card-description">
-                                This is a placeholder project. It was made with multiple technologies such as P# and ReactBS.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+    <div class="container">
+        <div class="main">
+            <img src="me.jpg" width="200px" height="200px" style="border-radius: 50%; margin: 0 auto;">
+            <div id="title">
+                <h1>Joshua Jackson</h1>
             </div>
-
-
-            <div class="about-me" id="about-me">
-                <img src="me.jpg" />
-                <div class="about-me-title">
-                    <h1 style="font-size: 48pt">Joshua Jackson</h1>
-                </div>
-                <div class="about-me-description">
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.</p>
-                </div>
+            <div id="description">
+                Computer Games Programming Undergraduate currently spending my spare time working on personal projects mainly focused on
+                Web and Game Development.
             </div>
+            <div id="links">
+                <div class="link">
+                    <div class="image">
+                        <a href="https://github.com/pjaerr" target="_blank">
+                            <img src="github-logo.svg">
+                        </a>
+                    </div>
+                    <div class="text">Github</div>
+                </div>
 
-            <div class="contact-me" id="contact-me">
-                <div class="links-card">
-                    Email: joshcharlesjackson@gmail.com
+                <div class="link">
+                    <div class="image">
+                        <a href="mailto:joshcharlesjackson@gmail.com" target="_blank">
+                            <img src="email-logo.svg">
+                        </a>
+                    </div>
+                    <div class="text">joshcharlesjackson@gmail.com</div>
                 </div>
             </div>
         </div>
 
-        <div class="navigation-bar-vertical">
-            <ul class="navbar-options ">
-                <li class="active portfolio" id="portfolio">
-                    <a href="#">Portfolio</a>
-                </li>
-                <li class="about" id="about">
-                    <a href="#">About Me</a>
-                </li>
-                <li class="contact" id="contact">
-                    <a href="#">Contact Me</a>
-                </li>
-            </ul>
-        </div>
+        <div class="project">
 
-        <div class="navigation-bar-horizontal">
-            <ul class="navbar-options ">
-                <li class="active portfolio" id="portfolio">
-                    <a href="#">Portfolio</a>
-                </li>
-                <li class="about" id="about">
-                    <a href="#">About Me</a>
-                </li>
-                <li class="contact" id="contact">
-                    <a href="#">Contact Me</a>
-                </li>
-            </ul>
+            <div class="project-card">
+                <div id="mobile-page-title">
+                    <h1>Joshua Jackson</h1>
+                </div>
+
+                <div id="title">
+
+                    <h2>Findr</h2>
+                </div>
+
+                <div id="description">
+                    <p>Findr is a web app made with
+                        <span class="tech-used">ReactJS</span> and the
+                        <span class="tech-used">JavaScript Google Maps API</span>. It finds places within a certain radius that match a certain criteria
+                        and presents them to you in a Tinder-style card, showing their distance and rating, allowing you
+                        to dismiss the location or go to the google maps page for the location.
+                    </p>
+                </div>
+
+                <div class="links">
+                    <div class="link">
+                        <a href="https://github.com/Pjaerr/Findr" target="_blank">
+                            <img src="github-logo.svg"> Github
+                        </a>
+                    </div>
+                    <div class="link">
+                        <a href="https://pjaerr.github.io/Findr/" target="_blank">
+                            <img src="demo-icon.svg"> Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="images">
+                    <div class="image">
+                        <img src="findr_screenshot4.png">
+                    </div>
+                    <div class="image">
+                        <img src="findr_screenshot2.png">
+                    </div>
+
+                </div>
+                <div class="images">
+                    <div class="image">
+                        <img src="findr_screenshot3.png">
+                    </div>
+                    <div class="image">
+                        <img src="findr_screenshot5.png">
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="project-card">
+                <div id="title">
+
+                    <h2>Productivity Timer</h2>
+                </div>
+
+                <div id="description">
+                    <p>Productivity Timer is a single-page website made predominantly with
+                        <span class="tech-used">JavaScript</span> that helps you keep track of the time spent working on a project/task with a chess-like
+                        timer.
+                    </p>
+                </div>
+
+                <div class="links">
+                    <div class="link">
+                        <a href="https://github.com/pjaerr/Productivity-Timer" target="_blank">
+                            <img src="github-logo.svg"> Github
+                        </a>
+                    </div>
+                    <div class="link">
+                        <a href="https://pjaerr.github.io/Productivity-Timer/" target="_blank">
+                            <img src="demo-icon.svg"> Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="images">
+                    <div class="image">
+                        <img src="prodtimer_screenshot1.png">
+                    </div>
+                    <div class="image">
+                        <img src="prodtimer_screenshot4.png">
+                    </div>
+
+                </div>
+                <div class="images">
+                    <div class="image">
+                        <img src="prodtimer_screenshot3.png">
+                    </div>
+                    <div class="image">
+                        <img src="prodtimer_screenshot2.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div id="title">
+
+                    <h2>Game Jams/Hackathons</h2>
+                </div>
+
+                <div id="description">
+                    <p>Collection of stuff made during Game Jams and Hackathons.</p>
+                </div>
+
+                <!--<div class="links">
+                    <div class="link">
+                        <a href="#" target="_blank">
+                            <img src="github-logo.svg"> Github
+                        </a>
+                    </div>
+                    <div class="link">
+                        <a href="#" target="_blank">
+                            <img src="gamepad.svg"> Itch.io
+                        </a>
+                    </div>
+                </div>-->
+
+                <div class="images gamejam-images">
+
+                    <div class="image">
+                        <a href="https://pjaer.itch.io/paper-route" target="_blank">
+                            <h4 class="project-name">Paper Route</h4>
+                        </a>
+                        <img src="http://joshcharlesjackson.com/images/project/paperroute-img.png">
+                    </div>
+
+
+                    <div class="image">
+                        <a href="https://pogolauncher.itch.io/project-sonar" target="_blank">
+                            <h4 class="project-name">Project Sonar</h4>
+                        </a>
+                        <img src="http://joshcharlesjackson.com/images/project/project-sonar-img.png">
+                    </div>
+
+                </div>
+                <div class="images gamejam-images">
+                    <div class="image">
+                        <a href="https://pjaer.itch.io/the-temple-of-tezcatlipoca" target="_blank">
+                            <h4 class="project-name">Tezcatlipoca</h4>
+                        </a>
+                        <img src="http://joshcharlesjackson.com/images/project/tezcatlipoca.png">
+                    </div>
+
+                </div>
+            </div>
+            <div id="footer">
+                <div class="footer-item">
+
+                    <div class="footer-image">
+                        <a href="https://github.com/pjaerr" target="_blank">
+                            <img src="github-logo.svg">
+                        </a>
+                    </div>
+
+                    <div class="footer-text">Github</div>
+
+                </div>
+                <div class="footer-item">
+
+                    <div class="footer-image">
+                        <a href="mailto:joshcharlesjackson@gmail.com" target="_blank">
+                            <img src="email-logo.svg">
+                        </a>
+                    </div>
+
+                    <div class="footer-text">joshcharlesjackson@gmail.com</div>
+                </div>
+            </div>
         </div>
 
     </div>
+
 
     <script src="main.js"></script>
 </body>
