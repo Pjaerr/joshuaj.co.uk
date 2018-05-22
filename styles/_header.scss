@@ -1,0 +1,112 @@
+%off-center
+{
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+#header 
+{
+    min-height: 100%;
+
+    background: $backgroundColor;
+    color: $textColour;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#name
+{
+    margin-top: 20px;
+
+    #name-text
+    {
+        @extend %off-center;
+
+        font-family: $headingFont;
+        @extend %headingFont;
+        line-height: 100%;
+    }
+}
+
+#about-me
+{
+    max-width: 100%;
+
+    text-align: justify;
+
+    @extend %bodyFont;
+
+    letter-spacing: 2px;
+    line-height: 100%;
+
+    p
+    {
+        @extend %off-center;
+    }
+}
+
+#navigation-buttons
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    a
+    {
+        @extend %off-center;
+
+        margin-top: 20px;
+
+        text-decoration: none;
+        font-weight: bold;
+
+        @extend %bodyFont;
+
+        color: $textColour;
+    }
+}
+
+
+/*Media Queries*/
+
+@media (min-width: 600px)
+{
+    %off-center
+    {
+        margin-left: 20px;
+    }
+
+    %headingFont
+    {
+        font-size: 5vh;
+        letter-spacing: 10px;
+    }
+
+    #about-me
+    {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 900px)
+{
+    %off-center
+    {
+        margin-left: 40px;
+    }
+
+    %headingFont
+    {
+        font-size: 6vh;
+        letter-spacing: 20px;
+    }
+}
+
+@media (min-width: 1050px)
+{
+    #about-me
+    {
+        max-width: 70%;
+    }
+}

@@ -1,0 +1,81 @@
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface'); //Title Font
+@import url('https://fonts.googleapis.com/css?family=Jacques+Francois');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+//Variables
+$backgroundColor: #0BE881; //Default Background colour for the header.
+$textColour: #2F3542;
+$headingFont: 'Abril Fatface', serif;
+$bodyFont: 'Montserrat', serif;
+
+%bodyFont
+{
+    font-size: 3vh;
+}
+
+%headingFont
+{
+    font-size: 4.5vh;
+    letter-spacing: 5px;
+}
+
+//SASS Partials
+@import 'header';
+
+html,
+body 
+{
+    height: 100%;
+    margin: 0;
+
+    font-family: $bodyFont;
+}
+
+
+.next-page-btn
+{
+    display: flex;
+    justify-content: center;
+
+    
+
+    width: 100%;
+
+    img
+    {
+        width: 26px;
+        height: 26px;
+    }
+    
+
+    position: fixed;
+    bottom: 30px;
+
+    animation: up-down 1s ease-in alternate infinite;
+}
+
+@media (min-width: 800px)
+{
+    .next-page-btn
+    {
+        img
+        {
+            width: 32px;
+            height: 32px;
+        }
+    }
+}
+
+@-moz-keyframes up-down {
+    from {transform:translateY(0px)}
+    to {transform:translateY(20px);}
+}
+@-webkit-keyframes up-down {
+    from {transform:translateY(0px)}
+    to {transform:translateY(20px);}
+}
+@keyframes up-down {
+    from {transform:translateY(0px)}
+    to {transform:translateY(20px);}
+}

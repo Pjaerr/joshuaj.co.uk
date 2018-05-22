@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface");
+@import url("https://fonts.googleapis.com/css?family=Jacques+Francois");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+#navigation-buttons a, #about-me {
+  font-size: 3vh;
+}
+
+#name #name-text {
+  font-size: 4.5vh;
+  letter-spacing: 5px;
+}
+
+#navigation-buttons a, #about-me p, #name #name-text {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+#header {
+  min-height: 100%;
+  background: #0BE881;
+  color: #2F3542;
+  display: flex;
+  flex-direction: column;
+}
+
+#name {
+  margin-top: 20px;
+}
+#name #name-text {
+  font-family: "Abril Fatface", serif;
+  line-height: 100%;
+}
+
+#about-me {
+  max-width: 100%;
+  text-align: justify;
+  letter-spacing: 2px;
+  line-height: 100%;
+}
+#navigation-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#navigation-buttons a {
+  margin-top: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #2F3542;
+}
+
+/*Media Queries*/
+@media (min-width: 600px) {
+  #name #name-text, #about-me p, #navigation-buttons a {
+    margin-left: 20px;
+  }
+
+  #name #name-text {
+    font-size: 5vh;
+    letter-spacing: 10px;
+  }
+
+  #about-me {
+    max-width: 80%;
+  }
+}
+@media (min-width: 900px) {
+  #name #name-text, #about-me p, #navigation-buttons a {
+    margin-left: 40px;
+  }
+
+  #name #name-text {
+    font-size: 6vh;
+    letter-spacing: 20px;
+  }
+}
+@media (min-width: 1050px) {
+  #about-me {
+    max-width: 70%;
+  }
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Montserrat", serif;
+}
+
+.next-page-btn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  bottom: 30px;
+  animation: up-down 1s ease-in alternate infinite;
+}
+.next-page-btn img {
+  width: 26px;
+  height: 26px;
+}
+
+@media (min-width: 800px) {
+  .next-page-btn img {
+    width: 32px;
+    height: 32px;
+  }
+}
+@-moz-keyframes up-down {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(20px);
+  }
+}
+@-webkit-keyframes up-down {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(20px);
+  }
+}
+@keyframes up-down {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(20px);
+  }
+}
+
+/*# sourceMappingURL=styles/main.css.map */
