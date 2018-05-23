@@ -3,12 +3,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat'); //Body Font
 
 //Variables
-$backgroundColor: #0BE881; //Default Background colour for the header.
+$backgroundColour: #0BE881; //Default Background colour for the header.
 $textColour: #2F3542; //Site-wide text colour.
 
 //SASS Partials
 @import 'text';
 @import 'header';
+@import 'project';
 
 html,
 body 

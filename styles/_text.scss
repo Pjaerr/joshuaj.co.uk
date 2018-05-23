@@ -18,13 +18,14 @@ $bodyFont: 'Montserrat', serif;
 {
     font-family: $headingFont;
     font-size: 4.5vh;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
 }
 
 %bodyText
 {
     font-size: 3vh;
-    line-height: 300%;
+
+    text-align: justify;
 }
 
 /*
@@ -46,11 +47,9 @@ $bodyFont: 'Montserrat', serif;
 
 @media (min-width: 900px)
 {
-    
-
     %headingText
     {
         font-size: 6vh;
-        letter-spacing: 16px;
+        letter-spacing: 10px;
     }
 }

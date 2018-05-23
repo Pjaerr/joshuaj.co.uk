@@ -11,19 +11,16 @@
 
 <body>
     <div id="header">
-
         <header id="name">
             <div id="name-text">
                 <h1>Joshua</h1>
                 <h1>Jackson</h1>
             </div>
         </header>
-
         <div id="about-me">
             <p id="about-me-text"> Computer Games Programming Undergraduate currently spending my spare time working on personal projects mainly
                 focused on Web and Game Development. </p>
         </div>
-
         <nav id="navigation-buttons">
             <span>
                 <a href="#">📝 Contact me</a>
@@ -33,12 +30,81 @@
             </span>
         </nav>
 
-
         <nav class="next-page-btn">
-            <img src="./images/icons/chevron-down.svg" alt="Next Page">
+            <a href="#">
+                <img src="./images/icons/chevron-down.svg" alt="Next Page">
+            </a>
         </nav>
-
     </div>
+
+    <article id="tempid1" class="project">
+        <section class="project-image">
+            <img class="project-image-img" src="./images/findr_screenshot.png" alt="Findr Screenshot">
+        </section>
+        <section class="project-info">
+            <header class="project-name">
+                <h1>Findr</h1>
+            </header>
+            <section class="project-description">
+                <p>
+                    Findr is a web app that finds places within a certain radius that match a given criteria and presents them to you in a Tinder-style
+                    card, showing their distance and rating, allowing you to dismiss the location or go to the google maps
+                    page for the location.
+                </p>
+            </section>
+            <section class="made-with">
+                <p>React • Google Maps API</p>
+            </section>
+            <nav class="project-buttons">
+                <span class="button">
+                    <img src="./images/icons/exit-to-app.svg" alt="Try it out">
+                    <a href="#">
+                        Try It Out
+                    </a>
+                </span>
+                <span class="button">
+                    <img src="./images/icons/github-box.svg" alt="Source Code">
+                    <a href="#">Source Code</a>
+                </span>
+            </nav>
+        </section>
+    </article>
+
+
+    <article id="tempid2" class="project">
+        <section class="project-image">
+            <img class="project-image-img" src="./images/pubnamegen-screenshot.png" alt="Pub Name Generator Screenshot">
+        </section>
+        <section class="project-info">
+            <header class="project-name">
+                <h1>Pub Name Generator</h1>
+            </header>
+            <section class="project-description">
+                <p>
+                    Pub Name Generator is a tiny site/app that will generate unique pub names following "The __ and __" convention by grabbing
+                    random nouns from the WordNik API. It was a tiny side-project to learn vanilla js ajax (xmlhttprequest)
+                    as well as an exercise in finding well contrasting colours.
+                </p>
+            </section>
+            <section class="made-with">
+                <p>HTML • CSS • JavaScript • WordNik API</p>
+            </section>
+            <nav class="project-buttons">
+                <span class="button">
+                    <img src="./images/icons/exit-to-app.svg" alt="Try it out">
+                    <a href="#">
+                        Try It Out
+                    </a>
+                </span>
+                <span class="button">
+                    <img src="./images/icons/github-box.svg" alt="Source Code">
+                    <a href="#">Source Code</a>
+                </span>
+            </nav>
+        </section>
+    </article>
+
+
 
     <script src="http://localhost:35729/livereload.js"></script>
 </body>

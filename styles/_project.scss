@@ -1,0 +1,151 @@
+
+
+.project
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    min-height: 100%;
+}
+
+#tempid1
+{
+    background: #12E988;
+}
+#tempid2
+{
+    background: #1AE98E;
+}
+
+.project-image
+{
+    margin: 8px;
+
+    max-width: 80%;
+    
+
+    .project-image-img
+    {
+        width: 100%;
+        height: auto;
+
+        box-shadow: 0 2.5px 5px rgba(0,0,0,0.19), -2px 1px 6px rgba(0,0,0,0.23);
+    }
+}
+
+@media (min-width: 1025px)
+{
+    .project
+    {
+        flex-direction: row;
+    }
+
+    .project-image-img
+    {
+        max-width: 100vh;
+    }
+}
+
+@media (min-width: 428px)
+{
+    .project-image
+    {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 518px)
+{
+    .project-image
+    {
+        max-width: 70%;
+    }
+}
+
+@media (min-width: 593px)
+{
+    .project-image
+    {
+        max-width: 60%;
+    }
+}
+
+@media (min-width: 668px)
+{
+    .project-image
+    {
+        max-width: 50%;
+    }
+}
+
+.project-info
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.project-name
+{
+    @extend %headingText;
+    margin-top: -30px;
+
+    text-align: center;
+}
+
+.project-description
+{
+    @extend %bodyText;
+
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: -30px;
+
+    max-width: 100%;
+
+    word-wrap: break-word;
+}
+
+/*
+    When hit breakpoint, swap from row to column and set maxwidth of description to be 100% and also make the
+    columns/rows equal in flex,
+*/
+
+.made-with
+{
+    font-weight: bold;
+    
+    margin-top: -20px;
+}
+
+.project-buttons
+{
+    display: flex;
+    justify-content: space-between;
+
+    .button
+    {
+        display: flex;
+        justify-content: center;
+        margin-left: 20px;
+        margin-right: 20px;
+
+        a
+        {
+            margin-left: 4px;
+        }
+    }
+
+    a
+    {
+        text-decoration: none;
+        color: $textColour;
+        font-weight: bold;
+    }
+}
