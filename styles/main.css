@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Abril+Fatface");
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,400,400i,700,700i");
 /*
     Text SASS Partial
 
@@ -13,7 +12,7 @@
     allowing the sizes and spacing of all of the text to be changed within media queries.
 */
 .project-name, #name #name-text {
-  font-family: "Abril Fatface", serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 4.5vh;
   letter-spacing: 2px;
 }
@@ -109,6 +108,7 @@
   justify-content: flex-start;
   align-items: center;
   min-height: 100%;
+  background: #0BE881;
 }
 
 #tempid1 {
@@ -189,7 +189,8 @@
     columns/rows equal in flex,
 */
 .made-with {
-  font-weight: bold;
+  font-weight: bolder;
+  text-decoration: underline;
   margin-top: -20px;
 }
 
@@ -210,14 +211,20 @@
   text-decoration: none;
   color: #2F3542;
   font-weight: bold;
+  font-style: italic;
 }
 
 html,
 body {
   height: 100%;
   margin: 0;
-  font-family: "Montserrat", serif;
+  font-family: "IBM Plex Sans", sans-serif;
   color: #2F3542;
+}
+
+::selection {
+  background: #2F3542;
+  color: #0BE881;
 }
 
 .next-page-btn {

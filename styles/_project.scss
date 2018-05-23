@@ -8,8 +8,11 @@
     align-items: center;
 
     min-height: 100%;
+
+    background: $backgroundColour;
 }
 
+//Temporary manual IDs to test colour combinations.
 #tempid1
 {
     background: #12E988;
@@ -123,8 +126,8 @@
 
 .made-with
 {
-    font-weight: bold;
-    
+    font-weight: bolder;
+    text-decoration: underline;
     margin-top: -20px;
 }
 
@@ -151,5 +154,6 @@
         text-decoration: none;
         color: $textColour;
         font-weight: bold;
+        font-style: italic;
     }
 }

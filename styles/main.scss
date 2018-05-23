@@ -1,6 +1,5 @@
 //Fonts
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface'); //Title Font
-@import url('https://fonts.googleapis.com/css?family=Montserrat'); //Body Font
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,400,400i,700,700i');
 
 //Variables
 $backgroundColour: #0BE881; //Default Background colour for the header.
@@ -19,6 +18,12 @@ body
 
     font-family: $bodyFont; //Default to the body font for all text.
     color: $textColour;
+}
+
+::selection
+{
+    background: $textColour;
+    color: $backgroundColour;
 }
 
 
