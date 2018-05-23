@@ -1,26 +1,13 @@
 //Fonts
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface'); //Title Font
-@import url('https://fonts.googleapis.com/css?family=Jacques+Francois');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat'); //Body Font
 
 //Variables
 $backgroundColor: #0BE881; //Default Background colour for the header.
-$textColour: #2F3542;
-$headingFont: 'Abril Fatface', serif;
-$bodyFont: 'Montserrat', serif;
-
-%bodyFont
-{
-    font-size: 3vh;
-}
-
-%headingFont
-{
-    font-size: 4.5vh;
-    letter-spacing: 5px;
-}
+$textColour: #2F3542; //Site-wide text colour.
 
 //SASS Partials
+@import 'text';
 @import 'header';
 
 html,
@@ -29,7 +16,7 @@ body
     height: 100%;
     margin: 0;
 
-    font-family: $bodyFont;
+    font-family: $bodyFont; //Default to the body font for all text.
 }
 
 
@@ -37,8 +24,6 @@ body
 {
     display: flex;
     justify-content: center;
-
-    
 
     width: 100%;
 
@@ -67,15 +52,21 @@ body
     }
 }
 
-@-moz-keyframes up-down {
+/*Slight up->down movement using transform:translate()*/
+@-moz-keyframes up-down 
+{
     from {transform:translateY(0px)}
-    to {transform:translateY(20px);}
+    to {transform:translateY(5px);}
 }
-@-webkit-keyframes up-down {
+
+@-webkit-keyframes up-down 
+{
     from {transform:translateY(0px)}
-    to {transform:translateY(20px);}
+    to {transform:translateY(5px);}
 }
-@keyframes up-down {
+
+@keyframes up-down 
+{
     from {transform:translateY(0px)}
-    to {transform:translateY(20px);}
+    to {transform:translateY(5px);}
 }

@@ -1,46 +1,44 @@
+//Extensions
 %off-center
 {
-    margin-left: 10px;
+    margin-left: 5px;
     margin-right: 5px;
 }
 
-#header 
+#header //Container for all of the other elements that make up the header.
 {
+    display: flex;
+    flex-direction: column;
+
     min-height: 100%;
 
     background: $backgroundColor;
     color: $textColour;
-
-    display: flex;
-    flex-direction: column;
 }
 
-#name
+#name //Container for the <h1> tags that make up the name.
 {
     margin-top: 20px;
 
     #name-text
     {
         @extend %off-center;
+        @extend %headingText;
 
-        font-family: $headingFont;
-        @extend %headingFont;
         line-height: 100%;
     }
 }
 
 #about-me
 {
+    @extend %bodyText;
+
     max-width: 100%;
 
     text-align: justify;
-
-    @extend %bodyFont;
-
-    letter-spacing: 2px;
     line-height: 100%;
 
-    p
+    #about-me-text
     {
         @extend %off-center;
     }
@@ -55,13 +53,12 @@
     a
     {
         @extend %off-center;
+        @extend %bodyText;
 
         margin-top: 20px;
 
         text-decoration: none;
         font-weight: bold;
-
-        @extend %bodyFont;
 
         color: $textColour;
     }
@@ -77,12 +74,6 @@
         margin-left: 20px;
     }
 
-    %headingFont
-    {
-        font-size: 5vh;
-        letter-spacing: 10px;
-    }
-
     #about-me
     {
         max-width: 80%;
@@ -93,13 +84,7 @@
 {
     %off-center
     {
-        margin-left: 40px;
-    }
-
-    %headingFont
-    {
-        font-size: 6vh;
-        letter-spacing: 20px;
+        margin-left: 60px;
     }
 }
 

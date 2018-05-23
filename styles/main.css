@@ -1,40 +1,70 @@
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface");
-@import url("https://fonts.googleapis.com/css?family=Jacques+Francois");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
+/*
+    Text SASS Partial
+
+    Holds font information and text extensions for commonly used types of text
+    throughout the site and manages the responsiveness of text elements that inherit
+    those extensions via CSS media queries.
+*/
+/*Default font-family*/
+/*
+    Font rule extensions used to keep font styling/sizing consistent as well as
+    allowing the sizes and spacing of all of the text to be changed within media queries.
+*/
+#name #name-text {
+  font-family: "Abril Fatface", serif;
+  font-size: 4.5vh;
+  letter-spacing: 4px;
+}
+
 #navigation-buttons a, #about-me {
   font-size: 3vh;
+  letter-spacing: 0.5px;
 }
 
-#name #name-text {
-  font-size: 4.5vh;
-  letter-spacing: 5px;
-}
+/*
+    Media Queries
+*/
+@media (min-width: 600px) {
+  #name #name-text {
+    font-size: 5vh;
+    letter-spacing: 8px;
+  }
 
-#navigation-buttons a, #about-me p, #name #name-text {
-  margin-left: 10px;
+  #navigation-buttons a, #about-me {
+    letter-spacing: 1px;
+  }
+}
+@media (min-width: 900px) {
+  #name #name-text {
+    font-size: 6vh;
+    letter-spacing: 16px;
+  }
+}
+#navigation-buttons a, #about-me #about-me-text, #name #name-text {
+  margin-left: 5px;
   margin-right: 5px;
 }
 
 #header {
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
   background: #0BE881;
   color: #2F3542;
-  display: flex;
-  flex-direction: column;
 }
 
 #name {
   margin-top: 20px;
 }
 #name #name-text {
-  font-family: "Abril Fatface", serif;
   line-height: 100%;
 }
 
 #about-me {
   max-width: 100%;
   text-align: justify;
-  letter-spacing: 2px;
   line-height: 100%;
 }
 #navigation-buttons {
@@ -51,13 +81,8 @@
 
 /*Media Queries*/
 @media (min-width: 600px) {
-  #name #name-text, #about-me p, #navigation-buttons a {
+  #name #name-text, #about-me #about-me-text, #navigation-buttons a {
     margin-left: 20px;
-  }
-
-  #name #name-text {
-    font-size: 5vh;
-    letter-spacing: 10px;
   }
 
   #about-me {
@@ -65,13 +90,8 @@
   }
 }
 @media (min-width: 900px) {
-  #name #name-text, #about-me p, #navigation-buttons a {
-    margin-left: 40px;
-  }
-
-  #name #name-text {
-    font-size: 6vh;
-    letter-spacing: 20px;
+  #name #name-text, #about-me #about-me-text, #navigation-buttons a {
+    margin-left: 60px;
   }
 }
 @media (min-width: 1050px) {
@@ -105,12 +125,13 @@ body {
     height: 32px;
   }
 }
+/*Slight up->down movement using transform:translate()*/
 @-moz-keyframes up-down {
   from {
     transform: translateY(0px);
   }
   to {
-    transform: translateY(20px);
+    transform: translateY(5px);
   }
 }
 @-webkit-keyframes up-down {
@@ -118,7 +139,7 @@ body {
     transform: translateY(0px);
   }
   to {
-    transform: translateY(20px);
+    transform: translateY(5px);
   }
 }
 @keyframes up-down {
@@ -126,7 +147,7 @@ body {
     transform: translateY(0px);
   }
   to {
-    transform: translateY(20px);
+    transform: translateY(5px);
   }
 }
 

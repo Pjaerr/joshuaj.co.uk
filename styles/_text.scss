@@ -1,0 +1,56 @@
+/*
+    Text SASS Partial
+
+    Holds font information and text extensions for commonly used types of text
+    throughout the site and manages the responsiveness of text elements that inherit
+    those extensions via CSS media queries.
+*/
+
+/*Default font-family*/
+$headingFont: 'Abril Fatface', serif;
+$bodyFont: 'Montserrat', serif;
+
+/*
+    Font rule extensions used to keep font styling/sizing consistent as well as
+    allowing the sizes and spacing of all of the text to be changed within media queries.
+*/
+%headingText
+{
+    font-family: $headingFont;
+    font-size: 4.5vh;
+    letter-spacing: 4px;
+}
+
+%bodyText
+{
+    font-size: 3vh;
+    letter-spacing: 0.5px;
+}
+
+/*
+    Media Queries
+*/
+@media (min-width: 600px)
+{
+    %headingText
+    {
+        font-size: 5vh;
+        letter-spacing: 8px;
+    }
+
+    %bodyText
+    {
+        letter-spacing: 1px;
+    }
+}
+
+@media (min-width: 900px)
+{
+    
+
+    %headingText
+    {
+        font-size: 6vh;
+        letter-spacing: 16px;
+    }
+}
