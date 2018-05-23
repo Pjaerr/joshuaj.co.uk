@@ -20,7 +20,7 @@
 
 #navigation-buttons a, #about-me {
   font-size: 3vh;
-  letter-spacing: 0.5px;
+  line-height: 300%;
 }
 
 /*
@@ -52,14 +52,14 @@
   flex-direction: column;
   min-height: 100%;
   background: #0BE881;
-  color: #2F3542;
 }
 
 #name {
   margin-top: 20px;
+  margin: 0 auto;
 }
 #name #name-text {
-  line-height: 100%;
+  line-height: 140%;
 }
 
 #about-me {
@@ -80,6 +80,11 @@
 }
 
 /*Media Queries*/
+@media (min-width: 500px) {
+  #name {
+    margin-left: 0px;
+  }
+}
 @media (min-width: 600px) {
   #name #name-text, #about-me #about-me-text, #navigation-buttons a {
     margin-left: 20px;
@@ -104,6 +109,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: "Montserrat", serif;
+  color: #2F3542;
 }
 
 .next-page-btn {
