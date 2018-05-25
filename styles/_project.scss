@@ -21,7 +21,7 @@ $projectBackgroundColour: #ebfcf5;
     background: $projectBackgroundColour;
 }
 
-.projects
+.content
 {
     display: flex;
     flex-direction: column;
@@ -130,8 +130,9 @@ $projectBackgroundColour: #ebfcf5;
 {
     display: flex;
     justify-content: space-between;
+}
 
-    .button
+.button
     {
         display: flex;
         justify-content: center;
@@ -154,4 +155,3 @@ $projectBackgroundColour: #ebfcf5;
             margin-left: 4px;
         }
     }
-}

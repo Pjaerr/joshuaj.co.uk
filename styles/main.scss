@@ -9,6 +9,7 @@ $textColour: #0A346C; //Site-wide text colour.
 @import 'text';
 @import 'header';
 @import 'project';
+@import 'contact';
 
 html,
 body 
@@ -20,8 +21,6 @@ body
     color: $textColour;
 
     scroll-behavior: smooth;
-
-    min-height: 0;
 }
 
 ::selection

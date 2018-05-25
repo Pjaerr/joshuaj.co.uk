@@ -5,7 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Joshua Jackson | Portfolio</title>
+    <link rel='shortcut icon' type='image/x-icon' href='./favicon.png' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preload" href="./styles/main.min.css" as="style">
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/main.min.css" />
 </head>
 
@@ -23,10 +25,10 @@
         </div>
         <nav id="navigation-buttons">
             <span>
-                <a href="#">📝 Contact me</a>
+                <a href="#contact-form">📝 Contact me ></a>
             </span>
             <span>
-                <a href="#projects">💻 Check out my work</a>
+                <a href="#projects">💻 Check out my projects ></a>
             </span>
         </nav>
 
@@ -37,7 +39,7 @@
         </nav>
     </div>
 
-    <article class="projects">
+    <article class="content">
         <article id="projects" class="project">
             <section class="project-image">
                 <img class="project-image-img" src="./images/findr_screenshot.png" alt="Findr Screenshot">
@@ -58,13 +60,13 @@
                 </section>
                 <nav class="project-buttons">
                     <span class="button">
-                        <a class="button-link" href="#">
+                        <a class="button-link" href="https://pjaerr.github.io/Findr/" target="_blank">
                             <img src="./images/icons/exit-to-app.svg" alt="Try it out">
                             <span class="button-text"> Try It Out</span>
                         </a>
                     </span>
                     <span class="button">
-                        <a class="button-link" href="#">
+                        <a class="button-link" href="https://github.com/Pjaerr/Findr" target="_blank">
                             <img src="./images/icons/github-box.svg" alt="Source Code">
                             <span class="button-text">Source Code</span>
                         </a>
@@ -74,7 +76,7 @@
         </article>
 
 
-        <article id="tempid2" class="project-reversed">
+        <article class="project-reversed">
             <section class="project-image">
                 <img class="project-image-img" src="./images/pubnamegen_screenshot.png" alt="Pub Name Generator Screenshot">
             </section>
@@ -94,13 +96,13 @@
                 </section>
                 <nav class="project-buttons">
                     <span class="button">
-                        <a class="button-link" href="#">
+                        <a class="button-link" href="https://pjaerr.github.io/Pub-Name-Generator/" target="_blank">
                             <img src="./images/icons/exit-to-app.svg" alt="Try it out">
                             <span class="button-text"> Try It Out</span>
                         </a>
                     </span>
                     <span class="button">
-                        <a class="button-link" href="#">
+                        <a class="button-link" href="https://github.com/Pjaerr/Pub-Name-Generator" target="_blank">
                             <img src="./images/icons/github-box.svg" alt="Source Code">
                             <span class="button-text">Source Code</span>
                         </a>
@@ -109,7 +111,7 @@
             </section>
         </article>
 
-        <article id="tempid3" class="project">
+        <article class="project">
             <section class="project-image">
                 <img class="project-image-img" src="./images/imaginarysites_screenshot.png" alt="Imaginary Sites Screenshot">
             </section>
@@ -119,8 +121,9 @@
                 </header>
                 <section class="project-description">
                     <p>
-                        The imaginary sites are just websites created for an imaginary business, product, location etc and are made to gain experience
-                        in both web design and development as well as to learn new front end technologies and tools.
+                        The imaginary sites are a collection of websites created for an imaginary business, product, location etc and are made to
+                        gain experience in both web design and development as well as to learn new front end technologies
+                        and tools.
                     </p>
                 </section>
                 <section class="made-with">
@@ -128,13 +131,13 @@
                 </section>
                 <nav class="project-buttons">
                     <span class="button">
-                        <a class="button-link" href="#">
+                        <a class="button-link" href="https://github.com/Pjaerr/Imaginary-Sites/blob/master/README.md" target="_blank">
                             <img src="./images/icons/exit-to-app.svg" alt="Try it out">
                             <span class="button-text"> Try It Out</span>
                         </a>
                     </span>
                     <span class="button">
-                        <a class="button-link" href="#">
+                        <a class="button-link" href="https://github.com/Pjaerr/Imaginary-Sites" target="_blank">
                             <img src="./images/icons/github-box.svg" alt="Source Code">
                             <span class="button-text">Source Code</span>
                         </a>
@@ -143,7 +146,7 @@
             </section>
         </article>
 
-        <article id="tempid4" class="project-reversed">
+        <article class="project-reversed">
             <section class="project-image">
                 <img class="project-image-img" src="./images/prodtimer_screenshot.png" alt="Productivity Timer Screenshot">
             </section>
@@ -162,13 +165,13 @@
                 </section>
                 <nav class="project-buttons">
                     <span class="button">
-                        <a class="button-link" href="#">
+                        <a class="button-link" href="https://pjaerr.github.io/Productivity-Timer/" target="_blank">
                             <img src="./images/icons/exit-to-app.svg" alt="Try it out">
                             <span class="button-text"> Try It Out</span>
                         </a>
                     </span>
                     <span class="button">
-                        <a class="button-link" href="#">
+                        <a class="button-link" href="https://github.com/Pjaerr/Productivity-Timer" target="_blank">
                             <img src="./images/icons/github-box.svg" alt="Source Code">
                             <span class="button-text">Source Code</span>
                         </a>
@@ -176,7 +179,53 @@
                 </nav>
             </section>
         </article>
+
+
     </article>
+
+    <article id="contact-form">
+        <header>
+            <h1 id="contact-form-header">
+                Contact Me
+            </h1>
+        </header>
+
+        <nav id="contact-links">
+
+            <span class="button">
+                <a class="button-link" href="https://github.com/pjaerr" target="_blank">
+                    <img src="./images/icons/github-box.svg" alt="Github">
+                    <span class="button-text">Github</span>
+                </a>
+            </span>
+            <span class="button">
+                <a class="button-link" href="https://twitter.com/Pjaerr" target="_blank">
+                    <img src="./images/icons/twitter-box.svg" alt="Twitter">
+                    <span class="button-text">Twitter</span>
+                </a>
+            </span>
+        </nav>
+        <section id="form-section">
+            <form id="form" action="https://formspree.io/joshcharlesjackson@gmail.com" method="POST">
+                <span class="form-label">Name:</span>
+                <input class="form-element" type="text" name="name">
+
+                <span class="form-label">Email Address:</span>
+                <input class="form-element" type="email" name="email">
+
+                <span class="form-label">Message:</span>
+                <textarea id="message" class="form-element" name="message" rows="15" cols="50"></textarea>
+
+                <input id="submit-button" class="form-element" type="submit" value="Submit">
+            </form>
+
+            <p id="submit-warning">*Clicking submit will take you to a Formspree captcha.</p>
+        </section>
+
+
+    </article>
+
+
 
 
 
