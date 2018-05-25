@@ -1,19 +1,29 @@
-
-
-.project
+/*The default project attributes.*/
+%project
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    padding-bottom: 30px;
-    padding-top: 30px;
+    padding-bottom: 50px;
+    padding-top: 50px;
     
     //min-height: 100%;
 
-    background: #A8F4C8;
+    background: $projectBackgroundColour;
 }
+
+
+.project
+{
+    @extend %project;
+}
+.project-reversed
+{
+    @extend %project;
+}
+
 .project-image
 {
     margin: 8px;
@@ -32,9 +42,18 @@
 
 @media (min-width: 1025px)
 {
+    %project
+    {
+        padding-bottom: 80px;
+        padding-top: 80px;
+    }
     .project
     {
         flex-direction: row;
+    }
+    .project-reversed
+    {
+        flex-direction: row-reverse;
     }
 
     .project-image-img

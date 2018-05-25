@@ -100,14 +100,59 @@
     max-width: 70%;
   }
 }
-.project {
+.next-page-btn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 30px;
+  animation: up-down 1s ease-in alternate infinite;
+}
+.next-page-btn img {
+  width: 26px;
+  height: 26px;
+}
+
+@media (min-width: 800px) {
+  .next-page-btn img {
+    width: 32px;
+    height: 32px;
+  }
+}
+/*Slight up->down movement using transform:translate()*/
+@-moz-keyframes up-down {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+@-webkit-keyframes up-down {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+@keyframes up-down {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+/*The default project attributes.*/
+.project-reversed, .project {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 30px;
-  padding-top: 30px;
-  background: #A8F4C8;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  background: #ebfcf5;
 }
 
 .project-image {
@@ -121,8 +166,17 @@
 }
 
 @media (min-width: 1025px) {
+  .project, .project-reversed {
+    padding-bottom: 80px;
+    padding-top: 80px;
+  }
+
   .project {
     flex-direction: row;
+  }
+
+  .project-reversed {
+    flex-direction: row-reverse;
   }
 
   .project-image-img {
@@ -212,51 +266,6 @@ body {
 ::selection {
   background: #0A346C;
   color: #FCF6EB;
-}
-
-.next-page-btn {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  position: fixed;
-  bottom: 30px;
-  animation: up-down 1s ease-in alternate infinite;
-}
-.next-page-btn img {
-  width: 26px;
-  height: 26px;
-}
-
-@media (min-width: 800px) {
-  .next-page-btn img {
-    width: 32px;
-    height: 32px;
-  }
-}
-/*Slight up->down movement using transform:translate()*/
-@-moz-keyframes up-down {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(5px);
-  }
-}
-@-webkit-keyframes up-down {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(5px);
-  }
-}
-@keyframes up-down {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(5px);
-  }
 }
 
 /*# sourceMappingURL=styles/main.css.map */
