@@ -17,14 +17,14 @@ $bodyFont: 'IBM Plex Sans', sans-serif;
 %headingText
 {
     font-family: $headingFont;
-    font-size: 4.5vh;
+    font-size: 2em;
     letter-spacing: 2px;
 }
 
 %projectHeadingText
 {
     font-family: $headingFont;
-    font-size: 4vh;
+    font-size: 1.5em;
     letter-spacing: 2px;
 }
 
@@ -42,13 +42,13 @@ $bodyFont: 'IBM Plex Sans', sans-serif;
 {
     %headingText
     {
-        font-size: 5vh;
+        font-size: 2.5em;
         letter-spacing: 5px;
     }
 
     %projectHeadingText
     {
-        font-size: 4.5vh;
+        font-size: 2em;
         letter-spacing: 3px;
     }
 
@@ -62,12 +62,12 @@ $bodyFont: 'IBM Plex Sans', sans-serif;
 {
     %headingText
     {
-        font-size: 6vh;
+        font-size: 3em;
     }
 
     %projectHeadingText
     {
-        font-size: 5.5vh;
+        font-size: 2.5em;
         letter-spacing: 3px;
     }
 }

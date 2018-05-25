@@ -21,6 +21,12 @@ $projectBackgroundColour: #ebfcf5;
     background: $projectBackgroundColour;
 }
 
+.projects
+{
+    display: flex;
+    flex-direction: column;
+}
+
 /*Image on the left*/
 .project
 {
@@ -61,7 +67,7 @@ $projectBackgroundColour: #ebfcf5;
     %project
     {
         padding-bottom: 6vw;
-    padding-top: 6vw;
+        padding-top: 6vw;
     }
     .project
     {
