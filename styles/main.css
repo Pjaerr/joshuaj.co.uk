@@ -76,14 +76,6 @@
   line-height: 140%;
 }
 
-#first-name {
-  animation: slide-in 0.5s linear forwards;
-}
-
-#second-name {
-  animation: slide-in 0.5s ease-in forwards;
-}
-
 @-moz-keyframes slide-in {
   from {
     transform: translateX(-500px);
@@ -205,8 +197,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 50px;
-  padding-top: 50px;
+  padding-bottom: 8vw;
+  padding-top: 8vw;
   background: #ebfcf5;
 }
 
@@ -232,8 +224,8 @@
 */
 @media (min-width: 1025px) {
   .project, .project-reversed {
-    padding-bottom: 80px;
-    padding-top: 80px;
+    padding-bottom: 6vw;
+    padding-top: 6vw;
   }
 
   .project {

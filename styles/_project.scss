@@ -15,8 +15,8 @@ $projectBackgroundColour: #ebfcf5;
     justify-content: center;
     align-items: center;
 
-    padding-bottom: 50px;
-    padding-top: 50px;
+    padding-bottom: 8vw;
+    padding-top: 8vw;
 
     background: $projectBackgroundColour;
 }
@@ -60,8 +60,8 @@ $projectBackgroundColour: #ebfcf5;
 {
     %project
     {
-        padding-bottom: 80px;
-        padding-top: 80px;
+        padding-bottom: 6vw;
+    padding-top: 6vw;
     }
     .project
     {
