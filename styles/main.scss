@@ -3,7 +3,6 @@
 
 //Variables
 $headerBackgroundColour: #FCF6EB; //Default Background colour for the header.
-$projectBackgroundColour: #ebfcf5;
 $textColour: #0A346C; //Site-wide text colour.
 
 //SASS Partials
@@ -19,6 +18,10 @@ body
 
     font-family: $bodyFont; //Default to the body font for all text.
     color: $textColour;
+
+    scroll-behavior: smooth;
+
+    min-height: 0;
 }
 
 ::selection

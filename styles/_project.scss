@@ -1,4 +1,13 @@
-/*The default project attributes.*/
+/*
+    Project SASS Partial
+
+
+*/
+
+//Variables
+$projectBackgroundColour: #ebfcf5;
+
+/*The default project attributes to be inherited by an entire project <article>*/
 %project
 {
     display: flex;
@@ -8,28 +17,31 @@
 
     padding-bottom: 50px;
     padding-top: 50px;
-    
-    //min-height: 100%;
 
     background: $projectBackgroundColour;
 }
 
-
+/*Image on the left*/
 .project
 {
     @extend %project;
 }
+
+/*Image on the right*/
 .project-reversed
 {
     @extend %project;
 }
 
+/*
+    An image that scales to its container automatically and has a material-design card
+    style box shadow.
+*/
 .project-image
 {
     margin: 8px;
 
     max-width: 80%;
-    
 
     .project-image-img
     {
@@ -40,6 +52,10 @@
     }
 }
 
+/*
+    When the screen reaches the given width, switch to a row over column layout and
+    increase the space between projects to give more room to breath.
+*/
 @media (min-width: 1025px)
 {
     %project
@@ -62,38 +78,7 @@
     }
 }
 
-@media (min-width: 428px)
-{
-    .project-image
-    {
-        max-width: 80%;
-    }
-}
-
-@media (min-width: 518px)
-{
-    .project-image
-    {
-        max-width: 70%;
-    }
-}
-
-@media (min-width: 593px)
-{
-    .project-image
-    {
-        max-width: 60%;
-    }
-}
-
-@media (min-width: 668px)
-{
-    .project-image
-    {
-        max-width: 50%;
-    }
-}
-
+/*Holds everything but the image and displays them in a column layout.*/
 .project-info
 {
     display: flex;
@@ -107,7 +92,8 @@
 
 .project-name
 {
-    @extend %headingText;
+    @extend %projectHeadingText;
+
     margin-top: -30px;
 
     text-align: center;
@@ -123,14 +109,10 @@
 
     max-width: 100%;
 
-    word-wrap: break-word;
+    word-wrap: break-word; //Mostly avoid weird word wrapping when text is justified.
 }
 
-/*
-    When hit breakpoint, swap from row to column and set maxwidth of description to be 100% and also make the
-    columns/rows equal in flex,
-*/
-
+/*The section listing the tech/languages the project was made with.*/
 .made-with
 {
     font-weight: bolder;
@@ -150,17 +132,20 @@
         margin-left: 20px;
         margin-right: 20px;
 
-        a
+        .button-link
+        {
+           
+            text-decoration: none;
+            color: $textColour;
+            font-weight: bold;
+            font-style: italic;
+
+            display: flex;
+        }
+
+        .button-text
         {
             margin-left: 4px;
         }
-    }
-
-    a
-    {
-        text-decoration: none;
-        color: $textColour;
-        font-weight: bold;
-        font-style: italic;
     }
 }

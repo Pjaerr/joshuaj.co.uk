@@ -11,9 +11,15 @@
     Font rule extensions used to keep font styling/sizing consistent as well as
     allowing the sizes and spacing of all of the text to be changed within media queries.
 */
-.project-name, #name #name-text {
+#name-text {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 4.5vh;
+  letter-spacing: 2px;
+}
+
+.project-name {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 4vh;
   letter-spacing: 2px;
 }
 
@@ -26,9 +32,14 @@
     Media Queries
 */
 @media (min-width: 600px) {
-  .project-name, #name #name-text {
+  #name-text {
     font-size: 5vh;
     letter-spacing: 5px;
+  }
+
+  .project-name {
+    font-size: 4.5vh;
+    letter-spacing: 3px;
   }
 
   .project-description, #navigation-buttons a, #about-me {
@@ -36,11 +47,16 @@
   }
 }
 @media (min-width: 900px) {
-  .project-name, #name #name-text {
+  #name-text {
     font-size: 6vh;
   }
+
+  .project-name {
+    font-size: 5.5vh;
+    letter-spacing: 3px;
+  }
 }
-#navigation-buttons a, #about-me #about-me-text, #name #name-text {
+#navigation-buttons a, #about-me-text, #name-text {
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -55,13 +71,47 @@
 #name {
   margin-top: 20px;
 }
-#name #name-text {
+
+#name-text {
   line-height: 140%;
 }
 
+#first-name {
+  animation: slide-in 0.5s linear forwards;
+}
+
+#second-name {
+  animation: slide-in 0.5s ease-in forwards;
+}
+
+@-moz-keyframes slide-in {
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@-webkit-keyframes slide-in {
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(-500px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
 #about-me {
   max-width: 100%;
 }
+
 #navigation-buttons {
   display: flex;
   flex-direction: column;
@@ -82,7 +132,7 @@
   }
 }
 @media (min-width: 600px) {
-  #name #name-text, #about-me #about-me-text, #navigation-buttons a {
+  #name-text, #about-me-text, #navigation-buttons a {
     margin-left: 20px;
   }
 
@@ -91,7 +141,7 @@
   }
 }
 @media (min-width: 900px) {
-  #name #name-text, #about-me #about-me-text, #navigation-buttons a {
+  #name-text, #about-me-text, #navigation-buttons a {
     margin-left: 60px;
   }
 }
@@ -144,7 +194,12 @@
     transform: translateY(5px);
   }
 }
-/*The default project attributes.*/
+/*
+    Project SASS Partial
+
+
+*/
+/*The default project attributes to be inherited by an entire project <article>*/
 .project-reversed, .project {
   display: flex;
   flex-direction: column;
@@ -155,6 +210,12 @@
   background: #ebfcf5;
 }
 
+/*Image on the left*/
+/*Image on the right*/
+/*
+    An image that scales to its container automatically and has a material-design card
+    style box shadow.
+*/
 .project-image {
   margin: 8px;
   max-width: 80%;
@@ -165,6 +226,10 @@
   box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.19), -2px 1px 6px rgba(0, 0, 0, 0.23);
 }
 
+/*
+    When the screen reaches the given width, switch to a row over column layout and
+    increase the space between projects to give more room to breath.
+*/
 @media (min-width: 1025px) {
   .project, .project-reversed {
     padding-bottom: 80px;
@@ -183,26 +248,7 @@
     max-width: 100vh;
   }
 }
-@media (min-width: 428px) {
-  .project-image {
-    max-width: 80%;
-  }
-}
-@media (min-width: 518px) {
-  .project-image {
-    max-width: 70%;
-  }
-}
-@media (min-width: 593px) {
-  .project-image {
-    max-width: 60%;
-  }
-}
-@media (min-width: 668px) {
-  .project-image {
-    max-width: 50%;
-  }
-}
+/*Holds everything but the image and displays them in a column layout.*/
 .project-info {
   display: flex;
   flex-direction: column;
@@ -225,10 +271,7 @@
   word-wrap: break-word;
 }
 
-/*
-    When hit breakpoint, swap from row to column and set maxwidth of description to be 100% and also make the
-    columns/rows equal in flex,
-*/
+/*The section listing the tech/languages the project was made with.*/
 .made-with {
   font-weight: bolder;
   text-decoration: underline;
@@ -245,14 +288,15 @@
   margin-left: 20px;
   margin-right: 20px;
 }
-.project-buttons .button a {
-  margin-left: 4px;
-}
-.project-buttons a {
+.project-buttons .button .button-link {
   text-decoration: none;
   color: #0A346C;
   font-weight: bold;
   font-style: italic;
+  display: flex;
+}
+.project-buttons .button .button-text {
+  margin-left: 4px;
 }
 
 html,
@@ -261,6 +305,8 @@ body {
   margin: 0;
   font-family: "IBM Plex Sans", sans-serif;
   color: #0A346C;
+  scroll-behavior: smooth;
+  min-height: 0;
 }
 
 ::selection {

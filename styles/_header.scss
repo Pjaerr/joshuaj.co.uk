@@ -18,15 +18,42 @@
 #name //Container for the <h1> tags that make up the name.
 {
     margin-top: 20px;
+}
+
+#name-text
+{
+    @extend %padded;
+    @extend %headingText;
+
+    line-height: 140%;
+}
+
+#first-name
+{
+    animation: slide-in 0.5s linear forwards;
+}
+#second-name
+{
+    animation: slide-in 0.5s ease-in forwards;
+}
 
 
-    #name-text
-    {
-        @extend %padded;
-        @extend %headingText;
+@-moz-keyframes slide-in 
+{
+    from {transform:translateX(-500px)}
+    to {transform:translateX(0px);}
+}
 
-        line-height: 140%;
-    }
+@-webkit-keyframes slide-in 
+{
+    from {transform:translateX(-500px)}
+    to {transform:translateX(0px);}
+}
+
+@keyframes slide-in 
+{
+    from {transform:translateX(-500px)}
+    to {transform:translateX(0px);}
 }
 
 #about-me
@@ -34,12 +61,12 @@
     @extend %bodyText;
 
     max-width: 100%;
+}
 
-    #about-me-text
+#about-me-text
     {
         @extend %padded;
     }
-}
 
 #navigation-buttons
 {
@@ -115,7 +142,6 @@
         height: 26px;
     }
     
-
     position: absolute;
     bottom: 30px;
 
