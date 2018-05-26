@@ -11,7 +11,7 @@
     Font rule extensions used to keep font styling/sizing consistent as well as
     allowing the sizes and spacing of all of the text to be changed within media queries.
 */
-#contact-form-header, #name-text {
+#name-text {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 2em;
   letter-spacing: 2px;
@@ -32,7 +32,7 @@
     Media Queries
 */
 @media (min-width: 600px) {
-  #contact-form-header, #name-text {
+  #name-text {
     font-size: 2.5em;
     letter-spacing: 5px;
   }
@@ -47,7 +47,7 @@
   }
 }
 @media (min-width: 900px) {
-  #contact-form-header, #name-text {
+  #name-text {
     font-size: 3em;
   }
 
@@ -68,12 +68,15 @@
   background: #FCF6EB;
 }
 
-#name {
-  margin-top: 20px;
-}
-
 #name-text {
-  line-height: 140%;
+  line-height: 120%;
+}
+#name-text h1 {
+  display: table;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #0A346C;
+  color: #FCF6EB;
 }
 
 @-moz-keyframes slide-in {
@@ -111,7 +114,6 @@
 }
 #navigation-buttons a {
   line-height: 300%;
-  margin-top: 20px;
   text-decoration: none;
   font-weight: bold;
   color: #0A346C;
@@ -142,55 +144,6 @@
     max-width: 70%;
   }
 }
-.next-page-btn {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  position: absolute;
-  bottom: 15px;
-  animation: up-down 1s ease-in alternate infinite;
-}
-.next-page-btn img {
-  width: 26px;
-  height: 26px;
-}
-
-@media (min-width: 800px) {
-  .next-page-btn img {
-    width: 32px;
-    height: 32px;
-  }
-}
-/*Slight up->down movement using transform:translate()*/
-@-moz-keyframes up-down {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(5px);
-  }
-}
-@-webkit-keyframes up-down {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(5px);
-  }
-}
-@keyframes up-down {
-  from {
-    transform: translateY(0px);
-  }
-  to {
-    transform: translateY(5px);
-  }
-}
-/*
-    Project SASS Partial
-
-
-*/
 /*The default project attributes to be inherited by an entire project <article>*/
 .project-reversed, .project {
   display: flex;
@@ -252,7 +205,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
 }
 
 .project-name {
@@ -297,67 +249,17 @@
   margin-left: 4px;
 }
 
-#contact-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100%;
+#contact-info {
+  padding-bottom: 2vh;
+  padding-top: 2vh;
   background: #FCF6EB;
-}
-
-#form {
   display: flex;
   flex-direction: column;
-  margin: 4px;
-}
-
-.form-element {
-  margin-top: 10px;
-  margin-bottom: 30px;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  border: 1px solid #0A346C;
-  padding: 7px;
-  -webkit-transition: all 0.1s ease-in-out;
-  -moz-transition: all 0.1s ease-in-out;
-  -ms-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  outline: none;
-}
-
-.form-element:focus {
-  box-shadow: 0 2.5px 5px rgba(0, 0, 0, 0.19), -2px 1px 6px rgba(0, 0, 0, 0.23);
-}
-
-#submit-button {
-  background: #0A346C;
-  padding: 8px 15px 8px 15px;
-  border: none;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-weight: bold;
-  color: #FCF6EB;
-}
-
-.form-label {
-  color: #0A346C;
-  font-weight: bold;
-}
-
-#message {
-  width: 100%;
-  height: 100%;
-  font-family: "IBM Plex Sans", sans-serif;
-}
-
-#submit-warning {
-  margin-top: -20px;
+  align-items: center;
 }
 
 #contact-links {
   display: flex;
-  margin-top: -20px;
   margin-bottom: 10px;
 }
 
