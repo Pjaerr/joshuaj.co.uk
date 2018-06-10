@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Merriweather|IBM+Plex+Sans:100,100i,400,400i,700,700i");
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,400,400i,700,700i");
 /*
     Text SASS Partial
 
@@ -19,11 +19,11 @@
 
 .project-name {
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
 
 .project-description, #navigation-buttons a, #about-me {
-  font-size: 3vh;
+  font-size: 0.9em;
   text-align: justify;
 }
 
@@ -42,6 +42,7 @@
   }
 
   .project-description, #navigation-buttons a, #about-me {
+    font-size: 1em;
     letter-spacing: 0px;
   }
 }
@@ -53,6 +54,10 @@
   .project-name {
     font-size: 2.5em;
     letter-spacing: 2px;
+  }
+
+  .project-description, #navigation-buttons a, #about-me {
+    font-size: 1.2em;
   }
 }
 #navigation-buttons a, #about-me-text, #name-text {
@@ -221,8 +226,7 @@
 
 /*The section listing the tech/languages the project was made with.*/
 .made-with {
-  font-weight: bolder;
-  text-decoration: underline;
+  font-weight: bold;
   margin-top: -20px;
 }
 
@@ -241,7 +245,6 @@
   text-decoration: none;
   color: #0A346C;
   font-weight: bold;
-  font-style: italic;
   display: flex;
 }
 .button .button-text {
@@ -266,7 +269,7 @@ html,
 body {
   height: 100%;
   margin: 0;
-  font-family: "Merriweather", "IBM Plex Sans", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   color: #0A346C;
   scroll-behavior: smooth;
 }

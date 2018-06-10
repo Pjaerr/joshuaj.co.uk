@@ -114,8 +114,8 @@ $projectBackgroundColour: #ebfcf5;
 /*The section listing the tech/languages the project was made with.*/
 .made-with
 {
-    font-weight: bolder;
-    text-decoration: underline;
+    font-weight: bold;
+    
     margin-top: -20px;
 }
 
@@ -138,7 +138,6 @@ $projectBackgroundColour: #ebfcf5;
             text-decoration: none;
             color: $textColour;
             font-weight: bold;
-            font-style: italic;
 
             display: flex;
         }
