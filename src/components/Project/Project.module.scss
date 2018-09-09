@@ -1,0 +1,81 @@
+@import '../../variables.scss';
+
+.project
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: #f5f5f5;
+
+    border: 2px solid $foregroundColour;
+
+    -webkit-transition-duration: $hoverAnimationSpeed; /* Safari */
+    transition-duration: $hoverAnimationSpeed;
+}
+
+/*
+    An image that scales to its container automatically and has a material-design card
+    style box shadow.
+*/
+.projectImage
+{
+    margin: 8px;
+
+    max-width: 80%;
+
+    .projectImageImg
+    {
+        width: 100%;
+        height: auto;
+
+        box-shadow: 0 2.5px 5px rgba(0,0,0,0.19), -2px 1px 6px rgba(0,0,0,0.23);
+    }
+}
+
+/*Holds everything but the image and displays them in a column layout.*/
+.projectInfo
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+
+    width: 100%;
+}
+
+/*
+    When the screen reaches the given width, switch to a row over column layout and
+    increase the space between projects to give more room to breath.
+*/
+@media (min-width: $brk-mobile)
+{
+    .project
+    {
+        flex-direction: row;
+
+        max-width: 80%;
+    }
+
+    .projectImageImg
+    {
+        max-width: 100vh;
+    }
+
+    .projectInfo
+    {
+        padding-left: 10px;
+        text-align: left;
+    }
+}
+
+.buttons
+{
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
+}
+

@@ -1,0 +1,35 @@
+@import '../../variables';
+
+.link
+{
+    text-decoration: none;
+}
+
+.button
+{
+    width: $defaultButtonWidth;
+    height: $defaultButtonHeight;
+
+    outline: 2px solid $foregroundColour;
+
+    color: $foregroundColour;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    @media (max-width: $brk-mobile)
+    {
+        width: $smallerButtonWidth
+    }
+
+    -webkit-transition-duration: $hoverAnimationSpeed; /* Safari */
+    transition-duration: $hoverAnimationSpeed;
+}
+
+.button:hover
+{
+    background: $foregroundColour;
+    color: $backgroundColour;
+}

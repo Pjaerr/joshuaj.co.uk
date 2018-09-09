@@ -1,0 +1,17 @@
+@import '../../variables';
+
+.link
+{
+    text-decoration: none;
+}
+
+.header
+{
+    color: $foregroundColour;
+    font-size: $smallerFontSize;
+
+    font-family: $headerFontFamily;
+    letter-spacing: $defaultLetterSpacing;
+    
+    text-align: center;
+}

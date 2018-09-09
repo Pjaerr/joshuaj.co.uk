@@ -1,19 +1,19 @@
 {
-  "name": "portfolio-website-v4",
+  "name": "josh-jackson-portfolio-website",
+  "description": "josh jackson portfolio website",
   "version": "1.0.0",
-  "description": "Version 4 of my portfolio website.",
-  "main": "",
-  "dependencies": {},
-  "devDependencies": {
-    "grunt": "^1.0.2",
-    "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-uglify-es": "^3.3.0",
-    "grunt-contrib-watch": "^1.0.1"
+  "author": "Josh Jackson <joshcharlesjackson@gmail.com>",
+  "dependencies": {
+    "gatsby": "^1.9.277",
+    "gatsby-link": "^1.6.46",
+    "gatsby-plugin-sass": "^1.0.26",
+    "gatsby-source-filesystem": "^1.5.39",
+    "gatsby-transformer-json": "^1.0.20"
   },
+  "license": "MIT",
   "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Joshua Jackson",
-  "license": "MIT"
+  }
 }

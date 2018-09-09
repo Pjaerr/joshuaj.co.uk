@@ -1,0 +1,20 @@
+[
+    {
+        "componentChunkName": "component---src-pages-aboutme-js",
+        "layout": null,
+        "jsonName": "aboutme.json",
+        "path": "/aboutme/"
+    },
+    {
+        "componentChunkName": "component---src-pages-index-js",
+        "layout": null,
+        "jsonName": "index.json",
+        "path": "/"
+    },
+    {
+        "componentChunkName": "component---src-pages-projects-js",
+        "layout": null,
+        "jsonName": "projects.json",
+        "path": "/projects/"
+    }
+]

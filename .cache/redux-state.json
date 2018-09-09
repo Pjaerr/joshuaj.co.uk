@@ -1,0 +1,1153 @@
+{
+  "nodes": {
+    "SitePage /dev-404-page/": {
+      "path": "/dev-404-page/",
+      "id": "SitePage /dev-404-page/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "f91d29e10ba680b413138cf9ed86e655",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin dev-404-page": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/dev-404-page",
+      "id": "Plugin dev-404-page",
+      "name": "dev-404-page",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "createPagesStatefully"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/dev-404-page",
+      "packageJson": {
+        "name": "dev-404-page",
+        "description": "Internal plugin to add a 404 page in development with helpful information",
+        "version": "1.0.0",
+        "main": "index.js",
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "a9985d3cd63c221fb10d8a0d0578a391",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin component-layout-creator": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
+      "id": "Plugin component-layout-creator",
+      "name": "component-layout-creator",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "createLayouts"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
+      "packageJson": {
+        "name": "component-layout-creator",
+        "description": "An internal Gatsby plugin that creates pages from component files in src/layouts",
+        "version": "1.0.0",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "29ca7d85c6ece08e0d6eb887694e6228",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin internal-data-bridge": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
+      "id": "Plugin internal-data-bridge",
+      "name": "internal-data-bridge",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "sourceNodes",
+        "onCreatePage"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
+      "packageJson": {
+        "name": "internal-data-bridge",
+        "description": "An internal Gatsby plugin which creates data nodes from internal data",
+        "version": "1.0.0",
+        "main": "index.js",
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "7377e9da5a34246327427ea896d9b535",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin prod-404": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/prod-404",
+      "id": "Plugin prod-404",
+      "name": "prod-404",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onCreatePage"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/prod-404",
+      "packageJson": {
+        "name": "prod-404",
+        "description": "Internal plugin to detect various flavors of 404 pages and ensure there's a 404.html path created as well to ensure compatability with static hosts",
+        "version": "1.0.0",
+        "main": "index.js",
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "9cedcb63fd8877fc61799af00b591c11",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin query-runner": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/query-runner",
+      "id": "Plugin query-runner",
+      "name": "query-runner",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onCreatePage",
+        "onCreateLayout"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby/dist/internal-plugins/query-runner",
+      "packageJson": {
+        "name": "query-runner",
+        "description": "Internal plugin for running queries",
+        "version": "1.0.0",
+        "main": "index.js",
+        "author": "",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "9434e462c384f1e639e30286354346f1",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-sass": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby-plugin-sass",
+      "id": "Plugin gatsby-plugin-sass",
+      "name": "gatsby-plugin-sass",
+      "version": "1.0.26",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "modifyWebpackConfig"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby-plugin-sass",
+      "packageJson": {
+        "name": "gatsby-plugin-sass",
+        "description": "Gatsby plugin to handle scss/sass files",
+        "version": "1.0.26",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "sass",
+          "scss"
+        ],
+        "author": {
+          "name": "Daniel Farrell",
+          "email": "daniel@mobelux.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "gatsby-1-config-css-modules",
+            "version": "^1.0.11"
+          },
+          {
+            "name": "gatsby-1-config-extract-plugin",
+            "version": "^1.0.3"
+          },
+          {
+            "name": "node-sass",
+            "version": "^4.5.2"
+          },
+          {
+            "name": "sass-loader",
+            "version": "^4.1.1"
+          },
+          {
+            "name": "webpack",
+            "version": "^1.13.3"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "819a7e9695bd461e4ae9703c9bc4690e",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-source-filesystem": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby-source-filesystem",
+      "id": "Plugin gatsby-source-filesystem",
+      "name": "gatsby-source-filesystem",
+      "version": "1.5.39",
+      "pluginOptions": {
+        "plugins": [],
+        "path": "./src/projects/"
+      },
+      "nodeAPIs": [
+        "sourceNodes",
+        "setFieldsOnGraphQLNodeType"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby-source-filesystem",
+      "packageJson": {
+        "name": "gatsby-source-filesystem",
+        "description": "Gatsby plugin which parses files within a directory for further parsing by other plugins",
+        "version": "1.5.39",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "better-queue",
+            "version": "^3.8.7"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "chokidar",
+            "version": "^1.7.0"
+          },
+          {
+            "name": "fs-extra",
+            "version": "^4.0.1"
+          },
+          {
+            "name": "got",
+            "version": "^7.1.0"
+          },
+          {
+            "name": "md5-file",
+            "version": "^3.1.1"
+          },
+          {
+            "name": "mime",
+            "version": "^1.3.6"
+          },
+          {
+            "name": "pretty-bytes",
+            "version": "^4.0.2"
+          },
+          {
+            "name": "slash",
+            "version": "^1.0.0"
+          },
+          {
+            "name": "valid-url",
+            "version": "^1.0.9"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.9.250"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "fdc89ddec0f26f4d1e72abf743db0dd8",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-transformer-json": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby-transformer-json",
+      "id": "Plugin gatsby-transformer-json",
+      "name": "gatsby-transformer-json",
+      "version": "1.0.20",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onCreateNode"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby-transformer-json",
+      "packageJson": {
+        "name": "gatsby-transformer-json",
+        "description": "Gatsby transformer plugin for JSON files",
+        "version": "1.0.20",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "json"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "562f23e28562ffd1e5be23f782a4009a",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin default-site-plugin": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby",
+      "id": "Plugin default-site-plugin",
+      "name": "default-site-plugin",
+      "version": "5cb49ffb6a11215e97e835c3e3a6a939",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby",
+      "packageJson": {
+        "name": "josh-jackson-portfolio-website",
+        "description": "josh jackson portfolio website",
+        "version": "1.0.0",
+        "author": "Josh Jackson <joshcharlesjackson@gmail.com>",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.9.277"
+          },
+          {
+            "name": "gatsby-link",
+            "version": "^1.6.46"
+          },
+          {
+            "name": "gatsby-plugin-sass",
+            "version": "^1.0.26"
+          },
+          {
+            "name": "gatsby-source-filesystem",
+            "version": "^1.5.39"
+          },
+          {
+            "name": "gatsby-transformer-json",
+            "version": "^1.0.20"
+          }
+        ],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "ee26bbfb62d08464bc659b880375d405",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-page-creator": {
+      "resolve": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby-plugin-page-creator",
+      "id": "Plugin gatsby-plugin-page-creator",
+      "name": "gatsby-plugin-page-creator",
+      "version": "1.0.1",
+      "pluginOptions": {
+        "plugins": [],
+        "path": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages",
+        "pathCheck": false
+      },
+      "nodeAPIs": [
+        "createPagesStatefully"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/node_modules/gatsby-plugin-page-creator",
+      "packageJson": {
+        "name": "gatsby-plugin-page-creator",
+        "description": "Gatsby plugin that automatically creates pages from React components in specified directories",
+        "version": "1.0.1",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "chokidar",
+            "version": "^1.7.0"
+          },
+          {
+            "name": "glob",
+            "version": "^7.1.1"
+          },
+          {
+            "name": "lodash",
+            "version": "^4.17.4"
+          },
+          {
+            "name": "parse-filepath",
+            "version": "^1.0.1"
+          },
+          {
+            "name": "slash",
+            "version": "^1.0.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "b512ecded71ee92efe04556586a655e3",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Site": {
+      "siteMetadata": {
+        "title": "Josh Jackson Portfolio Website"
+      },
+      "pathPrefix": "",
+      "polyfill": true,
+      "buildTime": "2018-09-09T16:43:38.392Z",
+      "id": "Site",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "749d868db56928540513406d72e8ad42",
+        "type": "Site",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/ absPath of file": {
+      "id": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/ absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "3c0e54271119bc38ff2ccc5bfa8b8ee3",
+        "type": "Directory",
+        "description": "Directory \"src\\pages\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "pages",
+      "absolutePath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/",
+      "relativePath": "",
+      "extension": "",
+      "size": 0,
+      "prettySize": "0 B",
+      "modifiedTime": "2018-09-09T13:40:32.950Z",
+      "accessTime": "2018-09-09T16:43:42.629Z",
+      "changeTime": "2018-09-09T13:40:32.950Z",
+      "birthTime": "2018-09-09T11:44:07.087Z",
+      "root": "C:/",
+      "dir": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src",
+      "base": "pages",
+      "ext": "",
+      "name": "pages",
+      "relativeDirectory": "..",
+      "dev": 2799449118,
+      "mode": 16822,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 3096224744037407,
+      "atimeMs": 1536511422629.2058,
+      "mtimeMs": 1536500432949.5989,
+      "ctimeMs": 1536500432949.5989,
+      "birthtimeMs": 1536493447087.3076,
+      "atime": "2018-09-09T16:43:42.629Z",
+      "mtime": "2018-09-09T13:40:32.950Z",
+      "ctime": "2018-09-09T13:40:32.950Z",
+      "birthtime": "2018-09-09T11:44:07.087Z"
+    },
+    "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/aboutme.js absPath of file": {
+      "id": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/aboutme.js absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "d41d8cd98f00b204e9800998ecf8427e",
+        "mediaType": "application/javascript",
+        "type": "File",
+        "description": "File \"src\\pages\\aboutme.js\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "pages",
+      "absolutePath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/aboutme.js",
+      "relativePath": "aboutme.js",
+      "extension": "js",
+      "size": 0,
+      "prettySize": "0 B",
+      "modifiedTime": "2018-09-09T13:32:53.695Z",
+      "accessTime": "2018-09-09T13:32:53.695Z",
+      "changeTime": "2018-09-09T13:32:53.695Z",
+      "birthTime": "2018-09-09T13:32:53.695Z",
+      "root": "C:/",
+      "dir": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages",
+      "base": "aboutme.js",
+      "ext": ".js",
+      "name": "aboutme",
+      "relativeDirectory": "",
+      "dev": 2799449118,
+      "mode": 33206,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 1125899907711160,
+      "atimeMs": 1536499973695.0266,
+      "mtimeMs": 1536499973695.0266,
+      "ctimeMs": 1536499973695.0266,
+      "birthtimeMs": 1536499973695.0266,
+      "atime": "2018-09-09T13:32:53.695Z",
+      "mtime": "2018-09-09T13:32:53.695Z",
+      "ctime": "2018-09-09T13:32:53.695Z",
+      "birthtime": "2018-09-09T13:32:53.695Z"
+    },
+    "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/index.js absPath of file": {
+      "id": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/index.js absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "7666b3d0097bdd7da243c3a5807d35a4",
+        "mediaType": "application/javascript",
+        "type": "File",
+        "description": "File \"src\\pages\\index.js\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "pages",
+      "absolutePath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/index.js",
+      "relativePath": "index.js",
+      "extension": "js",
+      "size": 532,
+      "prettySize": "532 B",
+      "modifiedTime": "2018-09-09T13:59:35.599Z",
+      "accessTime": "2018-09-09T16:02:05.955Z",
+      "changeTime": "2018-09-09T13:59:35.599Z",
+      "birthTime": "2018-09-09T11:44:07.087Z",
+      "root": "C:/",
+      "dir": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages",
+      "base": "index.js",
+      "ext": ".js",
+      "name": "index",
+      "relativeDirectory": "",
+      "dev": 2799449118,
+      "mode": 33206,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 2814749767326753,
+      "atimeMs": 1536508925955.1882,
+      "mtimeMs": 1536501575598.7583,
+      "ctimeMs": 1536501575598.7583,
+      "birthtimeMs": 1536493447087.3076,
+      "atime": "2018-09-09T16:02:05.955Z",
+      "mtime": "2018-09-09T13:59:35.599Z",
+      "ctime": "2018-09-09T13:59:35.599Z",
+      "birthtime": "2018-09-09T11:44:07.087Z"
+    },
+    "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/index.module.scss absPath of file": {
+      "id": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/index.module.scss absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "86a6005331b9f169a143eaa81b4ce34d",
+        "mediaType": "text/x-scss",
+        "type": "File",
+        "description": "File \"src\\pages\\index.module.scss\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "pages",
+      "absolutePath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/index.module.scss",
+      "relativePath": "index.module.scss",
+      "extension": "scss",
+      "size": 1040,
+      "prettySize": "1.04 kB",
+      "modifiedTime": "2018-09-09T16:38:33.170Z",
+      "accessTime": "2018-09-09T16:38:33.170Z",
+      "changeTime": "2018-09-09T16:38:33.170Z",
+      "birthTime": "2018-09-09T12:43:04.089Z",
+      "root": "C:/",
+      "dir": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages",
+      "base": "index.module.scss",
+      "ext": ".scss",
+      "name": "index.module",
+      "relativeDirectory": "",
+      "dev": 2799449118,
+      "mode": 33206,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 5629499534302514,
+      "atimeMs": 1536511113169.5288,
+      "mtimeMs": 1536511113169.5288,
+      "ctimeMs": 1536511113169.5288,
+      "birthtimeMs": 1536496984088.6262,
+      "atime": "2018-09-09T16:38:33.170Z",
+      "mtime": "2018-09-09T16:38:33.170Z",
+      "ctime": "2018-09-09T16:38:33.170Z",
+      "birthtime": "2018-09-09T12:43:04.089Z"
+    },
+    "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/projects.module.scss absPath of file": {
+      "id": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/projects.module.scss absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "ceeb8b6e2edfa350b18f320339e3cd21",
+        "mediaType": "text/x-scss",
+        "type": "File",
+        "description": "File \"src\\pages\\projects.module.scss\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "pages",
+      "absolutePath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/projects.module.scss",
+      "relativePath": "projects.module.scss",
+      "extension": "scss",
+      "size": 514,
+      "prettySize": "514 B",
+      "modifiedTime": "2018-09-09T16:33:39.754Z",
+      "accessTime": "2018-09-09T16:33:39.754Z",
+      "changeTime": "2018-09-09T16:33:39.754Z",
+      "birthTime": "2018-09-09T13:40:32.949Z",
+      "root": "C:/",
+      "dir": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages",
+      "base": "projects.module.scss",
+      "ext": ".scss",
+      "name": "projects.module",
+      "relativeDirectory": "",
+      "dev": 2799449118,
+      "mode": 33206,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 5066549580833905,
+      "atimeMs": 1536510819753.5632,
+      "mtimeMs": 1536510819753.5632,
+      "ctimeMs": 1536510819753.5632,
+      "birthtimeMs": 1536500432948.599,
+      "atime": "2018-09-09T16:33:39.754Z",
+      "mtime": "2018-09-09T16:33:39.754Z",
+      "ctime": "2018-09-09T16:33:39.754Z",
+      "birthtime": "2018-09-09T13:40:32.949Z"
+    },
+    "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/projects.js absPath of file": {
+      "id": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/projects.js absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "a06e6629400dd95118acda4667c28a36",
+        "mediaType": "application/javascript",
+        "type": "File",
+        "description": "File \"src\\pages\\projects.js\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "pages",
+      "absolutePath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/projects.js",
+      "relativePath": "projects.js",
+      "extension": "js",
+      "size": 1088,
+      "prettySize": "1.09 kB",
+      "modifiedTime": "2018-09-09T16:14:41.408Z",
+      "accessTime": "2018-09-09T16:14:41.408Z",
+      "changeTime": "2018-09-09T16:14:41.408Z",
+      "birthTime": "2018-09-09T13:31:38.564Z",
+      "root": "C:/",
+      "dir": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages",
+      "base": "projects.js",
+      "ext": ".js",
+      "name": "projects",
+      "relativeDirectory": "",
+      "dev": 2799449118,
+      "mode": 33206,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 5910974510938599,
+      "atimeMs": 1536509681407.955,
+      "mtimeMs": 1536509681407.955,
+      "ctimeMs": 1536509681407.955,
+      "birthtimeMs": 1536499898563.8062,
+      "atime": "2018-09-09T16:14:41.408Z",
+      "mtime": "2018-09-09T16:14:41.408Z",
+      "ctime": "2018-09-09T16:14:41.408Z",
+      "birthtime": "2018-09-09T13:31:38.564Z"
+    },
+    "src/projects/ absPath of file": {
+      "id": "src/projects/ absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "0d94f8741f4b177c506baae08c787c04",
+        "type": "Directory",
+        "description": "Directory \"src\\projects\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "__PROGRAMATTIC__",
+      "absolutePath": "src/projects/",
+      "relativePath": "",
+      "extension": "",
+      "size": 0,
+      "prettySize": "0 B",
+      "modifiedTime": "2018-09-09T16:39:27.946Z",
+      "accessTime": "2018-09-09T16:43:42.652Z",
+      "changeTime": "2018-09-09T16:39:27.946Z",
+      "birthTime": "2018-09-09T15:05:28.022Z",
+      "root": "",
+      "dir": "src",
+      "base": "projects",
+      "ext": "",
+      "name": "projects",
+      "relativeDirectory": "..",
+      "dev": 2799449118,
+      "mode": 16822,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 7318349394514634,
+      "atimeMs": 1536511422652.1924,
+      "mtimeMs": 1536511167946.2588,
+      "ctimeMs": 1536511167946.2588,
+      "birthtimeMs": 1536505528022.2578,
+      "atime": "2018-09-09T16:43:42.652Z",
+      "mtime": "2018-09-09T16:39:27.946Z",
+      "ctime": "2018-09-09T16:39:27.946Z",
+      "birthtime": "2018-09-09T15:05:28.022Z"
+    },
+    "src/projects/findr.json absPath of file": {
+      "id": "src/projects/findr.json absPath of file",
+      "children": [
+        "src/projects/findr.json absPath of file >>> JSON"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "1e3be10947bd780eaae1dac57403d067",
+        "mediaType": "application/json",
+        "type": "File",
+        "description": "File \"src\\projects\\findr.json\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "__PROGRAMATTIC__",
+      "absolutePath": "src/projects/findr.json",
+      "relativePath": "findr.json",
+      "extension": "json",
+      "size": 491,
+      "prettySize": "491 B",
+      "modifiedTime": "2018-09-09T15:07:07.414Z",
+      "accessTime": "2018-09-09T15:52:46.506Z",
+      "changeTime": "2018-09-09T15:07:07.414Z",
+      "birthTime": "2018-09-09T15:05:33.847Z",
+      "root": "",
+      "dir": "src/projects",
+      "base": "findr.json",
+      "ext": ".json",
+      "name": "findr",
+      "relativeDirectory": "",
+      "dev": 2799449118,
+      "mode": 33206,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 4785074604127098,
+      "atimeMs": 1536508366506.406,
+      "mtimeMs": 1536505627414.383,
+      "ctimeMs": 1536505627414.383,
+      "birthtimeMs": 1536505533846.9963,
+      "atime": "2018-09-09T15:52:46.506Z",
+      "mtime": "2018-09-09T15:07:07.414Z",
+      "ctime": "2018-09-09T15:07:07.414Z",
+      "birthtime": "2018-09-09T15:05:33.847Z"
+    },
+    "src/projects/pub-name-generator.json absPath of file": {
+      "id": "src/projects/pub-name-generator.json absPath of file",
+      "children": [
+        "src/projects/pub-name-generator.json absPath of file >>> JSON"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "8438f8b503119823bc9b92eb3bcd17a2",
+        "mediaType": "application/json",
+        "type": "File",
+        "description": "File \"src\\projects\\pub-name-generator.json\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "__PROGRAMATTIC__",
+      "absolutePath": "src/projects/pub-name-generator.json",
+      "relativePath": "pub-name-generator.json",
+      "extension": "json",
+      "size": 561,
+      "prettySize": "561 B",
+      "modifiedTime": "2018-09-09T15:32:39.316Z",
+      "accessTime": "2018-09-09T15:52:46.510Z",
+      "changeTime": "2018-09-09T15:32:39.316Z",
+      "birthTime": "2018-09-09T15:16:34.791Z",
+      "root": "",
+      "dir": "src/projects",
+      "base": "pub-name-generator.json",
+      "ext": ".json",
+      "name": "pub-name-generator",
+      "relativeDirectory": "",
+      "dev": 2799449118,
+      "mode": 33206,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 20829148276634236,
+      "atimeMs": 1536508366510.127,
+      "mtimeMs": 1536507159315.743,
+      "ctimeMs": 1536507159315.743,
+      "birthtimeMs": 1536506194791.118,
+      "atime": "2018-09-09T15:52:46.510Z",
+      "mtime": "2018-09-09T15:32:39.316Z",
+      "ctime": "2018-09-09T15:32:39.316Z",
+      "birthtime": "2018-09-09T15:16:34.791Z"
+    },
+    "src/projects/findr.json absPath of file >>> JSON": {
+      "name": "Findr",
+      "description": "Findr is a web app that finds places within a certain radius that match a given criteria and presents them to you in a Tinder-style card, showing their distance and rating, allowing you to dismiss the location or go to the google maps page for the location.",
+      "imageSrc": "https://joshcharlesjackson.com/images/findr_screenshot.png",
+      "demoLink": "https://pjaerr.github.io/Findr/",
+      "sourceLink": "https://github.com/Pjaerr/Findr",
+      "id": "src/projects/findr.json absPath of file >>> JSON",
+      "children": [],
+      "parent": "src/projects/findr.json absPath of file",
+      "internal": {
+        "contentDigest": "a33fbde9cecff6caa8002f3c88c0b6de",
+        "type": "ProjectsJson",
+        "owner": "gatsby-transformer-json"
+      }
+    },
+    "src/projects/pub-name-generator.json absPath of file >>> JSON": {
+      "name": "Pub Name Generator",
+      "description": "Pub Name Generator is a tiny site/app that will generate unique pub names following The __ and __ convention by grabbing random nouns from the WordNik API. It was a tiny side-project to learn vanilla js ajax (xmlhttprequest) as well as an exercise in finding well contrasting colours.",
+      "imageSrc": "https://joshcharlesjackson.com/images/pubnamegen_screenshot.png",
+      "demoLink": "https://pjaerr.github.io/Pub-Name-Generator",
+      "sourceLink": "https://github.com/Pjaerr/Pub-Name-Generator",
+      "id": "src/projects/pub-name-generator.json absPath of file >>> JSON",
+      "children": [],
+      "parent": "src/projects/pub-name-generator.json absPath of file",
+      "internal": {
+        "contentDigest": "89764a0774eadbc7cdbe5116cb518a20",
+        "type": "ProjectsJson",
+        "owner": "gatsby-transformer-json"
+      }
+    },
+    "src/projects/productivity-timer.json absPath of file": {
+      "id": "src/projects/productivity-timer.json absPath of file",
+      "children": [
+        "src/projects/productivity-timer.json absPath of file >>> JSON"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "5e2f3cc1a3103644d8512d71604b073f",
+        "mediaType": "application/json",
+        "type": "File",
+        "description": "File \"src\\projects\\productivity-timer.json\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "__PROGRAMATTIC__",
+      "absolutePath": "src/projects/productivity-timer.json",
+      "relativePath": "productivity-timer.json",
+      "extension": "json",
+      "size": 450,
+      "prettySize": "450 B",
+      "modifiedTime": "2018-09-09T16:41:20.052Z",
+      "accessTime": "2018-09-09T16:41:20.052Z",
+      "changeTime": "2018-09-09T16:41:20.052Z",
+      "birthTime": "2018-09-09T16:39:27.942Z",
+      "root": "",
+      "dir": "src/projects",
+      "base": "productivity-timer.json",
+      "ext": ".json",
+      "name": "productivity-timer",
+      "relativeDirectory": "",
+      "dev": 2799449118,
+      "mode": 33206,
+      "nlink": 1,
+      "uid": 0,
+      "gid": 0,
+      "rdev": 0,
+      "ino": 79657418409125810,
+      "atimeMs": 1536511280051.8774,
+      "mtimeMs": 1536511280051.8774,
+      "ctimeMs": 1536511280051.8774,
+      "birthtimeMs": 1536511167942.2612,
+      "atime": "2018-09-09T16:41:20.052Z",
+      "mtime": "2018-09-09T16:41:20.052Z",
+      "ctime": "2018-09-09T16:41:20.052Z",
+      "birthtime": "2018-09-09T16:39:27.942Z"
+    },
+    "src/projects/productivity-timer.json absPath of file >>> JSON": {
+      "name": "Productivity Timer",
+      "description": "Productivity Timer is a single-page website made predominantly with JavaScript that helps you keep track of the time spent working on a project/task with a chess-like timer.",
+      "imageSrc": "https://joshcharlesjackson.com/images/prodtimer_screenshot.png",
+      "demoLink": "https://pjaerr.github.io/Productivity-Timer/",
+      "sourceLink": "https://github.com/Pjaerr/Productivity-Timer",
+      "id": "src/projects/productivity-timer.json absPath of file >>> JSON",
+      "children": [],
+      "parent": "src/projects/productivity-timer.json absPath of file",
+      "internal": {
+        "contentDigest": "d2c6a888d03539cac310876008942926",
+        "type": "ProjectsJson",
+        "owner": "gatsby-transformer-json"
+      }
+    },
+    "SitePage /aboutme/": {
+      "layout": null,
+      "jsonName": "aboutme.json",
+      "internalComponentName": "ComponentAboutme",
+      "path": "/aboutme/",
+      "component": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/aboutme.js",
+      "componentChunkName": "component---src-pages-aboutme-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
+      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
+      "componentPath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/aboutme.js",
+      "id": "SitePage /aboutme/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "74352db2f866ddb05bad27c5b2c7ff6b",
+        "description": "Plugin gatsby-plugin-page-creator",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /": {
+      "layout": null,
+      "jsonName": "index.json",
+      "internalComponentName": "ComponentIndex",
+      "path": "/",
+      "component": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/index.js",
+      "componentChunkName": "component---src-pages-index-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
+      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
+      "componentPath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/index.js",
+      "id": "SitePage /",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "a1d1ed71877951998fb3dec340a1d89f",
+        "description": "Plugin gatsby-plugin-page-creator",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /projects/": {
+      "layout": null,
+      "jsonName": "projects.json",
+      "internalComponentName": "ComponentProjects",
+      "path": "/projects/",
+      "component": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/projects.js",
+      "componentChunkName": "component---src-pages-projects-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
+      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
+      "componentPath": "C:/Users/Pjaer/Desktop/portfolio-website-gatsby/src/pages/projects.js",
+      "id": "SitePage /projects/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "cc53c4e4e6f5a7feb4d849a0593bc790",
+        "description": "Plugin gatsby-plugin-page-creator",
+        "owner": "internal-data-bridge"
+      }
+    }
+  },
+  "status": {
+    "plugins": {},
+    "PLUGINS_HASH": "5c41effa92692e7534f3205b204cf906"
+  },
+  "componentDataDependencies": {
+    "nodes": {
+      "src/projects/findr.json absPath of file >>> JSON": [
+        "/"
+      ]
+    },
+    "connections": {
+      "SitePage": [
+        "/dev-404-page/"
+      ],
+      "ProjectsJson": [
+        "/projects/"
+      ]
+    }
+  }
+}
