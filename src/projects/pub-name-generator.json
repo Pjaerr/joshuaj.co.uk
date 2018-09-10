@@ -1,7 +1,0 @@
-{
-    "name": "Pub Name Generator",
-    "description": "Pub Name Generator is a tiny site/app that will generate unique pub names following The __ and __ convention by grabbing random nouns from the WordNik API. It was a tiny side-project to learn vanilla js ajax (xmlhttprequest) as well as an exercise in finding well contrasting colours.",
-    "imageSrc": "https://joshcharlesjackson.com/images/pubnamegen_screenshot.png",
-    "demoLink": "https://pjaerr.github.io/Pub-Name-Generator",
-    "sourceLink": "https://github.com/Pjaerr/Pub-Name-Generator"
-}

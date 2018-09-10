@@ -1,7 +1,7 @@
 {
     "name": "Findr",
     "description": "Findr is a web app that finds places within a certain radius that match a given criteria and presents them to you in a Tinder-style card, showing their distance and rating, allowing you to dismiss the location or go to the google maps page for the location.",
-    "imageSrc": "https://joshcharlesjackson.com/images/findr_screenshot.png",
+    "imageSrc": "http://joshcharlesjackson.com/images/findr_screenshot.png",
     "demoLink": "https://pjaerr.github.io/Findr/",
     "sourceLink": "https://github.com/Pjaerr/Findr"
 }

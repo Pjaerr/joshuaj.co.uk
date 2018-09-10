@@ -1,7 +1,0 @@
-{
-    "name": "Productivity Timer",
-    "description": "Productivity Timer is a single-page website made predominantly with JavaScript that helps you keep track of the time spent working on a project/task with a chess-like timer.",
-    "imageSrc": "https://joshcharlesjackson.com/images/prodtimer_screenshot.png",
-    "demoLink": "https://pjaerr.github.io/Productivity-Timer/",
-    "sourceLink": "https://github.com/Pjaerr/Productivity-Timer"
-}

@@ -21,7 +21,8 @@
 
     @media (max-width: $brk-mobile)
     {
-        width: $smallerButtonWidth
+        width: $smallerButtonWidth;
+        height: $smallerButtonHeight;
     }
 
     -webkit-transition-duration: $hoverAnimationSpeed; /* Safari */
