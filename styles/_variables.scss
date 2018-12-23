@@ -1,0 +1,79 @@
+//Font Imports
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Roboto:400i,700');
+
+//Font Familys
+$headingFontFamily: 'Pacifico', sans-serif;
+$bodyFontFamily: 'Roboto', sans-serif;
+
+//Font Sizes
+$largeHeadingFontSize: 4em;
+$mediumHeadingFontSize: 3em;
+$smallHeadingFontSize: 2em;
+
+//Icons Sizes
+$desktopIconSize: 38px;
+$mobileIconSize: 28px;
+$iconSpacing: 10px;
+$spaceBetweenIconAndHeader: -80px;
+
+//Colours
+$backgroundColour: #F1F2F6;
+$fontColour: #353B48;
+
+//CSS Animations
+$hoverAnimationSpeed: 0.3s;
+
+//Breakpoints
+$brk-large: 992px;
+$brk-medium: 768px;
+$brk-small: 480px;
+
+//Project Variables
+$projectContentSpacingLarge: 30px;
+$projectContentSpacingSmall: 15px;
+$projectHeadingFontSizeLarge: 3em;
+$projectHeadingFontSizeSmall: 2.5em;
+$projectDescriptionFontSize: 1em;
+$projectCardWidth: 960px;
+$projectCardHeight: 350px;
+$spacingBetweenProjectCards: 40px;
+$projectCardSideSpacing: 10px;
+$spaceBetweenProjectButtonsLarge: 20px;
+$spaceBetweenProjectButtonsSmall: 5px;
+
+//Mixins
+@mixin svg-icon
+{
+    fill: $fontColour;
+    width: $desktopIconSize;
+    height: $desktopIconSize;
+
+    @media (max-width: $brk-medium)
+    {
+        width: $mobileIconSize;
+        height: $mobileIconSize;
+    }
+}
+
+@mixin hollow-button($colour, $textColour, $textColourOnHover)
+{
+    border: 1px solid $colour;
+    border-radius: 2px;
+
+    padding: 10px 20px;
+
+    @media (max-width: $brk-small)
+    {
+        padding: 7px 15px;
+    }
+
+    text-decoration: none;
+    color: $textColour;
+
+    transition: background .3s cubic-bezier(.4, 0, .2, 1);
+
+    &:hover {
+        background: $colour;
+        color: $textColourOnHover;
+    }
+}
