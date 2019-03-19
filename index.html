@@ -1,170 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Description" content="Joshua Jackson's web portfolio with projects in HTML, CSS, JavaScript, React">
+    <title>Joshua Jackson | Web Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Computer Games Programming (BSc Hons) Undergraduate currently working on
-        personal projects in my spare time." />
-    <link rel="icon" sizes="180x180" href="images/ico.png">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Joshua Jackson | Portfolio</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/main.css" />
 </head>
 
 <body>
-    <div class="page-header">
-        <div id="portrait-picture-div">
-            <img id="portrait-picture" src="images/me.jpg" class="img-circle" alt="Picture Of Myself">
-        </div>
-        <h1 id="title">Joshua Jackson</h1>
-    </div>
-    <div class="description">
-        <div class="description-body">
-            I am a Computer Games Programming Undergraduate currently spending my spare time working on personal projects that mainly
-            consist of Game Development and Web Development. I am actively learning new technologies all the time. You can
-            find some of the projects I have worked on below categoriseed by Completed and Work In Progress.
-
-            <div id="contact-info">
-                <a href="https://github.com/pjaerr" target="_blank">
-                    <span id="github">
-                        <img src="images/iconmonstr-github-1.svg" alt="github"> Github</span>
+    <div class="header">
+        <div class="header-content">
+            <h1 class="header-content-title">Joshua Jackson</h1>
+            <div class="header-content-icons">
+                <a aria-label="github-link" href="https://github.com/pjaerr" class="header-content-icons-icon" target="_blank"
+                    rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H14.56C14.24,20.93 14.23,20.32 14.23,20.11L14.24,17.64C14.24,16.8 13.95,16.25 13.63,15.97C15.64,15.75 17.74,15 17.74,11.53C17.74,10.55 17.39,9.74 16.82,9.11C16.91,8.89 17.22,7.97 16.73,6.73C16.73,6.73 15.97,6.5 14.25,7.66C13.53,7.46 12.77,7.36 12,7.35C11.24,7.36 10.46,7.46 9.75,7.66C8.03,6.5 7.27,6.73 7.27,6.73C6.78,7.97 7.09,8.89 7.18,9.11C6.61,9.74 6.26,10.55 6.26,11.53C6.26,15 8.36,15.75 10.36,16C10.1,16.2 9.87,16.6 9.79,17.18C9.27,17.41 7.97,17.81 7.17,16.43C7.17,16.43 6.69,15.57 5.79,15.5C5.79,15.5 4.91,15.5 5.73,16.05C5.73,16.05 6.32,16.33 6.73,17.37C6.73,17.37 7.25,19.12 9.76,18.58L9.77,20.11C9.77,20.32 9.75,20.93 9.43,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3Z" /></svg>
+                </a>
+                <a aria-label="linkedin-link" href="https://www.linkedin.com/in/joshua-jackson-53b9bb14b/" class="header-content-icons-icon"
+                    target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z" /></svg>
+                </a>
+                <a aria-label="twitter-link" href="https://twitter.com/Pjaerr" class="header-content-icons-icon" target="_blank"
+                    rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M17.71,9.33C18.19,8.93 18.75,8.45 19,7.92C18.59,8.13 18.1,8.26 17.56,8.33C18.06,7.97 18.47,7.5 18.68,6.86C18.16,7.14 17.63,7.38 16.97,7.5C15.42,5.63 11.71,7.15 12.37,9.95C9.76,9.79 8.17,8.61 6.85,7.16C6.1,8.38 6.75,10.23 7.64,10.74C7.18,10.71 6.83,10.57 6.5,10.41C6.54,11.95 7.39,12.69 8.58,13.09C8.22,13.16 7.82,13.18 7.44,13.12C7.81,14.19 8.58,14.86 9.9,15C9,15.76 7.34,16.29 6,16.08C7.15,16.81 8.46,17.39 10.28,17.31C14.69,17.11 17.64,13.95 17.71,9.33Z" /></svg>
                 </a>
             </div>
         </div>
-    </div>
-
-    <div id="content">
-        <div class="container text-center">
-
-            <h3>Completed</h3>
-            <hr></hr>
-
-            <div class="main-projects project-container row">
-                <div id="project-1-sm" class="col-sm-4 project-thumbnail-sm">
-                    <div class="thumbnail">
-                        <img class="proj-img" src="images/project/findr-img.png" alt="Project Image">
-                        <h3 class="info-title">Findr</h3>
-                        <h5 class="info-desc">
-                            Findr is web app that helps you find somewhere to go using the google maps api and Tinder-style cards.
-                        </h5>
-                        <h5>Made with
-                            <span class="info-tech">ReactJS</span>
-                        </h5>
-                        <h5 class="info-tech">Completed January 2018</h5>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="https://github.com/Pjaerr/Findr" target="_blank">Github</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href="https://pjaerr.github.io/Findr/" target="_blank">Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="project-1-sm" class="col-sm-4 project-thumbnail-sm">
-                    <div class="thumbnail">
-                        <img class="proj-img" src="images/project/productivity-timer-img.PNG" alt="Project Image">
-                        <h3 class="info-title">Productivity Timer</h3>
-                        <h5 class="info-desc">
-                            Productivity Timer is a single-page web app that helps you keep track of the time spent working on a project/task.
-                        </h5>
-                        <h5>Made with
-                            <span class="info-tech">JavaScript</span>
-                        </h5>
-                        <h5 class="info-tech">Completed September 2017</h5>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="https://github.com/pjaerr/Productivity-Timer" target="_blank">Github</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href="https://pjaerr.github.io/Productivity-Timer" target="_blank">Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="project-1-sm" class="col-sm-4 project-thumbnail-sm">
-                    <a href="gamejams.html">
-                        <div class="info thumbnail">
-                            <img class="proj-img" src="images/hackathon.png" alt="project image">
-                            <h3 class="info-title">Game Jams & Hackathons</h3>
-                            <h5 class="info-desc">A collection of stuff made during game jams and hackathons.</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <h3>Work In Progress</h3>
-            <hr></hr>
-
-            <div class="main-projects project-container row">
-
-                <div id="project-1-sm" class="col-sm-6 project-thumbnail-sm">
-                    <div class="thumbnail">
-                        <img class="proj-img" src="images/project/1935/cameramovementgif.gif" alt="Project Image">
-                        <h3 class="info-title">Project 1935</h3>
-                        <h5 class="info-desc">
-                            A real-time multiplayer grand strategy game inspired by RISK and Diplomacy, using UNET.
-                        </h5>
-                        <h5>Made with
-                            <span class="info-tech">Unity and C#</span>
-                        </h5>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="https://github.com/pjaerr/1935" target="_blank">Github</a>
-                            </div>
-                            <div class="col-xs-6">
-                                <a href="1935.html">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-    </div>
-    </div>
-    <hr />
-    </div>
-    </div>
-    </div>
-
-    <div id="footer">
-        <div class="container-fluid text-center">
-            <div class="row">
-                <div class="col-md-4">
-                    <a href="https://twitter.com/Pjaerr" target="_blank">
-                        <span id="twitter">
-                            <img src="images/iconmonstr-twitter-1.svg" alt="twitter">
-                            <br> Twitter</span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="https://github.com/pjaerr" target="_blank">
-                        <span id="github">
-                            <img src="images/iconmonstr-github-1.svg" alt="github">
-                            <br> Github</span>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <a href="mailto:joshcharlesjackson@gmail.com">
-                        <span id="Email">
-                            <img src="images/iconmonstr-email-3.svg" alt="email">
-                            <br> joshcharlesjackson@gmail.com</span>
-                    </a>
-                </div>
-            </div>
-            <br>
+        <div class="header-down-arrow">
+            <a aria-label="scroll-to-content-button" href="#" onclick="smoothScroll()">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24"
+                    height="24" viewBox="0 0 24 24">
+                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+            </a>
         </div>
     </div>
 
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+
+    <div class="body">
+        <div id="body-anchor" class="body-content">
+            <div id="project-pub-name-generator" class="project">
+                <h1 class="project-title">Pub Name Generator</h1>
+                <p class="project-description">Generates pub names using nouns taken from the WordNik API. Made using
+                    <em>HTML</em>, <em>SASS</em> and <em>JavaScript</em></p>
+                <div class="project-buttons">
+                    <a class="project-button" href="https://pjaerr.github.io/Pub-Name-Generator/" target="_blank" rel="noopener">Demo</a>
+                    <a class="project-button" href="https://github.com/pjaerr/Pub-Name-Generator" target="_blank" rel="noopener">Source
+                        Code</a>
+                </div>
+            </div>
+            <div id="project-findr" class="project">
+                <h1 class="project-title">Findr</h1>
+                <p class="project-description">A web app made with <em>React</em>, the <em>Google Maps API</em> and <em>SASS</em>.
+                    It finds places
+                    within a certain radius that match a certain criteria and presents them to you in a Tinder-style
+                    card.</p>
+                <div class="project-buttons">
+                    <a class="project-button" href="https://pjaerr.github.io/Findr/" target="_blank" rel="noopener">Demo</a>
+                    <a class="project-button" href="https://github.com/pjaerr/Findr" target="_blank" rel="noopener">Source
+                        Code</a>
+                </div>
+            </div>
+            <div id="project-productivity-timer" class="project">
+                <h1 class="project-title">Productivity Timer</h1>
+                <p class="project-description">A single-page website made with <em>JavaScript</em> and <em>jQuery</em>
+                    that helps you
+                    keep track of the time spent working on a project/task with a chess-like timer.</p>
+                <div class="project-buttons">
+                    <a class="project-button" href="https://pjaerr.github.io/Productivity-Timer/" target="_blank" rel="noopener">Demo</a>
+                    <a class="project-button" href="https://github.com/pjaerr/Productivity-Timer" target="_blank" rel="noopener">Source
+                        Code</a>
+                </div>
+            </div>
+            <div id="project-pwa-timer" class="project">
+                <h1 class="project-title">PWA Timer</h1>
+                <p class="project-description">A Progressive Web App implementation of a stopwatch with set interval
+                    reminders. Made with <em>JavaScript</em> and <em>Service Workers</em>.</p>
+                <div class="project-buttons">
+                    <a class="project-button" href="https://pjaerr.github.io/PWA-Timer/" target="_blank" rel="noopener">Demo</a>
+                    <a class="project-button" href="https://github.com/pjaerr/PWA-Timer" target="_blank" rel="noopener">Source
+                        Code</a>
+                </div>
+            </div>
+            <div id="project-game-jam-games" class="project">
+                <h1 class="project-title">Games made during Game Jams</h1>
+                <p class="project-description">A collection of games made during game jams mostly using <em>Unity</em>
+                    and <em>C#</em></p>
+                <div class="project-buttons">
+                    <a class="project-button" href="https://github.com/Pjaerr/Game-Jams" target="_blank" rel="noopener">Demos
+                        and
+                        Source Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var bodyContentAnchor = document.getElementById('body-anchor');
+
+        function smoothScroll()
+        {
+            event.preventDefault();
+
+            bodyContentAnchor.scrollIntoView();
+        }
+    </script>
 </body>
 
 </html>
