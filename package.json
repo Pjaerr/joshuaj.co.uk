@@ -8,8 +8,8 @@
     "sass": "^1.22.9"
   },
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html",
+    "dev": "parcel pages/*.html",
+    "build": "parcel build pages/*.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joshua Jackson",

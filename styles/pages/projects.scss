@@ -1,8 +1,5 @@
-@mixin gradient($startColour, $endColour) {
-  background: $endColour;
-  background: -webkit-linear-gradient(to right, $startColour, $endColour);
-  background: linear-gradient(to right, $startColour, $endColour);
-}
+@import "../base";
+@import "../components/project";
 
 #project-pub-name-generator {
   @include gradient(#3a7bd5, #00d2ff);
