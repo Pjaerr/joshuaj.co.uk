@@ -11,6 +11,10 @@
 
   &.navigation-homepage {
     font-size: 0.25em;
+
+    @media (max-width: $brk-medium) {
+      font-size: 0.5em;
+    }
   }
 
   a {
