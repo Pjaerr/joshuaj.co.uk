@@ -1,35 +1,29 @@
-#project-pub-name-generator
-{
-    background: #00d2ff;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+@mixin gradient($startColour, $endColour) {
+  background: $endColour;
+  background: -webkit-linear-gradient(to right, $startColour, $endColour);
+  background: linear-gradient(to right, $startColour, $endColour);
 }
 
-#project-findr
-{
-    background: #f2709c;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ff9472, #f2709c);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ff9472, #f2709c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+#project-pub-name-generator {
+  @include gradient(#3a7bd5, #00d2ff);
 }
 
-#project-productivity-timer
-{
-    background: #FF8008;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFC837, #FF8008);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFC837, #FF8008); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+#project-findr {
+  @include gradient(#ff9472, #f2709c);
 }
 
-#project-pwa-timer
-{
-    background: #4776E6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+#project-code-flow-extension {
+  @include gradient(#2948ff, #396afc);
 }
 
-#project-game-jam-games
-{
-    background: #02AAB0;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #00CDAC, #02AAB0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+#project-productivity-timer {
+  @include gradient(#ffc837, #ff8008);
+}
+
+#project-pwa-timer {
+  @include gradient(#8e54e9, #4776e6);
+}
+
+#project-game-jam-games {
+  @include gradient(#00cdac, #02aab0);
 }

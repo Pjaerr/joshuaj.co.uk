@@ -58,3 +58,7 @@ typings/
 .env
 
 /node_modules
+
+# parcel-bundler files
+/.cache
+/dist
