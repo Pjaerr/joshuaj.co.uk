@@ -1,3 +1,7 @@
+$largeHeadingFontSize: 4em;
+$mediumHeadingFontSize: 3em;
+$smallHeadingFontSize: 2em;
+
 .header {
   min-height: 100%;
   font-family: $headingFontFamily;
@@ -17,6 +21,11 @@
     font-size: $smallHeadingFontSize;
   }
 }
+
+$desktopIconSize: 38px;
+$mobileIconSize: 28px;
+$iconSpacing: 10px;
+$spaceBetweenIconAndHeader: -80px;
 
 .header-content-title::selection {
   color: $backgroundColour;
@@ -39,15 +48,15 @@
 
   svg {
     @include svg-icon;
-
-    -webkit-transition-duration: $hoverAnimationSpeed;
-    transition-duration: $hoverAnimationSpeed;
+    transition: fill $hoverAnimationSpeed ease;
   }
 
   svg:hover {
-    opacity: 0.5;
+    fill: $highlightColour;
   }
 }
+
+$headingLinksSpacing: 40px;
 
 .header-content-links {
   display: flex;
@@ -59,14 +68,8 @@
 
   a {
     font-family: $bodyFontFamily;
-    font-size: $largeHeadingLinksFontSize;
-    color: $fontColour;
-    -webkit-transition-duration: $hoverAnimationSpeed;
-    transition-duration: $hoverAnimationSpeed;
-
-    text-decoration: none;
-    &:hover {
-      opacity: 0.5;
-    }
+    font-size: 0.35em;
+    @include hollow-button($fontColour, $fontColour, $backgroundColour);
+    border: 2px solid $fontColour;
   }
 }

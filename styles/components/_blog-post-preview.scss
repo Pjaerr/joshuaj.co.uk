@@ -1,0 +1,38 @@
+.blog-post-preview {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  max-width: 60%;
+
+  @media (max-width: $brk-medium) {
+    max-width: 80%;
+  }
+
+  @media (max-width: $brk-small) {
+    max-width: 90%;
+  }
+}
+
+.blog-post-preview-title {
+  text-decoration: none;
+
+  color: $fontColour;
+
+  h2 {
+    font-weight: 900;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: $highlightColour;
+    }
+  }
+}
+
+.blog-post-preview-date-container,
+.blog-post-preview-description {
+  font-weight: 300;
+}
+
+.blog-post-preview-date-container {
+  font-weight: 900;
+  font-style: italic;
+}

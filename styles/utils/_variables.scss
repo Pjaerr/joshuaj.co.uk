@@ -2,44 +2,15 @@
 $headingFontFamily: "Pacifico", sans-serif;
 $bodyFontFamily: "Roboto", sans-serif;
 
-//Font Sizes
-$largeHeadingFontSize: 4em;
-$mediumHeadingFontSize: 3em;
-$smallHeadingFontSize: 2em;
-
-//Heading Links
-$largeHeadingLinksFontSize: 0.5em;
-$mediumHeadingLinksFontSize: 0.3em;
-$smallHeadingLinksFontSize: 0.1em;
-$headingLinksSpacing: 40px;
-
-//Icons Sizes
-$desktopIconSize: 38px;
-$mobileIconSize: 28px;
-$iconSpacing: 10px;
-$spaceBetweenIconAndHeader: -80px;
-
 //Colours
 $backgroundColour: #f1f2f6;
 $fontColour: #353b48;
+$highlightColour: #01a3a4;
 
 //CSS Animations
-$hoverAnimationSpeed: 0.3s;
+$hoverAnimationSpeed: 0.25s;
 
 //Breakpoints
 $brk-large: 992px;
 $brk-medium: 768px;
 $brk-small: 480px;
-
-//Project Variables
-$projectContentSpacingLarge: 30px;
-$projectContentSpacingSmall: 15px;
-$projectHeadingFontSizeLarge: 3em;
-$projectHeadingFontSizeSmall: 2.5em;
-$projectDescriptionFontSize: 1em;
-$projectCardWidth: 960px;
-$projectCardHeight: 340px;
-$spacingBetweenProjectCards: 40px;
-$projectCardSideSpacing: 10px;
-$spaceBetweenProjectButtonsLarge: 20px;
-$spaceBetweenProjectButtonsSmall: 5px;
