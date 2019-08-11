@@ -1,0 +1,22 @@
+@import "../base";
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+
+  font-family: $bodyFontFamily;
+  font-size: 1em;
+  font-weight: 400;
+  color: $fontColour;
+
+  &.navigation-homepage {
+    font-size: 0.25em;
+  }
+
+  a {
+    margin-left: 10px;
+    margin-right: 10px;
+
+    @include hollow-button($fontColour, $fontColour, $backgroundColour);
+  }
+}
