@@ -9,8 +9,8 @@
   font-size: 1em;
   font-weight: 400;
   color: $fontColour;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   width: 100%;
 
   &.navigation-homepage {
@@ -27,4 +27,8 @@
 
     @include hollow-button($fontColour, $fontColour, $backgroundColour);
   }
+}
+
+.navigation-top {
+  justify-content: flex-start;
 }

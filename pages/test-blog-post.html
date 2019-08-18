@@ -19,20 +19,18 @@
       media="screen"
       href="../styles/pages/blog-post.scss"
     />
+    <link rel="stylesheet" type="text/css" href="../syntax-highlighting/prism.css"/>
   </head>
 
   <body>
     <div class="page-container">
-      <div class="navigation">
+      <div class="navigation navigation-top">
         <a href="blog.html">
           Back to Blog
         </a>
-        <a href="projects.html">
-          Projects
-        </a>
       </div>
       <article class="blog-post-container">
-        <section class="blog-post-content language-go">
+        <section class="blog-post-content">
           <h1 class="sub-page-title">
             Let's Create: An API Using Golang (/now API)
           </h1>
@@ -80,18 +78,17 @@
             ipsum nulla aliquip commodo laboris adipisicing voluptate laborum
             ipsum est aute.
           </p>
-          <pre>
-              <code>
-package main
+<pre class="code-snippet"><code class="language-javascript">
+&lt;script&gt;
+  import FancyButton from './FancyButton.svelte';
 
-import "fmt"
+  function handleClick() {
+    alert('clicked');
+  }
+&lt;/script&gt;
 
-func main()
-{ 
-    fmt.Println("hello world")
-}
-              </code>
-          </pre>
+&lt;FancyButton on:click={handleClick} /&gt;</code>
+</pre>
         </section>
         <aside class="blog-post-author">
           <div class="blog-post-author-content">
@@ -106,9 +103,13 @@ func main()
             <a href="blog.html">
               Back to Blog
             </a>
+            <a href="projects.html">
+              Projects
+            </a>
           </div>
         </aside>
       </article>
     </div>
+    <script src="../syntax-highlighting/prism.js"></script>
   </body>
 </html>
