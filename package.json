@@ -4,12 +4,13 @@
   "description": "",
   "main": "main.js",
   "devDependencies": {
+    "markdown-it": "^9.1.0",
     "parcel-bundler": "^1.12.3",
     "sass": "^1.22.9"
   },
   "scripts": {
     "dev": "parcel pages/*.html",
-    "build": "parcel build pages/*.html",
+    "build": "node build.js && parcel build pages/*.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joshua Jackson",
