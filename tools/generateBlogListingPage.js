@@ -43,7 +43,9 @@ function generateBlogListingPage(previews) {
       ${previews.map(preview => {
         return `
         <div class="blog-post-preview">
-          <a class="blog-post-preview-title" href="${preview.pageUrl}.html">
+          <a class="blog-post-preview-title" href="posts/${
+            preview.pageUrl
+          }.html">
             <h2>
               ${preview.title}
             </h2>

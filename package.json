@@ -9,8 +9,8 @@
     "sass": "^1.22.9"
   },
   "scripts": {
-    "dev": "parcel pages/*.html",
-    "build": "node build.js && parcel build pages/*.html",
+    "dev": "node tools/build.js && parcel pages/*.html",
+    "build": "node tools/build.js && parcel build pages/**/*.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joshua Jackson",

@@ -23,15 +23,15 @@ function generateBlogPostPage(
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="../styles/pages/blog-post.scss"
+      href="../../styles/pages/blog-post.scss"
     />
-    <link rel="stylesheet" type="text/css" href="../syntax-highlighting/prism-${syntaxHighlightingLanguage}.css"/>
+    <link rel="stylesheet" type="text/css" href="../../syntax-highlighting/prism-${syntaxHighlightingLanguage}.css"/>
   </head>
 
   <body>
     <div class="page-container">
       <div class="navigation navigation-top">
-        <a href="blog.html">
+        <a href="../blog.html">
           Back to Blog
         </a>
       </div>
@@ -44,7 +44,7 @@ function generateBlogPostPage(
         </section>
         <aside class="blog-post-author">
           <div class="blog-post-author-content language-${syntaxHighlightingLanguage}">
-            <img class="blog-post-author-image" src="../assets/me.jpg" alt="Image of Josh Jackson" />
+            <img class="blog-post-author-image" src="../../assets/me.jpg" alt="Image of Josh Jackson" />
             <h1 class="blog-post-author-name">
               Written By Josh Jackson</br></br>
               <a href="https://twitter.com/Pjaerr" target="_blank">@Pjaerr</a>
@@ -52,17 +52,17 @@ function generateBlogPostPage(
             
           </div>
           <div class="navigation">
-            <a href="blog.html">
+            <a href="../blog.html">
               Back to Blog
             </a>
-            <a href="projects.html">
+            <a href="../projects.html">
               Projects
             </a>
           </div>
         </aside>
       </article>
     </div>
-    <script src="../syntax-highlighting/prism-${syntaxHighlightingLanguage}.js"></script>
+    <script src="../../syntax-highlighting/prism-${syntaxHighlightingLanguage}.js"></script>
   </body>
 </html>
 `;
