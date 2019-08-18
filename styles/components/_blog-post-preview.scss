@@ -1,7 +1,7 @@
 .blog-post-preview {
   margin-top: 20px;
   margin-bottom: 30px;
-  max-width: 60%;
+  max-width: 50%;
 
   @media (max-width: $brk-medium) {
     max-width: 80%;
@@ -20,6 +20,11 @@
   h2 {
     font-weight: 900;
     transition: color 0.25s ease;
+    font-size: 2em;
+
+    @media (max-width: $brk-small) {
+      font-size: 1.5em;
+    }
 
     &:hover {
       color: $highlightColour;

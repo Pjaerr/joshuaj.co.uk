@@ -7,6 +7,10 @@ body {
   margin: 0;
 
   background-color: $backgroundColour;
+
+  a {
+    color: $highlightColour;
+  }
 }
 
 .page-container {
@@ -16,7 +20,7 @@ body {
   flex-direction: column;
   align-items: center;
 
-  margin-top: 80px;
+  // margin-top: 80px;
 
   font-family: $bodyFontFamily;
 }
@@ -25,4 +29,9 @@ body {
   font-family: $headingFontFamily;
   font-size: 3em;
   color: $fontColour;
+
+  &::selection {
+    color: $backgroundColour;
+    background-color: $fontColour;
+  }
 }
