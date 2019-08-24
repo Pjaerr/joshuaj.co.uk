@@ -3,35 +3,38 @@ const generateBlogPostPage = require("./generateBlogPostPage");
 const md = require("markdown-it")();
 const fs = require("fs");
 
-const dirname = __dirname + "/../blogposts/";
+const inputDir = __dirname + "/../blogposts/";
+const outputDir = "pages/posts";
 
-fs.readdir(dirname, (err, directories) => {
+//Clear the output directory
+const postsDirectory = fs.readdirSync(outputDir);
+postsDirectory.forEach(existingPost => {
+  if (!fs.lstatSync(outputDir + "/" + existingPost).isDirectory()) {
+    fs.unlinkSync(outputDir + "/" + existingPost);
+  }
+});
+
+//Generate HTML files from markdown files in the input directory
+fs.readdir(inputDir, (err, files) => {
   if (err) throw new Error(err);
 
-  let blogPostsFrontmatter = [];
-  let blogListingHTML;
+  const blogPostsFrontmatter = [];
 
-  directories.forEach(directory => {
-    let blogPostHTML;
+  files.forEach(file => {
+    const markdownFile = fs.readFileSync(inputDir + file);
 
-    const markdownData = fs.readFileSync(dirname + directory + "/markdown.md");
-    const markdown = md.render(markdownData.toString());
+    const frontmatterData = getFrontmatterFromMarkdown(markdownFile.toString());
 
-    const frontmatterData = fs.readFileSync(
-      dirname + directory + "/frontmatter.json"
-    );
-    const frontmatter = JSON.parse(frontmatterData);
+    blogPostsFrontmatter.push(frontmatterData.frontmatter);
 
-    blogPostsFrontmatter.push(frontmatter);
-
-    blogPostHTML = generateBlogPostPage(
-      frontmatter.title,
-      markdown,
-      frontmatter.language
+    const blogPostHTML = generateBlogPostPage(
+      frontmatterData.frontmatter.title,
+      md.render(frontmatterData.markdownWithFrontmatterRemoved),
+      frontmatterData.frontmatter.language
     );
 
     fs.writeFile(
-      `pages/posts/${frontmatter.pageUrl}.html`,
+      `${outputDir}/${frontmatterData.frontmatter.pageUrl}.html`,
       blogPostHTML,
       err => {
         if (err) throw new Error(err);
@@ -39,7 +42,31 @@ fs.readdir(dirname, (err, directories) => {
     );
   });
 
-  blogListingHTML = generateBlogListingPage(blogPostsFrontmatter);
-
-  fs.writeFileSync("pages/blog.html", blogListingHTML);
+  fs.writeFileSync(
+    "pages/blog.html",
+    generateBlogListingPage(blogPostsFrontmatter)
+  );
 });
+
+/**
+ * @param {string} markdown
+ * @returns {{frontmatter: {pageUrl: string, title: string, description: string, date: string, language: string}, markdownWithFrontmatterRemoved: string}}
+ */
+function getFrontmatterFromMarkdown(markdown) {
+  const frontmatterStart = markdown.indexOf("{");
+  const frontmatterEnd = markdown.indexOf("}", frontmatterStart) + 1;
+
+  const frontmatter = JSON.parse(
+    markdown.substring(frontmatterStart, frontmatterEnd)
+  );
+
+  const markdownWithFrontmatterRemoved = markdown.replace(
+    markdown.substring(frontmatterStart, frontmatterEnd),
+    ""
+  );
+
+  return {
+    frontmatter,
+    markdownWithFrontmatterRemoved
+  };
+}
