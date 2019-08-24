@@ -18,7 +18,7 @@ postsDirectory.forEach(existingPost => {
 fs.readdir(inputDir, (err, files) => {
   if (err) throw new Error(err);
 
-  const blogPostsFrontmatter = [];
+  let blogPostsFrontmatter = [];
 
   files.forEach(file => {
     const markdownFile = fs.readFileSync(inputDir + file);
@@ -40,6 +40,34 @@ fs.readdir(inputDir, (err, files) => {
         if (err) throw new Error(err);
       }
     );
+  });
+
+  blogPostsFrontmatter.sort((a, b) => {
+    const dateA = a.date;
+    const dateB = b.date;
+
+    let yearA = parseInt(
+      dateA.substring(dateA.lastIndexOf("/") + 1, dateA.length - 1)
+    );
+    let yearB = parseInt(
+      dateB.substring(dateB.lastIndexOf("/") + 1, dateB.length - 1)
+    );
+
+    if (yearA !== yearB) return yearB - yearA;
+
+    let monthA = parseInt(
+      dateA.substring(dateA.indexOf("/") + 1, dateA.lastIndexOf("/"))
+    );
+    let monthB = parseInt(
+      dateB.substring(dateB.indexOf("/") + 1, dateB.lastIndexOf("/"))
+    );
+
+    if (monthA !== monthB) return monthB - monthA;
+
+    let dayA = parseInt(dateA.substring(0, dateA.indexOf("/")));
+    let dayB = parseInt(dateB.substring(0, dateB.indexOf("/")));
+
+    return dayB - dayA;
   });
 
   fs.writeFileSync(

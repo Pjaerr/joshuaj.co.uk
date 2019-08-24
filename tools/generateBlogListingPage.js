@@ -11,9 +11,9 @@ function generateBlogListingPage(previews) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="Description"
-      content="A guide from start to finish covering creating a basic REST API using Golang that allows you to GET data, POST data and store data."
+      content="Joshua Jackson's personal blog"
     />
-    <title>Let's Create: An API Using Golang | Josh Jackson</title>
+    <title>Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -43,9 +43,7 @@ function generateBlogListingPage(previews) {
       ${previews.map(preview => {
         return `
         <div class="blog-post-preview">
-          <a class="blog-post-preview-title" href="posts/${
-            preview.pageUrl
-          }.html">
+          <a class="blog-post-preview-title" href="posts/${preview.pageUrl}.html">
             <h2>
               ${preview.title}
             </h2>

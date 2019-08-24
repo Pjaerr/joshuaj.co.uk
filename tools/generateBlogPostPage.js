@@ -36,14 +36,14 @@ function generateBlogPostPage(
         </a>
       </div>
       <article class="blog-post-container">
-        <section class="blog-post-content">
+        <section class="blog-post-content language-${syntaxHighlightingLanguage}">
             <h1 class="sub-page-title">
                 ${blogPostName}
             </h1>
           ${content}
         </section>
         <aside class="blog-post-author">
-          <div class="blog-post-author-content language-${syntaxHighlightingLanguage}">
+          <div class="blog-post-author-content">
             <img class="blog-post-author-image" src="../../assets/me.jpg" alt="Image of Josh Jackson" />
             <h1 class="blog-post-author-name">
               Written By Josh Jackson</br></br>

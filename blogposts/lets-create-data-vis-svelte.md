@@ -2,7 +2,7 @@
 "pageUrl": "lets-create-data-vis-svelte",
 "title": "Let's Create: A Data Visualization using Svelte",
 "description": "In this article we'll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins.",
-"date": "12/08/19",
+"date": "12/10/19",
 "language": "javascript"
 }
 
@@ -23,3 +23,7 @@ function handleClick() {
 
 <FancyButton on:click={handleClick} />
 ```
+
+Here is an example of an image:
+
+![Image of a kitten](../../assets/kitten.jpg)
