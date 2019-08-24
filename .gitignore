@@ -65,3 +65,5 @@ typings/
 
 # blog output files
 pages/posts
+
+pages/blog.html
