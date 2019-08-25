@@ -14,6 +14,8 @@ exec("git checkout gh-pages", (err, stdout, stderr) => {
   logExecInformation(err, stdout, stderr);
 });
 
+console.log("Hello World");
+
 const logExecInformation = (err, stdout, stderr) => {
   if (err) {
     console.log(err);
