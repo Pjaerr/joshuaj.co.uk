@@ -15,8 +15,8 @@ function generateBlogPostPage(
     />
     <title>Josh Jackson @Pjaerr | ${blogPostName}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../assets/favicon.ico" type="image/x-icon">
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Pacifico|Roboto:400i,300,900"
