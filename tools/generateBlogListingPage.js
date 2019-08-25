@@ -13,7 +13,7 @@ function generateBlogListingPage(previews) {
       name="Description"
       content="Joshua Jackson's personal blog"
     />
-    <title>Blog</title>
+    <title>Josh Jackson @Pjaerr | Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
@@ -42,9 +42,9 @@ function generateBlogListingPage(previews) {
       <h1 class="sub-page-title">
         Blog
       </h1>
-      ${previews.map(preview => {
-        return `
-        <div class="blog-post-preview">
+      ${previews
+        .map(preview => {
+          return `<div class="blog-post-preview">
           <a class="blog-post-preview-title" href="posts/${preview.pageUrl}.html">
             <h2>
               ${preview.title}
@@ -56,17 +56,10 @@ function generateBlogListingPage(previews) {
           <p class="blog-post-preview-description">
             ${preview.description}
           </p>
-        </div>
-        `;
-      })}
-
-      ${
-        previews.length <= 0
-          ? `
-          <h2>🙃 No blog posts found!</h2>
-        `
-          : ""
-      }
+        </div>`;
+        })
+        .join("")}
+      ${previews.length <= 0 ? "<h2>🙃 No blog posts found!</h2>" : ""}
     </div>
   </body>
 </html>

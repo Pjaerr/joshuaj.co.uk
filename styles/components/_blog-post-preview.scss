@@ -1,13 +1,13 @@
 .blog-post-preview {
   margin-top: 20px;
-  max-width: 50%;
+  width: 50%;
 
   @media (max-width: $brk-medium) {
-    max-width: 80%;
+    width: 80%;
   }
 
   @media (max-width: $brk-small) {
-    max-width: 90%;
+    width: 90%;
   }
 }
 
