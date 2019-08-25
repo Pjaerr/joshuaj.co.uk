@@ -13,7 +13,7 @@ function generateBlogPostPage(
       name="Description"
       content="Joshua Jackson's web portfolio with projects in HTML, CSS, JavaScript, React"
     />
-    <title>Josh Jackson @Pjaerr | Blog</title>
+    <title>Josh Jackson @Pjaerr | ${blogPostName}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -29,6 +29,9 @@ function generateBlogPostPage(
   </head>
 
   <body>
+  <div class="scroll-progress">
+    <div class="scroll-progress-bar"></div>
+  </div>
     <div class="page-container">
       <div class="navigation navigation-top">
         <a href="../blog.html">
@@ -62,6 +65,7 @@ function generateBlogPostPage(
         </aside>
       </article>
     </div>
+    <script src="../../scripts/scroll-progress.js"></script>
     <script src="../../syntax-highlighting/prism-${syntaxHighlightingLanguage}.js"></script>
   </body>
 </html>

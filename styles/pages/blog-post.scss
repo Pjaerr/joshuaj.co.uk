@@ -1,6 +1,7 @@
 @import "../base";
 @import "../components/navigation";
 @import "../components/blog-post-author";
+@import "../components/scroll-progress";
 
 .blog-post-container {
   display: flex;
@@ -16,7 +17,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  // padding: 10px;
 
   width: 50%;
 
@@ -39,6 +39,10 @@
     @media (max-width: $brk-small) {
       font-size: 1.1em;
     }
+  }
+
+  img {
+    max-width: 100%;
   }
 
   pre {
