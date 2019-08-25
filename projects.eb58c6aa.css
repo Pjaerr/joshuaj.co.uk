@@ -1,0 +1,228 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #fff;
+}
+html a,
+body a {
+  color: #01a3a4;
+}
+
+.page-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.sub-page-title {
+  font-family: "Pacifico", sans-serif;
+  font-size: 3em;
+  color: #353b48;
+}
+.sub-page-title::selection {
+  color: #fff;
+  background-color: #353b48;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #fff;
+}
+html a,
+body a {
+  color: #01a3a4;
+}
+
+.page-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.sub-page-title {
+  font-family: "Pacifico", sans-serif;
+  font-size: 3em;
+  color: #353b48;
+}
+.sub-page-title::selection {
+  color: #fff;
+  background-color: #353b48;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  color: #353b48;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+}
+.navigation.navigation-homepage {
+  font-size: 0.25em;
+}
+@media (max-width: 768px) {
+  .navigation.navigation-homepage {
+    font-size: 0.5em;
+  }
+}
+.navigation a {
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #353b48;
+  border-radius: 2px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #353b48;
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (max-width: 480px) {
+  .navigation a {
+    padding: 7px 15px;
+  }
+}
+.navigation a:hover {
+  background: #353b48;
+  color: #fff;
+}
+
+.navigation-top {
+  justify-content: flex-start;
+}
+
+.project {
+  box-shadow: -4px 2em 7.5em rgba(0, 0, 0, 0.33);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 960px;
+  height: 340px;
+}
+@media (max-width: 480px) {
+  .project {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.project-title {
+  margin: 30px;
+  font-size: 3em;
+}
+@media (max-width: 480px) {
+  .project-title {
+    margin: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .project-title {
+    font-size: 2.5em;
+  }
+}
+
+.project-description {
+  margin: 30px;
+  font-size: 1em;
+  max-width: 60%;
+}
+@media (max-width: 768px) {
+  .project-description {
+    max-width: 80%;
+  }
+}
+@media (max-width: 480px) {
+  .project-description {
+    max-width: 100%;
+    margin: 15px;
+  }
+}
+.project-description em {
+  font-weight: 900;
+}
+
+.project-buttons {
+  margin: 30px;
+  font-size: 1em;
+}
+@media (max-width: 480px) {
+  .project-buttons {
+    margin: 15px;
+  }
+}
+
+.project-button {
+  border: 1px solid #fff;
+  border-radius: 2px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 20px;
+}
+@media (max-width: 480px) {
+  .project-button {
+    padding: 7px 15px;
+  }
+}
+.project-button:hover {
+  background: #fff;
+  color: #353b48;
+}
+@media (max-width: 480px) {
+  .project-button {
+    margin-right: 5px;
+  }
+}
+
+#project-pub-name-generator {
+  background: #00d2ff;
+  background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);
+  background: linear-gradient(to right, #3a7bd5, #00d2ff);
+}
+
+#project-findr {
+  background: #f2709c;
+  background: -webkit-linear-gradient(to right, #ff9472, #f2709c);
+  background: linear-gradient(to right, #ff9472, #f2709c);
+}
+
+#project-code-flow-extension {
+  background: #396afc;
+  background: -webkit-linear-gradient(to right, #2948ff, #396afc);
+  background: linear-gradient(to right, #2948ff, #396afc);
+}
+
+#project-productivity-timer {
+  background: #6e48aa;
+  background: -webkit-linear-gradient(to right, #9d50bb, #6e48aa);
+  background: linear-gradient(to right, #9d50bb, #6e48aa);
+}
+
+#project-pwa-timer {
+  background: #4776e6;
+  background: -webkit-linear-gradient(to right, #8e54e9, #4776e6);
+  background: linear-gradient(to right, #8e54e9, #4776e6);
+}
+
+#project-game-jam-games {
+  background: #02aab0;
+  background: -webkit-linear-gradient(to right, #00cdac, #02aab0);
+  background: linear-gradient(to right, #00cdac, #02aab0);
+}
+
+/*# sourceMappingURL=/projects.eb58c6aa.css.map */
