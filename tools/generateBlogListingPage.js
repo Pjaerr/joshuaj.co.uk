@@ -59,6 +59,14 @@ function generateBlogListingPage(previews) {
         </div>
         `;
       })}
+
+      ${
+        previews.length <= 0
+          ? `
+          <h2>🙃 No blog posts found!</h2>
+        `
+          : ""
+      }
     </div>
   </body>
 </html>

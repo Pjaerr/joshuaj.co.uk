@@ -64,6 +64,6 @@ typings/
 /dist
 
 # blog output files
-pages/posts
+pages/posts/*.html
 
 pages/blog.html
