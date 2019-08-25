@@ -6,8 +6,14 @@ const fs = require("fs");
 const inputDir = __dirname + "/../blogposts/";
 const outputDir = "pages/posts";
 
+//Create output directory if it doesn't exist
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir);
+}
+
 //Clear the output directory
 const postsDirectory = fs.readdirSync(outputDir);
+
 postsDirectory.forEach(existingPost => {
   if (!fs.lstatSync(outputDir + "/" + existingPost).isDirectory()) {
     fs.unlinkSync(outputDir + "/" + existingPost);
