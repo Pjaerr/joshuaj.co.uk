@@ -12,6 +12,7 @@
     "dev": "node tools/build.js && parcel pages/*.html",
     "build-dev": "node tools/build.js && parcel pages/**/*.html",
     "build": "node tools/build.js && parcel build pages/**/*.html",
+    "deploy": "npm run build && node tools/deploy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joshua Jackson",
