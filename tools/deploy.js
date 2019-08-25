@@ -12,9 +12,9 @@ const { exec } = require("child_process");
 
 exec("git checkout gh-pages", (err, stdout, stderr) => {
   logExecInformation(err, stdout, stderr);
-});
 
-console.log("Hello World");
+  console.log("Hello World");
+});
 
 const logExecInformation = (err, stdout, stderr) => {
   if (err) {
