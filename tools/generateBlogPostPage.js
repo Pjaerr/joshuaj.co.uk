@@ -28,6 +28,15 @@ function generateBlogPostPage(
       href="../../styles/pages/blog-post.scss"
     />
     <link rel="stylesheet" type="text/css" href="../../syntax-highlighting/prism-${syntaxHighlightingLanguage}.css"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146439931-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-146439931-1');
+    </script>
   </head>
 
   <body>
