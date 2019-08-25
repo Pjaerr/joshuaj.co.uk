@@ -2,7 +2,7 @@
  *
  * @param {[{pageUrl, title, date, description}]} previews
  */
-function generateBlogListingPage(previews) {
+function generateBlogListingHTML(previews) {
   return `
     <!DOCTYPE html>
 <html lang="en-GB">
@@ -66,4 +66,4 @@ function generateBlogListingPage(previews) {
 `;
 }
 
-module.exports = generateBlogListingPage;
+module.exports = generateBlogListingHTML;

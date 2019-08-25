@@ -1,5 +1,5 @@
-const generateBlogListingPage = require("./generateBlogListingPage");
-const generateBlogPostPage = require("./generateBlogPostPage");
+const generateBlogListingHTML = require("./generateBlogListingHTML");
+const generateBlogPostHTML = require("./generateBlogPostHTML");
 const md = require("markdown-it")();
 const fs = require("fs");
 
@@ -20,7 +20,11 @@ postsDirectory.forEach(existingPost => {
   }
 });
 
-//Generate HTML files from markdown files in the input directory
+/**
+ * Generate HTML files from the markdown files in the /blogposts directory.
+ * Also grab the frontmatter from those files as JSON and generate the Blog listing
+ * page.
+ */
 fs.readdir(inputDir, (err, files) => {
   if (err) throw new Error(err);
 
@@ -33,7 +37,7 @@ fs.readdir(inputDir, (err, files) => {
 
     blogPostsFrontmatter.push(frontmatterData.frontmatter);
 
-    const blogPostHTML = generateBlogPostPage(
+    const blogPostHTML = generateBlogPostHTML(
       frontmatterData.frontmatter.title,
       md.render(frontmatterData.markdownWithFrontmatterRemoved),
       frontmatterData.frontmatter.language
@@ -78,7 +82,7 @@ fs.readdir(inputDir, (err, files) => {
 
   fs.writeFileSync(
     "pages/blog.html",
-    generateBlogListingPage(blogPostsFrontmatter)
+    generateBlogListingHTML(blogPostsFrontmatter)
   );
 });
 

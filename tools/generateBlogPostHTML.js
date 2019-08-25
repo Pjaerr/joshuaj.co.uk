@@ -1,4 +1,4 @@
-function generateBlogPostPage(
+function generateBlogPostHTML(
   blogPostName,
   content,
   syntaxHighlightingLanguage
@@ -83,4 +83,4 @@ function generateBlogPostPage(
 `;
 }
 
-module.exports = generateBlogPostPage;
+module.exports = generateBlogPostHTML;
