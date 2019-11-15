@@ -1,0 +1,40 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: $bodyFontFamily;
+  font-size: 1em;
+  font-weight: 400;
+  color: $fontColour;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+
+  &.navigation-homepage {
+    font-size: 0.8em;
+
+    @media (min-width: $brk-large) {
+      font-size: 1em;
+    }
+  }
+
+  a {
+    margin-left: 10px;
+    margin-right: 10px;
+
+    @include hollow-button($fontColour, $fontColour, $backgroundColour);
+
+    &.link-active {
+      background-color: $fontColour;
+      color: $backgroundColour;
+    }
+  }
+}
+
+.navigation-top {
+  justify-content: flex-start;
+}

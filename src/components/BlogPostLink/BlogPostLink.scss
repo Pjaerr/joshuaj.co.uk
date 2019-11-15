@@ -1,0 +1,44 @@
+@import "../../utils/variables";
+
+.blog-post-preview {
+  margin: 0 auto;
+  width: 50%;
+
+  @media (max-width: $brk-medium) {
+    width: 80%;
+  }
+
+  @media (max-width: $brk-small) {
+    width: 90%;
+  }
+}
+
+.blog-post-preview-title {
+  text-decoration: none;
+
+  color: $fontColour;
+
+  h2 {
+    font-weight: 900;
+    transition: color 0.25s ease;
+    font-size: 2em;
+
+    @media (max-width: $brk-small) {
+      font-size: 1.5em;
+    }
+
+    &:hover {
+      color: $highlightColour;
+    }
+  }
+}
+
+.blog-post-preview-date-container,
+.blog-post-preview-description {
+  font-weight: 300;
+}
+
+.blog-post-preview-date-container {
+  font-weight: 900;
+  font-style: italic;
+}

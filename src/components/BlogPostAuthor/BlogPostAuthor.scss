@@ -1,0 +1,33 @@
+@import "../../utils/variables";
+
+.blog-post-author {
+  display: flex;
+  flex-direction: column;
+  background: $backgroundColour;
+  width: 100%;
+  padding-top: 20px;
+
+  .navigation {
+    padding-top: 40px;
+  }
+}
+
+.blog-post-author-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.blog-post-author-name {
+  color: $fontColour;
+  font-size: 1em;
+}
+
+.blog-post-author-image {
+  max-width: 80px;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 20px;
+}
