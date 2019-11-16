@@ -1,5 +1,5 @@
 ---
-isHidden: false
+isHidden: true
 path: "/blog/lets-create-data-vis-svelte"
 date: "2019-11-25"
 title: "Lets Create: A Data Visualization using Svelte"

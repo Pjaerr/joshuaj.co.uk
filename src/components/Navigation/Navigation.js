@@ -10,7 +10,7 @@ const Navigation = ({ activePage }) => {
   }
 
   return (
-    <div className="navigation navigation-homepage">
+    <div className="navigation">
       <Link to="/" className={classNames.home}>
         Home
       </Link>

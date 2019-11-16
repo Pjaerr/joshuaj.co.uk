@@ -1,8 +1,9 @@
 import React from "react"
-import Layout from "../components/Layout/Layout"
 import { graphql } from "gatsby"
-import BlogPostLink from "../components/BlogPostLink/BlogPostLink"
+
+import Layout from "../components/Layout/Layout"
 import SEO from "../components/seo"
+import BlogPostLink from "../components/BlogPostLink/BlogPostLink"
 
 import "./blog.scss"
 
@@ -14,7 +15,7 @@ const Blog = ({
   const Posts = edges
     .filter(
       edge => !!edge.node.frontmatter.date && !edge.node.frontmatter.isHidden
-    ) // You can filter your posts based on some criteria
+    )
     .map(edge => <BlogPostLink key={edge.node.id} post={edge.node} />)
   return (
     <Layout activePage="Blog">

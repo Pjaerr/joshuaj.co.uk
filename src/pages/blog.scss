@@ -1,7 +1,7 @@
 @import "../utils/variables";
 
 .blog-listing-title {
-  font-size: 3em;
+  font-size: $blogTitleFontSizeLarge;
   text-align: center;
 
   color: $fontColour;
