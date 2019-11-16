@@ -1,0 +1,120 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+#project-pub-name-generator {
+  @include gradient(#3a7bd5, #00d2ff);
+}
+
+#project-findr {
+  @include gradient(#ff9472, #f2709c);
+}
+
+#project-code-flow-extension {
+  @include gradient(#2948ff, #396afc);
+}
+
+#project-productivity-timer {
+  @include gradient(#9d50bb, #6e48aa);
+}
+
+#project-pwa-timer {
+  @include gradient(#8e54e9, #4776e6);
+}
+
+#project-game-jam-games {
+  @include gradient(#00cdac, #02aab0);
+}
+
+$projectContentSpacingLarge: 25px;
+$projectContentSpacingSmall: 15px;
+$projectHeadingFontSizeLarge: 3em;
+$projectHeadingFontSizeSmall: 2.2em;
+$projectDescriptionFontSize: 1em;
+$projectCardWidth: 960px;
+$projectCardHeight: 340px;
+$spacingBetweenProjectCards: 40px;
+$projectCardSideSpacing: 10px;
+$spaceBetweenProjectButtonsLarge: 20px;
+$spaceBetweenProjectButtonsSmall: 5px;
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.project {
+  box-shadow: -4px 2em 7.5em rgba(0, 0, 0, 0.33);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 4px;
+
+  max-width: 960px;
+  width: 100%;
+
+  color: $backgroundColour;
+
+  margin-top: $spacingBetweenProjectCards;
+  margin-bottom: $spacingBetweenProjectCards;
+  margin-left: $projectCardSideSpacing;
+  margin-right: $projectCardSideSpacing;
+
+  max-width: $projectCardWidth;
+  height: $projectCardHeight;
+  max-height: $projectCardHeight;
+}
+
+.project-title {
+  margin: $projectContentSpacingLarge;
+
+  @media (max-width: $brk-small) {
+    margin: $projectContentSpacingSmall;
+  }
+
+  font-size: $projectHeadingFontSizeLarge;
+
+  @media (max-width: $brk-medium) {
+    font-size: $projectHeadingFontSizeSmall;
+  }
+}
+
+.project-description {
+  margin: $projectContentSpacingLarge;
+
+  font-size: $projectDescriptionFontSize;
+  max-width: 60%;
+
+  @media (max-width: $brk-medium) {
+    max-width: 80%;
+  }
+
+  @media (max-width: $brk-small) {
+    max-width: 100%;
+    margin: $projectContentSpacingSmall;
+  }
+}
+
+.project-buttons {
+  margin: $projectContentSpacingLarge;
+
+  @media (max-width: $brk-small) {
+    margin: $projectContentSpacingSmall;
+  }
+
+  font-size: $projectDescriptionFontSize;
+}
+
+.project-button {
+  @include hollow-button($backgroundColour, $backgroundColour, $fontColour);
+
+  margin-right: $spaceBetweenProjectButtonsLarge;
+
+  @media (max-width: $brk-small) {
+    margin-right: $spaceBetweenProjectButtonsSmall;
+  }
+}

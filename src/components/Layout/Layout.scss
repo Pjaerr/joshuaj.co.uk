@@ -1,0 +1,9 @@
+@import "../../utils/variables";
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: $bodyFontFamily;
+}
