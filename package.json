@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "personal-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Josh Jackson - Personal Website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Joshua Jackson <@Pjaerr>",
   "dependencies": {
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "gatsby-plugin-sass": "^2.1.17",
+    "gh-pages": "^2.1.1",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2"
   },
@@ -33,6 +34,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "deploy": "gatsby build && gh-pages -d public",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
