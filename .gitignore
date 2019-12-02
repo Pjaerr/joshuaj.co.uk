@@ -67,3 +67,5 @@ typings/
 pages/posts/*.html
 
 pages/blog.html
+
+public

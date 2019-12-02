@@ -1,5 +1,5 @@
 ---
-isHidden: true
+isHidden: false
 path: "/blog/lets-create-data-vis-svelte"
 date: "2019-11-25"
 title: "Lets Create: A Data Visualization using Svelte"
@@ -437,9 +437,12 @@ and then on our path, we can add an event listener that will set our new variabl
 Now let's add a condition to our fill and stroke attributes to flip the colours if transitionEnded is false.
 
 ```html
-<path transition:draw={{ duration: 1500 }} on:introend={() => (transitionEnded =
-true)} d={svgPath} class="path" fill={transitionEnded ? fillColour :
-strokeColour} stroke={transitionEnded ? strokeColour : fillColour}
+<path 
+transition:draw={{ duration: 1500 }} on:introend={ () => (transitionEnded = true)}
+d={svgPath}
+class="path"
+fill={transitionEnded ? fillColour : strokeColour}
+stroke={transitionEnded ? strokeColour : fillColour}
 style="stroke-width: {strokeWidth}" />
 ```
 
@@ -458,3 +461,110 @@ Add the following CSS rule to the `<style>` tags:
 If everything has gone smoothly, we should end up with something that looks like the following, excluding the choppy gif of course:
 
 ![Final Draw Transition](/lets-create-data-vis-svelte/finished-draw-transition.gif)
+
+## Adding Interactivity 🖱️ ➡️ 🗺️
+
+Now our map has some animations, let's take it a step further and make it interactive. In this section we will be making each `<MapRegion>` respond to clicks and log its name to the console.
+
+First navigate to the `<MapRegion>` component and add an empty `on:click` event to the svg path.
+
+```html
+<path 
+on:click
+transition:draw={{ duration: 1500 }} on:introend={ () => (transitionEnded = true)}
+d={svgPath}
+class="path"
+fill={transitionEnded ? fillColour : strokeColour}
+stroke={transitionEnded ? strokeColour : fillColour}
+style="stroke-width: {strokeWidth}" />
+```
+
+This says we don't want to handle the `on:click` event in our `<MapRegion>` component, rather we want to bubble it up and instead handle it wherever our `<MapRegion>` component is used.
+
+We can do this easily by adding the same `on:click` event to our `<MapRegion>` component but instead of it being empty we want to print the name of the component to the console.
+
+In the `App.svelte` file:
+
+```html
+<MapContainer>
+  {#each Regions as { name, svgPath }}
+  <MapRegion
+    on:click={() => { console.log(name + ' clicked!') }}
+    {svgPath}
+    fillColour="red"
+    strokeColour="white"
+    strokeWidth="1px"
+  />
+  {/each}
+</MapContainer>
+```
+
+If you open the browser and click on the different regions of the map, you should see the name of that region in the console.
+
+Now let's make it a bit more obvious by storing which region was last clicked and showing it on the page inside of a `<h1>`
+
+Start by creating a variable in the `App.svelte` file:
+
+`let activeRegion;`
+
+and then in the `on:click` event handler replace the console.log with:
+
+`activeRegion = name;`
+
+Finally, add a `<h1>` to the page that just contains the active region:
+
+```html
+<main class="app">
+  <h1>{activeRegion}</h1>
+  <div class="map-container">
+    <MapContainer>
+      {#each Regions as { name, svgPath }}
+        <MapRegion
+          on:click={() => {
+            activeRegion = name;
+          }}
+          {svgPath}
+          fillColour="red"
+          strokeColour="white"
+          strokeWidth="1px" />
+      {/each}
+    </MapContainer>
+  </div>
+</main>
+```
+
+If you check the browser, you'll notice that it says `undefined`, this is because we haven't set any text by default, you can just set the default text of `activeRegion` to be something like "No region selected".
+
+Now if you click on any of the regions you'll see that it shows the region we last clicked. Although this seems simple it is a key part of how Svelte works. Svelte treats every top-level variable in your `<script>` tags as that component's state and when that state is updated, it will re-render the HTML with the updated state. This is all done for us automatically but it is important to be aware of!
+
+As a finishing touch before we move onto the next section, let's just add a tiny bit of CSS so that our regions are highlighted when you hover over them and a condition in our `App.svelte` file so that the active region stays highlighted.
+
+Add the following CSS in the `<MapRegion>` component:
+
+```css
+.path:hover {
+    fill: #333;
+  }
+```
+
+and then in the `App.svelte` file add the following ternary condition to the `fillColour` property of the `<MapRegion>` component:
+
+```html
+{#each Regions as { name, svgPath }}
+  <MapRegion
+    on:click={() => {
+      activeRegion = name;
+    }}
+    {svgPath}
+    fillColour={activeRegion === name ? '#333' : 'red'}
+    strokeColour="white"
+    strokeWidth="1px" />
+{/each}
+```
+
+this says that if the active region is equal to the name of the region being rendered, then fill it in with the grey colour, if not, fill it in red as normal.
+
+If you've done everything correctly, you should have something that looks like the following:
+
+![Interactive Map](/lets-create-data-vis-svelte/interactive-map.gif)
+
