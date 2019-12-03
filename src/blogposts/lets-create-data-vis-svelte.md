@@ -106,7 +106,7 @@ export default [
 ]
 ```
 
-## The <MapContainer> Component 🗺️ ➡️ 📦
+## The <MapContainer> Component 🗺️ → 📦
 
 This is our first _component_, but before we begin, let's write the code that will actually hold our application.
 
@@ -307,7 +307,7 @@ One extra thing you may have noticed is that we have a new variable called `svg`
 
 And That's it! It might seem like a lot of effort just to get our SVG onto the page when we could have just put it directly onto the page but this allows us to directly manage our regions outside of the SVG, which is important as you'll find out in the next section.
 
-## The Basic <MapRegion> Component 🗺️ ➡️ 📦 ➡️ 📍
+## The Basic <MapRegion> Component 🗺️ → 📦 → 📍
 
 Now we have our SVG as a component, I think it only makes sense to make our paths into components.
 
@@ -393,7 +393,7 @@ In our `App.svelte` file:
 
 This is our very basic `<MapRegion>` component. In the next section we'll spice things up a bit by adding a svelte transition to our map regions so they draw themselves.
 
-## Adding Transitions to our <MapRegion> Component 🗺️ ➡️ 📦 ➡️ 📍 ➡️ 💫
+## Adding Transitions to our <MapRegion> Component 🗺️ → 📦 → 📍 → 💫
 
 One of the coolest parts about Svelte is how easy it makes animation. This is mostly because it treats it as first-class functionality.
 
@@ -568,3 +568,126 @@ If you've done everything correctly, you should have something that looks like t
 
 ![Interactive Map](/lets-create-data-vis-svelte/interactive-map.gif)
 
+## Making Sense of the Data 🔢
+
+In this section we will be taking our data that we gathered right at the beginning of the article and making into something that we can use and visualise in our application.
+
+The end goal of this data visualization is to have a map where each region is coloured in based on their contribution to premier league title wins and when the user clicks on a region they will be shown more information about that region and its contribution specifically.
+
+We'll do this by first converting our region data into something more usable by joining them with the players who are from that region and then we will figure out what the colour of each region should be based on the combined number of appearances of each player that is from the region. Finally we will create a function that returns a region object with all of its data.
+
+Let's start by making a new file called `Data.js` inside of the `Data` folder and importing all of our specific data files into it:
+
+```javascript
+import Players from "./Players";
+import Regions from "./Regions";
+import Titles from "./Titles";
+```
+Next, we want to convert the objects from the `Regions.js` file into something more usable by creating a new object for each region with the following structure:
+
+```typescript
+{
+    name: string,
+    players: [
+        {
+            name: string,
+            seasons: [
+                {
+                    year: string,
+                    team: string,
+                    appearances: number
+                }
+            ]
+        }
+    ],
+    appearances: number
+}
+```
+
+We can do this by:
+1. Looping through the array that is exported from `Regions.js`
+2. For each object in that array we want to create a new object with the above structure
+3. Inside of that loop, we want to loop through the array that is exported from the `Players.js` file
+6. For each player, if it is from the region being looped through, add it to the new region object.
+5. For each player, loop through the array that is exported from the `Titles.js` file and add every season they have won to their object.
+
+Now don't worry if that sounded complicated, it's because it is! This could be made easier if the data was already formatted how we wanted it but that isn't often the case if we are working with external APIs so this is a good exercise. The code for this can be found below.
+
+In the `Data.js` file:
+
+```javascript
+const regions = Regions.map(region => {
+  //Create the initial new region object
+  const newRegionObject = {
+    name: region.name,
+    players: [],
+    appearances: 0
+  };
+
+  //For each of the players in the array exported from Players.js
+  for (const player of Players) {
+    //If the player is from the current region
+    if (player.regions.includes(region.name)) {
+      //Create the initial player object
+      const playerObject = {
+        name: player.name,
+        seasons: []
+      };
+
+      //For each of the titles
+      for (const title of Titles) {
+        //For each of the players who won the title
+        for (const winningPlayer of title.players) {
+          //If the winning player is the same as our player
+          if (player.name === winningPlayer.name) {
+            //Add the current title to the player object
+            playerObject.seasons.push({
+              year: title.season,
+              team: title.winner,
+              appearances: winningPlayer.appearances
+            });
+
+            //Increment the overall appearances of the region by the player we just added
+            newRegionObject.appearances += winningPlayer.appearances;
+          }
+        }
+      }
+
+      //Add the player to the region object
+      newRegionObject.players.push(playerObject);
+    }
+  }
+
+  return newRegionObject;
+});
+```
+
+For reference an example output of this would be:
+
+```javascript
+{
+  name: "Derbyshire",
+  appearances: 73,
+  players: [
+    {
+      name: "Gary Cahill",
+      seasons: [
+        {
+          appearances: 36,
+          team: "Chelsea FC",
+          year: "2014/2015"
+        },
+        {
+          appearances: 37,
+          team: "Chelsea FC",
+          year: "2016/2017"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Next let's calculate what the colour of the region should be and then store it on the region object as an rgb value. I will be using the following colour palette where the higher a region's contribution, the further down (ie. greener) it will be:
+
+![Colour Palette](/lets-create-data-vis-svelte/colour-palette.png)
