@@ -462,7 +462,7 @@ If everything has gone smoothly, we should end up with something that looks like
 
 ![Final Draw Transition](/lets-create-data-vis-svelte/finished-draw-transition.gif)
 
-## Adding Interactivity 🖱️ ➡️ 🗺️
+## Adding Interactivity 🖱️ → 🗺️
 
 Now our map has some animations, let's take it a step further and make it interactive. In this section we will be making each `<MapRegion>` respond to clicks and log its name to the console.
 
@@ -688,6 +688,86 @@ For reference an example output of this would be:
 }
 ```
 
-Next let's calculate what the colour of the region should be and then store it on the region object as an rgb value. I will be using the following colour palette where the higher a region's contribution, the further down (ie. greener) it will be:
+Next let's calculate what the colour of the region should be and then store it on the region object as an hex value. I will be using the following colour palette where the higher a region's contribution, the further down (ie. greener) it will be:
 
 ![Colour Palette](/lets-create-data-vis-svelte/colour-palette.png)
+
+We first store our colours in an array and then start by calculating the highest number of total appearances a region can have then for each region we map the number of appearances (0 → highest number of appearances) to an index in the array of colours:
+
+```javascript
+let highestNumberOfAppearances = 0;
+
+for (const region of regions) {
+  if (region.appearances > highestNumberOfAppearances) {
+    highestNumberOfAppearances = region.appearances;
+  }
+}
+
+const colourPalette = [
+  "#38003c",
+  "#2a404e",
+  "#274c52",
+  "#265053",
+  "#255454",
+  "#245956",
+  "#226659",
+  "#1f735d",
+  "#1c8060",
+  "#198c64",
+  "#169968",
+  "#14a66b",
+  "#11b26f",
+  "#0ebf73",
+  "#0bcc76",
+  "#08d97a",
+  "#06e67e",
+  "#03f281",
+  "#00ff85"
+];
+
+for (const region of regions) {
+  const index = Math.round(
+    (region.appearances / highestNumberOfAppearances) *
+      (colourPalette.length - 1)
+  );
+
+  region.colour = colourPalette[index];
+}
+```
+
+You can read more on the maths behind this [here](https://math.stackexchange.com/questions/377169/calculating-a-value-inside-one-range-to-a-value-of-another-range) if you are interested.
+
+Finally, let's create a function that we can pass a name to and it will return the region object with that name:
+
+```javascript
+export const getRegionData = regionName => {
+  return regions.filter(region => region.name === regionName)[0];
+};
+```
+
+Notice how we exported this function, this is important as we are going to be using it from outside of the `Data.js` file.
+
+Inside of the `App.svelte` file, if you import the function in the `<script>` tags:
+
+`import { getRegionData } from "./Data/Data.js";`
+
+and then for the fillColour property of each `<MapRegion>`, instead of passing in 'red', we can instead just call our function and access the .colour property on it like so:
+
+```html
+<MapRegion
+  on:click={() => {
+    activeRegion = name;
+  }}
+  {svgPath}
+  fillColour={activeRegion === name ? '#333' : getRegionData(name).colour}
+  strokeColour="white"
+  strokeWidth="1px" />
+```
+
+If you've done everything correctly, you should end up with a map that looks like this:
+
+![Map With Colour](/lets-create-data-vis-svelte/coloured-map.png)
+
+This section was a long one but you'll be happy to know that we are almost finished. In the next section we will create a Svelte component that shows all of the data about the region you have clicked. We will also do some housekeeping and make sure everything is styled properly and then we are pretty much finished!
+
+## RegionInformation Component 🖱️ → 🗺️ → 🗃️
