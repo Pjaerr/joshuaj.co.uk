@@ -106,7 +106,7 @@ export default [
 ]
 ```
 
-## The <MapContainer> Component 🗺️ → 📦
+## The `<MapContainer>` Component 🗺️ → 📦
 
 This is our first _component_, but before we begin, let's write the code that will actually hold our application.
 
@@ -307,7 +307,7 @@ One extra thing you may have noticed is that we have a new variable called `svg`
 
 And That's it! It might seem like a lot of effort just to get our SVG onto the page when we could have just put it directly onto the page but this allows us to directly manage our regions outside of the SVG, which is important as you'll find out in the next section.
 
-## The Basic <MapRegion> Component 🗺️ → 📦 → 📍
+## The Basic `<MapRegion>` Component 🗺️ → 📦 → 📍
 
 Now we have our SVG as a component, I think it only makes sense to make our paths into components.
 
@@ -393,7 +393,7 @@ In our `App.svelte` file:
 
 This is our very basic `<MapRegion>` component. In the next section we'll spice things up a bit by adding a svelte transition to our map regions so they draw themselves.
 
-## Adding Transitions to our <MapRegion> Component 🗺️ → 📦 → 📍 → 💫
+## Adding Transitions to our `<MapRegion>` Component 📍 → 💫
 
 One of the coolest parts about Svelte is how easy it makes animation. This is mostly because it treats it as first-class functionality.
 
@@ -688,7 +688,7 @@ For reference an example output of this would be:
 }
 ```
 
-Next let's calculate what the colour of the region should be and then store it on the region object as an hex value. I will be using the following colour palette where the higher a region's contribution, the further down (ie. greener) it will be:
+Next let's calculate what the colour of the region should be and then store it on the region object as a hex value. I will be using the following colour palette where the higher a region's contribution, the further down (ie. greener) it will be:
 
 ![Colour Palette](/lets-create-data-vis-svelte/colour-palette.png)
 
@@ -749,7 +749,9 @@ Notice how we exported this function, this is important as we are going to be us
 
 Inside of the `App.svelte` file, if you import the function in the `<script>` tags:
 
-`import { getRegionData } from "./Data/Data.js";`
+```javascript
+import { getRegionData } from "./Data/Data.js";
+```
 
 and then for the fillColour property of each `<MapRegion>`, instead of passing in 'red', we can instead just call our function and access the .colour property on it like so:
 
@@ -768,6 +770,40 @@ If you've done everything correctly, you should end up with a map that looks lik
 
 ![Map With Colour](/lets-create-data-vis-svelte/coloured-map.png)
 
-This section was a long one but you'll be happy to know that we are almost finished. In the next section we will create a Svelte component that shows all of the data about the region you have clicked. We will also do some housekeeping and make sure everything is styled properly and then we are pretty much finished!
+This section was a long one but you'll be happy to know that we are almost finished. In the next sections we will create a Svelte component that shows all of the data about the region you have clicked. We will also do some housekeeping and make sure everything is styled properly and then we are pretty much finished!
 
-## RegionInformation Component 🖱️ → 🗺️ → 🗃️
+## The `<RegionInformation>` Component 🖱️ → 🗺️ → 🗃️
+In this section we will be creating a new Svelte component that shows us all the data about a region when we click it.
+
+Let's start by making a new component called `RegionInformation.svelte` in the Components folder. As with our other components, let's make it so we need to pass it a variable when we create it. Call this region.
+
+In `RegionInformation.svelte`:
+
+```html
+<script>
+  export let region;
+</script>
+
+<p>This is the information for {region.name}</p>
+```
+
+Now inside of `App.svelte`, import the component and put one on the page to test it out:
+
+```html
+  <script>
+    import RegionInformation from "./Components/RegionInformation.svelte";
+  </script>
+  <main class="app">
+    <h1>{activeRegion}</h1>
+    <RegionInformation region={getRegionData('Derbyshire')} />
+    ...
+```
+
+You should see the following on the page:
+
+![Example of RegionInformation component on the page](/lets-create-data-vis-svelte/info-for-derbyshire.png)
+
+Now let's build out the component using the data we have given it.
+
+```html
+```
