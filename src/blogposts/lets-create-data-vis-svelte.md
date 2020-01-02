@@ -6,9 +6,9 @@ title: "Lets Create: A Data Visualization using Svelte"
 description: "In this article we'll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."
 ---
 
-If you haven't heard of [Svelte](https://svelte.dev/), it is a relatively new JavaScript framework that challenges the norm by being shifting the bulk of the work from the browser to the compile step.
+If you haven't heard of [Svelte](https://svelte.dev/), it is a relatively new JavaScript framework that challenges the norm by shifting the bulk of the work from the browser to the compile step.
 
-In doing that, it brings many benefits, most notably, the ability to ship less code to the browser (as you don't need the entire library like with frameworks such as React or Vue). It does a bunch more stuff like scrapping the virtual DOM but I won't be talking about any of that as, in my opinion, the main benefit of Svelte is how easy it is to get started and how nice it is to use from a development perspective.
+In doing that, it brings many benefits, most notably, the ability to ship less code to the browser (as you don't need the entire library like with frameworks such as React or Vue). It does a bunch more stuff that I won't be talking about as, in my opinion, the main benefit of Svelte is how easy it is to get started and how nice it is to use from a development perspective.
 
 ## What are we going to build?
 
@@ -16,11 +16,13 @@ So now we have gotten the intro out of the way, let's talk about what we're goin
 
 When learning a new language/framework it is often de-facto to just build a todo app as it covers most bases and lets you see its usage within a sort of real-world application but to me a todo app is really boring, I use one everyday but I don't really want to build one. That's where this idea comes in.
 
-We're going to create a _Data Visualization_ using Svelte. This data visualization will show, on a map of the UK & Ireland, which regions have contributed most to the English Premier League title wins since its creation in 1992. The main reason I chose this topic is that there is so much data available, but it is also scoped small enough for an article (hopefully 🤞).
+We're going to create a very simple _Data Visualization_ using Svelte. This data visualization will show, on a map of the UK & Ireland, which regions have contributed most to the English Premier League title wins since its creation in 1992. Don't worry if you don't like sports, everything is applicable outside of sports. The main reason I chose this topic is that there is so much data available, but it is also scoped small enough for an article (hopefully 🤞).
 
 You can find a demo of this data visualization at the following link: LINK_HERE
 
 or you can just view the gif below:
+
+GIF_HERE
 
 ## Setup 🛠️
 
@@ -40,57 +42,110 @@ For this project we will need the following data:
 - For each team that has won, the season they won and the squad that played in the season they won.
 - A list of players from the UK and Ireland who had atleast 1 appearance for a winning team and the region they were born in.
 
-To get the football data I will be using the following [website](https://www.worldfootball.net/winner/eng-premier-league/) and then for each player I will just search for the region they are from.
+To get the football data I will be using the following [website](https://www.worldfootball.net/winner/eng-premier-league/).
 
-Our data will look something like the following,
+I have already gotten the data and made it into something that we can work which you can find in the github repo [here](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data)
 
-Every player:
-
-```javascript
-;[
-  {
-    name: "Marc Albrighton",
-    regions: ["Staffordshire"],
-  },
-]
-```
-
-and each season:
+The data looks like the following where it is split up by region and that region has an array of players from the region who have won premier league titles, it also has a regions overall appearances (every player's appearances added together). For each player, we just list the seasons they won, who they won it with and how many appearances they had. It looks like the following:
 
 ```javascript
 {
-  "season": "2015/2016",
-  "winner": "Leicester City",
-  "players": [
-    {
-      "name": "Marc Albrighton",
-      "appearances": 38
-    }
-  ]
-}
+    name: "Berkshire",
+    players: [
+      {
+        name: "Neil Webb",
+        seasons: [
+          {
+            year: "1992/1993",
+            team: "Manchester United",
+            appearances: 1
+          }
+        ]
+      },
+      {
+        name: "Stephen Hughes",
+        seasons: [
+          {
+            year: "1997/1998",
+            team: "Arsenal FC",
+            appearances: 16
+          }
+        ]
+      },
+      ...etc
 ```
-
-Fortunately, you don't have to go through and grab all of the data as I have already done so.
 
 In your project, create a folder in `src` called `Data` and then create the following files:
 
-- `Players.js` - This will have every player and the region[s] they are from.
-- `Titles.js` - This will have each premier league season, the team that won it and the squad they won it with.
-- `Regions.js` - We'll get to this in the next section, but this will hold each region of our map.
+- `data.js` - This should hold the data for each region found [here](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data/data.js)
+- `regionPaths.js` - We'll get to this in the next section, but this will hold each region of our map as an actual SVG path to be drawn to the screen.
+- `getRegionData.js` - This will export a function that takes a region's name and will return all the data associated with that region.
 
-You can then populate these files with the data at the following link: [https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data)
+If you haven't already, populate the `data.js` file and the `regionPaths.js` file with the data at the following link: [https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data).
+
+Next, inside of the `getRegionData.js` file, import the `data.js` file and work out what the highest number of appearances is for any single region as we will need this to determine how much a region has contributed to premier league wins.
+
+```javascript
+import data from "./data";
+
+//Obtain the highest number of appearances that any single region has
+let highestNumberOfAppearances = 0;
+
+for (const region of data) {
+  if (region.overallAppearances > highestNumberOfAppearances) {
+    highestNumberOfAppearances = region.overallAppearances;
+  }
+}
+```
+
+The end goal of this data visualization is to have a map of the UK where each region is coloured in based on their contribution to premier league title wins. To do this we must determine each region's contribution and then assign a colour based on that. 
+
+We'll be using the following colour palette where green = higher contribution:
+
+![Colour Palette](/lets-create-data-vis-svelte/colour-palette.png)
+
+In the `getRegionData.js` file underneath the code you've already written, store the colours in an array:
+
+```javascript
+const colourPalette = ["#38003c", "#2a404e", "#274c52", "#265053", "#255454", "#245956", "#226659","#1f735d", "#1c8060", "#198c64", "#169968", "#14a66b", "#11b26f", "#0ebf73", "#0bcc76", "#08d97a",
+"#06e67e", "#03f281", "#00ff85"];
+```
+
+Next, we want to map the overall appearances of a region to a value in the array of colours. We do this using a formula which maps (0 to highestNumberOfAppearances) in the range of (0 to length of colours array) and then just create a colour property on each region with the hex value:
+
+```javascript
+//Map the number of appearances (0 to highestNumberOfAppearances) to a HEX value in the array
+for (const region of data) {
+  const index = Math.round(
+    (region.overallAppearances / highestNumberOfAppearances) *
+      (colourPalette.length - 1)
+  );
+
+  region.colour = colourPalette[index];
+}
+```
+
+You can read more on the maths behind this [here](https://math.stackexchange.com/questions/377169/calculating-a-value-inside-one-range-to-a-value-of-another-range) if you are interested.
+
+Finally, in the `getRegionData.js` file, create a function that takes a region's name and then returns the actual data for that region. We also want to export this function as the default function so it can be imported and used throughout our application to gain access to the data:
+
+```javascript
+//Export a function that takes a region name and will return the region for that name.
+export default getRegionData = regionName => {
+  return data.filter(region => region.name === regionName)[0];
+};
+```
+
+In the next two sections we will make sure Svelte is working and then create a component that holds all of our SVG paths creating a full SVG map of the UK.
 
 ## The Map 🗺️
 
-Now we have our data, we need the map. For this project I will be using a map of the UK and Ireland that I found [here](https://mapsvg.com/maps/united-kingdom-counties/). We can download this map as an SVG but we won't be directly using it as an SVG. For our purposes we need each `<path>` within the SVG to be seperated out. This is where our `Regions.js` file comes in.
+Now we have our data, we need the map. For this project I am using a map of the UK and Ireland that I found [here](https://mapsvg.com/maps/united-kingdom-counties/). We can download this map as an SVG but we won't be directly using it as an SVG. For our purposes we need each `<path>` within the SVG to be seperated out. This is where our `regionPaths.js` file comes in.
 
-Feel free to just copy the contents of the file from Github to speed things up, but if you feel like spending the time, you should do the following:
+Feel free to just copy the contents of the file from [Github](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data/regionPaths.js) to speed things up if you haven't already.
 
-1. Open up the downloaded SVG in a text editor.
-2. In the `Regions.js` file, we want to export a default array that has objects inside of it, these objects will have a name and an svgPath property.
-3. For each `<path>` in the SVG, create an object in the `Regions.js` file with the name of the region and the svgPath.
 
-Your `Regions.js` file should look something like this:
+Your `regionPaths.js` file should look something like this:
 
 ```javascript
 export default [
@@ -124,9 +179,7 @@ const app = new App({
 export default app
 ```
 
-This is our entry file, this is the only file that is not actually written in the "Svelte" syntax (I say that loosely as Svelte is very similar to JavaScript).
-
-We create a new instance of our `App.svelte` component and tell it to add itself to the body of the page using `target: document.body`. We then tell it that we want any animations/transitions on this component and its children to happen when we first load the component. (By default Svelte only plays animations/transitions when a component is mounted for a second time). We do this by adding the `intro: true` property, this is important as we want to animate the map by drawing it when you first load the page.
+This is our entry file where we create a new instance of our `App.svelte` component and tell it to add itself to the body of the page using `target: document.body`. We then tell it that we want any animations/transitions on this component and its children to happen when we first load the component (By default Svelte only plays animations/transitions when a component is mounted for a second time). We do this by adding the `intro: true` property, this is important as we want to animate the map by drawing it when you first load the page.
 
 Once you have done this, you won't see anything on the page as you need to edit the `App.svelte` file. As a test, let's pull in our Regions and put their names onto the screen using a Svelte `#each` loop.
 
@@ -134,51 +187,51 @@ In the `App.svelte` file:
 
 ```html
 <script>
-  import Regions from "./Data/Regions.js"
+  import regions from "./Data/regionPaths.js"
 </script>
 
-{#each Regions as { name }}
+{#each regions as { name }}
 <h1>{name}</h1>
 {/each}
 ```
 
-Here we import the Regions array from `Regions.js` as you do with normal JavaScript, we then create an `#each` loop and then for each item in the Regions array, we put an `<h1>` tag onto the page with the name of the region inside.
+Here we import the array from `regionPaths.js` as you do with normal JavaScript, we then create an `#each` loop and then for each item in the regions array, we put an `<h1>` tag onto the page with the name of the region inside.
 
 Your page should have reloaded and you should now seen the name of each region on the page.
 
-Now we have our basic setup, let's actually create our `<MapContainer>` component. This component will just be an SVG that lets us put any valid SVG code inside of it and it will be used to house the svgPaths of our regions. This way we can seperate our regions (which are just svg paths) from their parent SVG element.
+Now we have our basic setup, let's actually create the `<MapContainer>` component. This component will just be an SVG that lets us put any valid SVG code inside of it and it will be used to house the svgPaths of our regions. This way we can seperate our regions (which are just svg paths) from their parent SVG element.
 
 Start by creating a folder called `Components` inside of the `src` folder. Inside of that folder, create a new file called `MapContainer.svelte`
 
-In the `MapContainer.svelte` file:
+Write the following in the `MapContainer.svelte` file:
 
 ```html
 <script>
-  let width = "100%"
-  let height = "100%"
+  let width = "100%";
+  let height = "100%";
 </script>
 
 <svg width="{width}" height="{height}"></svg>
 ```
 
-This a is a very simple component that defines a width and height and then creates and SVG element with that width and height. Obviously nothing will display on the page as there is nothing inside of the SVG and we haven't even imported it into our `App.svelte` file.
+This is a very simple component that defines a width and height and then creates an SVG element with that width and height. Obviously nothing will display on the page as there is nothing inside of the SVG and we haven't even imported it into our `App.svelte` file.
 
-Let's make it so we can pass in a width and height to our component when we create it. You do this by placing `export` in front of variables within the JavaScript. This tells Svelte that we wish to provide values when we instantiate the component.
+Let's make it so we can pass in a width and height to our component when we create it. In Svelte you do this by placing `export` in front of variables within the JavaScript. This tells Svelte that we wish to provide values when we create an instance of the component.
 
 We can also simplify the usage of the width and height as attributes because they are named the same by just removing the `width=` part on the svg element.
 
 ```html
 <script>
-  export let width = "100%"
-  export let height = "100%"
+  export let width = "100%";
+  export let height = "100%";
 </script>
 
 <svg {width} {height}></svg>
 ```
 
-If no value is given for width or height, they will fallback to `"100%"`, you can also choose not to provide a default value and in that case it will default to `undefined` when nothing is provided.
+As we have given the variables a default value, they will fallback to `"100%"` if nothing is passed into the component, you can also choose not to provide a default value and in that case it will default to `undefined` when nothing is provided.
 
-Let's remove the example code and put it on our page,
+Let's replace the example code with our component,
 
 In the `App.svelte` file:
 
@@ -190,18 +243,18 @@ In the `App.svelte` file:
 <MapContainer width="800px" height="600px" />
 ```
 
-You should now be able to see an empty SVG element on the page if you inspect it using dev tools. Let's turn this into something more useful!
+If you inspect the page using dev tools you should be able to see an empty SVG element. This is obviously very exciting but let's turn this into something more useful!
 
-First let's remove the export from our width and height variables, we will be deciding this based on the elements inside of the SVG later on so we don't need to provide any values.
+First remove the export from our width and height variables, we will be deciding this based on the elements inside of the SVG later on so we don't need to provide any values.
 
-Next, let's create something called a `<slot>` inside of our SVG element. A slot is a feature of Svelte that allows us to decide where elements placed inside of a component when it is created should appear _inside_ the actual component.
+Next, we are going to create something called a `<slot>` inside of our SVG element. A slot is a feature of Svelte that allows us to decide where elements placed inside of a component when it is created should appear _inside_ the actual component.
 
 In the `MapContainer.svelte` file:
 
 ```html
 <script>
-  let width = "100%"
-  let height = "100%"
+  let width = "100%";
+  let height = "100%";
 </script>
 
 <svg {width} {height}>
@@ -239,16 +292,16 @@ You should now see a red rectangle on the screen.
 
 Using what we've written, let's get our map onto the page.
 
-Let's add our `#each` loop back into the `App.svelte` file, but this time we will pull through and put the svgPath onto the page and inside of our `MapContainer` component.
+Add the `#each` loop back into the `App.svelte` file, but this time pull through and put the svgPath onto the page and inside of our `MapContainer` component:
 
 ```html
 <script>
+  import regions from "./Data/regionPaths.js"
   import MapContainer from "./Components/MapContainer.svelte"
-  import Regions from "./Data/Regions.js"
 </script>
 
 <MapContainer>
-  {#each Regions as { name, svgPath }}
+  {#each regions as { name, svgPath }}
   <path d="{svgPath}" />
   {/each}
 </MapContainer>
@@ -256,7 +309,7 @@ Let's add our `#each` loop back into the `App.svelte` file, but this time we wil
 
 You should now see the full map on the page. What we've just done is essentially re-create the original SVG but as Svelte components.
 
-You may notice that the map is too big, we can do two things to help us with this. In our `MapContainer.svelte` file above the svg element, we can add some CSS to scale the map.
+You may notice that the map is too big, we can do two things to help us with this. In the `MapContainer.svelte` file above the svg element, we can add some CSS to scale the map.
 
 ```html
 <style>
@@ -268,7 +321,7 @@ You may notice that the map is too big, we can do two things to help us with thi
 
 This will make it so our map fits within the SVG element, but let's say we didn't know that scaling by `0.75` is the right number (cause it might not be if the contents inside of the svg are different) then we need to make sure the width and height of the svg scale to fit the content inside of it.
 
-To do this we can use the `onMount` function in Svelte to run some code when our component is added to the page. This code should get the bounding box of our SVG once it has content inside of it and then update the width and height to match it.
+To do this we can use the `onMount` function in Svelte to run some code when our component is added to the page. This code should get the bounding box of our SVG once it has content inside of it and then update the width and height to fit that bounding box.
 
 In the `MapContainer.svelte` file:
 
@@ -276,9 +329,9 @@ In the `MapContainer.svelte` file:
 <script>
   import { onMount } from "svelte"
 
-  let svg
-  let width = "100%"
-  let height = "100%"
+  let svg;
+  let width = "100%";
+  let height = "100%";
 
   onMount(() => {
     let svgBoundingBox = svg.getBBox()
@@ -303,7 +356,7 @@ In the `MapContainer.svelte` file:
 
 We import `onMount` from Svelte and then we pass it a function to run. This function does what we described above and, when the width and height change, Svelte automatically re-renders our svg element with the updated values.
 
-One extra thing you may have noticed is that we have a new variable called `svg` and `bind:this={svg}` on our svg element. All this does is store a reference to the actual svg element inside of the `svg` variable. In our use case, this is like doing `let svg = document.getElementById("mySvg")` if our element had the id of "mySvg". This allows us to call `getBBox()` on our svg element.
+One extra thing you may have noticed is that we have a new variable called `svg` and `bind:this={svg}` on our svg element. All this does is store a reference to the actual svg element inside of the `svg` variable. In our use case, this is like calling `document.querySelector(svg)` in vanilla javascript. 
 
 And That's it! It might seem like a lot of effort just to get our SVG onto the page when we could have just put it directly onto the page but this allows us to directly manage our regions outside of the SVG, which is important as you'll find out in the next section.
 
@@ -317,30 +370,30 @@ In the `MapRegion.svelte` file:
 
 ```html
 <script>
-  export let svgPath
+  export let svgPath;
 </script>
 
 <path d="{svgPath}" />
 ```
 
-and then in our `App.svelte` file, import our new component and replace the direct path:
+and then in our `App.svelte` file, import the new component and replace the direct path:
 
 ```html
 <MapContainer>
-  {#each Regions as { name, svgPath }}
-  <MapRegion {svgPath} />
+  {#each regions as { name, svgPath }}
+    <MapRegion {svgPath} />
   {/each}
 </MapContainer>
 ```
 
-We can now do some cool things, let's say we wanted to be able to specify a fill colour for our path, we'd simply export a variable and then use that variable like so:
+Let's say we wanted to be able to specify a fill colour for our path, we'd simply export a variable and then use that variable like so:
 
 In the `MapRegion.svelte` file:
 
 ```html
 <script>
-  export let svgPath
-  export let fillColour = "#333"
+  export let svgPath;
+  export let fillColour = "#333";
 </script>
 
 <path d="{svgPath}" fill="{fillColour}" />
@@ -350,7 +403,7 @@ In the `App.svelte` file:
 
 ```html
 <MapContainer>
-  {#each Regions as { name, svgPath }}
+  {#each regions as { name, svgPath }}
   <MapRegion {svgPath} fillColour="red" />
   {/each}
 </MapContainer>
@@ -362,10 +415,10 @@ In our `MapRegion.svelte` file:
 
 ```html
 <script>
-  export let svgPath
-  export let fillColour = "#333"
-  export let strokeColour = "#fff"
-  export let strokeWidth = "1px"
+  export let svgPath;
+  export let fillColour = "#333";
+  export let strokeColour = "#fff";
+  export let strokeWidth = "1px";
 </script>
 
 <path
@@ -380,7 +433,7 @@ In our `App.svelte` file:
 
 ```html
 <MapContainer>
-  {#each Regions as { name, svgPath }}
+  {#each regions as { name, svgPath }}
   <MapRegion
     {svgPath}
     fillColour="red"
@@ -434,16 +487,16 @@ and then on our path, we can add an event listener that will set our new variabl
 
 `on:introend={() => (transitionEnded = true)}`
 
-Now let's add a condition to our fill and stroke attributes to flip the colours if transitionEnded is false.
+Now let's add a condition to the fill and stroke attributes to flip the colours if transitionEnded is false.
 
 ```html
-<path 
-transition:draw={{ duration: 1500 }} on:introend={ () => (transitionEnded = true)}
-d={svgPath}
-class="path"
-fill={transitionEnded ? fillColour : strokeColour}
-stroke={transitionEnded ? strokeColour : fillColour}
-style="stroke-width: {strokeWidth}" />
+  <path 
+  transition:draw={{ duration: 1500 }} on:introend={ () => (transitionEnded = true)}
+  d={svgPath}
+  class="path"
+  fill={transitionEnded ? fillColour : strokeColour}
+  stroke={transitionEnded ? strokeColour : fillColour}
+  style="stroke-width: {strokeWidth}" />
 ```
 
 As a final touch, let's add a CSS transition to our fill attribute so that when the fill colour is set, it doesn't just flash onto the screen.
@@ -487,7 +540,7 @@ In the `App.svelte` file:
 
 ```html
 <MapContainer>
-  {#each Regions as { name, svgPath }}
+  {#each regions as { name, svgPath }}
   <MapRegion
     on:click={() => { console.log(name + ' clicked!') }}
     {svgPath}
@@ -568,189 +621,13 @@ If you've done everything correctly, you should have something that looks like t
 
 ![Interactive Map](/lets-create-data-vis-svelte/interactive-map.gif)
 
-## Making Sense of the Data 🔢
+In the next section we will be using the function we created at the very beginning to colour in the MapRegion components based on their contribution to the premier league.
 
-In this section we will be taking our data that we gathered right at the beginning of the article and making into something that we can use and visualise in our application.
-
-The end goal of this data visualization is to have a map where each region is coloured in based on their contribution to premier league title wins and when the user clicks on a region they will be shown more information about that region and its contribution specifically.
-
-We'll do this by first converting our region data into something more usable by joining them with the players who are from that region and then we will figure out what the colour of each region should be based on the combined number of appearances of each player that is from the region. Finally we will create a function that returns a region object with all of its data.
-
-Let's start by making a new file called `Data.js` inside of the `Data` folder and importing all of our specific data files into it:
+## Visualizing the data 🔢
+Inside of the `App.svelte` file, import the `getRegionData` function in the `<script>` tags:
 
 ```javascript
-import Players from "./Players";
-import Regions from "./Regions";
-import Titles from "./Titles";
-```
-Next, we want to convert the objects from the `Regions.js` file into something more usable by creating a new object for each region with the following structure:
-
-```typescript
-{
-    name: string,
-    players: [
-        {
-            name: string,
-            seasons: [
-                {
-                    year: string,
-                    team: string,
-                    appearances: number
-                }
-            ]
-        }
-    ],
-    appearances: number
-}
-```
-
-We can do this by:
-1. Looping through the array that is exported from `Regions.js`
-2. For each object in that array we want to create a new object with the above structure
-3. Inside of that loop, we want to loop through the array that is exported from the `Players.js` file
-6. For each player, if it is from the region being looped through, add it to the new region object.
-5. For each player, loop through the array that is exported from the `Titles.js` file and add every season they have won to their object.
-
-Now don't worry if that sounded complicated, it's because it is! This could be made easier if the data was already formatted how we wanted it but that isn't often the case if we are working with external APIs so this is a good exercise. The code for this can be found below.
-
-In the `Data.js` file:
-
-```javascript
-const regions = Regions.map(region => {
-  //Create the initial new region object
-  const newRegionObject = {
-    name: region.name,
-    players: [],
-    appearances: 0
-  };
-
-  //For each of the players in the array exported from Players.js
-  for (const player of Players) {
-    //If the player is from the current region
-    if (player.regions.includes(region.name)) {
-      //Create the initial player object
-      const playerObject = {
-        name: player.name,
-        seasons: []
-      };
-
-      //For each of the titles
-      for (const title of Titles) {
-        //For each of the players who won the title
-        for (const winningPlayer of title.players) {
-          //If the winning player is the same as our player
-          if (player.name === winningPlayer.name) {
-            //Add the current title to the player object
-            playerObject.seasons.push({
-              year: title.season,
-              team: title.winner,
-              appearances: winningPlayer.appearances
-            });
-
-            //Increment the overall appearances of the region by the player we just added
-            newRegionObject.appearances += winningPlayer.appearances;
-          }
-        }
-      }
-
-      //Add the player to the region object
-      newRegionObject.players.push(playerObject);
-    }
-  }
-
-  return newRegionObject;
-});
-```
-
-For reference an example output of this would be:
-
-```javascript
-{
-  name: "Derbyshire",
-  appearances: 73,
-  players: [
-    {
-      name: "Gary Cahill",
-      seasons: [
-        {
-          appearances: 36,
-          team: "Chelsea FC",
-          year: "2014/2015"
-        },
-        {
-          appearances: 37,
-          team: "Chelsea FC",
-          year: "2016/2017"
-        }
-      ]
-    }
-  ]
-}
-```
-
-Next let's calculate what the colour of the region should be and then store it on the region object as a hex value. I will be using the following colour palette where the higher a region's contribution, the further down (ie. greener) it will be:
-
-![Colour Palette](/lets-create-data-vis-svelte/colour-palette.png)
-
-We first store our colours in an array and then start by calculating the highest number of total appearances a region can have then for each region we map the number of appearances (0 → highest number of appearances) to an index in the array of colours:
-
-```javascript
-let highestNumberOfAppearances = 0;
-
-for (const region of regions) {
-  if (region.appearances > highestNumberOfAppearances) {
-    highestNumberOfAppearances = region.appearances;
-  }
-}
-
-const colourPalette = [
-  "#38003c",
-  "#2a404e",
-  "#274c52",
-  "#265053",
-  "#255454",
-  "#245956",
-  "#226659",
-  "#1f735d",
-  "#1c8060",
-  "#198c64",
-  "#169968",
-  "#14a66b",
-  "#11b26f",
-  "#0ebf73",
-  "#0bcc76",
-  "#08d97a",
-  "#06e67e",
-  "#03f281",
-  "#00ff85"
-];
-
-for (const region of regions) {
-  const index = Math.round(
-    (region.appearances / highestNumberOfAppearances) *
-      (colourPalette.length - 1)
-  );
-
-  region.colour = colourPalette[index];
-}
-```
-
-You can read more on the maths behind this [here](https://math.stackexchange.com/questions/377169/calculating-a-value-inside-one-range-to-a-value-of-another-range) if you are interested.
-
-Finally, let's create a function that we can pass a name to and it will return the region object with that name:
-
-```javascript
-export const getRegionData = regionName => {
-  return regions.filter(region => region.name === regionName)[0];
-};
-```
-
-Notice how we exported this function, this is important as we are going to be using it from outside of the `Data.js` file.
-
-Inside of the `App.svelte` file, if you import the function in the `<script>` tags:
-
-```javascript
-import { getRegionData } from "./Data/Data.js";
+import getRegionData from "./Data/data.js";
 ```
 
 and then for the fillColour property of each `<MapRegion>`, instead of passing in 'red', we can instead just call our function and access the .colour property on it like so:
@@ -770,7 +647,7 @@ If you've done everything correctly, you should end up with a map that looks lik
 
 ![Map With Colour](/lets-create-data-vis-svelte/coloured-map.png)
 
-This section was a long one but you'll be happy to know that we are almost finished. In the next sections we will create a Svelte component that shows all of the data about the region you have clicked. We will also do some housekeeping and make sure everything is styled properly and then we are pretty much finished!
+This section was a brief one as we did all the work at the very beginning; In the remaining sections we will create a Svelte component that shows all of the data about the region you have clicked. We will also do some housekeeping and make sure everything is styled properly and then we are pretty much finished!
 
 ## The `<RegionInformation>` Component 🖱️ → 🗺️ → 🗃️
 In this section we will be creating a new Svelte component that shows us all the data about a region when we click it.
