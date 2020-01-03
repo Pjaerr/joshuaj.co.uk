@@ -131,9 +131,11 @@ Finally, in the `getRegionData.js` file, create a function that takes a region's
 
 ```javascript
 //Export a function that takes a region name and will return the region for that name.
-export default getRegionData = regionName => {
+const getRegionData = regionName => {
   return data.filter(region => region.name === regionName)[0];
 };
+
+export default getRegionData;
 ```
 
 In the next two sections we will make sure Svelte is working and then create a component that holds all of our SVG paths creating a full SVG map of the UK.
