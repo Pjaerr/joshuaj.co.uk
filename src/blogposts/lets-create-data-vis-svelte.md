@@ -111,7 +111,7 @@ const colourPalette = ["#38003c", "#2a404e", "#274c52", "#265053", "#255454", "#
 "#06e67e", "#03f281", "#00ff85"];
 ```
 
-Next, we want to map the overall appearances of a region to a value in the array of colours. We do this using a formula which maps (0 to highestNumberOfAppearances) in the range of (0 to length of colours array) and then just create a colour property on each region with the hex value:
+Next, we want to map the overall appearances of a region to a value in the array of colours. We do this using a formula which maps (0 to highestNumberOfAppearances) in the range of (0 to length of colours array) and then just create a colour property on each region with the hex value or to the default dark colour if they haven't contributed at all:
 
 ```javascript
 //Map the number of appearances (0 to highestNumberOfAppearances) to a HEX value in the array
@@ -121,7 +121,11 @@ for (const region of data) {
       (colourPalette.length - 1)
   );
 
-  region.colour = colourPalette[index];
+  if (region.overallAppearances <= 0) {
+    region.colour = "rgba(51, 51, 51, 0.5)";
+  } else {
+    region.colour = colourPalette[index];
+  }
 }
 ```
 
@@ -654,13 +658,14 @@ This section was a brief one as we did all the work at the very beginning; In th
 ## The `<RegionInformation>` Component 🖱️ → 🗺️ → 🗃️
 In this section we will be creating a new Svelte component that shows us all the data about a region when we click it.
 
-Let's start by making a new component called `RegionInformation.svelte` in the Components folder. As with our other components, let's make it so we need to pass it a variable when we create it. Call this region.
+Let's start by making a new component called `RegionInformation.svelte` in the Components folder. As with our other components, let's make it so we need to pass it a variable when we create it. Call this region. We should also make it take a function that gets called when we close this component.
 
 In `RegionInformation.svelte`:
 
 ```html
 <script>
   export let region;
+  export let onClose;
 </script>
 
 <p>This is the information for {region.name}</p>
@@ -682,7 +687,255 @@ You should see the following on the page:
 
 ![Example of RegionInformation component on the page](/lets-create-data-vis-svelte/info-for-derbyshire.png)
 
-Now let's build out the component using the data we have given it.
+Now let's build out the component using the data we have given it. First add the styles for the modal:
 
 ```html
+<style>
+.modal-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #333;
+    opacity: 0.5;
+    z-index: 5;
+  }
+
+  .container {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .modal {
+    padding: 10px;
+    overflow-y: scroll;
+    text-align: center;
+    border-radius: 7px;
+    background-color: #fff;
+    box-shadow: 0px 0.5px 2px rgba(0, 0, 0, 0.25);
+    height: 420px;
+  }
+
+  @media (min-width: 400px) {
+    .modal {
+      height: 520px;
+    }
+  }
+
+  @media (min-width: 820px) {
+    .container {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal {
+      width: 820px;
+      height: 620px;
+    }
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .header-back-button {
+    position: absolute;
+  }
+
+  .header-back-button > button {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: #f5f5f5;
+  }
+
+  .header-title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .header-title > h1 {
+    margin: 0;
+    font-size: 1.4em;
+  }
+
+  .body-players {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .body-players > h2 {
+    font-size: 1.2em;
+  }
+</style>
 ```
+
+next, let's create the HTML structure and use the data on the `region` object.
+
+We'll start with an empty div which will act as an overlay to dim the background when the modal is open:
+
+```html
+  <div class="modal-overlay" />
+```
+
+and then for the container that will hold the modal we want to import two functions from Svelte which will animate the modal in and out of the screen when it is added to the page. For that we will need both the `slide` transition and the `quintInOut` easing function. Simply import these at the top of the component:
+
+```html
+<script>
+  import { slide } from "svelte/transition";
+  import { quintInOut } from "svelte/easing";
+</script>
+```
+
+and then create the container:
+
+```html
+  <section class="container" transition:slide={{ duration: 200, easing: quintInOut }}>
+  </section>
+```
+
+Inside of the container we want to create a div for the modal which will have a header and body inside of it (this will all make sense with the end result):
+
+```html
+  <div class="modal">
+    <header class="header">
+    </header>
+    <section class="body">
+    </section>
+  </div>
+```
+
+Inside of the header put the following HTML:
+
+```html
+<div class="header-back-button">
+  <button on:click={onClose}>
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <path
+        fill="#333"
+        d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+    </svg>
+  </button>
+</div>
+<div class="header-title">
+  <h1>{region.name}</h1>
+</div>
+```
+
+This creates a button with a back arrow inside of it that, when clicked, calls the `onClose` function passed into the component. It also has a `<h1>` element with the name of this region inside of it.
+
+Inside of the body, we want to put the following HTML:
+
+```html
+{#if region.overallAppearances > 0}
+  <div class="body-stats">
+    Number of appearances by players from this region during winning
+    seasons:
+    <b>{region.overallAppearances}</b>
+  </div>
+
+  <div class="body-players">
+    <h2>Players</h2>
+    <!--Put each player here-->
+  </div>
+{:else}
+  <div class="body-stats">
+    This region hasn't contributed to the English Premier League 😢
+  </div>
+{/if}
+```
+
+Next, create a new component called `Player.svelte` and inside of that component put the following markup:
+
+```html
+<script>
+  export let name;
+  export let seasons;
+</script>
+
+<style>
+  .container {
+    width: 100%;
+    background-color: #f5f5f5;
+    margin-bottom: 5px;
+  }
+
+  .name {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+</style>
+
+<div class="container">
+  <p class="name">{name}</p>
+  {#each seasons.reverse() as { year, team, appearances }}
+    <p>
+      <b>{year}</b>
+      with
+      <b>{appearances}</b>
+      appearances for
+      <b>{team}</b>
+    </p>
+  {/each}
+</div>
+```
+
+For each player in our region, we are going to create a new Player component that will display the player's name and then each season they contributed to, what year and with what team.
+
+To finalise this, back inside of the `RegionInformation` component, import the new Player component and then add the following Svelte `#each` loop in place of the `<!--Put each player here-->` comment:
+
+```html
+{#each players as { name, seasons }}
+  <Player {name} {seasons} />
+{/each}
+```
+
+and then inside of the script tags, put the following:
+
+```javascript
+const players = region.players.sort((player1, player2) => {
+  let player1Appearances = 0;
+  let player2Appearances = 0;
+
+  player1.seasons.forEach(
+    season => (player1Appearances += season.appearances)
+  );
+  player2.seasons.forEach(
+    season => (player2Appearances += season.appearances)
+  );
+
+  return player2Appearances - player1Appearances;
+});
+```
+which will order the player's in descending order according to their number of appearances.
+
+If you have done everything correctly, you should see something like this on the page:
+
+![Example of RegionInformation component on the page as a modal](/lets-create-data-vis-svelte/info-for-derbyshire-modal.png)
+
+We don't want to show the modal when no region has been selected, so in `App.svelte`, start by giving `activeRegion` no default value and then in the markup, replace the current `RegionInformation` component with the following:
+
+```html
+{#if activeRegion !== undefined}
+  <RegionInformation
+    region={getRegionData(activeRegion)}
+    onClose={() => {
+      activeRegion = undefined;
+    }} />
+{/if}
+```
+This now hides the component if no region is selected, and will show the information for whichever region has been selected instead of just Derbyshire. Notice we also added an onClose function that just sets the activeRegion to undefined, this will happen when we click the back button on the modal.
+
+You should now be able to click on any region in the map and you should be shown all of the statistics for that region.
+
+![Gif of the RegionInformation component being used](/lets-create-data-vis-svelte/regioninformation-modal.gif)
