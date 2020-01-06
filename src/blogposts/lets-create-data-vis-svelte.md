@@ -939,3 +939,137 @@ This now hides the component if no region is selected, and will show the informa
 You should now be able to click on any region in the map and you should be shown all of the statistics for that region.
 
 ![Gif of the RegionInformation component being used](/lets-create-data-vis-svelte/regioninformation-modal.gif)
+
+## Housekeeping 🏠
+
+We're almost finished, all that's left to do is some housekeeping.
+
+In the `App.svelte` file, replace your current styles with the following:
+
+```css
+.app {
+    display: flex;
+  }
+
+  .map-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 860px) {
+    .app {
+      flex-direction: column;
+    }
+
+    .map-container {
+      position: relative;
+    }
+  }
+```
+
+and then let's create a simple component that will fill up the whitespace on desktop and tell the user some information about the data visualization.
+
+Call the component `Overview.svelte` and give it the following javascript and markup:
+
+```html
+  <script>
+    import { blur } from "svelte/transition";
+  </script>
+
+  <div class="container" transition:blur>
+  <h1>English Premier League</h1>
+  <p>
+    The Premier League, often referred to as the English Premier League or the
+    EPL outside England, is the top level of the English football league system.
+  </p>
+  <p>
+    This is a data visualization on the map of the UK & Ireland that highlights
+    which regions have contributed the most to premier league title wins based
+    on British & Irish players that took part within winning teams.
+  </p>
+  <p class="key">
+    The colour of a region on the map is based on its contribution
+    which can be
+    <span class="none">None</span>
+    , or interpolated between
+    <span class="low">Low</span>
+    and
+    <span class="high">High</span>
+    .
+  </p>
+</div>
+```
+
+and the following styles:
+
+```css
+  .container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+  }
+
+  @media (min-width: 940px) {
+    .container {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .container {
+      max-width: 400px;
+    }
+  }
+
+  @media (min-width: 1500px) {
+    .container {
+      max-width: 600px;
+    }
+  }
+
+  .none,
+  .low,
+  .high {
+    font-weight: bold;
+  }
+
+  .none {
+    background-color: rgba(51, 51, 51, 0.5);
+  }
+
+  .low {
+    background-color: #38003c;
+    color: #f5f5f5;
+  }
+
+  .high {
+    background-color: #00ff85;
+  }
+```
+
+Finally, import the new component into the `App.svelte` file and show it if no region is currently active like so:
+
+```html
+  {#if activeRegion !== undefined}
+    <RegionInformation
+      region={getRegionData(activeRegion)}
+      onClose={() => {
+        activeRegion = undefined;
+      }} />
+  {:else}
+    <Overview />
+  {/if}
+```
+
+You should now see some information and a key next to the map, this will only show on screens that are large enough:
+
+![Overview component](/lets-create-data-vis-svelte/overview-component.png)
