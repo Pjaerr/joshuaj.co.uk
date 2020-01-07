@@ -6,9 +6,9 @@ title: "Lets Create: A Data Visualization using Svelte"
 description: "In this article we'll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."
 ---
 
-If you haven't heard of [Svelte](https://svelte.dev/), it is a relatively new JavaScript framework that challenges the norm by shifting the bulk of the work from the browser to the compile step.
+If you haven't heard of [Svelte](https://svelte.dev/), it is a relatively new JavaScript framework that challenges the norm by shifting the bulk of the work from the browser to the compile/build step.
 
-In doing that, it brings many benefits, most notably, the ability to ship less code to the browser (as you don't need the entire library like with frameworks such as React or Vue). It does a bunch more stuff that I won't be talking about as, in my opinion, the main benefit of Svelte is how easy it is to get started and how nice it is to use from a development perspective.
+In doing that, it brings many benefits, most notably, the ability to ship less code to the browser (as you don't need the entire library like with frameworks such as React or Vue) as well as a bunch more stuff that I won't be talking about in this article as, in my opinion, the main benefit of Svelte is how easy it is to get started and how nice it is to use from a development perspective.
 
 ## What are we going to build?
 
@@ -18,11 +18,11 @@ When learning a new language/framework it is often de-facto to just build a todo
 
 We're going to create a very simple _Data Visualization_ using Svelte. This data visualization will show, on a map of the UK & Ireland, which regions have contributed most to the English Premier League title wins since its creation in 1992. Don't worry if you don't like sports, everything is applicable outside of sports. The main reason I chose this topic is that there is so much data available, but it is also scoped small enough for an article (hopefully 🤞).
 
-You can find a demo of this data visualization at the following link: LINK_HERE
+You can find a demo of this data visualization at the following link: https://pjaerr.github.io/Svelte-Data-Vis-Premier-League/
 
 or you can just view the gif below:
 
-GIF_HERE
+![Final App Gif](/lets-create-data-vis-svelte/final-app-gif.gif)
 
 ## Setup 🛠️
 
@@ -42,11 +42,9 @@ For this project we will need the following data:
 - For each team that has won, the season they won and the squad that played in the season they won.
 - A list of players from the UK and Ireland who had atleast 1 appearance for a winning team and the region they were born in.
 
-To get the football data I will be using the following [website](https://www.worldfootball.net/winner/eng-premier-league/).
+To get the football data I used the following [website](https://www.worldfootball.net/winner/eng-premier-league/) and made it into something that we can work with which you can find in the github repo [here](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data)
 
-I have already gotten the data and made it into something that we can work which you can find in the github repo [here](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data)
-
-The data looks like the following where it is split up by region and that region has an array of players from the region who have won premier league titles, it also has a regions overall appearances (every player's appearances added together). For each player, we just list the seasons they won, who they won it with and how many appearances they had. It looks like the following:
+The data looks like the following where it is split up by region and that region has an array of players from the region who have won premier league titles, it also has a region's overall appearances (every player's appearances added together). For each player, we just list the seasons they won, who they won it with and how many appearances they had. It looks like the following:
 
 ```javascript
 {
@@ -77,11 +75,11 @@ The data looks like the following where it is split up by region and that region
 
 In your project, create a folder in `src` called `Data` and then create the following files:
 
-- `data.js` - This should hold the data for each region found [here](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data/data.js)
+- `data.js` - This should hold the data for each region found [here](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/blob/master/src/Data/Data.js)
 - `regionPaths.js` - We'll get to this in the next section, but this will hold each region of our map as an actual SVG path to be drawn to the screen.
 - `getRegionData.js` - This will export a function that takes a region's name and will return all the data associated with that region.
 
-If you haven't already, populate the `data.js` file and the `regionPaths.js` file with the data at the following link: [https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data).
+If you haven't already, populate the `data.js` file and the `regionPaths.js` file with the data at the following link: https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/tree/master/src/Data
 
 Next, inside of the `getRegionData.js` file, import the `data.js` file and work out what the highest number of appearances is for any single region as we will need this to determine how much a region has contributed to premier league wins.
 
@@ -169,7 +167,7 @@ export default [
 
 ## The `<MapContainer>` Component 🗺️ → 📦
 
-This is our first _component_, but before we begin, let's write the code that will actually hold our application.
+This is our first _component_, but before we begin, let's write the code that will actually hold the application.
 
 Edit the `main.js` file to include the following code:
 
@@ -185,7 +183,9 @@ const app = new App({
 export default app
 ```
 
-This is our entry file where we create a new instance of our `App.svelte` component and tell it to add itself to the body of the page using `target: document.body`. We then tell it that we want any animations/transitions on this component and its children to happen when we first load the component (By default Svelte only plays animations/transitions when a component is mounted for a second time). We do this by adding the `intro: true` property, this is important as we want to animate the map by drawing it when you first load the page.
+This is the entry file where we create a new instance of the `App.svelte` component and tell it to add itself to the body of the page using `target: document.body`. 
+
+We then tell it that we want any animations/transitions on this component and its children to happen when we first load the component (By default Svelte only plays animations/transitions after a state change). We do this by adding the `intro: true` property, this is important as we want to animate the map by drawing it when you first load the page.
 
 Once you have done this, you won't see anything on the page as you need to edit the `App.svelte` file. As a test, let's pull in our Regions and put their names onto the screen using a Svelte `#each` loop.
 
@@ -201,11 +201,11 @@ In the `App.svelte` file:
 {/each}
 ```
 
-Here we import the array from `regionPaths.js` as you do with normal JavaScript, we then create an `#each` loop and then for each item in the regions array, we put an `<h1>` tag onto the page with the name of the region inside.
+Here we import the array from `regionPaths.js` as you do with normal JavaScript, and then create an `#each` loop that will put an `<h1>` tag onto the page with the name of the region inside for each item in the regions array.
 
-Your page should have reloaded and you should now seen the name of each region on the page.
+The page should have hot-reloaded and you should now see the name of each region on the page.
 
-Now we have our basic setup, let's actually create the `<MapContainer>` component. This component will just be an SVG that lets us put any valid SVG code inside of it and it will be used to house the svgPaths of our regions. This way we can seperate our regions (which are just svg paths) from their parent SVG element.
+With the basic setup out of the way, let's create the `<MapContainer>` component. This component will just be an SVG that lets us put any valid SVG code inside of it and it will be used to house the svgPaths of the regions. This way we can seperate the regions (which are just svg paths) from their parent SVG element.
 
 Start by creating a folder called `Components` inside of the `src` folder. Inside of that folder, create a new file called `MapContainer.svelte`
 
@@ -220,7 +220,7 @@ Write the following in the `MapContainer.svelte` file:
 <svg width="{width}" height="{height}"></svg>
 ```
 
-This is a very simple component that defines a width and height and then creates an SVG element with that width and height. Obviously nothing will display on the page as there is nothing inside of the SVG and we haven't even imported it into our `App.svelte` file.
+This is a very simple component that defines a width and height and then creates an SVG element with that width and height. Currently nothing will display on the page as there is nothing inside of the SVG and we haven't imported it into our `App.svelte` file.
 
 Let's make it so we can pass in a width and height to our component when we create it. In Svelte you do this by placing `export` in front of variables within the JavaScript. This tells Svelte that we wish to provide values when we create an instance of the component.
 
@@ -249,9 +249,9 @@ In the `App.svelte` file:
 <MapContainer width="800px" height="600px" />
 ```
 
-If you inspect the page using dev tools you should be able to see an empty SVG element. This is obviously very exciting but let's turn this into something more useful!
+If you inspect the page using dev tools you should be able to see an empty SVG element. This is obviously very exciting but let's turn it into something more useful!
 
-First remove the export from our width and height variables, we will be deciding this based on the elements inside of the SVG later on so we don't need to provide any values.
+First remove the export from the width and height variables, these will be decided based on the elements inside of the SVG later on so no values need to be provided.
 
 Next, we are going to create something called a `<slot>` inside of our SVG element. A slot is a feature of Svelte that allows us to decide where elements placed inside of a component when it is created should appear _inside_ the actual component.
 
@@ -308,7 +308,7 @@ Add the `#each` loop back into the `App.svelte` file, but this time pull through
 
 <MapContainer>
   {#each regions as { name, svgPath }}
-  <path d="{svgPath}" />
+    <path d="{svgPath}" />
   {/each}
 </MapContainer>
 ```
@@ -329,7 +329,15 @@ This will make it so our map fits within the SVG element, but let's say we didn'
 
 To do this we can remove the styling and instead use the `onMount` function in Svelte to run some code when our component is added to the page. This code should get the bounding box of our SVG once it has content inside of it and then update the width and height to fit that bounding box.
 
-In the `MapContainer.svelte` file:
+In the `MapContainer.svelte` file, start by importing the `onMount` function from Svelte:
+
+```html
+<script>
+  import { onMount } from "svelte"
+</script>
+```
+
+and then create a local variable for the width, height and then a variable to hold a reference to the SVG element:
 
 ```html
 <script>
@@ -338,27 +346,10 @@ In the `MapContainer.svelte` file:
   let svg;
   let width = "0";
   let height = "0";
-
-  onMount(() => {
-    let svgBoundingBox = svg.getBBox()
-
-    width = svgBoundingBox.x + svgBoundingBox.width + svgBoundingBox.x
-    height = svgBoundingBox.y + svgBoundingBox.height + svgBoundingBox.y
-  })
 </script>
-
-<svg viewBox="0 0 {width} {height}" height={windowHeight - 10} bind:this={svg}>
-  <g class="regions">
-    <slot />
-  </g>
-</svg>
 ```
 
-We import `onMount` from Svelte and then we pass it a function to run. This function does what we described above and, when the width and height change, Svelte automatically re-renders our svg element with the updated values.
-
-One extra thing you may have noticed is that we have a new variable called `svg` and `bind:this={svg}` on our svg element. All this does is store a reference to the actual svg element inside of the `svg` variable. In our use case, this is like calling `document.querySelector(svg)` in vanilla javascript. 
-
-We also want this to happen when the page is resized, for this we can use the `svelte:window` tag and bind our resize functionality to the window being resized as well as binding the height of the window so our SVG is always up to date:
+next, create a function called `resizeSVG` that updates the width and height variables based on the SVG's bounding box and pass this function into Svelte's `onMount` function:
 
 ```html
 <script>
@@ -367,8 +358,6 @@ We also want this to happen when the page is resized, for this we can use the `s
   let svg;
   let width = "0";
   let height = "0";
-
-  let windowHeight = 10;
 
   const resizeSVG = () => {
     let svgBoundingBox = svg.getBBox();
@@ -379,7 +368,38 @@ We also want this to happen when the page is resized, for this we can use the `s
 
   onMount(resizeSVG);
 </script>
+```
+finally, in the HTML add the calculated attributes to the SVG element and bind the element to the `svg` variable:
 
+```html
+<svg viewBox="0 0 {width} {height}" height={window.innerHeight - 10} bind:this={svg}>
+  <g class="regions">
+    <slot />
+  </g>
+</svg>
+```
+
+As you can see, we import `onMount` from Svelte and then we pass it a function to run. This function does what we described above and, when the width and height change, Svelte automatically re-renders our svg element with the updated values.
+
+We also have a new variable called `svg` and `bind:this={svg}` on our svg element. All this does is store a reference to the actual svg element inside of the `svg` variable. In our use case, this is like calling `document.querySelector(svg)` in vanilla javascript.
+
+This works as expected but we also want this to happen when the page is resized, for this Svelte provides a special meta tag called `svelte:window` which we can use to bind our resize functionality to the window being resized as well as binding the height of the window so our SVG is always up to date.
+
+Start by creating a new variable in the JavaScript
+
+```javascript
+let windowHeight = 10;
+```
+
+and then create a new element in the html that takes the `resizeSVG` function as a callback and also binds the inner height of the window to our `windowHeight` variable:
+
+```html
+<svelte:window on:resize={resizeSVG} bind:innerHeight={windowHeight} />
+```
+
+and also update the SVG element so it uses the new `windowHeight` variable instead of `window.innerHeight`:
+
+```html
 <svelte:window on:resize={resizeSVG} bind:innerHeight={windowHeight} />
 
 <svg viewBox="0 0 {width} {height}" height={windowHeight - 10} bind:this={svg}>
@@ -389,7 +409,7 @@ We also want this to happen when the page is resized, for this we can use the `s
 </svg>
 ```
 
-We first make our function named and then tell Svelte to call it when the window is resized. We also create a variable called `windowHeight` that we use instead of accessing `window.innerHeight` directly and then bind the `windowHeight` variable to the height of the window. This all results in the map scaling to fit any screen size beyond the initial load.
+This should result in the map fitting within the window even when it is resized.
 
 You can look into the `svelte:window` tag [here](https://svelte.dev/examples#svelte-window-bindings) and all the cool things that can be done with it.
 
@@ -397,7 +417,7 @@ And That's it! It might seem like a lot of effort just to get our SVG onto the p
 
 ## The Basic `<MapRegion>` Component 🗺️ → 📦 → 📍
 
-Now we have our SVG as a component, I think it only makes sense to make our paths into components.
+Now we have the SVG as a component, I think it only makes sense to also make the paths into components.
 
 Create a new component called `MapRegion.svelte` and make it take an svgPath that it will output onto the page.
 
@@ -411,7 +431,7 @@ In the `MapRegion.svelte` file:
 <path d="{svgPath}" />
 ```
 
-and then in our `App.svelte` file, import the new component and replace the direct path:
+and then in the `App.svelte` file, import the new component and replace the direct path:
 
 ```html
 <MapContainer>
@@ -421,7 +441,7 @@ and then in our `App.svelte` file, import the new component and replace the dire
 </MapContainer>
 ```
 
-Let's say we wanted to be able to specify a fill colour for our path, we'd simply export a variable and then use that variable like so:
+Let's say we wanted to be able to specify a fill colour for the path, we'd simply export a variable and then use that variable like so:
 
 In the `MapRegion.svelte` file:
 
@@ -446,7 +466,7 @@ In the `App.svelte` file:
 
 We can also do the same thing for stroke colour and stroke width like so:
 
-In our `MapRegion.svelte` file:
+In the `MapRegion.svelte` file:
 
 ```html
 <script>
@@ -464,7 +484,7 @@ In our `MapRegion.svelte` file:
 />
 ```
 
-In our `App.svelte` file:
+In the `App.svelte` file:
 
 ```html
 <MapContainer>
@@ -479,7 +499,7 @@ In our `App.svelte` file:
 </MapContainer>
 ```
 
-This is our very basic `<MapRegion>` component. In the next section we'll spice things up a bit by adding a svelte transition to our map regions so they draw themselves.
+This is the very basic `<MapRegion>` component. In the next section we'll spice things up a bit by adding a svelte transition to our map regions so they draw themselves.
 
 ## Adding Transitions to our `<MapRegion>` Component 📍 → 💫
 
@@ -487,11 +507,13 @@ One of the coolest parts about Svelte is how easy it makes animation. This is mo
 
 We are going to make use of animation by using the Transition directive.
 
-To get up and running, all we need to do is import the _draw_ transition at the top of our file:
+To get up and running, all we need to do is import the _draw_ transition at the top of the `<script>` tags:
 
-`import { draw } from "svelte/transition";`
+```javascript
+import { draw } from "svelte/transition";
+```
 
-and then add an attribute to our SVG path that tells it to draw itself:
+and then add the `transition:draw` attribute to the SVG path which tells it to draw itself:
 
 ```html
 <path
@@ -504,37 +526,48 @@ and then add an attribute to our SVG path that tells it to draw itself:
 />
 ```
 
-That results in our SVG that draws itself, although it is each path drawing itself individually:
+That results in an SVG that draws itself through each path drawing itself individually:
 
 ![Basic Draw Transition](/lets-create-data-vis-svelte/basic-draw-transition.gif)
 
-but we can make it better, let's start by specifying the speed at which we want to draw each path, we do this by changing our attribute to be:
+but we can make it better, let's start by specifying the speed at which we want to draw each path, we do this by changing the attribute to be:
 
-`transition:draw={{ duration: 1500 }}`
-
+```html
+transition:draw={{ duration: 1500 }}
+```
 where `1500` is the time in milliseconds the animation should take.
 
 Now it's kind of hard to see the actual animation because of the conflicting colours. Let's flip the stroke colour and fill colour for the duration of the animation. We first start by defining a new variable in our script tags.
 
-`let transitionEnded = false;`
+```javascript
+let transitionEnded = false;
+```
 
-and then on our path, we can add an event listener that will set our new variable to true once our transition has ended. Svelte handles all of this for us as it knows when our draw transition finishes.
+and then on the path, we can add an event listener that will set `transitionEnded` to true once the transition has ended. Svelte handles all of this for us as it knows when the draw transition finishes.
 
-`on:introend={() => (transitionEnded = true)}`
+```html
+<path
+  transition:draw={{ duration: 1500 }}
+  on:introend={() => (transitionEnded = true)}
+  d="{svgPath}"
+  class="path"
+  fill="{fillColour}"
+  stroke="{strokeColour}"
+  style="stroke-width: {strokeWidth}"
+/>
+```
 
 Now let's add a condition to the fill and stroke attributes to flip the colours if transitionEnded is false.
 
+
 ```html
   <path 
-  transition:draw={{ duration: 1500 }} on:introend={ () => (transitionEnded = true)}
-  d={svgPath}
-  class="path"
-  fill={transitionEnded ? fillColour : strokeColour}
-  stroke={transitionEnded ? strokeColour : fillColour}
-  style="stroke-width: {strokeWidth}" />
+    fill={transitionEnded ? fillColour : strokeColour}
+    stroke={transitionEnded ? strokeColour : fillColour}
+  />
 ```
 
-As a final touch, let's add a CSS transition to our fill attribute so that when the fill colour is set, it doesn't just flash onto the screen.
+As a final touch, let's add a CSS transition to the fill attribute so that when the fill colour is set, it doesn't just flash onto the screen.
 
 Add the following CSS rule to the `<style>` tags:
 
@@ -552,19 +585,21 @@ If everything has gone smoothly, we should end up with something that looks like
 
 ## Adding Interactivity 🖱️ → 🗺️
 
-Now our map has some animations, let's take it a step further and make it interactive. In this section we will be making each `<MapRegion>` respond to clicks and log its name to the console.
+Now the map has some animations, let's take it a step further and make it interactive. In this section we will be making each `<MapRegion>` log it's name to the console when it is clicked.
 
 First navigate to the `<MapRegion>` component and add an empty `on:click` event to the svg path.
 
 ```html
 <path 
-on:click
-transition:draw={{ duration: 1500 }} on:introend={ () => (transitionEnded = true)}
-d={svgPath}
-class="path"
-fill={transitionEnded ? fillColour : strokeColour}
-stroke={transitionEnded ? strokeColour : fillColour}
-style="stroke-width: {strokeWidth}" />
+  on:click
+  transition:draw={{ duration: 1500 }}
+  on:introend={ () => (transitionEnded = true)}
+  d={svgPath}
+  class="path"
+  fill={transitionEnded ? fillColour : strokeColour}
+  stroke={transitionEnded ? strokeColour : fillColour}
+  style="stroke-width: {strokeWidth}"
+ />
 ```
 
 This says we don't want to handle the `on:click` event in our `<MapRegion>` component, rather we want to bubble it up and instead handle it wherever our `<MapRegion>` component is used.
@@ -593,13 +628,17 @@ Now let's make it a bit more obvious by storing which region was last clicked an
 
 Start by creating a variable in the `App.svelte` file:
 
-`let activeRegion;`
+```javascript
+let activeRegion;
+```
 
 and then in the `on:click` event handler replace the console.log with:
 
-`activeRegion = name;`
+```javascript
+activeRegion = name;
+```
 
-Finally, add a `<h1>` to the page that just contains the active region:
+Finally, add a `<h1>` tag to the page that just contains the active region:
 
 ```html
 <main class="app">
@@ -621,11 +660,11 @@ Finally, add a `<h1>` to the page that just contains the active region:
 </main>
 ```
 
-If you check the browser, you'll notice that it says `undefined`, this is because we haven't set any text by default, you can just set the default text of `activeRegion` to be something like "No region selected".
+If you check the browser, you'll notice that it says `undefined`, this is because we haven't set any text by default, you can just set the default text of `activeRegion` to be something like "No region selected" for the time being.
 
 Now if you click on any of the regions you'll see that it shows the region we last clicked. Although this seems simple it is a key part of how Svelte works. Svelte treats every top-level variable in your `<script>` tags as that component's state and when that state is updated, it will re-render the HTML with the updated state. This is all done for us automatically but it is important to be aware of!
 
-As a finishing touch before we move onto the next section, let's just add a tiny bit of CSS so that our regions are highlighted when you hover over them and a condition in our `App.svelte` file so that the active region stays highlighted.
+As a finishing touch before we move onto the next section, let's just add a tiny bit of CSS so that the regions are highlighted when you hover over them and a condition in the `App.svelte` file so that the active region stays highlighted.
 
 Add the following CSS in the `<MapRegion>` component:
 
@@ -635,19 +674,12 @@ Add the following CSS in the `<MapRegion>` component:
   }
 ```
 
-and then in the `App.svelte` file add the following ternary condition to the `fillColour` property of the `<MapRegion>` component:
+and then in the `App.svelte` file replace the `fillColour` property of the `<MapRegion>` component with the following ternary conditon:
 
 ```html
-{#each Regions as { name, svgPath }}
-  <MapRegion
-    on:click={() => {
-      activeRegion = name;
-    }}
-    {svgPath}
-    fillColour={activeRegion === name ? '#333' : 'red'}
-    strokeColour="white"
-    strokeWidth="1px" />
-{/each}
+<MapRegion 
+  fillColour={activeRegion === name ? '#333' : 'red'}
+/>
 ```
 
 this says that if the active region is equal to the name of the region being rendered, then fill it in with the grey colour, if not, fill it in red as normal.
@@ -687,7 +719,11 @@ This section was a brief one as we did all the work at the very beginning; In th
 ## The `<RegionInformation>` Component 🖱️ → 🗺️ → 🗃️
 In this section we will be creating a new Svelte component that shows us all the data about a region when we click it.
 
-Let's start by making a new component called `RegionInformation.svelte` in the Components folder. As with our other components, let's make it so we need to pass it a variable when we create it. Call this region. We should also make it take a function that gets called when we close this component.
+Let's start by making a new component called `RegionInformation.svelte` in the Components folder. 
+
+This component will be a modal that pops up when the user clicks on a region and has all of the information about the region inside of it.
+
+As with the other components, let's make it so we need to pass it a variable when we create it. Call this region. We should also make it take a function that gets called when we close this component.
 
 In `RegionInformation.svelte`:
 
@@ -809,7 +845,7 @@ Now let's build out the component using the data we have given it. First add the
 </style>
 ```
 
-next, let's create the HTML structure and use the data on the `region` object.
+next, create the HTML structure and use the data from the `region` object.
 
 We'll start with an empty div which will act as an overlay to dim the background when the modal is open:
 
@@ -833,7 +869,7 @@ and then create the container:
   </section>
 ```
 
-Inside of the container we want to create a div for the modal which will have a header and body inside of it (this will all make sense with the end result):
+Inside of the container we want to create a div for the modal which will have a header and body inside of it:
 
 ```html
   <div class="modal">
@@ -955,7 +991,7 @@ If you have done everything correctly, you should see something like this on the
 We don't want to show the modal when no region has been selected, so in `App.svelte`, start by giving `activeRegion` no default value and then in the markup, replace the current `RegionInformation` component with the following:
 
 ```html
-{#if activeRegion !== undefined}
+{#if activeRegion}
   <RegionInformation
     region={getRegionData(activeRegion)}
     onClose={() => {
@@ -1010,7 +1046,7 @@ Call the component `Overview.svelte` and give it the following javascript and ma
     import { blur } from "svelte/transition";
   </script>
 
-  <div class="container" transition:blur>
+  <div class="container" transition:blur|local>
   <h1>English Premier League</h1>
   <p>
     The Premier League, often referred to as the English Premier League or the
@@ -1034,7 +1070,9 @@ Call the component `Overview.svelte` and give it the following javascript and ma
 </div>
 ```
 
-and the following styles:
+*The reason we write `transition:blur|local` instead of just `transition:blur` is that we only want this transition to run when the block this code belongs to is created/destroyed but not when any parent blocks are created or destroyed. This results in a less janky animation when we open or close the modal but just means that this transition won't run when the entire application first loads.
+
+Next, give it the following styles:
 
 ```css
   .container {
@@ -1088,7 +1126,7 @@ and the following styles:
 Finally, import the new component into the `App.svelte` file and show it if no region is currently active like so:
 
 ```html
-  {#if activeRegion !== undefined}
+  {#if activeRegion}
     <RegionInformation
       region={getRegionData(activeRegion)}
       onClose={() => {
@@ -1107,7 +1145,7 @@ You should now see some information and a key next to the map, this will only sh
 
 That's it! We've built a small data visualization using Svelte and explored some of the unique features of the framework and I hope the article didn't feel too long and that you can take this knowledge on to build bigger and better things!
 
-If you want to host your website, it's really quick and easy as it is just static files:
+If you want to host your website, it's really quick and easy as Svelte just outputs static files:
 
 1. Inside of the `public` folder, just update your `index.html` file so that any assets are being linked to directly (ie. change `/bundle.js` to `bundle.js`) as this caused me issues.
 
@@ -1117,20 +1155,23 @@ If you want to host your website, it's really quick and easy as it is just stati
 
 3. Put the contents of the `public` folder onto a static file host. If you're using Github you can create a new branch called `gh-pages` and then just put the static files there. (Read me about this [here](https://pages.github.com/))
 
-It's worth noting that I am totally new to Svelte too and so take this article as a starting point and not as the definitive way to use Svelte.
+**Some things to note:**
 
-Svelte is a fuly fleshed out framework and we barely scratched the surface, here are some features of Svelte that we didn't utilise that you should definitely look into:
+None of the JavaScript has been transpiled to work on older browsers which is fine for this article but you can read up on how to do this [here](https://blog.az.sg/posts/svelte-and-ie11/) for more important applications.
 
-* [Reactive Declarations and Statements](https://svelte.dev/examples#reactive-declarations)
+I am totally new to Svelte so take this article as a starting point and not as the definitive way to use Svelte.
 
-* [Await Blocks](https://svelte.dev/examples#await-blocks)
+Lastly, Svelte is a fully fleshed out framework and we barely scratched the surface, here are some features of Svelte that we didn't utilise that you should definitely look into:
+  * [Reactive Declarations and Statements](https://svelte.dev/examples#reactive-declarations)
 
-* [Input Binding](https://svelte.dev/examples#text-inputs)
+  * [Await Blocks](https://svelte.dev/examples#await-blocks)
 
-* [Stores](https://svelte.dev/examples#writable-stores)
+  * [Input Binding](https://svelte.dev/examples#text-inputs)
 
-* [Tweening/Motion](https://svelte.dev/examples#tweened)
+  * [Stores](https://svelte.dev/examples#writable-stores)
+
+  * [Tweening/Motion](https://svelte.dev/examples#tweened)
 
 and that's just a few things that I think will be really useful in most applications, there's much more which can all be found [here](https://svelte.dev/examples).
 
-Thanks for reading, if you have any questions you can use the following Github thread to discuss the article: https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/issues/2
+Thanks for reading and if you have any questions you can use the following Github thread to discuss the article: https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/issues/2

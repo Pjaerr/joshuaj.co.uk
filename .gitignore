@@ -68,4 +68,5 @@ pages/posts/*.html
 
 pages/blog.html
 
-public
+/public
+/cache
