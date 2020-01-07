@@ -30,6 +30,11 @@
     &:hover {
       color: $highlightColour;
     }
+
+    &::selection {
+      color: $backgroundColour;
+      background-color: $fontColour;
+    }
   }
 }
 

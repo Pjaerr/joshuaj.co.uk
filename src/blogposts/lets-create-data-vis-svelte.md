@@ -1073,3 +1073,35 @@ Finally, import the new component into the `App.svelte` file and show it if no r
 You should now see some information and a key next to the map, this will only show on screens that are large enough:
 
 ![Overview component](/lets-create-data-vis-svelte/overview-component.png)
+
+## Conclusion 😎
+
+That's it! We've built a small data visualization using Svelte and explored some of the unique features of the framework and I hope the article didn't feel too long and that you can take this knowledge on to build bigger and better things!
+
+If you want to host your website, it's really quick and easy as it is just static files:
+
+1. Inside of the `public` folder, just update your `index.html` file so that any assets are being linked to directly (ie. change `/bundle.js` to `bundle.js`) as this caused me issues.
+
+
+2. Run `npm run build` to generate the final js and css files.
+
+
+3. Put the contents of the `public` folder onto a static file host. If you're using Github you can create a new branch called `gh-pages` and then just put the static files there. (Read me about this [here](https://pages.github.com/))
+
+It's worth noting that I am totally new to Svelte too and so take this article as a starting point and not as the definitive way to use Svelte.
+
+Svelte is a fuly fleshed out framework and we barely scratched the surface, here are some features of Svelte that we didn't utilise that you should definitely look into:
+
+* [Reactive Declarations and Statements](https://svelte.dev/examples#reactive-declarations)
+
+* [Await Blocks](https://svelte.dev/examples#await-blocks)
+
+* [Input Binding](https://svelte.dev/examples#text-inputs)
+
+* [Stores](https://svelte.dev/examples#writable-stores)
+
+* [Tweening/Motion](https://svelte.dev/examples#tweened)
+
+and that's just a few things that I think will be really useful in most applications, there's much more which can all be found [here](https://svelte.dev/examples).
+
+Thanks for reading, if you have any questions you can use the following Github thread to discuss the article: https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/issues/2

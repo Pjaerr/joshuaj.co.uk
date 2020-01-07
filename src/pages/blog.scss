@@ -7,6 +7,11 @@
   color: $fontColour;
 }
 
+.blog-listing-title::selection {
+  color: $backgroundColour;
+  background-color: $fontColour;
+}
+
 .blog-posts {
   display: flex;
   flex-direction: column;

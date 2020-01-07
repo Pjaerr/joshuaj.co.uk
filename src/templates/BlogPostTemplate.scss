@@ -44,6 +44,10 @@
   h4,
   h5 {
     font-weight: 900;
+    &::selection {
+      color: $backgroundColour;
+      background-color: $fontColour;
+    }
   }
 
   p {
@@ -52,6 +56,18 @@
 
     @media (max-width: $brk-small) {
       font-size: $blogParagraphFontSizeSmall;
+    }
+
+    &::selection {
+      color: $backgroundColour;
+      background-color: $fontColour;
+    }
+  }
+
+  em {
+    &::selection {
+      color: $backgroundColour;
+      background-color: $fontColour;
     }
   }
 
@@ -71,6 +87,10 @@
 
   a {
     color: $highlightColour;
+    &::selection {
+      color: $backgroundColour;
+      background-color: $fontColour;
+    }
   }
 }
 
@@ -83,5 +103,10 @@
 
   @media (max-width: $brk-small) {
     font-size: $blogTitleFontSizeSmall;
+  }
+
+  &::selection {
+    color: $backgroundColour;
+    background-color: $fontColour;
   }
 }

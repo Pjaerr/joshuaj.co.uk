@@ -20,9 +20,9 @@ const Blog = ({
   return (
     <Layout activePage="Blog">
       <SEO
-        description="Blog for Josh Jackson - @Pjaerr"
+        description="Personal Site and Blog for Josh Jackson - @Pjaerr"
         lang="en"
-        title="Blog - Josh Jackson | @Pjaerr"
+        title="Blog"
       />
       <h1 className="blog-listing-title">Blog</h1>
       <div className="blog-posts">

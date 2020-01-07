@@ -10,7 +10,7 @@ const IndexPage = () => (
     <SEO
       description="Personal Site and Blog for Josh Jackson - @Pjaerr"
       lang="en"
-      title="Josh Jackson | @Pjaerr"
+      title="Home"
     />
     <Header title="Josh Jackson" />
     <Projects />
