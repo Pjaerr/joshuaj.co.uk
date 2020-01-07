@@ -1,7 +1,7 @@
 ---
 isHidden: false
 path: "/blog/lets-create-data-vis-svelte"
-date: "2019-11-25"
+date: "2020-01-07"
 title: "Lets Create: A Data Visualization using Svelte"
 description: "In this article we'll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."
 ---
