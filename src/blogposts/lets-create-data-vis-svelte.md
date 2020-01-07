@@ -327,7 +327,7 @@ You may notice that the map is too big, we can do two things to help us with thi
 
 This will make it so our map fits within the SVG element, but let's say we didn't know that scaling by `0.75` is the right number (cause it might not be if the contents inside of the svg are different) then we need to make sure the width and height of the svg scale to fit the content inside of it.
 
-To do this we can use the `onMount` function in Svelte to run some code when our component is added to the page. This code should get the bounding box of our SVG once it has content inside of it and then update the width and height to fit that bounding box.
+To do this we can remove the styling and instead use the `onMount` function in Svelte to run some code when our component is added to the page. This code should get the bounding box of our SVG once it has content inside of it and then update the width and height to fit that bounding box.
 
 In the `MapContainer.svelte` file:
 
@@ -336,8 +336,8 @@ In the `MapContainer.svelte` file:
   import { onMount } from "svelte"
 
   let svg;
-  let width = "100%";
-  let height = "100%";
+  let width = "0";
+  let height = "0";
 
   onMount(() => {
     let svgBoundingBox = svg.getBBox()
@@ -347,13 +347,7 @@ In the `MapContainer.svelte` file:
   })
 </script>
 
-<style>
-  .regions {
-    transform: scale(0.75);
-  }
-</style>
-
-<svg {width} {height} bind:this="{svg}">
+<svg viewBox="0 0 {width} {height}" height={windowHeight - 10} bind:this={svg}>
   <g class="regions">
     <slot />
   </g>
@@ -363,6 +357,41 @@ In the `MapContainer.svelte` file:
 We import `onMount` from Svelte and then we pass it a function to run. This function does what we described above and, when the width and height change, Svelte automatically re-renders our svg element with the updated values.
 
 One extra thing you may have noticed is that we have a new variable called `svg` and `bind:this={svg}` on our svg element. All this does is store a reference to the actual svg element inside of the `svg` variable. In our use case, this is like calling `document.querySelector(svg)` in vanilla javascript. 
+
+We also want this to happen when the page is resized, for this we can use the `svelte:window` tag and bind our resize functionality to the window being resized as well as binding the height of the window so our SVG is always up to date:
+
+```html
+<script>
+  import { onMount } from "svelte";
+
+  let svg;
+  let width = "0";
+  let height = "0";
+
+  let windowHeight = 10;
+
+  const resizeSVG = () => {
+    let svgBoundingBox = svg.getBBox();
+
+    width = svgBoundingBox.x + svgBoundingBox.width + svgBoundingBox.x;
+    height = svgBoundingBox.y + svgBoundingBox.height + svgBoundingBox.y;
+  };
+
+  onMount(resizeSVG);
+</script>
+
+<svelte:window on:resize={resizeSVG} bind:innerHeight={windowHeight} />
+
+<svg viewBox="0 0 {width} {height}" height={windowHeight - 10} bind:this={svg}>
+  <g class="regions">
+    <slot />
+  </g>
+</svg>
+```
+
+We first make our function named and then tell Svelte to call it when the window is resized. We also create a variable called `windowHeight` that we use instead of accessing `window.innerHeight` directly and then bind the `windowHeight` variable to the height of the window. This all results in the map scaling to fit any screen size beyond the initial load.
+
+You can look into the `svelte:window` tag [here](https://svelte.dev/examples#svelte-window-bindings) and all the cool things that can be done with it.
 
 And That's it! It might seem like a lot of effort just to get our SVG onto the page when we could have just put it directly onto the page but this allows us to directly manage our regions outside of the SVG, which is important as you'll find out in the next section.
 
