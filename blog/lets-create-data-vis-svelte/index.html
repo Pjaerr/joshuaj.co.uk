@@ -1,0 +1,832 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.b4d1781626f97bf8d181.css">code[class*=language-],pre[class*=language-]{color:#657b83;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::-moz-selection,code[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection{background:#073642}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{background:#073642}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background-color:#fdf6e3}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#93a1a1}.token.punctuation{color:#586e75}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#268bd2}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string,.token.url{color:#2aa198}.token.entity{color:#657b83;background:#eee8d5}.token.atrule,.token.attr-value,.token.keyword{color:#859900}.token.class-name,.token.function{color:#b58900}.token.important,.token.regex,.token.variable{color:#cb4b16}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.navigation{display:flex;justify-content:center;align-items:center;font-family:Roboto,sans-serif;font-size:1em;font-weight:400;color:#353b48;padding-top:15px;padding-bottom:15px;width:100%}.navigation.navigation-homepage{font-size:.8em}@media (min-width:992px){.navigation.navigation-homepage{font-size:1em}}.navigation a{margin-left:10px;margin-right:10px;border:1px solid #353b48;border-radius:2px;padding:10px 20px;text-decoration:none;color:#353b48;-webkit-transition:background .3s cubic-bezier(.4,0,.2,1);transition:background .3s cubic-bezier(.4,0,.2,1)}@media (max-width:480px){.navigation a{padding:7px 15px}}.navigation a:hover{background:#353b48;color:#fff}.navigation a.link-active{background-color:#353b48;color:#fff}.navigation-top{justify-content:flex-start}body,html{margin:0;padding:0;border:0;font-family:Roboto,sans-serif}.scroll-progress{position:fixed;top:0;z-index:1;width:100%;background-color:#fff;height:4px}.scroll-progress-bar{height:4px;background:#01a3a4;width:0}.blog-post{width:100%}.blog-post,.blog-post-container{display:flex;justify-content:center}.blog-post-container{flex-direction:column;align-items:center;background:#fff;color:#353b48;width:50%}@media (max-width:992px){.blog-post-container{width:70%}}@media (max-width:768px){.blog-post-container{width:80%}}@media (max-width:480px){.blog-post-container{width:90%}}.blog-post-content{overflow-x:hidden;display:flex;flex-direction:column;align-items:flex-start;font-weight:300;width:100%}.blog-post-content h1,.blog-post-content h2,.blog-post-content h3,.blog-post-content h4,.blog-post-content h5{font-weight:900}.blog-post-content h1::-moz-selection,.blog-post-content h2::-moz-selection,.blog-post-content h3::-moz-selection,.blog-post-content h4::-moz-selection,.blog-post-content h5::-moz-selection{color:#fff;background-color:#353b48}.blog-post-content h1::selection,.blog-post-content h2::selection,.blog-post-content h3::selection,.blog-post-content h4::selection,.blog-post-content h5::selection{color:#fff;background-color:#353b48}.blog-post-content p{font-size:1.3em;line-height:1.4}@media (max-width:480px){.blog-post-content p{font-size:1.1em}}.blog-post-content p::-moz-selection{color:#fff;background-color:#353b48}.blog-post-content p::selection{color:#fff;background-color:#353b48}.blog-post-content em::-moz-selection{color:#fff;background-color:#353b48}.blog-post-content em::selection{color:#fff;background-color:#353b48}.blog-post-content img{max-width:100%}.blog-post-content code,.blog-post-content pre{overflow-x:auto}.blog-post-content .gatsby-highlight{overflow-x:auto;width:100%}.blog-post-content a{color:#01a3a4}.blog-post-content a::-moz-selection{color:#fff;background-color:#353b48}.blog-post-content a::selection{color:#fff;background-color:#353b48}.sub-page-title{font-family:Roboto,sans-serif;font-size:3em;text-align:center;font-weight:900}@media (max-width:480px){.sub-page-title{font-size:2.2em}}.sub-page-title::-moz-selection{color:#fff;background-color:#353b48}.sub-page-title::selection{color:#fff;background-color:#353b48}.blog-post-author{display:flex;flex-direction:column;background:#fff;width:100%;padding-top:20px;background:#f5f5f5;padding-bottom:20px}.blog-post-author .navigation{padding-top:40px}.blog-post-author-content{display:flex;justify-content:center;align-items:center;padding-right:10px;padding-left:10px}.blog-post-author-name{color:#353b48;font-size:1em}.blog-post-author-image{max-width:80px;height:auto;border-radius:50%;margin-right:20px}.blog-post-preview{margin:0 auto;width:50%}@media (max-width:768px){.blog-post-preview{width:80%}}@media (max-width:480px){.blog-post-preview{width:90%}}.blog-post-preview-title{text-decoration:none;color:#353b48}.blog-post-preview-title h2{font-weight:900;-webkit-transition:color .25s ease;transition:color .25s ease;font-size:2em}@media (max-width:480px){.blog-post-preview-title h2{font-size:1.5em}}.blog-post-preview-title h2:hover{color:#01a3a4}.blog-post-preview-title h2::-moz-selection{color:#fff;background-color:#353b48}.blog-post-preview-title h2::selection{color:#fff;background-color:#353b48}.blog-post-preview-date-container,.blog-post-preview-description{font-weight:300}.blog-post-preview-date-container{font-weight:900;font-style:italic}.blog-listing-title{font-size:3em;text-align:center;color:#353b48}.blog-listing-title::-moz-selection{color:#fff;background-color:#353b48}.blog-listing-title::selection{color:#fff;background-color:#353b48}.blog-posts,.header-content{display:flex;flex-direction:column;align-items:center;color:#353b48}.header-content{font-family:Pacifico,Roboto,sans-serif;font-size:4em;justify-content:center;text-align:center}@media (max-width:992px){.header-content{font-size:3em}}@media (max-width:768px){.header-content{font-size:2em}}.header-content-title::-moz-selection{color:#fff;background-color:#353b48}.header-content-title::selection{color:#fff;background-color:#353b48}.header-content-icons{margin-top:-80px}@media (max-width:768px){.header-content-icons{margin-top:0}}.header-content-icons-icon{text-decoration:none;margin-left:10px;margin-right:10px}.header-content-icons-icon svg{fill:#353b48;width:38px;height:38px;-webkit-transition:fill .25s ease;transition:fill .25s ease}@media (max-width:768px){.header-content-icons-icon svg{width:28px;height:28px}}.header-content-icons-icon svg:hover{fill:#01a3a4}.header-content-links{display:flex;justify-content:space-between;padding-left:40px;padding-right:40px;margin-top:40px}.header-content-links a{font-family:Roboto,sans-serif;font-size:.35em;border-radius:2px;padding:10px 20px;text-decoration:none;color:#353b48;-webkit-transition:background .3s cubic-bezier(.4,0,.2,1);transition:background .3s cubic-bezier(.4,0,.2,1);border:2px solid #353b48}@media (max-width:480px){.header-content-links a{padding:7px 15px}}.header-content-links a:hover{background:#353b48;color:#fff}#project-pub-name-generator{background:#00d2ff;background:-webkit-gradient(linear,left top,right top,from(#3a7bd5),to(#00d2ff));background:linear-gradient(90deg,#3a7bd5,#00d2ff)}#project-findr{background:#f2709c;background:-webkit-gradient(linear,left top,right top,from(#ff9472),to(#f2709c));background:linear-gradient(90deg,#ff9472,#f2709c)}#project-code-flow-extension{background:#396afc;background:-webkit-gradient(linear,left top,right top,from(#2948ff),to(#396afc));background:linear-gradient(90deg,#2948ff,#396afc)}#project-productivity-timer{background:#6e48aa;background:-webkit-gradient(linear,left top,right top,from(#9d50bb),to(#6e48aa));background:linear-gradient(90deg,#9d50bb,#6e48aa)}#project-pwa-timer{background:#4776e6;background:-webkit-gradient(linear,left top,right top,from(#8e54e9),to(#4776e6));background:linear-gradient(90deg,#8e54e9,#4776e6)}#project-game-jam-games{background:#02aab0;background:-webkit-gradient(linear,left top,right top,from(#00cdac),to(#02aab0));background:linear-gradient(90deg,#00cdac,#02aab0)}.projects-container{align-items:center;margin-left:10px;margin-right:10px}.project,.projects-container{display:flex;flex-direction:column}.project{box-shadow:-4px 2em 7.5em rgba(0,0,0,.33);justify-content:center;border-radius:4px;width:100%;color:#fff;margin:40px 10px;max-width:960px;height:340px;max-height:340px}.project-title{margin:25px;font-size:3em}@media (max-width:480px){.project-title{margin:15px}}@media (max-width:768px){.project-title{font-size:2.2em}}.project-description{margin:25px;font-size:1em;max-width:60%}@media (max-width:768px){.project-description{max-width:80%}}@media (max-width:480px){.project-description{max-width:100%;margin:15px}}.project-buttons{margin:25px;font-size:1em}@media (max-width:480px){.project-buttons{margin:15px}}.project-button{border:1px solid #fff;border-radius:2px;padding:10px 20px;text-decoration:none;color:#fff;-webkit-transition:background .3s cubic-bezier(.4,0,.2,1);transition:background .3s cubic-bezier(.4,0,.2,1);margin-right:20px}@media (max-width:480px){.project-button{padding:7px 15px}}.project-button:hover{background:#fff;color:#353b48}@media (max-width:480px){.project-button{margin-right:5px}}</style><meta name="generator" content="Gatsby 2.15.28"/><title data-react-helmet="true">Lets Create: A Data Visualization using Svelte | Josh Jackson - @Pjaerr</title><meta data-react-helmet="true" name="description" content="In this article we&#x27;ll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."/><meta data-react-helmet="true" property="og:title" content="Lets Create: A Data Visualization using Svelte"/><meta data-react-helmet="true" property="og:description" content="In this article we&#x27;ll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="@Pjaerr"/><meta data-react-helmet="true" name="twitter:title" content="Lets Create: A Data Visualization using Svelte"/><meta data-react-helmet="true" name="twitter:description" content="In this article we&#x27;ll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."/><link rel="shortcut icon" href="/icons/icon-48x48.png?v=0fabb910d54d37433a07d7708e4716da"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#01a3a4"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=0fabb910d54d37433a07d7708e4716da"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=0fabb910d54d37433a07d7708e4716da"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=0fabb910d54d37433a07d7708e4716da"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=0fabb910d54d37433a07d7708e4716da"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=0fabb910d54d37433a07d7708e4716da"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=0fabb910d54d37433a07d7708e4716da"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=0fabb910d54d37433a07d7708e4716da"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=0fabb910d54d37433a07d7708e4716da"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/pacifico/v16/FwZY7-Qmy14u9lezJ-6H6Mk.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/roboto/v20/KFOlCnqEu92Fr1MmYUtfBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/google-fonts/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2"/><style type="text/css">@font-face{font-family:Roboto;font-style:normal;font-weight:300;src:local('Roboto Light'),local('Roboto-Light'),url(/google-fonts/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2'),url(/google-fonts/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format('woff');font-display: swap;}@font-face{font-family:Roboto;font-style:normal;font-weight:400;src:local('Roboto'),local('Roboto-Regular'),url(/google-fonts/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2'),url(/google-fonts/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxM.woff) format('woff');font-display: swap;}@font-face{font-family:Roboto;font-style:normal;font-weight:900;src:local('Roboto Black'),local('Roboto-Black'),url(/google-fonts/s/roboto/v20/KFOlCnqEu92Fr1MmYUtfBBc4.woff2) format('woff2'),url(/google-fonts/s/roboto/v20/KFOlCnqEu92Fr1MmYUtfBBc-.woff) format('woff');font-display: swap;}@font-face{font-family:Pacifico;font-style:normal;font-weight:400;src:local('Pacifico Regular'),local('Pacifico-Regular'),url(/google-fonts/s/pacifico/v16/FwZY7-Qmy14u9lezJ-6H6Mk.woff2) format('woff2'),url(/google-fonts/s/pacifico/v16/FwZY7-Qmy14u9lezJ-6H6M8.woff) format('woff');font-display: swap;}</style><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><script>
+  window.excludeGAPaths=[/^(?:\/)$/];
+  function gaOptout(){document.cookie=disableStr+'=true; expires=Thu, 31 Dec 2099 23:59:59 UTC;path=/',window[disableStr]=!0}var gaProperty='UA-146439931-1',disableStr='ga-disable-'+gaProperty;document.cookie.indexOf(disableStr+'=true')>-1&&(window[disableStr]=!0);
+  if(!(parseInt(navigator.doNotTrack) === 1 || parseInt(window.doNotTrack) === 1 || parseInt(navigator.msDoNotTrack) === 1 || navigator.doNotTrack === "yes")) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-146439931-1', 'auto', {});
+      ga('set', 'anonymizeIp', true);
+      
+      
+      
+      
+      }</script><link as="script" rel="preload" href="/app-9d8fbc90ad9d19c70d8f.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-template-js-dfddd7674bf48211e735.js"/><link as="script" rel="preload" href="/styles-ed25f8e419f66d45d193.js"/><link as="script" rel="preload" href="/commons-1644b377061f92e3295b.js"/><link as="script" rel="preload" href="/webpack-runtime-959fc3a07a5763c927d4.js"/><link as="fetch" rel="preload" href="/page-data\blog\lets-create-data-vis-svelte\page-data.json" crossorigin="anonymous"/></head><body><noscript id="gatsby-noscript">This app works best with JavaScript enabled.</noscript><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper"><div class="navigation"><a class="" href="/">Home</a><a class="" href="/blog">Blog</a></div><main><div><div class="scroll-progress"><div class="scroll-progress-bar" style="width:0%"></div></div><div class="blog-post"><article class="blog-post-container"><h1 class="sub-page-title">Lets Create: A Data Visualization using Svelte</h1><section class="blog-post-content"><p>If you haven't heard of <a href="https://svelte.dev/" target="_blank" rel="nofollow">Svelte</a>, it is a relatively new JavaScript framework that challenges the norm by shifting the bulk of the work from the browser to the compile/build step.</p>
+<p>In doing that, it brings many benefits, most notably, the ability to ship less code to the browser (as you don't need the entire library like with frameworks such as React or Vue) as well as a bunch more stuff that I won't be talking about in this article as, in my opinion, the main benefit of Svelte is how easy it is to get started and how nice it is to use from a development perspective.</p>
+<h2>What are we going to build?</h2>
+<p>So now we have gotten the intro out of the way, let's talk about what we're going to build and why.</p>
+<p>When learning a new language/framework it is often de-facto to just build a todo app as it covers most bases and lets you see its usage within a sort of real-world application but to me a todo app is really boring, I use one everyday but I don't really want to build one. That's where this idea comes in.</p>
+<p>We're going to create a very simple <em>Data Visualization</em> using Svelte. This data visualization will show, on a map of the UK &#x26; Ireland, which regions have contributed most to the English Premier League title wins since its creation in 1992. Don't worry if you don't like sports, everything is applicable outside of sports. The main reason I chose this topic is that there is so much data available, but it is also scoped small enough for an article (hopefully 🤞).</p>
+<p>You can find a demo of this data visualization at the following link: <a href="https://pjaerr.github.io/Svelte-Data-Vis-Premier-League/" target="_blank" rel="nofollow">https://pjaerr.github.io/Svelte-Data-Vis-Premier-League/</a></p>
+<p>or you can just view the gif below:</p>
+<p><img src="/lets-create-data-vis-svelte/final-app-gif.gif" alt="Final App Gif"></p>
+<h2>Setup 🛠️</h2>
+<p>I won't go too deep into setting up Svelte as there are already guides on this, but the steps below should be enough to get started:</p>
+<ol>
+<li>Run <code class="language-text">npx degit sveltejs/template premier-league-data-vis</code></li>
+<li>Run <code class="language-text">cd premier-league-data-vis</code></li>
+<li>Run <code class="language-text">npm install</code></li>
+<li>Delete the contents of the default <code class="language-text">App.svelte</code> and <code class="language-text">main.js</code> files.</li>
+<li>Run <code class="language-text">npm run dev</code></li>
+</ol>
+<p>If you are using VS Code, there is a really useful extension called <a href="https://marketplace.visualstudio.com/items?itemName=JamesBirtles.svelte-vscode" target="_blank" rel="nofollow">Svelte for VS Code</a> by James Birtles that gives you intellisense for .svelte files however you can follow this article without it.</p>
+<h2>The Data 📊</h2>
+<p>For this project we will need the following data:</p>
+<ul>
+<li>Each team that has won the premier league since its creation in 1992.</li>
+<li>For each team that has won, the season they won and the squad that played in the season they won.</li>
+<li>A list of players from the UK and Ireland who had atleast 1 appearance for a winning team and the region they were born in.</li>
+</ul>
+<p>To get the football data I used the following <a href="https://www.worldfootball.net/winner/eng-premier-league/" target="_blank" rel="nofollow">website</a> and made it into something that we can work with which you can find in the github repo <a href="https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/tree/master/src/Data" target="_blank" rel="nofollow">here</a></p>
+<p>The data looks like the following where it is split up by region and that region has an array of players from the region who have won premier league titles, it also has a region's overall appearances (every player's appearances added together). For each player, we just list the seasons they won, who they won it with and how many appearances they had. It looks like the following:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">"Berkshire"</span><span class="token punctuation">,</span>
+    players<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Neil Webb"</span><span class="token punctuation">,</span>
+        seasons<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            year<span class="token punctuation">:</span> <span class="token string">"1992/1993"</span><span class="token punctuation">,</span>
+            team<span class="token punctuation">:</span> <span class="token string">"Manchester United"</span><span class="token punctuation">,</span>
+            appearances<span class="token punctuation">:</span> <span class="token number">1</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Stephen Hughes"</span><span class="token punctuation">,</span>
+        seasons<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            year<span class="token punctuation">:</span> <span class="token string">"1997/1998"</span><span class="token punctuation">,</span>
+            team<span class="token punctuation">:</span> <span class="token string">"Arsenal FC"</span><span class="token punctuation">,</span>
+            appearances<span class="token punctuation">:</span> <span class="token number">16</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token operator">...</span>etc</code></pre></div>
+<p>In your project, create a folder in <code class="language-text">src</code> called <code class="language-text">Data</code> and then create the following files:</p>
+<ul>
+<li><code class="language-text">data.js</code> - This should hold the data for each region found <a href="https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/blob/master/src/Data/Data.js" target="_blank" rel="nofollow">here</a></li>
+<li><code class="language-text">regionPaths.js</code> - We'll get to this in the next section, but this will hold each region of our map as an actual SVG path to be drawn to the screen.</li>
+<li><code class="language-text">getRegionData.js</code> - This will export a function that takes a region's name and will return all the data associated with that region.</li>
+</ul>
+<p>If you haven't already, populate the <code class="language-text">data.js</code> file and the <code class="language-text">regionPaths.js</code> file with the data at the following link: <a href="https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/tree/master/src/Data" target="_blank" rel="nofollow">https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/tree/master/src/Data</a></p>
+<p>Next, inside of the <code class="language-text">getRegionData.js</code> file, import the <code class="language-text">data.js</code> file and work out what the highest number of appearances is for any single region as we will need this to determine how much a region has contributed to premier league wins.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> data <span class="token keyword">from</span> <span class="token string">"./data"</span><span class="token punctuation">;</span>
+
+<span class="token comment">//Obtain the highest number of appearances that any single region has</span>
+<span class="token keyword">let</span> highestNumberOfAppearances <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> region <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>region<span class="token punctuation">.</span>overallAppearances <span class="token operator">></span> highestNumberOfAppearances<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    highestNumberOfAppearances <span class="token operator">=</span> region<span class="token punctuation">.</span>overallAppearances<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>The end goal of this data visualization is to have a map of the UK where each region is coloured in based on their contribution to premier league title wins. To do this we must determine each region's contribution and then assign a colour based on that. </p>
+<p>We'll be using the following colour palette where green = higher contribution:</p>
+<p><img src="/lets-create-data-vis-svelte/colour-palette.png" alt="Colour Palette"></p>
+<p>In the <code class="language-text">getRegionData.js</code> file underneath the code you've already written, store the colours in an array:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> colourPalette <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"#38003c"</span><span class="token punctuation">,</span> <span class="token string">"#2a404e"</span><span class="token punctuation">,</span> <span class="token string">"#274c52"</span><span class="token punctuation">,</span> <span class="token string">"#265053"</span><span class="token punctuation">,</span> <span class="token string">"#255454"</span><span class="token punctuation">,</span> <span class="token string">"#245956"</span><span class="token punctuation">,</span> <span class="token string">"#226659"</span><span class="token punctuation">,</span><span class="token string">"#1f735d"</span><span class="token punctuation">,</span> <span class="token string">"#1c8060"</span><span class="token punctuation">,</span> <span class="token string">"#198c64"</span><span class="token punctuation">,</span> <span class="token string">"#169968"</span><span class="token punctuation">,</span> <span class="token string">"#14a66b"</span><span class="token punctuation">,</span> <span class="token string">"#11b26f"</span><span class="token punctuation">,</span> <span class="token string">"#0ebf73"</span><span class="token punctuation">,</span> <span class="token string">"#0bcc76"</span><span class="token punctuation">,</span> <span class="token string">"#08d97a"</span><span class="token punctuation">,</span>
+<span class="token string">"#06e67e"</span><span class="token punctuation">,</span> <span class="token string">"#03f281"</span><span class="token punctuation">,</span> <span class="token string">"#00ff85"</span><span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre></div>
+<p>Next, we want to map the overall appearances of a region to a value in the array of colours. We do this using a formula which maps (0 to highestNumberOfAppearances) in the range of (0 to length of colours array) and then just create a colour property on each region with the hex value or to the default dark colour if they haven't contributed at all.</p>
+<p>Place the following code below the colour palette array:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">//Map the number of appearances (0 to highestNumberOfAppearances) to a HEX value in the array</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> region <span class="token keyword">of</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> index <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span>region<span class="token punctuation">.</span>overallAppearances <span class="token operator">/</span> highestNumberOfAppearances<span class="token punctuation">)</span> <span class="token operator">*</span>
+      <span class="token punctuation">(</span>colourPalette<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>region<span class="token punctuation">.</span>overallAppearances <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    region<span class="token punctuation">.</span>colour <span class="token operator">=</span> <span class="token string">"rgba(51, 51, 51, 0.5)"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    region<span class="token punctuation">.</span>colour <span class="token operator">=</span> colourPalette<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>You can read more on the maths behind this <a href="https://math.stackexchange.com/questions/377169/calculating-a-value-inside-one-range-to-a-value-of-another-range" target="_blank" rel="nofollow">here</a> if you are interested.</p>
+<p>Finally, in the <code class="language-text">getRegionData.js</code> file, create a function that takes a region's name and then returns the actual data for that region. We also want to export this function as the default function so it can be imported and used throughout our application to gain access to the data:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">//Export a function that takes a region name and will return the region for that name.</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getRegionData</span> <span class="token operator">=</span> <span class="token parameter">regionName</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">region</span> <span class="token operator">=></span> region<span class="token punctuation">.</span>name <span class="token operator">===</span> regionName<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> getRegionData<span class="token punctuation">;</span></code></pre></div>
+<p>In the next two sections we will make sure Svelte is working and then create a component that holds all of our SVG paths creating a full SVG map of the UK.</p>
+<h2>The Map 🗺️</h2>
+<p>Now we have our data, we need the map. For this project I am using a map of the UK and Ireland that I found <a href="https://mapsvg.com/maps/united-kingdom-counties/" target="_blank" rel="nofollow">here</a>. We can download this map as an SVG but we won't be directly using it as an SVG. For our purposes we need each <code class="language-text">&lt;path&gt;</code> within the SVG to be seperated out. This is where our <code class="language-text">regionPaths.js</code> file comes in.</p>
+<p>Feel free to just copy the contents of the file from <a href="https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/blob/master/src/Data/regionPaths.js" target="_blank" rel="nofollow">Github</a> to speed things up if you haven't already.</p>
+<p>Your <code class="language-text">regionPaths.js</code> file should look something like this:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    svgPath<span class="token punctuation">:</span> <span class="token string">"M642.97,979.16L643.67,982.94L647.4,986..."</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">"Bedfordshire"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    svgPath<span class="token punctuation">:</span><span class="token string">"M612.68,1061.2L613.28,1059L614.67,1058.64L..."</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">"Berkshire"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">]</span></code></pre></div>
+<h2>The <code class="language-text">&lt;MapContainer&gt;</code> Component 🗺️ → 📦</h2>
+<p>This is our first <em>component</em>, but before we begin, let's write the code that will actually hold the application.</p>
+<p>Edit the <code class="language-text">main.js</code> file to include the following code:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">"./App.svelte"</span>
+
+<span class="token comment">//Here we use intro:true so that transitions run on initial load.</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  target<span class="token punctuation">:</span> document<span class="token punctuation">.</span>body<span class="token punctuation">,</span>
+  intro<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> app</code></pre></div>
+<p>This is the entry file where we create a new instance of the <code class="language-text">App.svelte</code> component and tell it to add itself to the body of the page using <code class="language-text">target: document.body</code>. </p>
+<p>We then tell it that we want any animations/transitions on this component and its children to happen when we first load the component (By default Svelte only plays animations/transitions after a state change). We do this by adding the <code class="language-text">intro: true</code> property, this is important as we want to animate the map by drawing it when you first load the page.</p>
+<p>Once you have done this, you won't see anything on the page as you need to edit the <code class="language-text">App.svelte</code> file. As a test, let's pull in our Regions and put their names onto the screen using a Svelte <code class="language-text">#each</code> loop.</p>
+<p>In the <code class="language-text">App.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> regions <span class="token keyword">from</span> <span class="token string">"./Data/regionPaths.js"</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+{#each regions as { name }}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>{name}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+{/each}</code></pre></div>
+<p>Here we import the array from <code class="language-text">regionPaths.js</code> as you do with normal JavaScript, and then create an <code class="language-text">#each</code> loop that will put an <code class="language-text">&lt;h1&gt;</code> tag onto the page with the name of the region inside for each item in the regions array.</p>
+<p>The page should have hot-reloaded (at localhost:5000) and you should now see the name of each region on the page.</p>
+<p>With the basic setup out of the way, let's create the <code class="language-text">&lt;MapContainer&gt;</code> component. This component will just be an SVG that lets us put any valid SVG code inside of it and it will be used to house the svgPaths of the regions. This way we can seperate the regions (which are just svg paths) from their parent SVG element.</p>
+<p>Start by creating a folder called <code class="language-text">Components</code> inside of the <code class="language-text">src</code> folder. Inside of that folder, create a new file called <code class="language-text">MapContainer.svelte</code></p>
+<p>Write the following in the <code class="language-text">MapContainer.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">let</span> width <span class="token operator">=</span> <span class="token string">"100%"</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> height <span class="token operator">=</span> <span class="token string">"100%"</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{width}<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{height}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span></code></pre></div>
+<p>This is a very simple component that defines a width and height and then creates an SVG element with that width and height. Currently nothing will display on the page as there is nothing inside of the SVG and we haven't imported it into our <code class="language-text">App.svelte</code> file.</p>
+<p>Let's make it so we can pass in a width and height to our component when we create it. In Svelte you do this by placing <code class="language-text">export</code> in front of variables within the JavaScript. This tells Svelte that we wish to provide values when we create an instance of the component.</p>
+<p>We can also simplify the usage of the width and height as attributes because they are named the same by just removing the <code class="language-text">width=</code> part on the svg element.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">let</span> width <span class="token operator">=</span> <span class="token string">"100%"</span><span class="token punctuation">;</span>
+  <span class="token keyword">export</span> <span class="token keyword">let</span> height <span class="token operator">=</span> <span class="token string">"100%"</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">{width}</span> <span class="token attr-name">{height}</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span></code></pre></div>
+<p>As we have given the variables a default value, they will fallback to <code class="language-text">&quot;100%&quot;</code> if nothing is passed into the component, you can also choose not to provide a default value and in that case it will default to <code class="language-text">undefined</code> when nothing is provided.</p>
+<p>Let's replace the example code with our component.</p>
+<p>In the <code class="language-text">App.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> MapContainer <span class="token keyword">from</span> <span class="token string">"./Components/MapContainer.svelte"</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapContainer</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>800px<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>600px<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre></div>
+<p>If you inspect the page using dev tools you should be able to see an empty SVG element. This is obviously very exciting but let's turn it into something more useful!</p>
+<p>First remove the export from the width and height variables, these will be decided based on the elements inside of the SVG later on so no values need to be provided.</p>
+<p>Next, we are going to create something called a <code class="language-text">&lt;slot&gt;</code> inside of our SVG element. A slot is a feature of Svelte that allows us to decide where elements placed inside of a component when it is created should appear <em>inside</em> the actual component.</p>
+<p>In the <code class="language-text">MapContainer.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">let</span> width <span class="token operator">=</span> <span class="token string">"100%"</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> height <span class="token operator">=</span> <span class="token string">"100%"</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">{width}</span> <span class="token attr-name">{height}</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>g</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>regions<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>g</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span></code></pre></div>
+<p>This means that we can do something like the following in the <code class="language-text">App.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> MapContainer <span class="token keyword">from</span> <span class="token string">"./Components/MapContainer.svelte"</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapContainer</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rect</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">fill</span><span class="token punctuation">:</span>red</span><span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>MapContainer</span><span class="token punctuation">></span></span></code></pre></div>
+<p>Inside of our component, it will turn into:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">{width}</span> <span class="token attr-name">{height}</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>g</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>regions<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rect</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">fill</span><span class="token punctuation">:</span>red</span><span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>g</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span></code></pre></div>
+<p>as the contents inside of <code class="language-text">&lt;MapContainer&gt; &lt;/MapContainer&gt;</code> are placed inside of the <code class="language-text">&lt;slot&gt;</code>.</p>
+<p>You should now see a red rectangle on the screen.</p>
+<p>Using what we've written, let's get our map onto the page.</p>
+<p>Add the <code class="language-text">#each</code> loop back into the <code class="language-text">App.svelte</code> file, but this time pull through and put the svgPath onto the page and inside of our <code class="language-text">MapContainer</code> component:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> regions <span class="token keyword">from</span> <span class="token string">"./Data/regionPaths.js"</span>
+  <span class="token keyword">import</span> MapContainer <span class="token keyword">from</span> <span class="token string">"./Components/MapContainer.svelte"</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapContainer</span><span class="token punctuation">></span></span>
+  {#each regions as { name, svgPath }}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{svgPath}<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+  {/each}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>MapContainer</span><span class="token punctuation">></span></span></code></pre></div>
+<p>You should now see the full map on the page. What we've just done is essentially re-create the original SVG but as Svelte components.</p>
+<p>You may notice that the map is too big. We can do a few things to fix this, first start by providing some structure in the <code class="language-text">App.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>map-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapContainer</span><span class="token punctuation">></span></span>
+      {#each regions as { name, svgPath }}
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{svgPath}<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+      {/each}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>MapContainer</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span></code></pre></div>
+<p>and then add the following styles:</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css">  <span class="token selector">.app</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.map-container</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 860px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">.app</span> <span class="token punctuation">{</span>
+      <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token selector">.map-container</span> <span class="token punctuation">{</span>
+      <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span></code></pre></div>
+<p>Once you've done that, we can use the <code class="language-text">onMount</code> function that Svelte provides to run some code when our component is added to the page. This code should get the bounding box of our SVG once it has content inside of it and then update the width and height to fit that bounding box.</p>
+<p>In the <code class="language-text">MapContainer.svelte</code> file, start by importing the <code class="language-text">onMount</code> function from Svelte:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> onMount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"svelte"</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
+<p>and then create a local variable for the width, height and then a variable to hold a reference to the SVG element:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> onMount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"svelte"</span>
+
+  <span class="token keyword">let</span> svg<span class="token punctuation">;</span>
+  <span class="token keyword">let</span> width <span class="token operator">=</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> height <span class="token operator">=</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
+<p>next, create a function called <code class="language-text">resizeSVG</code> that updates the width and height variables based on the SVG's bounding box and pass this function into Svelte's <code class="language-text">onMount</code> function:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> onMount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"svelte"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> svg<span class="token punctuation">;</span>
+  <span class="token keyword">let</span> width <span class="token operator">=</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> height <span class="token operator">=</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">resizeSVG</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> svgBoundingBox <span class="token operator">=</span> svg<span class="token punctuation">.</span><span class="token function">getBBox</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    width <span class="token operator">=</span> svgBoundingBox<span class="token punctuation">.</span>x <span class="token operator">+</span> svgBoundingBox<span class="token punctuation">.</span>width <span class="token operator">+</span> svgBoundingBox<span class="token punctuation">.</span>x<span class="token punctuation">;</span>
+    height <span class="token operator">=</span> svgBoundingBox<span class="token punctuation">.</span>y <span class="token operator">+</span> svgBoundingBox<span class="token punctuation">.</span>height <span class="token operator">+</span> svgBoundingBox<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token function">onMount</span><span class="token punctuation">(</span>resizeSVG<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
+<p>finally, in the HTML add the calculated attributes to the SVG element and bind the element to the <code class="language-text">svg</code> variable:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0 0 {width} {height}<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span>{window.innerHeight</span> <span class="token attr-name">-</span> <span class="token attr-name">10}</span> <span class="token attr-name"><span class="token namespace">bind:</span>this</span><span class="token attr-value"><span class="token punctuation">=</span>{svg}</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>g</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>regions<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>g</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span></code></pre></div>
+<p>As you can see, we import <code class="language-text">onMount</code> from Svelte and then we pass it a function to run. This function does what we described above and, when the width and height change, Svelte automatically re-renders our svg element with the updated values.</p>
+<p>We also have a new variable called <code class="language-text">svg</code> and <code class="language-text">bind:this={svg}</code> on our svg element. All this does is store a reference to the actual svg element inside of the <code class="language-text">svg</code> variable. In our use case, this is like calling <code class="language-text">document.querySelector(svg)</code> in vanilla javascript.</p>
+<p>This works as expected but we also want this to happen when the page is resized, for this Svelte provides a special meta tag called <code class="language-text">svelte:window</code> which we can use to bind our resize functionality to the window being resized as well as binding the height of the window so our SVG is always up to date.</p>
+<p>Start by creating a new variable in the JavaScript</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> windowHeight <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span></code></pre></div>
+<p>and then create a new element in the html that takes the <code class="language-text">resizeSVG</code> function as a callback and also binds the inner height of the window to our <code class="language-text">windowHeight</code> variable:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">svelte:</span>window</span> <span class="token attr-name"><span class="token namespace">on:</span>resize</span><span class="token attr-value"><span class="token punctuation">=</span>{resizeSVG}</span> <span class="token attr-name"><span class="token namespace">bind:</span>innerHeight</span><span class="token attr-value"><span class="token punctuation">=</span>{windowHeight}</span> <span class="token punctuation">/></span></span></code></pre></div>
+<p>and also update the SVG element so it uses the new <code class="language-text">windowHeight</code> variable instead of <code class="language-text">window.innerHeight</code>:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">svelte:</span>window</span> <span class="token attr-name"><span class="token namespace">on:</span>resize</span><span class="token attr-value"><span class="token punctuation">=</span>{resizeSVG}</span> <span class="token attr-name"><span class="token namespace">bind:</span>innerHeight</span><span class="token attr-value"><span class="token punctuation">=</span>{windowHeight}</span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0 0 {width} {height}<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span>{windowHeight</span> <span class="token attr-name">-</span> <span class="token attr-name">10}</span> <span class="token attr-name"><span class="token namespace">bind:</span>this</span><span class="token attr-value"><span class="token punctuation">=</span>{svg}</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>g</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>regions<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>g</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span></code></pre></div>
+<p>This should result in the map fitting within the window even when it is resized.</p>
+<p>You can look into the <code class="language-text">svelte:window</code> tag <a href="https://svelte.dev/examples#svelte-window-bindings" target="_blank" rel="nofollow">here</a> and all the cool things that can be done with it.</p>
+<p>And That's it! It might seem like a lot of effort just to get our SVG onto the page when we could have just put it directly onto the page but this allows us to directly manage our regions outside of the SVG, which is important as you'll find out in the next section.</p>
+<h2>The Basic <code class="language-text">&lt;MapRegion&gt;</code> Component 🗺️ → 📦 → 📍</h2>
+<p>Now we have the SVG as a component, I think it only makes sense to also make the paths into components.</p>
+<p>Create a new component called <code class="language-text">MapRegion.svelte</code> and make it take an svgPath that it will output onto the page.</p>
+<p>In the <code class="language-text">MapRegion.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">let</span> svgPath<span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>path<span class="token punctuation">"</span></span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{svgPath}<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre></div>
+<p>and then in the <code class="language-text">App.svelte</code> file, import the new component and replace the direct path:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapContainer</span><span class="token punctuation">></span></span>
+  {#each regions as { name, svgPath }}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapRegion</span> <span class="token attr-name">{svgPath}</span> <span class="token punctuation">/></span></span>
+  {/each}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>MapContainer</span><span class="token punctuation">></span></span></code></pre></div>
+<p>Let's say we wanted to be able to specify a fill colour for the path, we'd simply export a variable and then use that variable like so:</p>
+<p>In the <code class="language-text">MapRegion.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">let</span> svgPath<span class="token punctuation">;</span>
+  <span class="token keyword">export</span> <span class="token keyword">let</span> fillColour <span class="token operator">=</span> <span class="token string">"#333"</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>path<span class="token punctuation">"</span></span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{svgPath}<span class="token punctuation">"</span></span> <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{fillColour}<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre></div>
+<p>In the <code class="language-text">App.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapContainer</span><span class="token punctuation">></span></span>
+  {#each regions as { name, svgPath }}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapRegion</span> <span class="token attr-name">{svgPath}</span> <span class="token attr-name">fillColour</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+  {/each}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>MapContainer</span><span class="token punctuation">></span></span></code></pre></div>
+<p>We can also do the same thing for stroke colour and stroke width like so:</p>
+<p>In the <code class="language-text">MapRegion.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">let</span> svgPath<span class="token punctuation">;</span>
+  <span class="token keyword">export</span> <span class="token keyword">let</span> fillColour <span class="token operator">=</span> <span class="token string">"#333"</span><span class="token punctuation">;</span>
+  <span class="token keyword">export</span> <span class="token keyword">let</span> strokeColour <span class="token operator">=</span> <span class="token string">"#fff"</span><span class="token punctuation">;</span>
+  <span class="token keyword">export</span> <span class="token keyword">let</span> strokeWidth <span class="token operator">=</span> <span class="token string">"1px"</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>path<span class="token punctuation">"</span></span>
+  <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{svgPath}<span class="token punctuation">"</span></span>
+  <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{fillColour}<span class="token punctuation">"</span></span>
+  <span class="token attr-name">stroke</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{strokeColour}<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name">
+  <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token selector">stroke-width:</span> <span class="token punctuation">{</span>strokeWidth<span class="token punctuation">}</span></span><span class="token punctuation">"</span></span>
+<span class="token punctuation">/></span></span></code></pre></div>
+<p>In the <code class="language-text">App.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapContainer</span><span class="token punctuation">></span></span>
+  {#each regions as { name, svgPath }}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapRegion</span>
+    <span class="token attr-name">{svgPath}</span>
+    <span class="token attr-name">fillColour</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span>
+    <span class="token attr-name">strokeColour</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>white<span class="token punctuation">"</span></span>
+    <span class="token attr-name">strokeWidth</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1px<span class="token punctuation">"</span></span>
+  <span class="token punctuation">/></span></span>
+  {/each}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>MapContainer</span><span class="token punctuation">></span></span></code></pre></div>
+<p>This is the very basic <code class="language-text">&lt;MapRegion&gt;</code> component. In the next section we'll spice things up a bit by adding a svelte transition to our map regions so they draw themselves.</p>
+<h2>Adding Transitions to our <code class="language-text">&lt;MapRegion&gt;</code> Component 📍 → 💫</h2>
+<p>One of the coolest parts about Svelte is how easy it makes animation. This is mostly because it treats it as first-class functionality.</p>
+<p>We are going to make use of animation by using the Transition directive.</p>
+<p>To get up and running, all we need to do is import the <em>draw</em> transition at the top of the <code class="language-text">&lt;script&gt;</code> tags:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> draw <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"svelte/transition"</span><span class="token punctuation">;</span></code></pre></div>
+<p>and then add the <code class="language-text">transition:draw</code> attribute to the SVG path which tells it to draw itself:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span>
+  <span class="token attr-name"><span class="token namespace">transition:</span>draw</span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>path<span class="token punctuation">"</span></span>
+  <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{svgPath}<span class="token punctuation">"</span></span>
+  <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{fillColour}<span class="token punctuation">"</span></span>
+  <span class="token attr-name">stroke</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{strokeColour}<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name">
+  <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token selector">stroke-width:</span> <span class="token punctuation">{</span>strokeWidth<span class="token punctuation">}</span></span><span class="token punctuation">"</span></span>
+<span class="token punctuation">/></span></span></code></pre></div>
+<p>That results in an SVG that draws itself through each path drawing itself individually:</p>
+<p><img src="/lets-create-data-vis-svelte/basic-draw-transition.gif" alt="Basic Draw Transition"></p>
+<p>but we can make it better, let's start by specifying the speed at which we want to draw each path, we do this by changing the attribute to be:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">transition:draw={{ duration: 1500 }}</code></pre></div>
+<p>where <code class="language-text">1500</code> is the time in milliseconds the animation should take.</p>
+<p>Now it's kind of hard to see the actual animation because of the conflicting colours. Let's flip the stroke colour and fill colour for the duration of the animation. We first start by defining a new variable in our script tags.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> transitionEnded <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span></code></pre></div>
+<p>and then on the path, we can add an event listener that will set <code class="language-text">transitionEnded</code> to true once the transition has ended. Svelte handles all of this for us as it knows when the draw transition finishes.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">&lt;path
+  transition:draw={{ duration: 1500 }}
+  on:introend={() => (transitionEnded = true)}
+  class="path"
+  d="{svgPath}"
+  fill="{fillColour}"
+  stroke="{strokeColour}"
+  style="stroke-width: {strokeWidth}"
+/></code></pre></div>
+<p>Now let's add a condition to the fill and stroke attributes to flip the colours if transitionEnded is false.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> 
+    <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation">=</span>{transitionEnded</span> <span class="token attr-name">?</span> <span class="token attr-name">fillColour</span> <span class="token attr-name">:</span> <span class="token attr-name">strokeColour}</span>
+    <span class="token attr-name">stroke</span><span class="token attr-value"><span class="token punctuation">=</span>{transitionEnded</span> <span class="token attr-name">?</span> <span class="token attr-name">strokeColour</span> <span class="token attr-name">:</span> <span class="token attr-name">fillColour}</span>
+  <span class="token punctuation">/></span></span></code></pre></div>
+<p>As a final touch, let's add a CSS transition to the fill attribute so that when the fill colour is set, it doesn't just flash onto the screen.</p>
+<p>Add the following CSS rule to the <code class="language-text">&lt;style&gt;</code> tags:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.path</span> <span class="token punctuation">{</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> fill 0.5s ease<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre></div>
+<p>If everything has gone smoothly, we should end up with something that looks like the following, excluding the choppy gif of course:</p>
+<p><img src="/lets-create-data-vis-svelte/finished-draw-transition.gif" alt="Final Draw Transition"></p>
+<h2>Adding Interactivity 🖱️ → 🗺️</h2>
+<p>Now the map has some animations, let's take it a step further and make it interactive. In this section we will be making each <code class="language-text">&lt;MapRegion&gt;</code> log it's name to the console when it is clicked.</p>
+<p>First navigate to the <code class="language-text">&lt;MapRegion&gt;</code> component and add an empty <code class="language-text">on:click</code> event to the svg path.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">&lt;path 
+  on:click
+  transition:draw={{ duration: 1500 }}
+  on:introend={ () => (transitionEnded = true)}
+  d={svgPath}
+  class="path"
+  fill={transitionEnded ? fillColour : strokeColour}
+  stroke={transitionEnded ? strokeColour : fillColour}
+  style="stroke-width: {strokeWidth}"
+ /></code></pre></div>
+<p>This says we don't want to handle the <code class="language-text">on:click</code> event in our <code class="language-text">&lt;MapRegion&gt;</code> component, rather we want to bubble it up and instead handle it wherever our <code class="language-text">&lt;MapRegion&gt;</code> component is used.</p>
+<p>We can do this easily by adding the same <code class="language-text">on:click</code> event to our <code class="language-text">&lt;MapRegion&gt;</code> component but instead of it being empty we want to print the name of the component to the console.</p>
+<p>In the <code class="language-text">App.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapContainer</span><span class="token punctuation">></span></span>
+  {#each regions as { name, svgPath }}
+  &lt;MapRegion
+    on:click={() => { console.log(name + ' clicked!') }}
+    {svgPath}
+    fillColour="red"
+    strokeColour="white"
+    strokeWidth="1px"
+  />
+  {/each}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>MapContainer</span><span class="token punctuation">></span></span></code></pre></div>
+<p>If you open the browser and click on the different regions of the map, you should see the name of that region in the console.</p>
+<p>Now let's make it a bit more obvious by storing which region was last clicked and showing it on the page inside of a <code class="language-text">&lt;h1&gt;</code></p>
+<p>Start by creating a variable in the <code class="language-text">App.svelte</code> file:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> activeRegion<span class="token punctuation">;</span></code></pre></div>
+<p>and then in the <code class="language-text">on:click</code> event handler replace the console.log with:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">activeRegion <span class="token operator">=</span> name<span class="token punctuation">;</span></code></pre></div>
+<p>Finally, add a <code class="language-text">&lt;h1&gt;</code> tag to the page that just contains the active region:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>{activeRegion}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>map-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MapContainer</span><span class="token punctuation">></span></span>
+      {#each Regions as { name, svgPath }}
+        &lt;MapRegion
+          on:click={() => {
+            activeRegion = name;
+          }}
+          {svgPath}
+          fillColour="red"
+          strokeColour="white"
+          strokeWidth="1px" />
+      {/each}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>MapContainer</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span></code></pre></div>
+<p>If you check the browser, you'll notice that it says <code class="language-text">undefined</code>, this is because we haven't set any text by default, you can just set the default text of <code class="language-text">activeRegion</code> to be something like "No region selected" for the time being.</p>
+<p>Now if you click on any of the regions you'll see that it shows the region we last clicked. Although this seems simple it is a key part of how Svelte works. Svelte treats every top-level variable in your <code class="language-text">&lt;script&gt;</code> tags as that component's state and when that state is updated, it will re-render the HTML with the updated state. This is all done for us automatically but it is important to be aware of!</p>
+<p>As a finishing touch before we move onto the next section, let's just add a tiny bit of CSS so that the regions are highlighted when you hover over them and a condition in the <code class="language-text">App.svelte</code> file so that the active region stays highlighted.</p>
+<p>Add the following CSS in the <code class="language-text">&lt;MapRegion&gt;</code> component:</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.path:hover</span> <span class="token punctuation">{</span>
+    <span class="token property">fill</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre></div>
+<p>and then in the <code class="language-text">App.svelte</code> file replace the <code class="language-text">fillColour</code> property of the <code class="language-text">&lt;MapRegion&gt;</code> component with the following ternary conditon:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">&lt;MapRegion 
+  fillColour={activeRegion === name ? '#333' : 'red'}
+/></code></pre></div>
+<p>this says that if the active region is equal to the name of the region being rendered, then fill it in with the grey colour, if not, fill it in red as normal.</p>
+<p>If you've done everything correctly, you should have something that looks like the following:</p>
+<p><img src="/lets-create-data-vis-svelte/interactive-map.gif" alt="Interactive Map"></p>
+<p>In the next section we will be using the function we created at the very beginning to colour in the MapRegion components based on their contribution to the premier league.</p>
+<h2>Visualizing the data 🔢</h2>
+<p>Inside of the <code class="language-text">App.svelte</code> file, import the <code class="language-text">getRegionData</code> function in the <code class="language-text">&lt;script&gt;</code> tags:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">import</span> getRegionData <span class="token keyword">from</span> <span class="token string">"./Data/getRegionData.js"</span><span class="token punctuation">;</span></code></pre></div>
+<p>and then for the fillColour property of each <code class="language-text">&lt;MapRegion&gt;</code>, instead of passing in 'red', we can instead just call our function and access the .colour property on it like so:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">&lt;MapRegion
+  on:click={() => {
+    activeRegion = name;
+  }}
+  {svgPath}
+  fillColour={activeRegion === name ? '#333' : getRegionData(name).colour}
+  strokeColour="white"
+  strokeWidth="1px" /></code></pre></div>
+<p>If you've done everything correctly, you should end up with a map that looks like this:</p>
+<p><img src="/lets-create-data-vis-svelte/coloured-map.png" alt="Map With Colour"></p>
+<p>This section was a brief one as we did all the work at the very beginning; In the remaining sections we will create a Svelte component that shows all of the data about the region you have clicked. We will also do some housekeeping and make sure everything is styled properly and then we are pretty much finished!</p>
+<h2>The <code class="language-text">&lt;RegionInformation&gt;</code> Component 🖱️ → 🗺️ → 🗃️</h2>
+<p>In this section we will be creating a new Svelte component that shows us all the data about a region when we click it.</p>
+<p>Let's start by making a new component called <code class="language-text">RegionInformation.svelte</code> in the Components folder. </p>
+<p>This component will be a modal that pops up when the user clicks on a region and has all of the information about the region inside of it.</p>
+<p>As with the other components, let's make it so we need to pass it a variable when we create it. We should also make it take a function that gets called when we close this component so that we can change the active region in App.svelte.</p>
+<p>Call these <code class="language-text">region</code> and <code class="language-text">onClose</code> respectively.</p>
+<p>In <code class="language-text">RegionInformation.svelte</code>:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">let</span> region<span class="token punctuation">;</span>
+  <span class="token keyword">export</span> <span class="token keyword">let</span> onClose<span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This is the information for {region.name}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre></div>
+<p>Now inside of <code class="language-text">App.svelte</code>, import the component and put one on the page to test it out:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> RegionInformation <span class="token keyword">from</span> <span class="token string">"./Components/RegionInformation.svelte"</span><span class="token punctuation">;</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>{activeRegion}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+    &lt;RegionInformation region={getRegionData('Derbyshire')} />
+    ...</code></pre></div>
+<p>You should see the something like the following on the page:</p>
+<p><img src="/lets-create-data-vis-svelte/info-for-derbyshire.png" alt="Example of RegionInformation component on the page"></p>
+<p>Now let's build out the component using the data we have given it. First add the styles for the modal:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+<span class="token selector">.modal-overlay</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 0.5<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 5<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.container</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 10<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.modal</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">overflow-y</span><span class="token punctuation">:</span> scroll<span class="token punctuation">;</span>
+    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 7px<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0px 0.5px 2px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.25<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 420px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">.modal</span> <span class="token punctuation">{</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> 520px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 820px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">.container</span> <span class="token punctuation">{</span>
+      <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+      <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+      <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+      <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+
+      <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+      <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+      <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">.modal</span> <span class="token punctuation">{</span>
+      <span class="token property">width</span><span class="token punctuation">:</span> 820px<span class="token punctuation">;</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> 620px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.header</span> <span class="token punctuation">{</span>
+    <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.header-back-button</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.header-back-button > button</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 32px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 32px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #f5f5f5<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.header-title</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.header-title > h1</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.4em<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.body-players</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.body-players > h2</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.2em<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre></div>
+<p>next, create the HTML structure and use the data from the <code class="language-text">region</code> object.</p>
+<p>We'll start with an empty div which will act as an overlay to dim the background when the modal is open:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-overlay<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre></div>
+<p>and then for the container that will hold the modal we want to import two functions from Svelte which will animate the modal in and out of the screen when it is added to the page. For that we will need both the <code class="language-text">slide</code> transition and the <code class="language-text">quintInOut</code> easing function. Simply import these at the top of the component:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> slide <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"svelte/transition"</span><span class="token punctuation">;</span>
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> quintInOut <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"svelte/easing"</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
+<p>and then create the container:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">transition:</span>slide</span><span class="token attr-value"><span class="token punctuation">=</span>{{</span> <span class="token attr-name"><span class="token namespace">duration:</span></span> <span class="token attr-name">200,</span> <span class="token attr-name"><span class="token namespace">easing:</span></span> <span class="token attr-name">quintInOut</span> <span class="token attr-name">}}</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span></code></pre></div>
+<p>Inside of the container we want to create a div for the modal which will have a header and body inside of it:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
+<p>Inside of the header put the following HTML:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>header-back-button<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name"><span class="token namespace">on:</span>click</span><span class="token attr-value"><span class="token punctuation">=</span>{onClose}</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span>24px<span class="token punctuation">;</span><span class="token property">height</span><span class="token punctuation">:</span>24px</span><span class="token punctuation">"</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span>
+        <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#333<span class="token punctuation">"</span></span>
+        <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>header-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>{region.name}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
+<p>This creates a button with a back arrow inside of it that, when clicked, calls the <code class="language-text">onClose</code> function passed into the component. It also has a <code class="language-text">&lt;h1&gt;</code> element with the name of this region inside of it.</p>
+<p>Inside of the body, we want to put the following HTML:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">{#if region.overallAppearances > 0}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>body-stats<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    Number of appearances by players from this region during winning
+    seasons:
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">></span></span>{region.overallAppearances}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>body-players<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Players<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+    <span class="token comment">&lt;!--Put each player here--></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+{:else}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>body-stats<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    This region hasn't contributed to the English Premier League 😢
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+{/if}</code></pre></div>
+<p>Next, create a new component called <code class="language-text">Player.svelte</code> and inside of that component put the following markup:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">let</span> name<span class="token punctuation">;</span>
+  <span class="token keyword">export</span> <span class="token keyword">let</span> seasons<span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">.container</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #f5f5f5<span class="token punctuation">;</span>
+    <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.name</span> <span class="token punctuation">{</span>
+    <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{name}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  {#each seasons.reverse() as { year, team, appearances }}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">></span></span>{year}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">></span></span>
+      with
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">></span></span>{appearances}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">></span></span>
+      appearances for
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">></span></span>{team}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  {/each}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
+<p>For each player in our region, we are going to create a new Player component that will display the player's name and then each season they contributed to, what year and with what team.</p>
+<p>Note that we do <code class="language-text">seasons.reverse()</code> so that the most recent seasons are at the top of the list when display the player.</p>
+<p>To finalise this, back inside of the <code class="language-text">RegionInformation</code> component, import the new Player component and then add the following Svelte <code class="language-text">#each</code> loop in place of the <code class="language-text">&lt;!--Put each player here--&gt;</code> comment:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">{#each players as { name, seasons }}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Player</span> <span class="token attr-name">{name}</span> <span class="token attr-name">{seasons}</span> <span class="token punctuation">/></span></span>
+{/each}</code></pre></div>
+<p>and then inside of the script tags, put the following:</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> players <span class="token operator">=</span> region<span class="token punctuation">.</span>players<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">player1<span class="token punctuation">,</span> player2</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> player1Appearances <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> player2Appearances <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  player1<span class="token punctuation">.</span>seasons<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>
+    <span class="token parameter">season</span> <span class="token operator">=></span> <span class="token punctuation">(</span>player1Appearances <span class="token operator">+=</span> season<span class="token punctuation">.</span>appearances<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  player2<span class="token punctuation">.</span>seasons<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>
+    <span class="token parameter">season</span> <span class="token operator">=></span> <span class="token punctuation">(</span>player2Appearances <span class="token operator">+=</span> season<span class="token punctuation">.</span>appearances<span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> player2Appearances <span class="token operator">-</span> player1Appearances<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>which will order the player's in descending order according to their number of appearances.</p>
+<p>If you have done everything correctly, you should see something like this on the page:</p>
+<p><img src="/lets-create-data-vis-svelte/info-for-derbyshire-modal.png" alt="Example of RegionInformation component on the page as a modal"></p>
+<p>We don't want to show the modal when no region has been selected, so in <code class="language-text">App.svelte</code>, start by giving <code class="language-text">activeRegion</code> no default value and then in the markup, replace the current <code class="language-text">RegionInformation</code> component and the temporary <code class="language-text">&lt;h1&gt;</code> tag with the following:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">{#if activeRegion}
+  &lt;RegionInformation
+    region={getRegionData(activeRegion)}
+    onClose={() => {
+      activeRegion = undefined;
+    }} />
+{/if}</code></pre></div>
+<p>This now hides the component if no region is selected, and will show the information for whichever region has been selected instead of just Derbyshire. Notice we also added an onClose function that just sets the activeRegion to undefined, this will happen when we click the back button on the modal.</p>
+<p>You should now be able to click on any region in the map and you should be shown all of the statistics for that region.</p>
+<p><img src="/lets-create-data-vis-svelte/regioninformation-modal.gif" alt="Gif of the RegionInformation component being used"></p>
+<h2>Housekeeping 🏠</h2>
+<p>We're almost finished, all that's left to do is some housekeeping.</p>
+<p>Let's start by creating a simple component that will fill up the whitespace on desktop and tell the user some information about the data visualization.</p>
+<p>Call the component <code class="language-text">Overview.svelte</code> and give it the following javascript and markup:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> blur <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"svelte/transition"</span><span class="token punctuation">;</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">transition:</span>blur|local</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>English Premier League<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+    The Premier League, often referred to as the English Premier League or the
+    EPL outside England, is the top level of the English football league system.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+    This is a data visualization on the map of the UK &amp; Ireland that highlights
+    which regions have contributed the most to premier league title wins based
+    on British &amp; Irish players that took part within winning teams.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>key<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    The colour of a region on the map is based on its contribution
+    which can be
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>none<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>None<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+    , or interpolated between
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>low<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Low<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+    and
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>high<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>High<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+    .
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
+<p>*The reason we write <code class="language-text">transition:blur|local</code> instead of just <code class="language-text">transition:blur</code> is that we only want this transition to run when the block this code belongs to is created/destroyed but not when any parent blocks are created or destroyed. This results in a less janky animation when we open or close the modal but just means that this transition won't run when the entire application first loads.</p>
+<p>Next, give it the following styles:</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css">  <span class="token selector">.container</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+    <span class="token property">max-width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 940px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">.container</span> <span class="token punctuation">{</span>
+      <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1100px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">.container</span> <span class="token punctuation">{</span>
+      <span class="token property">max-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1500px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">.container</span> <span class="token punctuation">{</span>
+      <span class="token property">max-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.none,
+  .low,
+  .high</span> <span class="token punctuation">{</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.none</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>51<span class="token punctuation">,</span> 51<span class="token punctuation">,</span> 51<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.low</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #38003c<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #f5f5f5<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.high</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #00ff85<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre></div>
+<p>Finally, import the new component into the <code class="language-text">App.svelte</code> file and show it if no region is currently active like so:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">  {#if activeRegion}
+    &lt;RegionInformation
+      region={getRegionData(activeRegion)}
+      onClose={() => {
+        activeRegion = undefined;
+      }} />
+  {:else}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Overview</span> <span class="token punctuation">/></span></span>
+  {/if}</code></pre></div>
+<p>You should now see some information and a key next to the map, this will only show on screens that are large enough:</p>
+<p><img src="/lets-create-data-vis-svelte/overview-component.png" alt="Overview component"></p>
+<h2>Conclusion 😎</h2>
+<p>That's it! We've built a small data visualization using Svelte and explored some of the unique features of the framework and I hope the article didn't feel too long and that you can take this knowledge on to build bigger and better things!</p>
+<p>If you want to host your website, it's really quick and easy as Svelte just outputs static files:</p>
+<ol>
+<li>Run <code class="language-text">npm run build</code> to generate the final js and css files.</li>
+<li>Put the contents of the <code class="language-text">public</code> folder onto a static file host. If you're using Github you can create a new branch called <code class="language-text">gh-pages</code> and then just put the static files there. (Read me about this <a href="https://pages.github.com/" target="_blank" rel="nofollow">here</a>)</li>
+</ol>
+<p><strong>Some things to note:</strong></p>
+<p>None of the JavaScript has been transpiled to work on older browsers which is fine for this article but you can read up on how to do this <a href="https://blog.az.sg/posts/svelte-and-ie11/" target="_blank" rel="nofollow">here</a> for more important applications.</p>
+<p>I am totally new to Svelte so take this article as a starting point and not as the definitive way to use Svelte.</p>
+<p>Lastly, Svelte is a fully fleshed out framework and we barely scratched the surface, here are some features of Svelte that we didn't utilise that you should definitely look into:</p>
+<ul>
+<li><a href="https://svelte.dev/examples#reactive-declarations" target="_blank" rel="nofollow">Reactive Declarations and Statements</a></li>
+<li><a href="https://svelte.dev/examples#await-blocks" target="_blank" rel="nofollow">Await Blocks</a></li>
+<li><a href="https://svelte.dev/examples#text-inputs" target="_blank" rel="nofollow">Input Binding</a></li>
+<li><a href="https://svelte.dev/examples#writable-stores" target="_blank" rel="nofollow">Stores</a></li>
+<li><a href="https://svelte.dev/examples#tweened" target="_blank" rel="nofollow">Tweening/Motion</a></li>
+</ul>
+<p>and that's just a few things that I think will be really useful in most applications, there's much more which can all be found <a href="https://svelte.dev/examples" target="_blank" rel="nofollow">here</a>.</p>
+<p>Thanks for reading and if you have any questions you can use the Github thread to discuss the article: <a href="https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/issues/2" target="_blank" rel="nofollow">https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/issues/2</a></p></section><aside class="blog-post-author"><div class="blog-post-author-content"><img class="blog-post-author-image" src="/me.jpg" alt="Image of Josh Jackson"/><h1 class="blog-post-author-name">Written By <!-- -->Josh Jackson<!-- --> <br/><br/><a href="https://twitter.com/Pjaerr" target="_blank">@<!-- -->Pjaerr</a></h1></div></aside></article></div></div></main></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/blog/lets-create-data-vis-svelte";window.webpackCompilationHash="e63532d875b433147fe7";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-9d8fbc90ad9d19c70d8f.js"],"component---src-templates-blog-post-template-js":["/component---src-templates-blog-post-template-js-dfddd7674bf48211e735.js"],"component---src-pages-404-js":["/component---src-pages-404-js-3e9def90cdb6fdd8d040.js"],"component---src-pages-blog-js":["/component---src-pages-blog-js-a37bf5fc0b1bb87513e3.js"],"component---src-pages-index-js":["/component---src-pages-index-js-367989c81775e06f3194.js"]};/*]]>*/</script><script src="/webpack-runtime-959fc3a07a5763c927d4.js" async=""></script><script src="/commons-1644b377061f92e3295b.js" async=""></script><script src="/styles-ed25f8e419f66d45d193.js" async=""></script><script src="/component---src-templates-blog-post-template-js-dfddd7674bf48211e735.js" async=""></script><script src="/app-9d8fbc90ad9d19c70d8f.js" async=""></script></body></html>
