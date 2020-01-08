@@ -1,7 +1,7 @@
 ---
 isHidden: false
 path: "/blog/lets-create-data-vis-svelte"
-date: "2020-01-07"
+date: "2020-01-08"
 title: "Lets Create: A Data Visualization using Svelte"
 description: "In this article we'll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."
 ---
@@ -34,6 +34,7 @@ I won't go too deep into setting up Svelte as there are already guides on this, 
 4. Delete the contents of the default `App.svelte` and `main.js` files.
 5. Run `npm run dev`
 
+If you are using VS Code, there is a really useful extension called [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=JamesBirtles.svelte-vscode) by James Birtles that gives you intellisense for .svelte files however you can follow this article without it.
 ## The Data 📊
 
 For this project we will need the following data:
@@ -42,7 +43,7 @@ For this project we will need the following data:
 - For each team that has won, the season they won and the squad that played in the season they won.
 - A list of players from the UK and Ireland who had atleast 1 appearance for a winning team and the region they were born in.
 
-To get the football data I used the following [website](https://www.worldfootball.net/winner/eng-premier-league/) and made it into something that we can work with which you can find in the github repo [here](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data)
+To get the football data I used the following [website](https://www.worldfootball.net/winner/eng-premier-league/) and made it into something that we can work with which you can find in the github repo [here](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/tree/master/src/Data)
 
 The data looks like the following where it is split up by region and that region has an array of players from the region who have won premier league titles, it also has a region's overall appearances (every player's appearances added together). For each player, we just list the seasons they won, who they won it with and how many appearances they had. It looks like the following:
 
@@ -109,7 +110,9 @@ const colourPalette = ["#38003c", "#2a404e", "#274c52", "#265053", "#255454", "#
 "#06e67e", "#03f281", "#00ff85"];
 ```
 
-Next, we want to map the overall appearances of a region to a value in the array of colours. We do this using a formula which maps (0 to highestNumberOfAppearances) in the range of (0 to length of colours array) and then just create a colour property on each region with the hex value or to the default dark colour if they haven't contributed at all:
+Next, we want to map the overall appearances of a region to a value in the array of colours. We do this using a formula which maps (0 to highestNumberOfAppearances) in the range of (0 to length of colours array) and then just create a colour property on each region with the hex value or to the default dark colour if they haven't contributed at all.
+
+Place the following code below the colour palette array:
 
 ```javascript
 //Map the number of appearances (0 to highestNumberOfAppearances) to a HEX value in the array
@@ -146,7 +149,7 @@ In the next two sections we will make sure Svelte is working and then create a c
 
 Now we have our data, we need the map. For this project I am using a map of the UK and Ireland that I found [here](https://mapsvg.com/maps/united-kingdom-counties/). We can download this map as an SVG but we won't be directly using it as an SVG. For our purposes we need each `<path>` within the SVG to be seperated out. This is where our `regionPaths.js` file comes in.
 
-Feel free to just copy the contents of the file from [Github](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/src/Data/regionPaths.js) to speed things up if you haven't already.
+Feel free to just copy the contents of the file from [Github](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/blob/master/src/Data/regionPaths.js) to speed things up if you haven't already.
 
 
 Your `regionPaths.js` file should look something like this:
@@ -203,7 +206,7 @@ In the `App.svelte` file:
 
 Here we import the array from `regionPaths.js` as you do with normal JavaScript, and then create an `#each` loop that will put an `<h1>` tag onto the page with the name of the region inside for each item in the regions array.
 
-The page should have hot-reloaded and you should now see the name of each region on the page.
+The page should have hot-reloaded (at localhost:5000) and you should now see the name of each region on the page.
 
 With the basic setup out of the way, let's create the `<MapContainer>` component. This component will just be an SVG that lets us put any valid SVG code inside of it and it will be used to house the svgPaths of the regions. This way we can seperate the regions (which are just svg paths) from their parent SVG element.
 
@@ -237,7 +240,7 @@ We can also simplify the usage of the width and height as attributes because the
 
 As we have given the variables a default value, they will fallback to `"100%"` if nothing is passed into the component, you can also choose not to provide a default value and in that case it will default to `undefined` when nothing is provided.
 
-Let's replace the example code with our component,
+Let's replace the example code with our component.
 
 In the `App.svelte` file:
 
@@ -315,19 +318,48 @@ Add the `#each` loop back into the `App.svelte` file, but this time pull through
 
 You should now see the full map on the page. What we've just done is essentially re-create the original SVG but as Svelte components.
 
-You may notice that the map is too big, we can do two things to help us with this. In the `MapContainer.svelte` file above the svg element, we can add some CSS to scale the map.
+You may notice that the map is too big. We can do a few things to fix this, first start by providing some structure in the `App.svelte` file:
 
 ```html
-<style>
-  .regions {
-    transform: scale(0.75);
+<main class="app">
+  <div class="map-container">
+    <MapContainer>
+      {#each regions as { name, svgPath }}
+        <path d="{svgPath}" />
+      {/each}
+    </MapContainer>
+  </div>
+</main>
+```
+and then add the following styles:
+
+```css
+  .app {
+    display: flex;
   }
-</style>
+
+  .map-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 860px) {
+    .app {
+      flex-direction: column;
+    }
+
+    .map-container {
+      position: relative;
+    }
+  }
 ```
 
-This will make it so our map fits within the SVG element, but let's say we didn't know that scaling by `0.75` is the right number (cause it might not be if the contents inside of the svg are different) then we need to make sure the width and height of the svg scale to fit the content inside of it.
-
-To do this we can remove the styling and instead use the `onMount` function in Svelte to run some code when our component is added to the page. This code should get the bounding box of our SVG once it has content inside of it and then update the width and height to fit that bounding box.
+Once you've done that, we can use the `onMount` function that Svelte provides to run some code when our component is added to the page. This code should get the bounding box of our SVG once it has content inside of it and then update the width and height to fit that bounding box.
 
 In the `MapContainer.svelte` file, start by importing the `onMount` function from Svelte:
 
@@ -428,7 +460,7 @@ In the `MapRegion.svelte` file:
   export let svgPath;
 </script>
 
-<path d="{svgPath}" />
+<path class="path" d="{svgPath}" />
 ```
 
 and then in the `App.svelte` file, import the new component and replace the direct path:
@@ -451,7 +483,7 @@ In the `MapRegion.svelte` file:
   export let fillColour = "#333";
 </script>
 
-<path d="{svgPath}" fill="{fillColour}" />
+<path class="path" d="{svgPath}" fill="{fillColour}" />
 ```
 
 In the `App.svelte` file:
@@ -477,6 +509,7 @@ In the `MapRegion.svelte` file:
 </script>
 
 <path
+  class="path"
   d="{svgPath}"
   fill="{fillColour}"
   stroke="{strokeColour}"
@@ -518,8 +551,8 @@ and then add the `transition:draw` attribute to the SVG path which tells it to d
 ```html
 <path
   transition:draw
-  d="{svgPath}"
   class="path"
+  d="{svgPath}"
   fill="{fillColour}"
   stroke="{strokeColour}"
   style="stroke-width: {strokeWidth}"
@@ -549,8 +582,8 @@ and then on the path, we can add an event listener that will set `transitionEnde
 <path
   transition:draw={{ duration: 1500 }}
   on:introend={() => (transitionEnded = true)}
-  d="{svgPath}"
   class="path"
+  d="{svgPath}"
   fill="{fillColour}"
   stroke="{strokeColour}"
   style="stroke-width: {strokeWidth}"
@@ -694,7 +727,7 @@ In the next section we will be using the function we created at the very beginni
 Inside of the `App.svelte` file, import the `getRegionData` function in the `<script>` tags:
 
 ```javascript
-import getRegionData from "./Data/data.js";
+import getRegionData from "./Data/getRegionData.js";
 ```
 
 and then for the fillColour property of each `<MapRegion>`, instead of passing in 'red', we can instead just call our function and access the .colour property on it like so:
@@ -723,7 +756,9 @@ Let's start by making a new component called `RegionInformation.svelte` in the C
 
 This component will be a modal that pops up when the user clicks on a region and has all of the information about the region inside of it.
 
-As with the other components, let's make it so we need to pass it a variable when we create it. Call this region. We should also make it take a function that gets called when we close this component.
+As with the other components, let's make it so we need to pass it a variable when we create it. We should also make it take a function that gets called when we close this component so that we can change the active region in App.svelte.
+
+Call these `region` and `onClose` respectively.
 
 In `RegionInformation.svelte`:
 
@@ -748,7 +783,7 @@ Now inside of `App.svelte`, import the component and put one on the page to test
     ...
 ```
 
-You should see the following on the page:
+You should see the something like the following on the page:
 
 ![Example of RegionInformation component on the page](/lets-create-data-vis-svelte/info-for-derbyshire.png)
 
@@ -957,6 +992,8 @@ Next, create a new component called `Player.svelte` and inside of that component
 
 For each player in our region, we are going to create a new Player component that will display the player's name and then each season they contributed to, what year and with what team.
 
+Note that we do `seasons.reverse()` so that the most recent seasons are at the top of the list when display the player.
+
 To finalise this, back inside of the `RegionInformation` component, import the new Player component and then add the following Svelte `#each` loop in place of the `<!--Put each player here-->` comment:
 
 ```html
@@ -988,7 +1025,7 @@ If you have done everything correctly, you should see something like this on the
 
 ![Example of RegionInformation component on the page as a modal](/lets-create-data-vis-svelte/info-for-derbyshire-modal.png)
 
-We don't want to show the modal when no region has been selected, so in `App.svelte`, start by giving `activeRegion` no default value and then in the markup, replace the current `RegionInformation` component with the following:
+We don't want to show the modal when no region has been selected, so in `App.svelte`, start by giving `activeRegion` no default value and then in the markup, replace the current `RegionInformation` component and the temporary `<h1>` tag with the following:
 
 ```html
 {#if activeRegion}
@@ -1009,35 +1046,7 @@ You should now be able to click on any region in the map and you should be shown
 
 We're almost finished, all that's left to do is some housekeeping.
 
-In the `App.svelte` file, replace your current styles with the following:
-
-```css
-.app {
-    display: flex;
-  }
-
-  .map-container {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  @media (max-width: 860px) {
-    .app {
-      flex-direction: column;
-    }
-
-    .map-container {
-      position: relative;
-    }
-  }
-```
-
-and then let's create a simple component that will fill up the whitespace on desktop and tell the user some information about the data visualization.
+Let's start by creating a simple component that will fill up the whitespace on desktop and tell the user some information about the data visualization.
 
 Call the component `Overview.svelte` and give it the following javascript and markup:
 
@@ -1147,13 +1156,11 @@ That's it! We've built a small data visualization using Svelte and explored some
 
 If you want to host your website, it's really quick and easy as Svelte just outputs static files:
 
-1. Inside of the `public` folder, just update your `index.html` file so that any assets are being linked to directly (ie. change `/bundle.js` to `bundle.js`) as this caused me issues.
+
+1. Run `npm run build` to generate the final js and css files.
 
 
-2. Run `npm run build` to generate the final js and css files.
-
-
-3. Put the contents of the `public` folder onto a static file host. If you're using Github you can create a new branch called `gh-pages` and then just put the static files there. (Read me about this [here](https://pages.github.com/))
+2. Put the contents of the `public` folder onto a static file host. If you're using Github you can create a new branch called `gh-pages` and then just put the static files there. (Read me about this [here](https://pages.github.com/))
 
 **Some things to note:**
 
@@ -1174,4 +1181,4 @@ Lastly, Svelte is a fully fleshed out framework and we barely scratched the surf
 
 and that's just a few things that I think will be really useful in most applications, there's much more which can all be found [here](https://svelte.dev/examples).
 
-Thanks for reading and if you have any questions you can use the following Github thread to discuss the article: https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/issues/2
+Thanks for reading and if you have any questions you can use the Github thread to discuss the article: https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/issues/2
