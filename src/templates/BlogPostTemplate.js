@@ -16,17 +16,20 @@ export default function Template({
 
   const [scrollPos, setScrollPos] = useState(0)
 
+  const adjustScrollPosition = () => {
+    const windowScroll = document.body.top || document.documentElement.scrollTop
+
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight
+
+    setScrollPos((windowScroll / height) * 100)
+  }
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const windowScroll =
-        document.body.top || document.documentElement.scrollTop
+    window.addEventListener("scroll", adjustScrollPosition)
 
-      const height =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight
-
-      setScrollPos((windowScroll / height) * 100)
-    })
+    return () => window.removeEventListener("scroll", adjustScrollPosition)
   }, [])
 
   return (

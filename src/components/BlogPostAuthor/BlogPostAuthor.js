@@ -1,21 +1,21 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import "./BlogPostAuthor.scss"
 
-const BlogPostAuthor = ({ name, twitterUsername, imgSrc }) => {
+const BlogPostAuthor = () => {
   return (
     <aside className="blog-post-author">
       <div className="blog-post-author-content">
-        <img
-          className="blog-post-author-image"
-          src={imgSrc}
-          alt={"Image of " + name}
-        />
-        <h1 className="blog-post-author-name">
-          Written By {name} <br></br>
-          <br></br>
-          <a href={"https://twitter.com/" + twitterUsername} target="_blank">
-            @{twitterUsername}
+        <h1>
+          If you enjoyed this post you can read my other blog posts{" "}
+          <Link to="/blog">here</Link> or follow me on twitter{" "}
+          <a
+            href="https://twitter.com/Pjaerr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @Pjaerr
           </a>
         </h1>
       </div>

@@ -12,7 +12,7 @@ const Header = ({ title }) => {
           href="https://github.com/pjaerr"
           className="header-content-icons-icon"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ const Header = ({ title }) => {
           href="https://www.linkedin.com/in/joshua-jackson-53b9bb14b/"
           className="header-content-icons-icon"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ const Header = ({ title }) => {
           href="https://twitter.com/Pjaerr"
           className="header-content-icons-icon"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

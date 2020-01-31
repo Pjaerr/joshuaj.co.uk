@@ -20,7 +20,7 @@ const Projects = () => {
             className="project-button"
             href="https://findr-rebuild.netlify.com"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Check it out
           </a>
@@ -28,7 +28,7 @@ const Projects = () => {
             className="project-button"
             href="https://github.com/pjaerr/Findr"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Source Code
           </a>
@@ -48,7 +48,7 @@ const Projects = () => {
             className="project-button"
             href="https://marketplace.visualstudio.com/items?itemName=JoshJackson.code-flow-extension"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Check it out
           </a>
@@ -56,7 +56,7 @@ const Projects = () => {
             className="project-button"
             href="https://github.com/pjaerr/Code-Flow-Extension"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Source Code
           </a>
@@ -74,7 +74,7 @@ const Projects = () => {
             className="project-button"
             href="https://pjaerr.github.io/Pub-Name-Generator/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Check it out
           </a>
@@ -82,7 +82,7 @@ const Projects = () => {
             className="project-button"
             href="https://github.com/pjaerr/Pub-Name-Generator"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Source Code
           </a>
@@ -100,7 +100,7 @@ const Projects = () => {
             className="project-button"
             href="https://pjaerr.github.io/Productivity-Timer/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Check it out
           </a>
@@ -108,7 +108,7 @@ const Projects = () => {
             className="project-button"
             href="https://github.com/pjaerr/Productivity-Timer"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Source Code
           </a>
@@ -126,7 +126,7 @@ const Projects = () => {
             className="project-button"
             href="https://pjaerr.github.io/PWA-Timer/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Check it out
           </a>
@@ -134,7 +134,7 @@ const Projects = () => {
             className="project-button"
             href="https://github.com/pjaerr/PWA-Timer"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Source Code
           </a>
@@ -151,7 +151,7 @@ const Projects = () => {
             className="project-button"
             href="https://github.com/Pjaerr/Game-Jams"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Demos and Source Code
           </a>

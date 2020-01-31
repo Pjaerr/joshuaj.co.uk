@@ -3,15 +3,8 @@
 .blog-post-author {
   display: flex;
   flex-direction: column;
-  background: $backgroundColour;
   width: 100%;
   padding-top: 20px;
-
-  .navigation {
-    padding-top: 40px;
-  }
-
-  background: #f5f5f5;
   padding-bottom: 20px;
 }
 
@@ -21,16 +14,16 @@
   align-items: center;
   padding-right: 10px;
   padding-left: 10px;
-}
 
-.blog-post-author-name {
   color: $fontColour;
   font-size: 1em;
-}
+  text-align: center;
 
-.blog-post-author-image {
-  max-width: 80px;
-  height: auto;
-  border-radius: 50%;
-  margin-right: 20px;
+  @media (min-width: $brk-medium) {
+    font-size: 1.2em;
+  }
+
+  a {
+    color: $highlightColour;
+  }
 }
