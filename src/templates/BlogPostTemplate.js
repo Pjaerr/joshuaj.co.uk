@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/Layout/Layout"
 import ScrollProgressBar from "../components/ScrollProgressBar/ScrollProgressBar"
@@ -11,8 +12,8 @@ import SEO from "../components/seo"
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark
+  const { mdx } = data // data.markdownRemark holds your post data
+  const { frontmatter, body } = mdx
 
   const [scrollPos, setScrollPos] = useState(0)
 
@@ -28,7 +29,6 @@ export default function Template({
 
   useEffect(() => {
     window.addEventListener("scroll", adjustScrollPosition)
-
     return () => window.removeEventListener("scroll", adjustScrollPosition)
   }, [])
 
@@ -44,10 +44,9 @@ export default function Template({
         <div className="blog-post">
           <article className="blog-post-container">
             <h1 className="sub-page-title">{frontmatter.title}</h1>
-            <section
-              className="blog-post-content"
-              dangerouslySetInnerHTML={{ __html: html }}
-            ></section>
+            <section className="blog-post-content">
+              <MDXRenderer>{body}</MDXRenderer>
+            </section>
             <BlogPostAuthor
               name="Josh Jackson"
               twitterUsername="Pjaerr"
@@ -62,8 +61,8 @@ export default function Template({
 
 export const pageQuery = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
+    mdx(frontmatter: { path: { eq: $path } }) {
+      body
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         path

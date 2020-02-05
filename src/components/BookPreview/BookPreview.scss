@@ -1,0 +1,69 @@
+@import "../../utils/variables";
+
+.book-preview-component {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #353b48;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+
+  @media (max-width: $brk-medium) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  img {
+    width: 265px;
+    height: 400px;
+    object-fit: cover;
+    margin-right: 40px;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+
+    @media (max-width: $brk-medium) {
+      margin: 10px;
+      width: 198px;
+      height: 300px;
+    }
+  }
+}
+
+.book-preview-component-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-right: 10px;
+
+  @media (max-width: $brk-medium) {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+}
+
+.book-preview-component-info-description {
+  font-size: 0.8em;
+  .book-preview-component-info-description-title {
+    font-weight: normal;
+    color: $highlightColour;
+  }
+}
+
+.book-preview-component-info-meta {
+  display: flex;
+  font-size: 0.8em;
+
+  .book-preview-component-info-meta-title {
+    font-weight: normal;
+    color: $highlightColour;
+    margin-right: 40px;
+  }
+}
