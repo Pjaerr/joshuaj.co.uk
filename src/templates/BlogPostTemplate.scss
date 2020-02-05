@@ -38,6 +38,10 @@
 
   width: 100%;
 
+  p {
+    width: 100%;
+  }
+
   h1,
   h2,
   h3,
@@ -90,6 +94,14 @@
     &::selection {
       color: $backgroundColour;
       background-color: $fontColour;
+    }
+  }
+
+  ul,
+  ol {
+    li {
+      font-size: $blogParagraphFontSizeLarge;
+      margin-bottom: 15px;
     }
   }
 }
