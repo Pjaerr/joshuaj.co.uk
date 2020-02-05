@@ -15,7 +15,7 @@
   }
 
   img {
-    width: 265px;
+    max-width: 265px;
     height: 400px;
     object-fit: cover;
     margin-right: 40px;
@@ -23,7 +23,7 @@
 
     @media (max-width: $brk-medium) {
       margin: 10px;
-      width: 198px;
+      max-width: 198px;
       height: 300px;
     }
   }
