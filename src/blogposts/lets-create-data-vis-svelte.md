@@ -4,6 +4,7 @@ path: "/blog/lets-create-data-vis-svelte"
 date: "2020-01-08"
 title: "Lets Create: A Data Visualization using Svelte"
 description: "In this article we'll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."
+issueLink: "Pjaerr/Svelte-Data-Vis-Premier-League/issues/2"
 ---
 
 If you haven't heard of [Svelte](https://svelte.dev/), it is a relatively new JavaScript framework that challenges the norm by shifting the bulk of the work from the browser to the compile/build step.
@@ -1181,4 +1182,4 @@ Lastly, Svelte is a fully fleshed out framework and we barely scratched the surf
 
 and that's just a few things that I think will be really useful in most applications, there's much more which can all be found [here](https://svelte.dev/examples).
 
-Thanks for reading and if you have any questions you can use the Github thread to discuss the article: https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/issues/2
+Thanks for reading!

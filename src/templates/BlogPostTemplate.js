@@ -9,6 +9,8 @@ import "./BlogPostTemplate.scss"
 import BlogPostAuthor from "../components/BlogPostAuthor/BlogPostAuthor"
 import SEO from "../components/seo"
 
+import GithubIssueComments from "../components/GithubIssueComments/GithubIssueComments"
+
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
@@ -47,6 +49,7 @@ export default function Template({
             <section className="blog-post-content">
               <MDXRenderer>{body}</MDXRenderer>
             </section>
+            <GithubIssueComments issueUri={frontmatter.issueLink} />
             <BlogPostAuthor
               name="Josh Jackson"
               twitterUsername="Pjaerr"
@@ -68,6 +71,7 @@ export const pageQuery = graphql`
         path
         title
         description
+        issueLink
       }
     }
   }
