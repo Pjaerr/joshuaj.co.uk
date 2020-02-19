@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
@@ -17,23 +17,6 @@ export default function Template({
   const { mdx } = data // data.markdownRemark holds your post data
   const { frontmatter, body } = mdx
 
-  const [scrollPos, setScrollPos] = useState(0)
-
-  const adjustScrollPosition = () => {
-    const windowScroll = document.body.top || document.documentElement.scrollTop
-
-    const height =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight
-
-    setScrollPos((windowScroll / height) * 100)
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", adjustScrollPosition)
-    return () => window.removeEventListener("scroll", adjustScrollPosition)
-  }, [])
-
   return (
     <Layout>
       <SEO
@@ -42,7 +25,7 @@ export default function Template({
         title={frontmatter.title}
       />
       <div>
-        <ScrollProgressBar width={scrollPos} />
+        <ScrollProgressBar />
         <div className="blog-post">
           <article className="blog-post-container">
             <h1 className="sub-page-title">{frontmatter.title}</h1>

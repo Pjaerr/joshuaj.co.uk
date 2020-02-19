@@ -33,6 +33,26 @@ const Projects = () => {
           </a>
         </div>
       </div>
+      <div
+        id="project-react-github-issue-comments-component"
+        className="project"
+      >
+        <h1 className="project-title">React Github Issue Comments Component</h1>
+        <p className="project-description">
+          A <strong>React</strong> component that uses a Github issue as a
+          no-backend comment system for blogs/static sites.
+        </p>
+        <div className="project-buttons">
+          <a
+            className="project-button"
+            href="https://github.com/Pjaerr/React-Github-Issue-Comments-Component"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Check it out
+          </a>
+        </div>
+      </div>
       <div id="project-code-flow-extension" className="project">
         <h1 className="project-title">Code Flow Extension</h1>
         <p className="project-description">
@@ -63,8 +83,8 @@ const Projects = () => {
       <div id="project-pub-name-generator" className="project">
         <h1 className="project-title">Pub Name Generator</h1>
         <p className="project-description">
-          Generates pub names using nouns taken from the WordNik API. Made using{" "}
-          <strong>HTML</strong>, <strong>SASS</strong> and{" "}
+          Generates pub names using words taken from the a local file. Made
+          using <strong>HTML</strong>, <strong>CSS</strong> and{" "}
           <strong>JavaScript</strong>
         </p>
         <div className="project-buttons">
@@ -79,32 +99,6 @@ const Projects = () => {
           <a
             className="project-button"
             href="https://github.com/pjaerr/Pub-Name-Generator"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Source Code
-          </a>
-        </div>
-      </div>
-      <div id="project-productivity-timer" className="project">
-        <h1 className="project-title">Productivity Timer</h1>
-        <p className="project-description">
-          A single-page website made with <strong>JavaScript</strong> and{" "}
-          <strong>jQuery</strong> that helps you keep track of the time spent
-          working on a project/task with a chess-like timer.
-        </p>
-        <div className="project-buttons">
-          <a
-            className="project-button"
-            href="https://pjaerr.github.io/Productivity-Timer/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Check it out
-          </a>
-          <a
-            className="project-button"
-            href="https://github.com/pjaerr/Productivity-Timer"
             target="_blank"
             rel="noopener noreferrer"
           >
