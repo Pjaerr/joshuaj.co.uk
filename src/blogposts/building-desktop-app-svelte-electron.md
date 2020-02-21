@@ -3,8 +3,8 @@ isHidden: false
 path: "/blog/building-desktop-app-svelte-electron"
 date: "2020-02-21"
 title: "Building a Desktop App using Svelte and Electron"
-description: "Something something building desktop app svelte and electron"
-issueLink: "NULL"
+description: "In this blogpost I show you how easy it is to build a basic markdown editor for desktop using Svelte and Electron."
+issueLink: "Pjaerr/Svelte-Electron-Desktop-App/issues/1"
 ---
 
 I watched a [talk](https://www.youtube.com/watch?v=ZBe--JjrEL8) the other day by Felix Riesberg who talked about using JavaScript and Electron to build desktop apps and it inspired me to see how easy using [Svelte](https://svelte.dev) would be. Turns out it is super easy, and just works out of the box!
@@ -17,7 +17,7 @@ Let's get started!
 
 1. Clone the Svelte template: `npx degit sveltejs/template svelte-markdown-editor`
 
-2. Run `npm install` to install Svelte dependencies.
+2. CD into the new directory and run `npm install` to install Svelte dependencies.
 
 3. Run `npm install electron marked` which will install Electron and then the marked library which we will use to convert our markdown into HTML.
 
@@ -27,13 +27,12 @@ Let's get started!
 
 6. Edit the `public/index.html` file so that all paths have a `.` infront of them. EG: `/build/bundle.css` becomes `./build/bundle.css`. Electron won't be able to find these files otherwise.
 
-7. Finally, add the following meta tag to the head of the index.html file: `<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />`. This won't cause us any issues for this small application, but we will get a warning in our console if not. (https://www.electronjs.org/docs/tutorial/security#csp-meta-tag)
+7. Finally, add the following meta tag to the head of the index.html file: `<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />`. This won't cause us any issues for this small application, but we will get a warning in our console if not. 
+Read more about this [here](https://www.electronjs.org/docs/tutorial/security#csp-meta-tag)
 
 ## Connecting Svelte with Electron 🖇️
 
 Now we have the boilerplate setup, let's connect our Svelte app with Electron by returning to the `main.js` file we previously created.
-
-<!-- The Electron [docs](https://www.electronjs.org/docs/tutorial/first-app#electron-development-in-a-nutshell) say that _"The main.js should create windows and handle all the system events your application might encounter."_ -->
 
 A basic Electron app consists of an `app` and a `BrowserWindow` so let's import these:
 
@@ -43,7 +42,7 @@ const { app, BrowserWindow } = require("electron");
 
 The `app` is what we use to handle the lifecycle of the application and the `BrowserWindow` is the actual window that will render our Svelte app.
 
-Start by creating a new BrowserWindow once the application is ready:
+Start by creating a new BrowserWindow once the application is ready and quitting the app once all windows are closed:
 
 ```javascript
 app.whenReady().then(() => {
@@ -55,11 +54,15 @@ app.whenReady().then(() => {
     }
   });
 });
+
+app.on("window-all-closed", () => {
+  app.quit();
+});
 ```
 
 Note we set `nodeIntegration` to true, this allows us to use NodeJS code within our Svelte files which is where the true power lies!
 
-and then, in the same place, tell it to open the index.html file that Svelte outputs when built:
+and then, underneath where you created your BrowserWindow, tell it to open the index.html file that Svelte outputs when built:
 
 ```javascript
 mainWindow.loadFile("./public/index.html");
@@ -67,7 +70,7 @@ mainWindow.loadFile("./public/index.html");
 
 Now, if you run `npm start`, a window should open showing the basic Hello World Svelte app.
 
-![Image of basic Svelte app]()
+![Image of basic Svelte app](/building-desktop-app-svelte-electron/basic-svelte-app.png)
 
 ## Creating a Basic Markdown Editor 📝
 
@@ -149,7 +152,7 @@ There's nothing fancy with any of the styling, you'll note we use `:global(*)` t
 
 In the `App.svelte` replace everything with:
 
-```javascript
+```html
 <script>
   import Editor from "./Editor.svelte";
   import Preview from "./Preview.svelte";
@@ -189,7 +192,7 @@ main {
 
 Here we store a `markdown` variable and tell Svelte to bind it to whatever the value of `markdown` is inside of the `Editor` component which we know is bound to the text area input. So whatever we type is stored inside `markdown` which we then pass into the `Preview` component to be rendered as HTML. 
 
-We also store an `activeFilePath` variable, which we will use later on to show which file is open in the editor, for now, whilst no file path exists, just tell the user to save.
+We also store an `activeFilePath` variable, which we will use later on to show which file is open in the editor, for now, whilst no file path exists, just show the user a message telling them how to save.
 
 Now if you run `npm start` you should have a usable markdown editor with a live updating preview.
 
@@ -197,20 +200,20 @@ Now if you run `npm start` you should have a usable markdown editor with a live 
 
 Now we can write our markdown, let's give the user the ability to save what they've written.
 
-In the `App.svelte` file, import the [https://www.electronjs.org/docs/api/ipc-renderer](ipcRenderer) which will allow us to both listen for messages from Electron as well as send messages to Electron:
+In the `App.svelte` file, import the [ipcRenderer](https://www.electronjs.org/docs/api/ipc-renderer) which will allow us to both listen for messages from Electron as well as send messages to Electron:
 
 ```javascript
 const { ipcRenderer } = require("electron");
 ```
 
-Inside the same script tag, let's use the `ipcRenderer` to listen for a "savefile" message (the message name can be anything you want), we will eventually send this message from Electron when the user clicks a menu item or uses CTRL + S.
+Inside the same script tag, let's use the `ipcRenderer` to listen for a `"savefile"` message (the message name can be anything you want), we will eventually send this message from Electron when the user clicks a menu item or uses CTRL + S.
 
 ```javascript
 ipcRenderer.on("savefile", () => {
 
 });
 ```
-Inside of this function, we want to first check if there is an activeFilePath and if there is, we want to send a message to Electron telling it to save the current file contents to the activeFilePath and if there isn't, we want to send a message telling Electron to ask the user where the file should be saved.
+Inside of this function, we want to first check if there is an activeFilePath and if there is, we want to send a message to Electron telling it to save the content inside of the markdown variable to the file at the activeFilePath and if there isn't, we want to send a message telling Electron to ask the user where the file should be saved.
 
 This looks like the following:
 
@@ -227,7 +230,7 @@ ipcRenderer.on("savefile", () => {
   });
 ```
 
-This won't do anything yet, as we haven't implemented the corresponding message listeners and functionality in our main process. Let's do that next, starting with saving a new file.
+This won't do anything yet, as we haven't implemented the corresponding message listeners and functionality in our main process (main process is what I have been calling "Electron"). Let's do that next, starting with saving a new file.
 
 In the `main.js` file, import Menu, MenuItem, ipcMain and dialog from electron and fs from the nodejs standard library:
 
@@ -244,9 +247,9 @@ const {
 const fs = require("fs");
 ```
 
-next, create a function called `createNewFile` that takes a string, this function should open a dialog box to ask the user to name a file and select a location to which it should be saved and then save the file at that location, with that name containing the string provided.
+next, create a function called `createNewFile` inside of the `app.whenReady().then` callback that takes a string, this function should open a dialog box to ask the user to name a file and select a location to which it should be saved and then save the file at that location, with that name containing the string provided.
 
-Inside of the `app.whenReady().then`:
+Inside of the `app.whenReady().then` callback:
 
 ```javascript
 const createNewFile = content => {
@@ -270,9 +273,9 @@ const createNewFile = content => {
   };
 ```
 
-In the code above, we use `Electron.dialog` to open a save dialog that will only save (and show) markdown files and then, if the user clicked save successfully, we use the `fs` module to write the file to the file path they selected.
+In the code above, we use `Electron.dialog` to open a save dialog that will only save (and show) markdown files and then, if the user didn't close the dialog, we use the `fs` module to write the file to the file path they selected.
 
-Now we have the function, let's setup the code to call it when we receive a "savenewfile" message.
+Now we have the function, let's setup the code to call it when we receive a `"savenewfile"` message.
 
 In the same place, write the following code:
 
@@ -283,6 +286,8 @@ ipcMain.on("savenewfile", (e, content) => {
 ```
 
 There's one last step before we can save a new file, if you remember, the message listener above only triggers when our Svelte app sends a "savenewfile" message, which can only be sent when our Svelte app receives a "savefile" message. So we must send a "savefile" message from Electron when the user selects save from the menu or hits CTRL + S. You do this by creating a new Menu and adding items to it like so:
+
+*Remember to do all of this inside of the `app.whenReady().then` callback before you load the index.html file.
 
 ```javascript
 const menu = new Menu();
@@ -296,7 +301,7 @@ menu.append(
   );
 ```
 
-Here we are saying, when CTRL + S is pressed, or our menu item with the label "Save" is clicked, send a message to the BrowserWindow (our Svelte app) with the name "savefile". 
+Here we are saying, when CTRL + S is pressed, or our menu item with the label "Save" is clicked, send a message to the BrowserWindow (our Svelte app) with the name `"savefile"`. 
 
 One last thing, we must set our Menu as the ApplicationMenu like so:
 
@@ -320,6 +325,7 @@ This just uses the `fs` module to create a new file at an existing path (which w
 Here's a diagram showing how the data flows between the Renderer (our Svelte App) and the Main process (Electron):
 
 ![Diagram showing the flow between renderer and main]()
+You can also read more about the Renderer and Main processes [here](https://www.electronjs.org/docs/tutorial/application-architecture#differences-between-main-process-and-renderer-process)
 
 Next we will add the ability to open/save an existing file, or to create a new one using the menu.
 
@@ -327,7 +333,7 @@ Next we will add the ability to open/save an existing file, or to create a new o
 
 This works in much the same way, I would say even easier!
 
-Start by, in the `App.svelte` file, creating a new message listener that listens for a "fileopened" message that contains a file path and the content inside of the file. When we get this message, store the variables:
+Start by, in the `App.svelte` file, creating a new message listener that listens for a `"fileopened"` message that contains a file path and the content inside of the file. When we get this message, store the variables:
 
 ```javascript
 ipcRenderer.on("fileopened", (e, { path, content }) => {
@@ -358,7 +364,7 @@ const openFile = () => {
 };
 ```
 
-We get the user's selection, read the file and file path and then send a "fileopened" message to our Svelte app. Whilst we're at it, let's also send a "fileopened" message in the `createNewFile` function so that when we save the new file, it updates the activeFilePath:
+We get the user's selection, read the file and file path and then send a `"fileopened"` message to our Svelte app. Whilst we're at it, let's also send a `"fileopened"` message in the `createNewFile` function so that when we save the new file, it updates the activeFilePath:
 
 ```javascript
 ...})
@@ -408,15 +414,28 @@ menu.append(
 🎉 You should now have a working markdown editor!
 
 
-## Building for Windows and Mac 🏗️
+## Building for your current platform 🏗️
 
+To package the app, we can use a CLI tool called [electron-packager](https://www.npmjs.com/package/electron-packager)
 
+1. First start by installing the package locally: `npm install electron-packager --save-dev`
+
+2. Then remove the `sirv-cli` package from the package.json file (we don't need this for an electron app).
+
+3. Move the `electron` package into the `devDependencies`
+
+4. Add a "main" property to the package json that points to the entry file: `"main": "./main.js"`
+
+5. Add a "productName" property to the package json: `"productName": "markdown-editor"`
+
+6. Add a "package" script to the scripts: `"package": "npm install && npm run build && electron-packager ."`
+
+7. Run `npm run package` to build your electron app for your current platform
+
+This will create a folder with your executable in (on windows) and the relevant files if on mac os. You can check out the electron-packager docs [here](https://www.npmjs.com/package/electron-packager) for more information.
 
 ## Conclusion
 
-With very little code we've managed to build a very basic markdown editor using Svelte and Electron.
+With very little code we've managed to build a very basic markdown editor using Svelte and Electron. This blogpost was really just a whistle-stop tour of how to get started, if you want to properly make something, please use the official Electron [docs](https://www.electronjs.org/docs) or more indepth [tutorials](https://www.electronjs.org/docs/tutorial).
 
-
-
-
-
+PS: I will be giving a really short lightning talk on this in March at the [Svelte London Meetup](https://www.meetup.com/svelte/events/268428373/).
