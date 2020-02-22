@@ -23,6 +23,7 @@ export default function Template({
         description={frontmatter.description}
         lang="en"
         title={frontmatter.title}
+        image={frontmatter.image}
       />
       <div>
         <ScrollProgressBar />
@@ -33,11 +34,7 @@ export default function Template({
               <MDXRenderer>{body}</MDXRenderer>
             </section>
             <GithubIssueComments issueUri={frontmatter.issueLink} />
-            <BlogPostAuthor
-              name="Josh Jackson"
-              twitterUsername="Pjaerr"
-              imgSrc="/me.jpg"
-            />
+            <BlogPostAuthor />
           </article>
         </div>
       </div>
@@ -55,6 +52,7 @@ export const pageQuery = graphql`
         title
         description
         issueLink
+        image
       }
     }
   }

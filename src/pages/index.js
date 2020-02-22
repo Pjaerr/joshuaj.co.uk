@@ -11,6 +11,7 @@ const IndexPage = () => (
       description="Personal Site and Blog for Josh Jackson - @Pjaerr"
       lang="en"
       title="Home"
+      image="/me.jpg"
     />
     <Header title="Josh Jackson" />
     <Projects />

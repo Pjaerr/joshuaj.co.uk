@@ -23,6 +23,7 @@ const Blog = ({
         description="Personal Site and Blog for Josh Jackson - @Pjaerr"
         lang="en"
         title="Blog"
+        image="/me.jpg"
       />
       <h1 className="blog-listing-title">Blog</h1>
       <div className="blog-posts">

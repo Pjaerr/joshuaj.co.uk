@@ -5,6 +5,7 @@ date: "2020-02-22"
 title: "Building a Desktop App using Svelte and Electron"
 description: "In this blogpost I show you how easy it is to build a basic markdown editor for desktop using Svelte and Electron."
 issueLink: "Pjaerr/Svelte-Electron-Desktop-App/issues/1"
+image: "/building-desktop-app-svelte-electron/cover_image.jpg"
 ---
 
 I watched a [talk](https://www.youtube.com/watch?v=ZBe--JjrEL8) the other day by Felix Riesberg who talked about using JavaScript and Electron to build desktop apps and it inspired me to see how easy using [Svelte](https://svelte.dev) would be. Turns out it is super easy, and just works out of the box!
