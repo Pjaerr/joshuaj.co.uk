@@ -9,7 +9,11 @@ issueLink: "Pjaerr/Svelte-Electron-Desktop-App/issues/1"
 
 I watched a [talk](https://www.youtube.com/watch?v=ZBe--JjrEL8) the other day by Felix Riesberg who talked about using JavaScript and Electron to build desktop apps and it inspired me to see how easy using [Svelte](https://svelte.dev) would be. Turns out it is super easy, and just works out of the box!
 
-This blogpost will walk you through creating a basic markdown editor for the desktop using Svelte and Electron. We will be able to edit markdown files and see a side-by-side preview as well as **Open Files**, **Create New Files** and **Save Files** using the Electron API.
+This blogpost will walk you through creating a basic markdown editor for the desktop using Svelte and Electron. We will be able to edit markdown files and see a side-by-side preview as well as **Open Files**, **Create New Files** and **Save Files** using the Electron API and NodeJS.
+
+The finished product will look something like this:
+
+![Finished Gif of Markdown Editor](/building-desktop-app-svelte-electron/finished-application-svelte-electron.gif)
 
 Let's get started!
 
@@ -60,7 +64,7 @@ app.on("window-all-closed", () => {
 });
 ```
 
-Note we set `nodeIntegration` to true, this allows us to use NodeJS code within our Svelte files which is where the true power lies!
+Note we set `nodeIntegration` to true, this allows us to use NodeJS code within our Svelte files.
 
 and then, underneath where you created your BrowserWindow, tell it to open the index.html file that Svelte outputs when built:
 
@@ -150,7 +154,7 @@ This component takes some markdown text, and then uses the [marked](https://www.
 
 There's nothing fancy with any of the styling, you'll note we use `:global(*)` to target everything under our section. This is because we want to target all of the HTML under the section but Svelte thinks that no HTML exists (because it is dynamically generated) so we would get the `css-unused-selector` warning if we just used `*`.
 
-In the `App.svelte` replace everything with:
+In the `App.svelte` file replace everything with:
 
 ```html
 <script>
@@ -249,11 +253,13 @@ const fs = require("fs");
 
 next, create a function called `createNewFile` inside of the `app.whenReady().then` callback that takes a string, this function should open a dialog box to ask the user to name a file and select a location to which it should be saved and then save the file at that location, with that name containing the string provided.
 
+_*Documentation for `dialog` can be found at https://www.electronjs.org/docs/api/dialog_
+
 Inside of the `app.whenReady().then` callback:
 
 ```javascript
 const createNewFile = content => {
-    dialog.showSaveDialog({
+    dialog.showSaveDialog(mainWindow, {
         title: "Create New File",
         properties: ["showOverwriteConfirmation"],
         filters: [
@@ -285,9 +291,9 @@ ipcMain.on("savenewfile", (e, content) => {
   });
 ```
 
-There's one last step before we can save a new file, if you remember, the message listener above only triggers when our Svelte app sends a "savenewfile" message, which can only be sent when our Svelte app receives a "savefile" message. So we must send a "savefile" message from Electron when the user selects save from the menu or hits CTRL + S. You do this by creating a new Menu and adding items to it like so:
+There's one last step before we can save a new file, if you remember, the message listener above only triggers when our Svelte app sends a "savenewfile" message, which can only be sent when our Svelte app receives a "savefile" message. So we must send a "savefile" message from Electron when the user selects save from the menu or hits CTRL + S. 
 
-*Remember to do all of this inside of the `app.whenReady().then` callback before you load the index.html file.
+You do this by creating a new Menu inside of the `app.whenReady().then` callback and then adding MenuItem objects to it like so:
 
 ```javascript
 const menu = new Menu();
@@ -320,11 +326,13 @@ ipcMain.on("saveexistingfile", (e, { path, content }) => {
     });
 });
 ```
-This just uses the `fs` module to create a new file at an existing path (which we send to Electron from our Svelte app).
+This just uses the `fs` module to create a new file at an existing path which will overwrite the existing file with the new contents.
 
-Here's a diagram showing how the data flows between the Renderer (our Svelte App) and the Main process (Electron):
+If this is confusing, here's a diagram showing how messages flow between the Renderer process (our Svelte App) and the Main process (Electron):
 
-![Diagram showing the flow between renderer and main]()
+_(Open in new tab for fullscreen view)_
+![Diagram showing the flow between renderer and main](/building-desktop-app-svelte-electron/renderer-main-data-flow.png)
+
 You can also read more about the Renderer and Main processes [here](https://www.electronjs.org/docs/tutorial/application-architecture#differences-between-main-process-and-renderer-process)
 
 Next we will add the ability to open/save an existing file, or to create a new one using the menu.
@@ -333,7 +341,7 @@ Next we will add the ability to open/save an existing file, or to create a new o
 
 This works in much the same way, I would say even easier!
 
-Start by, in the `App.svelte` file, creating a new message listener that listens for a `"fileopened"` message that contains a file path and the content inside of the file. When we get this message, store the variables:
+Start by, in the `App.svelte` file, creating a new message listener that listens for a `"fileopened"` message that contains a file path and the content inside of the file. When we get this message, update the variables so that Svelte will update our HTML:
 
 ```javascript
 ipcRenderer.on("fileopened", (e, { path, content }) => {
@@ -437,5 +445,10 @@ This will create a folder with your executable in (on windows) and the relevant 
 ## Conclusion
 
 With very little code we've managed to build a very basic markdown editor using Svelte and Electron. This blogpost was really just a whistle-stop tour of how to get started, if you want to properly make something, please use the official Electron [docs](https://www.electronjs.org/docs) or more indepth [tutorials](https://www.electronjs.org/docs/tutorial).
+
+**Some Extra Notes**
+- We used the Electron and Node APIs by sending messages between the Renderer process (Svelte) and the Main process (Electron). An alternative to this is to [use the Electron and Node APIs directly in our Svelte files](https://www.electronjs.org/docs/api/remote).
+
+- This was my first experiment with Electron, please take this guide/tutorial as more of an intro to how it _could_ be used and not how it _should_ be used.
 
 PS: I will be giving a really short lightning talk on this in March at the [Svelte London Meetup](https://www.meetup.com/svelte/events/268428373/).
