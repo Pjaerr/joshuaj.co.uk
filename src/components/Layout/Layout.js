@@ -1,15 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import Navigation from "../Navigation/Navigation"
-
 import "./Layout.scss"
 
-const Layout = ({ activePage, children }) => {
+const Layout = ({ children }) => {
   return (
     <>
-      <Navigation activePage={activePage} />
-      <main>{children}</main>
+      <main className="layout">{children}</main>
     </>
   )
 }

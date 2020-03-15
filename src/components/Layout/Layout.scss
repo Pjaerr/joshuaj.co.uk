@@ -6,4 +6,21 @@ html {
   padding: 0;
   border: 0;
   font-family: $bodyFontFamily;
+  overflow: hidden;
+  height: 100%;
+}
+
+#___gatsby {
+  height: 100%;
+
+  div[role="group"][tabindex] {
+    height: 100%;
+  }
+}
+
+.layout {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

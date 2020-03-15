@@ -1,5 +1,4 @@
-@import "../../utils/mixins";
-@import "../../utils/variables";
+@import "../utils/mixins";
 
 $largeHeadingFontSize: 4em;
 $mediumHeadingFontSize: 3em;
@@ -27,6 +26,10 @@ $spaceBetweenIconAndHeader: -80px;
   @media (max-width: $brk-medium) {
     font-size: $smallHeadingFontSize;
   }
+}
+
+.header-content-title {
+  text-shadow: 2px 4px $highlightColour;
 }
 
 .header-content-title::selection {

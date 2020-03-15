@@ -25,7 +25,9 @@
     "prop-types": "^15.7.2",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-three-fiber": "^4.0.20",
+    "three": "^0.114.0"
   },
   "devDependencies": {
     "gatsby-plugin-sass": "^2.1.17",
