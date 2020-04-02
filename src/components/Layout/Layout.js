@@ -1,21 +1,18 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 
-import Navigation from "../Navigation/Navigation"
+import "./Layout.scss";
 
-import "./Layout.scss"
-
-const Layout = ({ activePage, children }) => {
+const Layout = ({ children }) => {
   return (
     <>
-      <Navigation activePage={activePage} />
       <main>{children}</main>
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

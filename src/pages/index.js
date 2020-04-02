@@ -1,21 +1,12 @@
-import React from "react"
+import React from "react";
 
-import Layout from "../components/Layout/Layout"
-import SEO from "../components/seo"
-import Header from "../components/Header/Header"
-import Projects from "../components/Projects/Projects"
+import Layout from "../components/Layout/Layout";
+import SEO from "../components/seo";
 
 const IndexPage = () => (
-  <Layout activePage="Home">
-    <SEO
-      description="Personal Site and Blog for Josh Jackson - @Pjaerr"
-      lang="en"
-      title="Home"
-      image="/me.jpg"
-    />
-    <Header title="Josh Jackson" />
-    <Projects />
+  <Layout>
+    <SEO lang="en" title="Home" image="/me.jpg" />
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;

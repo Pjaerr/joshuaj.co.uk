@@ -1,4 +1,4 @@
-@import "../../utils/variables";
+@import "../../variables";
 
 $barHeight: 4px;
 
@@ -7,7 +7,7 @@ $barHeight: 4px;
   top: 0;
   z-index: 1;
   width: 100%;
-  background-color: $backgroundColour;
+  background-color: $backgroundColourLight;
   height: $barHeight;
 }
 

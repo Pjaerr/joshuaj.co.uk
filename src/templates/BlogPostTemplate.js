@@ -3,18 +3,16 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/Layout/Layout"
+import SEO from "../components/seo"
 import ScrollProgressBar from "../components/ScrollProgressBar/ScrollProgressBar"
+import GithubIssueComments from "../components/GithubIssueComments/GithubIssueComments"
 
 import "./BlogPostTemplate.scss"
-import BlogPostAuthor from "../components/BlogPostAuthor/BlogPostAuthor"
-import SEO from "../components/seo"
-
-import GithubIssueComments from "../components/GithubIssueComments/GithubIssueComments"
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { mdx } = data // data.markdownRemark holds your post data
+  const { mdx } = data
   const { frontmatter, body } = mdx
 
   return (
@@ -25,19 +23,6 @@ export default function Template({
         title={frontmatter.title}
         image={frontmatter.image}
       />
-      <div>
-        <ScrollProgressBar />
-        <div className="blog-post">
-          <article className="blog-post-container">
-            <h1 className="sub-page-title">{frontmatter.title}</h1>
-            <section className="blog-post-content">
-              <MDXRenderer>{body}</MDXRenderer>
-            </section>
-            <GithubIssueComments issueUri={frontmatter.issueLink} />
-            <BlogPostAuthor />
-          </article>
-        </div>
-      </div>
     </Layout>
   )
 }
