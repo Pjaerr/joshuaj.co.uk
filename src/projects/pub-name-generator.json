@@ -1,0 +1,24 @@
+{
+    "title": "Pub Name Generator",
+    "description": "Generates random pub names using a local words list",
+    "technologies": [
+        {
+            "colour": "#e34c26",
+            "name": "HTML"
+        },
+        {
+            "colour": "#f1e05a",
+            "name": "JavaScript"
+        },
+        {
+            "colour": "#563d7c",
+            "name": "CSS"
+        }
+    ],
+    "gradient": {
+        "start": "#8EC5FC",
+        "end": "#E0C3FC"
+    },
+    "githubLink": "https://github.com/Pjaerr/Pub-Name-Generator",
+    "demoLink": "https://pjaerr.github.io/Pub-Name-Generator/"
+}

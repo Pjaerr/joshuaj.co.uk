@@ -58,6 +58,10 @@
 .theme-switcher-label {
   margin-left: 15px;
   margin-bottom: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .theme-switcher-checkbox {

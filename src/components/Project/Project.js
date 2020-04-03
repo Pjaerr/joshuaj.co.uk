@@ -39,7 +39,7 @@ const Project = ({
       <p className="project-description">{description}</p>
       <div className="project-technologies">
         {technologies.map(({ colour, name }) => (
-          <Technology colour={colour} name={name} />
+          <Technology key={title + colour + name} colour={colour} name={name} />
         ))}
       </div>
       <div className="project-links">
@@ -48,7 +48,7 @@ const Project = ({
           Github
         </a>
 
-        {demoLink && (
+        {demoLink !== "" && (
           <a href={demoLink} target="_blank" rel="noopener noreferrer">
             <DemoSVGIcon size="24" />
             Live Demo

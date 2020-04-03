@@ -12,6 +12,7 @@ body {
   --background: #fff;
   --headingTextColour: #2a2f36;
   --bodyTextColour: #353b48;
+  --overlayBackground: rgba(1, 163, 164, 0.95);
 
   font-weight: 500;
 
@@ -27,6 +28,7 @@ body.dark {
   --background: #282c35;
   --headingTextColour: #fff;
   --bodyTextColour: #dcdde1;
+  --overlayBackground: rgba(63, 67, 77, 0.95);
 }
 
 h1,
