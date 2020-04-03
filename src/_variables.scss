@@ -1,15 +1,23 @@
 //Font Familys
 $fontFamily: "IBM Plex Sans", sans-serif;
 
-//Light Mode Colours
-$backgroundColourLight: #fff;
-$headingFontColourLight: #2a2f36;
-$bodyFontColourLight: #353b48;
-
-//Dark Mode Colours
-$backgroundColourDark: #282c35;
-$headingFontColourDark: #fff;
-$bodyFontColourDark: #dcdde1;
-
 //General Colours
 $highlightColour: #01a3a4;
+
+//Font Sizes
+$blogHeadingFontSizeLarge: 2.813em;
+$blogHeadingFontSizeSmall: 1.563em;
+$headingFontSizeLarge: 1.875em;
+$headingFontSizeMedium: 1.5em;
+$headingFontSizeSmall: 1.125em;
+$headingFontSizeExtraSmall: 0.875em;
+
+$bodyFontSizeLarge: 1em;
+$bodyFontSizeMedium: 0.875em;
+$bodyFontSizeSmall: 0.75em;
+$blogBodyFontSizeLarge: 1.125em;
+$blogBodyFontSizeSmall: 1em;
+
+//Breakpoints
+$brk-small: 480px;
+$brk-medium: 768px;

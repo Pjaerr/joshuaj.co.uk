@@ -1,0 +1,71 @@
+@import "../../variables";
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 120px 20px 120px;
+}
+
+.navigation-left {
+  font-weight: bold;
+  text-decoration: underline;
+
+  a {
+    font-size: $headingFontSizeSmall;
+    text-decoration: none;
+    color: var(--headingTextColour);
+
+    font-weight: bold;
+
+    &:hover {
+      color: $highlightColour;
+    }
+  }
+}
+
+.navigation-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  list-style: none;
+
+  li {
+    margin: 0px 20px 0px 20px;
+
+    a {
+      font-size: $headingFontSizeSmall;
+      color: var(--headingTextColour);
+      font-weight: bold;
+
+      &:hover {
+        color: $highlightColour;
+      }
+    }
+  }
+}
+
+.theme-switcher-label {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+.theme-switcher-checkbox {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

@@ -1,0 +1,14 @@
+@import "../../variables";
+
+.svgicon {
+  fill: var(--bodyTextColour);
+  path {
+    transition: fill 0.25s ease-out;
+  }
+}
+
+.svgicon-hoverable {
+  &:hover {
+    fill: $highlightColour;
+  }
+}

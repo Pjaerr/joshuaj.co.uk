@@ -5,5 +5,44 @@ html {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: $bodyFontFamily;
+  font-family: $fontFamily;
+}
+
+body {
+  --background: #fff;
+  --headingTextColour: #2a2f36;
+  --bodyTextColour: #353b48;
+
+  font-weight: 500;
+
+  background-color: var(--background);
+  color: var(--bodyTextColour);
+
+  transition-property: background-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-out;
+}
+
+body.dark {
+  --background: #282c35;
+  --headingTextColour: #fff;
+  --bodyTextColour: #dcdde1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--headingTextColour);
+}
+
+a {
+  color: $highlightColour;
+  text-decoration: none;
+  transition: color 0.25s ease-out;
+
+  &:hover {
+    color: var(--bodyTextColour);
+  }
 }

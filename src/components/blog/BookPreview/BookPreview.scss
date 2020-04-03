@@ -1,4 +1,4 @@
-@import "../../utils/variables";
+@import "../../../variables";
 
 .book-preview-component {
   display: flex;
@@ -9,7 +9,7 @@
   margin: 0 auto;
   margin-bottom: 40px;
 
-  @media (max-width: $brk-medium) {
+  @media (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
   }
@@ -21,7 +21,7 @@
     margin-right: 40px;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
 
-    @media (max-width: $brk-medium) {
+    @media (max-width: 768px) {
       margin: 10px;
       max-width: 198px;
       height: 300px;
@@ -35,7 +35,7 @@
   width: 100%;
   padding-right: 10px;
 
-  @media (max-width: $brk-medium) {
+  @media (max-width: 768px) {
     padding: 10px;
   }
 

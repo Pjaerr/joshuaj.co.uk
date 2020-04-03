@@ -1,0 +1,88 @@
+@import "../../variables";
+
+.project-border-wrap {
+  position: relative;
+  padding: 3px;
+  width: 100%;
+  max-width: 450px;
+
+  border-radius: 3px;
+}
+
+.project {
+  height: 180px;
+  max-height: 180px;
+
+  background-color: var(--background);
+  padding: 20px 35px 40px 20px;
+
+  @media (max-width: $brk-medium) {
+    padding: 10px 25px 25px 10px;
+  }
+
+  @media (max-width: $brk-small) {
+    padding: 5px 10px 15px 10px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.project-title {
+  font-size: $headingFontSizeMedium;
+  font-weight: 500;
+
+  @media (max-width: $brk-medium) {
+    font-size: $headingFontSizeSmall;
+  }
+}
+
+@mixin homepage-body-font-size() {
+  font-size: $bodyFontSizeLarge;
+
+  @media (max-width: $brk-medium) {
+    font-size: $bodyFontSizeMedium;
+  }
+}
+
+.project-description {
+  @include homepage-body-font-size();
+}
+
+.project-technologies {
+  display: flex;
+  flex-direction: row;
+
+  @include homepage-body-font-size();
+}
+
+.project-technology {
+  margin-right: 15px;
+  font-size: $bodyFontSizeLarge;
+}
+
+.project-links {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+
+  @include homepage-body-font-size();
+
+  a {
+    margin-right: 15px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--bodyTextColour);
+
+    &:hover {
+      color: $highlightColour;
+
+      svg {
+        fill: $highlightColour;
+      }
+    }
+  }
+}

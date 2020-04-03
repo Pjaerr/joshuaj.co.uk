@@ -9,6 +9,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-dark-mode`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -109,12 +110,8 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Roboto`,
-            variants: [`300`, `400`, `900`],
-          },
-          {
-            family: `Pacifico`,
-            variants: [`400`],
+            family: `IBM Plex Sans`,
+            variants: [`400`, `500`, `700`],
           },
         ],
       },
@@ -136,4 +133,4 @@ module.exports = {
       },
     },
   ],
-}
+};
