@@ -14,11 +14,8 @@
   max-height: 180px;
 
   background-color: var(--background);
-  padding: 20px 35px 40px 20px;
 
-  @media (max-width: $brk-medium) {
-    padding: 10px 25px 25px 10px;
-  }
+  padding: 10px 25px 25px 10px;
 
   @media (max-width: $brk-small) {
     padding: 5px 10px 15px 10px;
@@ -30,20 +27,13 @@
 }
 
 .project-title {
-  font-size: $headingFontSizeMedium;
   font-weight: 500;
 
-  @media (max-width: $brk-medium) {
-    font-size: $headingFontSizeSmall;
-  }
+  font-size: $headingFontSizeSmall;
 }
 
 @mixin homepage-body-font-size() {
-  font-size: $bodyFontSizeLarge;
-
-  @media (max-width: $brk-medium) {
-    font-size: $bodyFontSizeMedium;
-  }
+  font-size: $bodyFontSizeMedium;
 }
 
 .project-description {

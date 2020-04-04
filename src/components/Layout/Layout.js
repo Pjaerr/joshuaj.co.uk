@@ -8,8 +8,10 @@ import "./Layout.scss";
 const Layout = ({ children }) => {
   return (
     <>
-      <Navigation />
-      <main className="layout">{children}</main>
+      <header className="layout-header">
+        <Navigation />
+      </header>
+      <main>{children}</main>
     </>
   );
 };

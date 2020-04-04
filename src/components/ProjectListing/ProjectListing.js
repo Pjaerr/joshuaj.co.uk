@@ -3,6 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import Project from "../Project/Project";
 
+import "./ProjectListing.scss";
+
 const ProjectListing = () => {
   const data = useStaticQuery(graphql`
     query {
