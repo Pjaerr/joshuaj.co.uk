@@ -31,15 +31,7 @@ const Navigation = () => {
       <styled.NavHeader isMenuOpen={isMenuOpen}>
         <a href="/">Josh Jackson</a>
         <button onClick={toggleMenu}>
-          <svg viewBox="0 0 24 24">
-            <path
-              d={
-                isMenuOpen
-                  ? "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"
-                  : "M3,6H21V9H3V6M3,15H21V18H3V16Z"
-              }
-            />
-          </svg>
+          <styled.MenuIcon isMenuOpen={isMenuOpen}></styled.MenuIcon>
         </button>
       </styled.NavHeader>
       <styled.NavLinks isMenuOpen={isMenuOpen}>

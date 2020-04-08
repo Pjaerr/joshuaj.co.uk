@@ -8,7 +8,13 @@ import {
 } from "../../constants";
 
 export const Nav = styled.nav`
-  transition: background-color ${animationSpeed} ease-out;
+  transform: ${props =>
+    props.isMenuOpen ? `translateY(0px)` : `translateY(-2000px);`};
+
+  transition-property: background-color, color;
+  transition-duration: ${animationSpeed};
+  transition-timing-function: ease-out;
+
   background-color: ${props =>
     props.isMenuOpen ? `var(--overlayBackground)` : "initial"};
 
@@ -26,6 +32,7 @@ export const Nav = styled.nav`
 
   /**Desktop Navigation */
   @media (min-width: ${breakpoints.medium}) {
+    transform: translateX(0px);
     transition: background-color 0s ease-out;
     background-color: initial;
     position: relative;
@@ -40,6 +47,11 @@ export const NavHeader = styled.div`
   grid-template-columns: 1fr auto;
   justify-content: center;
   align-items: center;
+
+  transform: ${props =>
+    props.isMenuOpen ? `translateY(0px)` : `translateY(2000px);`};
+
+  transition: transform 0s ease-in;
 
   padding: 20px ${pagePadding} 20px ${pagePadding};
 
@@ -70,6 +82,7 @@ export const NavHeader = styled.div`
 
     width: 32px;
     height: 32px;
+    position: relative;
 
     cursor: pointer;
 
@@ -85,6 +98,7 @@ export const NavHeader = styled.div`
 
   /**Desktop Navigation */
   @media (min-width: ${breakpoints.medium}) {
+    transform: translateX(0px);
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     justify-content: start;
@@ -206,5 +220,39 @@ export const ThemeSwitcherLabel = styled.label`
   /**Desktop Navigation */
   @media (min-width: ${breakpoints.medium}) {
     margin-bottom: 5px;
+  }
+`;
+
+export const MenuIcon = styled.span`
+  &:before {
+    background-color: ${props =>
+      props.isMenuOpen
+        ? `var(--mobileNavTextColour)`
+        : `var(--headingTextColour)`};
+    transition: transform 0.1s ease-in;
+    content: "";
+    width: 26px;
+    height: 5px;
+    margin-top: ${props => (props.isMenuOpen ? `0` : `-2.5px`)};
+    display: inline-block;
+
+    ${props =>
+      props.isMenuOpen && `transform: translate(0px,5px) rotate(45deg)`}
+  }
+
+  &:after {
+    background-color: ${props =>
+      props.isMenuOpen
+        ? `var(--mobileNavTextColour)`
+        : `var(--headingTextColour)`};
+    transition: transform 0.1s ease-in;
+    content: "";
+    width: 26px;
+    height: 5px;
+    margin-top: ${props => (props.isMenuOpen ? `0` : `-2.5px`)};
+    display: inline-block;
+
+    ${props =>
+      props.isMenuOpen && `transform: translate(0px, -10px) rotate(-45deg)`}
   }
 `;
