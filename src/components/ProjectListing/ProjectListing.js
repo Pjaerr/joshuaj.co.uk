@@ -3,7 +3,19 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import Project from "../Project/Project";
 
-import "./ProjectListing.scss";
+import styled from "styled-components";
+import { headingFontSize, highlightColour } from "../../constants";
+
+const ProjectListingContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Title = styled.h1`
+  font-weight: normal;
+  font-size: ${headingFontSize.medium};
+  color: ${highlightColour};
+`;
 
 const ProjectListing = () => {
   const data = useStaticQuery(graphql`
@@ -32,7 +44,8 @@ const ProjectListing = () => {
   const projects = data.allProjectsJson.edges;
 
   return (
-    <section className="project-listing">
+    <ProjectListingContainer>
+      <Title>Projects</Title>
       {projects.map(
         ({
           node: {
@@ -54,7 +67,7 @@ const ProjectListing = () => {
           />
         )
       )}
-    </section>
+    </ProjectListingContainer>
   );
 };
 

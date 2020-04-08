@@ -1,7 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./SVGIcon.scss";
+import styled from "styled-components";
+import { highlightColour } from "../../constants";
+
+const SVG = styled.svg`
+  fill: var(--bodyTextColour);
+  path {
+    transition: fill 0.25s ease-out;
+  }
+
+  &:hover {
+    ${props => props.isHoverable && `fill: ${highlightColour}`}
+  }
+`;
 
 export const SVGIcon = ({
   path,
@@ -14,8 +26,8 @@ export const SVGIcon = ({
   color,
   isHoverable = false,
 }) => (
-  <svg
-    className={isHoverable ? "svgicon svgicon-hoverable" : "svgicon"}
+  <SVG
+    isHoverable={isHoverable}
     xmlns="http://www.w3.org/2000/svg"
     version="1.1"
     width={width}
@@ -23,7 +35,7 @@ export const SVGIcon = ({
     viewBox={`${viewBoxX} ${viewBoxY} ${viewBoxWidth} ${viewBoxHeight}`}
   >
     <path d={path} fill={color} />
-  </svg>
+  </SVG>
 );
 
 SVGIcon.propTypes = {

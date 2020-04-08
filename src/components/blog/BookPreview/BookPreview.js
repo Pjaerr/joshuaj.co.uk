@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 
-import "./BookPreview.scss"
+// import "./BookPreview.scss"
 
 const BookPreview = ({ title, author, description, image, length, rating }) => (
   <div className="book-preview-component">
@@ -26,5 +26,5 @@ const BookPreview = ({ title, author, description, image, length, rating }) => (
       </div>
     </div>
   </div>
-)
-export default BookPreview
+);
+export default BookPreview;

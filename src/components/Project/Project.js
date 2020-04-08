@@ -3,21 +3,12 @@ import PropTypes from "prop-types";
 
 import { GithubSVGIcon, DemoSVGIcon } from "../SVGIcon/SVGIcon";
 
-import "./Project.scss";
+import * as styled from "./ProjectStyles";
 
 const Technology = ({ colour, name }) => (
-  <p className="project-technology">
-    <span
-      style={{
-        display: "inline-block",
-        width: "10px",
-        height: "10px",
-        borderRadius: "25px",
-        backgroundColor: colour,
-      }}
-    ></span>{" "}
-    {name}
-  </p>
+  <styled.ProjectTechnology colour={colour}>
+    <span /> {name}
+  </styled.ProjectTechnology>
 );
 
 const Project = ({
@@ -28,21 +19,16 @@ const Project = ({
   githubLink,
   demoLink,
 }) => (
-  <div
-    className="project-border-wrap"
-    style={{
-      background: `linear-gradient(to right, ${gradient.start}, ${gradient.end})`,
-    }}
-  >
-    <div className="project">
-      <h1 className="project-title">{title}</h1>
-      <p className="project-description">{description}</p>
-      <div className="project-technologies">
+  <styled.ProjectColouredBorder gradient={gradient}>
+    <styled.ProjectContent>
+      <h1>{title}</h1>
+      <p>{description}</p>
+      <styled.ProjectTechnologies>
         {technologies.map(({ colour, name }) => (
           <Technology key={title + colour + name} colour={colour} name={name} />
         ))}
-      </div>
-      <div className="project-links">
+      </styled.ProjectTechnologies>
+      <styled.ProjectLinks>
         <a href={githubLink} target="_blank" rel="noopener noreferrer">
           <GithubSVGIcon size="24" />
           Github
@@ -54,9 +40,9 @@ const Project = ({
             Live Demo
           </a>
         )}
-      </div>
-    </div>
-  </div>
+      </styled.ProjectLinks>
+    </styled.ProjectContent>
+  </styled.ProjectColouredBorder>
 );
 
 Project.propTypes = {

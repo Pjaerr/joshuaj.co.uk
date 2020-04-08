@@ -1,19 +1,17 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import React from "react";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import Layout from "../components/Layout/Layout"
-import SEO from "../components/seo"
-import ScrollProgressBar from "../components/ScrollProgressBar/ScrollProgressBar"
-import GithubIssueComments from "../components/GithubIssueComments/GithubIssueComments"
-
-import "./BlogPostTemplate.scss"
+import Layout from "../components/Layout/Layout";
+import SEO from "../components/seo";
+import ScrollProgressBar from "../components/ScrollProgressBar/ScrollProgressBar";
+import GithubIssueComments from "../components/GithubIssueComments/GithubIssueComments";
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { mdx } = data
-  const { frontmatter, body } = mdx
+  const { mdx } = data;
+  const { frontmatter, body } = mdx;
 
   return (
     <Layout>
@@ -24,7 +22,7 @@ export default function Template({
         image={frontmatter.image}
       />
     </Layout>
-  )
+  );
 }
 
 export const pageQuery = graphql`
@@ -41,4 +39,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

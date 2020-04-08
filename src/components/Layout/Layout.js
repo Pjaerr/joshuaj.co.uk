@@ -33,7 +33,7 @@ const GlobalStyles = createGlobalStyle`
   body.dark {
     --background: #282c35;
     --headingTextColour: #fff;
-    --bodyTextColour: #32353f;
+    --bodyTextColour: #dcdde1;
     --overlayBackground: rgba(63, 67, 77, 0.99);
     --mobileNavTextHoverColour: rgba(1, 163, 164, 0.99);
   }
