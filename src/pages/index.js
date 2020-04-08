@@ -10,12 +10,16 @@ import styled from "styled-components";
 import { breakpoints } from "../constants";
 
 const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 1fr;
+
+  margin-bottom: 120px;
 
   @media (min-width: ${breakpoints.medium}) {
-    flex-direction: row;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
   }
 `;
 

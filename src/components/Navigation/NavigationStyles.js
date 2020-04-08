@@ -229,7 +229,7 @@ export const MenuIcon = styled.span`
       props.isMenuOpen
         ? `var(--mobileNavTextColour)`
         : `var(--headingTextColour)`};
-    transition: transform 0.1s ease-in;
+    transition: transform 0.25s ease-in;
     content: "";
     width: 26px;
     height: 5px;
@@ -245,7 +245,7 @@ export const MenuIcon = styled.span`
       props.isMenuOpen
         ? `var(--mobileNavTextColour)`
         : `var(--headingTextColour)`};
-    transition: transform 0.1s ease-in;
+    transition: transform 0.25s ease-in;
     content: "";
     width: 26px;
     height: 5px;

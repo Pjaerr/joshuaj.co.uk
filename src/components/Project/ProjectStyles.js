@@ -9,7 +9,7 @@ import {
 
 export const ProjectTechnology = styled.p`
   margin-right: 15px;
-  font-size: ${bodyFontSize.large};
+  font-size: ${bodyFontSize.medium};
 
   span {
     display: inline-block;
@@ -21,8 +21,6 @@ export const ProjectTechnology = styled.p`
 `;
 
 export const ProjectColouredBorder = styled.div`
-  margin-top: 10px;
-  margin-bottom: 10px;
   position: relative;
   padding: 3px;
   width: 100%;
@@ -34,20 +32,19 @@ export const ProjectColouredBorder = styled.div`
 `;
 
 export const ProjectContent = styled.div`
-  height: 180px;
-  max-height: 180px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+
+  height: 100%;
+  max-height: 200px;
 
   background-color: var(--background);
 
-  padding: 10px 25px 25px 10px;
+  padding: 20px 25px 25px 10px;
 
-  @media (max-width: ${breakpoints.small}) {
-    padding: 5px 10px 15px 10px;
+  @media (max-width: ${breakpoints.medium}) {
+    padding: 20px 15px 20px 10px;
   }
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
 
   h1 {
     font-weight: 500;

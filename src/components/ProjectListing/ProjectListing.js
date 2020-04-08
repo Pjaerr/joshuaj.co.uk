@@ -7,12 +7,15 @@ import styled from "styled-components";
 import { headingFontSize, highlightColour } from "../../constants";
 
 const ProjectListingContainer = styled.section`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 25px;
+  justify-content: end;
 `;
 
 const Title = styled.h1`
   font-weight: normal;
+  margin-bottom: 25px;
   font-size: ${headingFontSize.medium};
   color: ${highlightColour};
 `;

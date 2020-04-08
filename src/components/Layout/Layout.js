@@ -49,6 +49,7 @@ const GlobalStyles = createGlobalStyle`
   h3,
   h4,
   h5 {
+    margin: 0;
     color: var(--headingTextColour);
   }
 
@@ -68,7 +69,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .layout-header {
-    height: 80px;
+    height: 120px;
   }
 `;
 
