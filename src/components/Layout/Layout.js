@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { createGlobalStyle } from "styled-components/macro";
+import { createGlobalStyle } from "styled-components";
 import { highlightColour, pagePadding, animationSpeed } from "../../constants";
 
 import Navigation from "../Navigation/Navigation";

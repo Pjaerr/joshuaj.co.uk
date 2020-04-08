@@ -86,6 +86,7 @@ export const NavHeader = styled.div`
   /**Desktop Navigation */
   @media (min-width: ${breakpoints.medium}) {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     justify-content: start;
 
     padding: 0;
@@ -146,8 +147,9 @@ export const NavLinks = styled.div`
   @media (min-width: ${breakpoints.medium}) {
     display: grid;
     grid-template-columns: auto auto;
+    grid-template-rows: auto;
+
     grid-column-gap: 25px;
-    grid-row-gap: 0;
     justify-content: end;
     align-items: center;
 
