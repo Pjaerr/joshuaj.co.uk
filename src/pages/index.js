@@ -9,15 +9,17 @@ import ProjectListing from "../components/ProjectListing/ProjectListing";
 import styled from "styled-components";
 import { breakpoints } from "../constants";
 
-const Container = styled.section`
+const Container = styled.div`
   display: grid;
   justify-content: center;
-  grid-template-columns: auto;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  justify-items: start;
+  grid-template-rows: auto;
+  grid-column-gap: 50px;
 
   margin-bottom: 120px;
 
-  @media (min-width: ${breakpoints.medium}) {
+  @media (min-width: ${breakpoints.large}) {
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto;
   }

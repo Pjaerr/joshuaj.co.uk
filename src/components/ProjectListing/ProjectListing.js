@@ -11,6 +11,7 @@ const ProjectListingContainer = styled.section`
   grid-template-rows: auto;
   grid-row-gap: 25px;
   justify-content: end;
+  align-content: start;
 `;
 
 const Title = styled.h1`

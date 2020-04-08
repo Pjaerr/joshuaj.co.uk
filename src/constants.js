@@ -30,4 +30,5 @@ export const animationSpeed = "0.25s";
 export const breakpoints = {
   small: "480px",
   medium: "768px",
+  large: "980px",
 };
