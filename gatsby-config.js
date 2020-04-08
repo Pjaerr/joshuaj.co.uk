@@ -12,6 +12,12 @@ module.exports = {
     `gatsby-plugin-dark-mode`,
     `gatsby-transformer-json`,
     {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `josh-jackson-personal-site`,
