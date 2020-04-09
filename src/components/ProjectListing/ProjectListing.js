@@ -1,10 +1,13 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
+//Components
 import Project from "../Project/Project";
 
+//Styles
 import styled from "styled-components";
-import { headingFontSize, highlightColour } from "../../constants";
+
+import HomepageTitle from "../../styles/HomepageTitle";
 
 const ProjectListingContainer = styled.section`
   display: grid;
@@ -12,13 +15,6 @@ const ProjectListingContainer = styled.section`
   grid-row-gap: 25px;
   justify-content: end;
   align-content: start;
-`;
-
-const Title = styled.h1`
-  font-weight: normal;
-  margin-bottom: 25px;
-  font-size: ${headingFontSize.medium};
-  color: ${highlightColour};
 `;
 
 const ProjectListing = () => {
@@ -49,7 +45,7 @@ const ProjectListing = () => {
 
   return (
     <ProjectListingContainer>
-      <Title>Projects</Title>
+      <HomepageTitle>Projects</HomepageTitle>
       {projects.map(
         ({
           node: {

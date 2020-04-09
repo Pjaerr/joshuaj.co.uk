@@ -16,6 +16,7 @@ const Container = styled.div`
   justify-items: start;
   grid-template-rows: auto;
   grid-column-gap: 50px;
+  grid-row-gap: 50px;
 
   margin-bottom: 120px;
 
