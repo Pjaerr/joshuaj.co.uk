@@ -13,7 +13,7 @@ const Container = styled.div`
 
   div {
     height: 4px;
-    background: ${highlightColour};
+    background: var(--highlightColour);
     width: 0%;
   }
 `;

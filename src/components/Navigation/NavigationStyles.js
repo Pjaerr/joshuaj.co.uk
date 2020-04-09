@@ -113,7 +113,7 @@ export const NavHeader = styled.div`
       color: var(--headingTextColour);
 
       &:hover {
-        color: ${highlightColour};
+        color: var(--highlightColour);
       }
     }
   }
@@ -181,7 +181,7 @@ export const NavLinks = styled.div`
           font-weight: bold;
 
           &:hover {
-            color: ${highlightColour};
+            color: var(--highlightColour);
           }
 
           svg {
@@ -190,7 +190,7 @@ export const NavLinks = styled.div`
             height: 32px;
 
             &:hover {
-              fill: ${highlightColour};
+              fill: var(--highlightColour);
             }
           }
         }
@@ -229,7 +229,7 @@ export const MenuIcon = styled.span`
       props.isMenuOpen
         ? `var(--mobileNavTextColour)`
         : `var(--headingTextColour)`};
-    transition: transform 0.25s ease-in;
+    transition: transform 0.2s ease-in;
     content: "";
     width: 26px;
     height: 5px;

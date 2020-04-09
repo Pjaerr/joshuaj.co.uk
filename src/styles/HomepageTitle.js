@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
-import { headingFontSize, highlightColour } from "../constants";
+import { headingFontSize, breakpoints } from "../constants";
 
 const HomepageTitle = styled.h1`
-  font-weight: normal;
-  margin-bottom: 10px;
-  font-size: ${headingFontSize.medium};
-  color: ${highlightColour};
+  font-weight: bold;
+  margin-bottom: -20px;
+  font-size: ${headingFontSize.small};
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--highlightColour);
+
+  @media (min-width: ${breakpoints.small}) {
+    margin-bottom: 25px;
+  }
 `;
 
 export default HomepageTitle;

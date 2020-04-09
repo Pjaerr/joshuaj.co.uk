@@ -39,6 +39,7 @@ export const ProjectContent = styled.div`
   max-height: 200px;
 
   background-color: var(--background);
+  transition: background-color 0.2s ease-out;
 
   padding: 20px 25px 25px 10px;
 
@@ -78,10 +79,10 @@ export const ProjectLinks = styled.div`
     color: var(--bodyTextColour);
 
     &:hover {
-      color: ${highlightColour};
+      color: var(--highlightColour);
 
       svg {
-        fill: ${highlightColour};
+        fill: var(--highlightColour);
       }
     }
   }

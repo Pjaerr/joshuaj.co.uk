@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { createGlobalStyle } from "styled-components";
-import { highlightColour, pagePadding, animationSpeed } from "../../constants";
+import { pagePadding, animationSpeed, bodyFontSize } from "../../constants";
 
 import Navigation from "../Navigation/Navigation";
 
@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
     --background: #fff;
     --headingTextColour: #2a2f36;
     --bodyTextColour: #353b48;
+    --highlightColour: #0097A7;
     --overlayBackground: rgba(1, 163, 164, 0.99);
     --mobileNavTextColour: #fff;
     --mobileNavTextHoverColour: #2a2f36;
@@ -28,12 +29,15 @@ const GlobalStyles = createGlobalStyle`
     transition-property: background-color, color;
     transition-duration: ${animationSpeed};
     transition-timing-function: ease-out;
+
+    font-size: ${bodyFontSize.large}
   }
 
   body.dark {
     --background: #282c35;
     --headingTextColour: #fff;
     --bodyTextColour: #dcdde1;
+    --highlightColour: #01cbcb;
     --overlayBackground: rgba(63, 67, 77, 0.99);
     --mobileNavTextHoverColour: rgba(1, 163, 164, 0.99);
   }
@@ -54,9 +58,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    color: ${highlightColour};
+    color: var(--highlightColour);
     text-decoration: none;
-    transition: color ${animationSpeed} ease-out;
+    transition: color ${animationSpeed} ease;
 
     &:hover {
       color: var(--bodyTextColour);
@@ -66,6 +70,7 @@ const GlobalStyles = createGlobalStyle`
   main {
     padding-left: ${pagePadding};
     padding-right: ${pagePadding};
+    margin-bottom: 120px;
   }
 
   .layout-header {
