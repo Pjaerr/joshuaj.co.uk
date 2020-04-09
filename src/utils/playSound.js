@@ -1,11 +1,11 @@
 let audioContext;
 
-if (typeof window !== "undefined") {
-  audioContext = new AudioContext();
+if (typeof window !== "undefined" && window.AudioContext) {
+  audioContext = new window.AudioContext();
 }
 
 const playSound = (vol, freq, duration) => {
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && window.AudioContext) {
     const oscillator = audioContext.createOscillator();
     const gain = audioContext.createGain();
 
