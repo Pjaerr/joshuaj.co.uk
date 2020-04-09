@@ -10,11 +10,14 @@ import {
   TwitterSVGIcon,
   ThemeSwitcherSVGIcon,
 } from "../SVGIcon/SVGIcon";
+import playSound from "../../utils/playSound";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
+    //Potential issue on IOS with this?
+
     !isMenuOpen
       ? [document.body, document.documentElement].forEach(elem =>
           elem.classList.add("menu-open")
@@ -77,7 +80,11 @@ const Navigation = () => {
             <styled.ThemeSwitcherLabel>
               <input
                 type="checkbox"
-                onChange={e => toggleTheme(e.target.checked ? "dark" : "light")}
+                onChange={e => {
+                  toggleTheme(e.target.checked ? "dark" : "light");
+                  playSound(10, 800, 0.2);
+                  navigator.vibrate && navigator.vibrate(5);
+                }}
                 checked={theme === "dark"}
                 className="theme-switcher-checkbox"
               ></input>
