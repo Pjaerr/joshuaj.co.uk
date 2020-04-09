@@ -6,21 +6,51 @@ import BlogpostLink from "../BlogpostLink/BlogpostLink";
 
 //Styles
 import styled from "styled-components";
-
+import { animationSpeed, breakpoints } from "../../constants";
 import HomepageTitle from "../../styles/HomepageTitle";
 
 const BlogListingContainer = styled.section`
   display: grid;
+  grid-row-gap: 60px;
   grid-template-rows: auto;
-  grid-row-gap: 25px;
   justify-content: start;
   align-content: start;
+
+  @media (min-width: ${breakpoints.small}) {
+    grid-row-gap: 15px;
+  }
+`;
+
+const ViewAllPostsLink = styled.a`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+
+  border: 1.5px solid var(--bodyTextColour);
+  border-radius: 3px;
+
+  transition-property: border-color, color;
+  transition-duration: ${animationSpeed};
+  transition-timing-function: ease;
+
+  font-weight: bold;
+
+  color: var(--bodyTextColour);
+
+  &:hover {
+    color: var(--highlightColour);
+    border-color: var(--highlightColour);
+  }
 `;
 
 const BlogListing = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+      allMdx(limit: 4, sort: { order: DESC, fields: [frontmatter___date] }) {
+        totalCount
         edges {
           node {
             id
@@ -37,14 +67,28 @@ const BlogListing = () => {
     }
   `);
 
-  const blogposts = data.allMdx.edges.filter(
-    edge => !!edge.node.frontmatter.date && !edge.node.frontmatter.isHidden
-  ).map(edge => <BlogpostLink key={edge.node.id} title={edge.node.frontmatter.title} date={edge.node.frontmatter.date} description={edge.node.frontmatter.description} href={edge.node.frontmatter.path} />);
+  const numberOfBlogposts = data.allMdx.totalCount;
+  const blogposts = data.allMdx.edges
+    .filter(
+      edge => !!edge.node.frontmatter.date && !edge.node.frontmatter.isHidden
+    )
+    .map(edge => (
+      <BlogpostLink
+        key={edge.node.id}
+        title={edge.node.frontmatter.title}
+        date={edge.node.frontmatter.date}
+        description={edge.node.frontmatter.description}
+        href={edge.node.frontmatter.path}
+      />
+    ));
 
   return (
     <BlogListingContainer>
-      <HomepageTitle>Blogposts</HomepageTitle>
+      <HomepageTitle>Recent Blogposts</HomepageTitle>
       {blogposts}
+      {numberOfBlogposts > 4 && (
+        <ViewAllPostsLink href="/blog">View all posts</ViewAllPostsLink>
+      )}
     </BlogListingContainer>
   );
 };

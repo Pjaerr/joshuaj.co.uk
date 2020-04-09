@@ -1,20 +1,21 @@
 import React from "react";
 
 import styled from "styled-components";
-import { highlightColour, animationSpeed } from "../../constants";
+import { animationSpeed, headingFontSize } from "../../constants";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 640px;
-  height: 200px;
-  max-height: 200px;
+  max-width: 680px;
+  min-height: 200px;
 
   h1 {
-    transition: color ${animationSpeed} ease-out;
+    font-size: ${headingFontSize.medium};
+    transition: color ${animationSpeed} ease;
+
     &:hover {
-      color: ${highlightColour};
+      color: var(--highlightColour);
     }
   }
 
