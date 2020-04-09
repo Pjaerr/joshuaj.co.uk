@@ -15,20 +15,18 @@ const Container = styled.div`
   grid-template-columns: 1fr;
   justify-items: start;
   grid-template-rows: auto;
-  grid-column-gap: 50px;
-  grid-row-gap: 50px;
-
-  margin-bottom: 120px;
+  grid-column-gap: 90px;
+  grid-row-gap: 80px;
 
   @media (min-width: ${breakpoints.large}) {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2.5fr 1fr;
     grid-template-rows: auto;
   }
 `;
 
 const IndexPage = () => (
   <Layout>
-    <SEO lang="en" title="Home" image="/me.jpg" />
+    <SEO lang="en" image="/me.jpg" description="Josh Jackson - @Pjaerr" />
     <Container>
       <BlogListing />
       <ProjectListing />
