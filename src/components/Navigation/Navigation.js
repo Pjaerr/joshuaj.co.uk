@@ -18,13 +18,13 @@ const Navigation = () => {
   const toggleMenu = () => {
     //Potential issue on IOS with this?
 
-    // !isMenuOpen
-    //   ? [document.body, document.documentElement].forEach(elem =>
-    //       elem.classList.add("menu-open")
-    //     )
-    //   : [document.body, document.documentElement].forEach(elem =>
-    //       elem.classList.remove("menu-open")
-    //     );
+    !isMenuOpen
+      ? [document.body, document.documentElement].forEach(elem =>
+          elem.classList.add("menu-open")
+        )
+      : [document.body, document.documentElement].forEach(elem =>
+          elem.classList.remove("menu-open")
+        );
 
     setIsMenuOpen(!isMenuOpen);
   };
