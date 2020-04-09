@@ -6,21 +6,25 @@ import Project from "../Project/Project";
 
 //Styles
 import styled from "styled-components";
-
+import { breakpoints } from "../../constants";
 import HomepageTitle from "../../styles/HomepageTitle";
 
 const ProjectListingContainer = styled.section`
   display: grid;
   grid-template-rows: auto;
-  grid-row-gap: 25px;
+  grid-row-gap: 60px;
   justify-content: end;
   align-content: start;
+
+  @media (min-width: ${breakpoints.small}) {
+    grid-row-gap: 25px;
+  }
 `;
 
 const ProjectListing = () => {
   const data = useStaticQuery(graphql`
     query {
-      allProjectsJson {
+      allProjectsJson(sort: { order: ASC, fields: [order] }) {
         edges {
           node {
             title

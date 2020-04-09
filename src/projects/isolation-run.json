@@ -1,4 +1,5 @@
 {
+    "order": 1,
     "title": "Isolation Run",
     "description": "Use your phone's accelerometer to only play a video whilst you're running.",
     "technologies": [
