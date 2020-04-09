@@ -27,6 +27,7 @@ const ProjectListing = () => {
       allProjectsJson(sort: { order: ASC, fields: [order] }) {
         edges {
           node {
+            order
             title
             description
             technologies {
@@ -53,6 +54,7 @@ const ProjectListing = () => {
       {projects.map(
         ({
           node: {
+            order,
             title,
             description,
             technologies,
@@ -62,6 +64,7 @@ const ProjectListing = () => {
           },
         }) => (
           <Project
+            key={order + title}
             title={title}
             description={description}
             technologies={technologies}

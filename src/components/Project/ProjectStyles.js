@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-import {
-  headingFontSize,
-  bodyFontSize,
-  breakpoints,
-  highlightColour,
-} from "../../constants";
+import { headingFontSize, bodyFontSize, breakpoints } from "../../constants";
 
 export const ProjectTechnology = styled.p`
   margin-right: 15px;

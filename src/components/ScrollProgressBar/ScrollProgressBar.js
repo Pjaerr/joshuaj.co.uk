@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
 import styled from "styled-components";
-import { highlightColour } from "../../constants";
 
 const Container = styled.div`
   position: fixed;

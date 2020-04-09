@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {
   headingFontSize,
-  highlightColour,
   breakpoints,
   pagePadding,
   animationSpeed,
@@ -69,7 +68,9 @@ export const NavHeader = styled.div`
 
     &:hover {
       color: ${props =>
-        props.isMenuOpen ? `var(--mobileNavTextHoverColour)` : highlightColour};
+        props.isMenuOpen
+          ? `var(--mobileNavTextHoverColour)`
+          : `var(--highlightColour)`};
     }
   }
 
