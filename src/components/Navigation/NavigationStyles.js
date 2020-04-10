@@ -81,8 +81,8 @@ export const NavHeader = styled.div`
     outline: none;
     border: none;
 
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     position: relative;
 
     cursor: pointer;

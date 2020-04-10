@@ -29,9 +29,10 @@ export const ProjectColouredBorder = styled.div`
 export const ProjectContent = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 5px;
 
   height: 100%;
-  max-height: 200px;
+  max-height: 215px;
 
   background-color: var(--background);
   transition: background-color 0.2s ease-out;
@@ -62,7 +63,6 @@ export const ProjectTechnologies = styled.div`
 export const ProjectLinks = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 15px;
   font-size: ${bodyFontSize.medium};
 
   a {

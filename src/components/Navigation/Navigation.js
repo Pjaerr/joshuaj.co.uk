@@ -82,8 +82,7 @@ const Navigation = () => {
                 type="checkbox"
                 onChange={e => {
                   toggleTheme(e.target.checked ? "dark" : "light");
-                  playSound(10, 400, 2);
-                  navigator.vibrate && navigator.vibrate(5);
+                  // playSound(e.target.checked);
                 }}
                 checked={theme === "dark"}
                 className="theme-switcher-checkbox"
