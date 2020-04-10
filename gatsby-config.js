@@ -3,6 +3,7 @@ module.exports = {
     title: `Josh Jackson - @Pjaerr`,
     description: `Personal Site and Blog for Josh Jackson - @Pjaerr`,
     author: `@Pjaerr`,
+    siteUrl: `https://joshuaj.co.uk`,
   },
   plugins: [
     `gatsby-plugin-sass`,
@@ -11,6 +12,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-dark-mode`,
     `gatsby-transformer-json`,
+    "gatsby-plugin-sitemap",
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
