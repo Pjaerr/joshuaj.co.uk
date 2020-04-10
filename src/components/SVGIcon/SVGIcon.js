@@ -5,9 +5,6 @@ import styled from "styled-components";
 
 const SVG = styled.svg`
   fill: var(--bodyTextColour);
-  path {
-    transition: fill 0.25s ease;
-  }
 
   &:hover {
     ${props => props.isHoverable && `fill: var(--highlightColour)`}

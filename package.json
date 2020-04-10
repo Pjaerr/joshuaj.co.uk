@@ -34,10 +34,12 @@
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
+    "cypress": "^4.3.0",
     "gatsby-plugin-sass": "^2.2.1",
     "gh-pages": "^2.2.0",
     "node-sass": "^4.13.1",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "start-server-and-test": "^1.10.11"
   },
   "keywords": [
     "gatsby"
@@ -50,7 +52,9 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "test": "npm run test:e2e",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open"
   },
   "repository": {
     "type": "git",
