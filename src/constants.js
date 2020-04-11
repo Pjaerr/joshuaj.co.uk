@@ -6,7 +6,8 @@ export const headingFontSize = {
 };
 
 export const blogHeadingFontSize = {
-  small: "1.563em",
+  small: "1.375em",
+  medium: "1.563em",
   large: "2.813em",
 };
 

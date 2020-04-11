@@ -1,9 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { createGlobalStyle } from "styled-components";
-import { pagePadding, animationSpeed, bodyFontSize } from "../../constants";
+import {
+  pagePadding,
+  animationSpeed,
+  bodyFontSize,
+  breakpoints,
+} from "../../constants";
 
 import Navigation from "../Navigation/Navigation";
+import ScrollProgressBar from "../ScrollProgressBar/ScrollProgressBar";
 
 const GlobalStyles = createGlobalStyle`
   body,
@@ -73,12 +79,21 @@ const GlobalStyles = createGlobalStyle`
     margin-bottom: 120px;
   }
 
+  main.blogpost-layout {
+
+    @media (min-width: ${breakpoints.medium}) {
+
+    display: flex;
+    justify-content: center;
+    }
+  }
+
   .layout-header {
     height: 120px;
   }
 `;
 
-const Layout = ({ children }) => {
+export const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyles />
@@ -94,4 +109,19 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Layout;
+export const BlogPostLayout = ({ children }) => {
+  return (
+    <>
+      <GlobalStyles />
+      <header className="layout-header">
+        <Navigation />
+      </header>
+      <ScrollProgressBar />
+      <main className="blogpost-layout">{children}</main>
+    </>
+  );
+};
+
+BlogPostLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
