@@ -11,13 +11,14 @@ import styled from "styled-components";
 import {
   blogHeadingFontSize,
   blogBodyFontSize,
-  pagePadding,
   breakpoints,
 } from "../constants";
 
 const BlogpostContainer = styled.article`
+  max-width: 100%;
+
   @media (min-width: ${breakpoints.large}) {
-    max-width: 940px;
+    max-width: 50em;
   }
 `;
 
@@ -29,14 +30,20 @@ const BlogpostTitle = styled.h1`
   }
 `;
 
-const BlogpostDate = styled.p``;
+const BlogpostDate = styled.p`
+  margin-bottom: 35px;
+  @media (min-width: ${breakpoints.medium}) {
+    margin-bottom: 70px;
+  }
+`;
 
 const BlogpostContent = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-weight: 500;
+  font-weight: normal;
   width: 100%;
+  max-width: 100%;
 
   h1,
   h2,
@@ -52,6 +59,8 @@ const BlogpostContent = styled.section`
   }
 
   h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
     font-size: ${blogHeadingFontSize.small};
   }
 
@@ -59,7 +68,11 @@ const BlogpostContent = styled.section`
     font-size: ${blogBodyFontSize.small};
     max-width: 100%;
     word-break: break-word;
-    line-height: 24px;
+    line-height: 30px;
+
+    @media (min-width: ${breakpoints.medium}) {
+      font-size: ${blogBodyFontSize.large};
+    }
   }
 
   img {
@@ -75,22 +88,18 @@ const BlogpostContent = styled.section`
     }
   }
 
+  a {
+    font-weight: bold;
+  }
+
   /**This will be extracted out into a MDX component that will handle the styling */
   .gatsby-highlight {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    width: 96vw;
+    margin-left: calc(50% - 48vw);
 
-    @media (min-width: ${breakpoints.large}) {
+    @media (min-width: ${breakpoints.medium}) {
       width: 100%;
-      position: static;
-      left: 0;
-      right: 0;
       margin-left: 0;
-      margin-right: 0;
     }
 
     pre {
@@ -100,9 +109,18 @@ const BlogpostContent = styled.section`
 
   ul,
   ol {
+    padding-left: 20px;
+
     li {
-      font-size: ${blogBodyFontSize.small};
       margin-bottom: 15px;
+
+      p {
+        font-size: ${blogBodyFontSize.small};
+
+        @media (min-width: ${breakpoints.medium}) {
+          font-size: ${blogBodyFontSize.large};
+        }
+      }
 
       code {
         white-space: pre-wrap; /* Since CSS 2.1 */

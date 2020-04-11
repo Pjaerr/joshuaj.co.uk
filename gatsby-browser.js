@@ -6,4 +6,5 @@
 
 // You can delete this file if you're not using it
 
-require("prismjs/themes/prism-solarizedlight.css")
+require("./src/themes/prism-solarizedlight.css");
+require("./src/themes/prism-cobalt2.css");

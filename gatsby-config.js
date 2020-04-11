@@ -129,6 +129,10 @@ module.exports = {
             family: `IBM Plex Sans`,
             variants: [`400`, `500`, `700`],
           },
+          {
+            family: `Inconsolata`,
+            variants: [`400`, `700`],
+          },
         ],
       },
     },

@@ -18,8 +18,9 @@ export const bodyFontSize = {
 };
 
 export const blogBodyFontSize = {
-  small: "1em",
-  large: "1.125em",
+  extraSmall: "0.875em",
+  small: "1.125em",
+  large: "1.25em",
 };
 
 export const highlightColour = "#01a3a4";

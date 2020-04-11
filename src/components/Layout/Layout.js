@@ -17,6 +17,8 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
+    /* overflow-x: hidden;
+    box-sizing: border-box; */
     font-family: "IBM Plex Sans", sans-serif;
   }
 
@@ -28,6 +30,7 @@ const GlobalStyles = createGlobalStyle`
     --overlayBackground: rgba(1, 163, 164, 0.99);
     --mobileNavTextColour: #fff;
     --mobileNavTextHoverColour: #2a2f36;
+
 
     font-weight: 500;
     background-color: var(--background);
@@ -80,12 +83,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main.blogpost-layout {
-
     @media (min-width: ${breakpoints.medium}) {
-
-    display: flex;
-    justify-content: center;
-    }
+      display: flex;
+      justify-content: center;
+      }
   }
 
   .layout-header {

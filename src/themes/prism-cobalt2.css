@@ -1,0 +1,253 @@
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript&plugins=show-language+highlight-keywords */
+/**
+ * Cobalt2 theme for JavaScript, CSS, HTML, Markdown, JSON, YAML, and SCSS
+ * @author wesbos
+ * Works best when "Show Language" and "Highlight Keywords" plugins are included
+ */
+
+body.dark code[class*="language-"],
+body.dark pre[class*="language-"] {
+  color: #f8f8f2;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: "Inconsolata", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.35;
+
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+body.dark pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0;
+  border: 0;
+}
+
+body.dark :not(pre) > code[class*="language-"],
+body.dark pre[class*="language-"] {
+  background: #223545;
+}
+
+/* Inline code */
+body.dark :not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+  color: #c7ecee;
+}
+
+/* Language before */
+body.dark .prism-show-language {
+  background: #1f4662;
+  border-top: 2px solid #ffc600;
+  text-align: right;
+  padding: 5px;
+  color: white;
+  font-size: 11px;
+}
+body.dark .prism-show-language + pre {
+  margin-top: 0;
+}
+
+body.dark .token.comment,
+body.dark .token.prolog,
+body.dark .token.doctype,
+body.dark .token.cdata {
+  color: #0088ff;
+}
+
+body.dark .token.comment,
+body.dark .token.italic {
+  font-style: italic;
+}
+
+body.dark .token.punctuation {
+  color: #f8f8f2;
+}
+
+body.dark .namespace {
+  opacity: 0.7;
+}
+
+body.dark .token.property,
+body.dark .token.tag,
+body.dark .token.constant,
+body.dark .token.symbol,
+body.dark .token.deleted {
+  color: #f92672;
+}
+
+body.dark .token.boolean,
+body.dark .token.number {
+  color: #ff628c;
+}
+
+body.dark .token.selector,
+body.dark .token.attr-name,
+body.dark .token.string,
+body.dark .token.char,
+body.dark .token.builtin,
+body.dark .token.inserted {
+  color: #3ad900;
+}
+
+body.dark .token.operator,
+body.dark .token.entity,
+body.dark .token.url,
+body.dark .language-css .token.string,
+body.dark .style .token.string,
+body.dark .token.variable {
+  color: #f8f8f2;
+}
+
+body.dark .token.atrule,
+body.dark .token.attr-value {
+  color: #ffc600;
+}
+
+body.dark .token.keyword.keyword-function {
+  color: #ffa5f3;
+  background: #1d3c52;
+  padding: 4px 2px;
+}
+
+body.dark .token.keyword {
+  color: #ff9d00;
+}
+
+body.dark .token.operator {
+  color: #ff9d00;
+}
+
+body.dark .token.function,
+body.dark .token.class-name {
+  color: #ffc600;
+}
+
+body.dark .token.keyword.keyword-const,
+body.dark .token.keyword.keyword-var,
+body.dark .token.keyword.keyword-let {
+  color: #ffc600;
+}
+
+body.dark .token.regex,
+body.dark .token.important {
+  color: #fd971f;
+}
+
+body.dark .token.important,
+body.dark .token.bold {
+  font-weight: bold;
+}
+
+body.dark .token.entity {
+  cursor: help;
+}
+
+/* CSS requires Prism: CSS, CSS-Extras */
+
+body.dark code.language-css,
+body.dark .token.hexcode,
+body.dark .language-css .token.boolean,
+body.dark .language-css .token.number {
+  color: #edf080;
+}
+
+body.dark .language-css .token.selector {
+  color: #9effff;
+}
+
+body.dark .language-css .token.class,
+body.dark .language-css .token.selector .token.class,
+body.dark .language-css .token.attribute {
+  color: #3ad900;
+}
+
+body.dark .language-css .token.property {
+  color: #9df39f;
+}
+
+body.dark .token.pseudo-class {
+  color: #ff9a1a;
+}
+
+/* HTML Markup */
+
+body.dark .language-markup .token.tag,
+body.dark .token.doctype {
+  color: #9effff;
+}
+
+body.dark .language-markup .attr-name {
+  color: #ffc600;
+  font-style: italic;
+}
+body.dark .language-markup .attr-value {
+  color: #3ad900;
+}
+
+/* Markdown */
+
+body.dark .language-markdown .title {
+  background: #000;
+  color: #fdc500;
+}
+
+body.dark .language-markdown .url {
+  color: #3ad900;
+}
+
+body.dark .language-markdown .list.punctuation {
+  color: #ff9a1a;
+}
+
+/* JSON */
+
+body.dark .language-json .property {
+  color: #3ad900;
+}
+
+body.dark .language-json .operator {
+  color: #f8f8f2;
+}
+
+/* SCSS */
+
+body.dark code.language-scss {
+  color: #e68885;
+}
+
+body.dark .language-scss .property {
+  color: #80ffbb;
+}
+
+body.dark .language-scss .keyword {
+  color: #ff9a1a;
+}
+
+body.dark .language-scss .token.variable {
+  color: #ccc;
+}
+
+body.dark .language-scss .hexcode {
+  color: #f85b79;
+}
+
+body.dark .language-scss .function {
+  color: #fff;
+}
