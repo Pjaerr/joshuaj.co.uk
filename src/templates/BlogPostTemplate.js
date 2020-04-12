@@ -1,3 +1,6 @@
+import "../themes/prism-solarizedlight.css";
+import "../themes/prism-cobalt2.css";
+
 import React from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -25,7 +28,7 @@ const BlogpostContainer = styled.article`
 const BlogpostTitle = styled.h1`
   font-size: ${blogHeadingFontSize.medium};
 
-  @media (min-width: ${breakpoints.large}) {
+  @media (min-width: ${breakpoints.small}) {
     font-size: ${blogHeadingFontSize.large};
   }
 `;
@@ -90,6 +93,7 @@ const BlogpostContent = styled.section`
 
   a {
     font-weight: bold;
+    text-decoration: underline;
   }
 
   /**This will be extracted out into a MDX component that will handle the styling */
@@ -109,12 +113,26 @@ const BlogpostContent = styled.section`
 
   ul,
   ol {
+    list-style: none;
+    counter-reset: list-number;
     padding-left: 20px;
 
     li {
-      margin-bottom: 15px;
+      counter-increment: list-number;
+
+      &::before {
+        content: counter(list-number) ".";
+        padding-right: 16px;
+        color: var(--highlightColour);
+        font-size: ${blogBodyFontSize.large};
+        font-style: italic;
+        font-weight: bold;
+      }
+
+      margin-bottom: 25px;
 
       p {
+        display: inline;
         font-size: ${blogBodyFontSize.small};
 
         @media (min-width: ${breakpoints.medium}) {
