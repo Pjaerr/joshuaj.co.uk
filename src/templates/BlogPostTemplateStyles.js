@@ -135,8 +135,12 @@ export const BlogpostContent = styled.section`
   ul,
   ol {
     padding-left: 0;
+    max-width: 100%;
 
     li {
+      /* display: flex;
+      -webkit-box-align: baseline;
+      align-items: baseline; */
       line-height: 32px;
       margin-bottom: 25px;
 
@@ -151,7 +155,14 @@ export const BlogpostContent = styled.section`
         font-size: inherit;
       }
 
+      /* * {
+        margin-right: 2.5px;
+        margin-left: 2.5px;
+      } */
+
       code {
+        overflow-x: auto;
+        white-space: pre-wrap;
         word-wrap: break-word; /* Internet Explorer 5.5+ */
       }
     }
