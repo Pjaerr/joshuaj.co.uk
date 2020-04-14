@@ -1161,7 +1161,6 @@ If you want to host your website, it's really quick and easy as Svelte just outp
 
 1. Run `npm run build` to generate the final js and css files.
 
-
 2. Put the contents of the `public` folder onto a static file host. If you're using Github you can create a new branch called `gh-pages` and then just put the static files there. (Read me about this [here](https://pages.github.com/))
 
 **Some things to note:**
