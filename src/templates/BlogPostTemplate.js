@@ -33,12 +33,12 @@ export default function Template({
           <MDXRenderer>{body}</MDXRenderer>
         </styled.BlogpostContent>
         <styled.BlogpostEnd>
-          <GithubIssueComments issueUri={frontmatter.issueLink} />
-          <p>
-            If you enjoyed this post you can read my other blog posts here or
-            follow me on twitter{" "}
+          {/* <GithubIssueComments issueUri={frontmatter.issueLink} /> */}
+          <styled.BlogpostEndLinks>
+            If you enjoyed this post you can read my other blog posts{" "}
+            <a href="/blog">here</a> or follow me on twitter{" "}
             <a href="https://twitter.com/Pjaerr">@Pjaerr</a>
-          </p>
+          </styled.BlogpostEndLinks>
         </styled.BlogpostEnd>
       </styled.BlogpostContainer>
     </BlogPostLayout>
