@@ -1,30 +1,32 @@
 import React from "react";
 
-// import "./BookPreview.scss"
+import * as styled from "./BookPreviewStyles";
 
 const BookPreview = ({ title, author, description, image, length, rating }) => (
-  <div className="book-preview-component">
+  <styled.BookPreviewContainer>
     <img src={image} alt={title + " book cover"} />
-    <div className="book-preview-component-info">
+    <styled.BookPreviewInfo>
       <h1>{title}</h1>
       <h2>{author}</h2>
-      <div className="book-preview-component-info-description">
-        <p className="book-preview-component-info-description-title">
-          Description
-        </p>
+      <styled.BookPreviewDescription>
+        <p>Description</p>
         <p>{description}</p>
-      </div>
-      <div className="book-preview-component-info-meta">
+      </styled.BookPreviewDescription>
+      <styled.BookPreviewInfoMeta>
         <span>
-          <p className="book-preview-component-info-meta-title">Pages</p>
+          <styled.BookPreviewInfoMetaTitle>
+            Pages
+          </styled.BookPreviewInfoMetaTitle>
           <p>{length}</p>
         </span>
         <span>
-          <p className="book-preview-component-info-meta-title">My Rating</p>
+          <styled.BookPreviewInfoMetaTitle>
+            My Rating
+          </styled.BookPreviewInfoMetaTitle>
           <p>{rating}/5</p>
         </span>
-      </div>
-    </div>
-  </div>
+      </styled.BookPreviewInfoMeta>
+    </styled.BookPreviewInfo>
+  </styled.BookPreviewContainer>
 );
 export default BookPreview;

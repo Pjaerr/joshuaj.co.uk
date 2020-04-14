@@ -1,15 +1,17 @@
-@import "../../../variables";
+import styled from "styled-components";
 
-.book-preview-component {
+import { breakpoints } from "../../../constants";
+
+export const BookPreviewContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #353b48;
+  color: var(--headingTextColour);
   width: 100%;
   margin: 0 auto;
   margin-bottom: 40px;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.medium}) {
     flex-direction: column;
     justify-content: center;
   }
@@ -27,15 +29,15 @@
       height: 300px;
     }
   }
-}
+`;
 
-.book-preview-component-info {
+export const BookPreviewInfo = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   padding-right: 10px;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.medium}) {
     padding: 10px;
   }
 
@@ -47,23 +49,24 @@
   h2 {
     font-size: 1em;
   }
-}
+`;
 
-.book-preview-component-info-description {
+export const BookPreviewDescription = styled.div`
   font-size: 0.8em;
-  .book-preview-component-info-description-title {
-    font-weight: normal;
-    color: $highlightColour;
-  }
-}
 
-.book-preview-component-info-meta {
+  :first-child {
+    font-weight: normal;
+    color: var(--highlightColour);
+  }
+`;
+
+export const BookPreviewInfoMeta = styled.div`
   display: flex;
   font-size: 0.8em;
+`;
 
-  .book-preview-component-info-meta-title {
-    font-weight: normal;
-    color: $highlightColour;
-    margin-right: 40px;
-  }
-}
+export const BookPreviewInfoMetaTitle = styled.p`
+  font-weight: normal;
+  color: var(--highlightColour);
+  margin-right: 40px;
+`;
