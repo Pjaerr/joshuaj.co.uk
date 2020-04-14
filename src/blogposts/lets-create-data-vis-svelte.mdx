@@ -5,8 +5,10 @@ date: "2020-01-08"
 title: "Lets Create: A Data Visualization using Svelte"
 description: "In this article we'll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."
 issueLink: "Pjaerr/Svelte-Data-Vis-Premier-League/issues/2"
-image: "/lets-create-data-vis-svelte/overview-component.png"
+image: "/lets-create-data-vis-svelte/overview-component.jpg"
 ---
+
+import Video from "../components/blog/Video/Video";
 
 If you haven't heard of [Svelte](https://svelte.dev/), it is a relatively new JavaScript framework that challenges the norm by shifting the bulk of the work from the browser to the compile/build step.
 
@@ -24,7 +26,10 @@ You can find a demo of this data visualization at the following link: https://pj
 
 or you can just view the gif below:
 
-![Final App Gif](/lets-create-data-vis-svelte/final-app-gif.gif)
+<Video
+  src="/lets-create-data-vis-svelte/final-app"
+  caption="The finished product in action"
+/>
 
 ## Setup 🛠️
 
@@ -37,6 +42,7 @@ I won't go too deep into setting up Svelte as there are already guides on this, 
 5. Run `npm run dev`
 
 If you are using VS Code, there is a really useful extension called [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=JamesBirtles.svelte-vscode) by James Birtles that gives you intellisense for .svelte files however you can follow this article without it.
+
 ## The Data 📊
 
 For this project we will need the following data:
@@ -99,17 +105,36 @@ for (const region of data) {
 }
 ```
 
-The end goal of this data visualization is to have a map of the UK where each region is coloured in based on their contribution to premier league title wins. To do this we must determine each region's contribution and then assign a colour based on that. 
+The end goal of this data visualization is to have a map of the UK where each region is coloured in based on their contribution to premier league title wins. To do this we must determine each region's contribution and then assign a colour based on that.
 
 We'll be using the following colour palette where green = higher contribution:
 
-![Colour Palette](/lets-create-data-vis-svelte/colour-palette.png)
+![Colour Palette](/lets-create-data-vis-svelte/colour-palette)
 
 In the `getRegionData.js` file underneath the code you've already written, store the colours in an array:
 
 ```javascript
-const colourPalette = ["#38003c", "#2a404e", "#274c52", "#265053", "#255454", "#245956", "#226659","#1f735d", "#1c8060", "#198c64", "#169968", "#14a66b", "#11b26f", "#0ebf73", "#0bcc76", "#08d97a",
-"#06e67e", "#03f281", "#00ff85"];
+const colourPalette = [
+  "#38003c",
+  "#2a404e",
+  "#274c52",
+  "#265053",
+  "#255454",
+  "#245956",
+  "#226659",
+  "#1f735d",
+  "#1c8060",
+  "#198c64",
+  "#169968",
+  "#14a66b",
+  "#11b26f",
+  "#0ebf73",
+  "#0bcc76",
+  "#08d97a",
+  "#06e67e",
+  "#03f281",
+  "#00ff85",
+];
 ```
 
 Next, we want to map the overall appearances of a region to a value in the array of colours. We do this using a formula which maps (0 to highestNumberOfAppearances) in the range of (0 to length of colours array) and then just create a colour property on each region with the hex value or to the default dark colour if they haven't contributed at all.
@@ -153,7 +178,6 @@ Now we have our data, we need the map. For this project I am using a map of the 
 
 Feel free to just copy the contents of the file from [Github](https://github.com/Pjaerr/Svelte-Data-Vis-Premier-League/blob/master/src/Data/regionPaths.js) to speed things up if you haven't already.
 
-
 Your `regionPaths.js` file should look something like this:
 
 ```javascript
@@ -177,18 +201,18 @@ This is our first _component_, but before we begin, let's write the code that wi
 Edit the `main.js` file to include the following code:
 
 ```javascript
-import App from "./App.svelte"
+import App from "./App.svelte";
 
 //Here we use intro:true so that transitions run on initial load.
 const app = new App({
   target: document.body,
   intro: true,
-})
+});
 
-export default app
+export default app;
 ```
 
-This is the entry file where we create a new instance of the `App.svelte` component and tell it to add itself to the body of the page using `target: document.body`. 
+This is the entry file where we create a new instance of the `App.svelte` component and tell it to add itself to the body of the page using `target: document.body`.
 
 We then tell it that we want any animations/transitions on this component and its children to happen when we first load the component (By default Svelte only plays animations/transitions after a state change). We do this by adding the `intro: true` property, this is important as we want to animate the map by drawing it when you first load the page.
 
@@ -198,7 +222,7 @@ In the `App.svelte` file:
 
 ```html
 <script>
-  import regions from "./Data/regionPaths.js"
+  import regions from "./Data/regionPaths.js";
 </script>
 
 {#each regions as { name }}
@@ -248,7 +272,7 @@ In the `App.svelte` file:
 
 ```html
 <script>
-  import MapContainer from "./Components/MapContainer.svelte"
+  import MapContainer from "./Components/MapContainer.svelte";
 </script>
 
 <MapContainer width="800px" height="600px" />
@@ -279,7 +303,7 @@ This means that we can do something like the following in the `App.svelte` file:
 
 ```html
 <script>
-  import MapContainer from "./Components/MapContainer.svelte"
+  import MapContainer from "./Components/MapContainer.svelte";
 </script>
 
 <MapContainer>
@@ -307,13 +331,13 @@ Add the `#each` loop back into the `App.svelte` file, but this time pull through
 
 ```html
 <script>
-  import regions from "./Data/regionPaths.js"
-  import MapContainer from "./Components/MapContainer.svelte"
+  import regions from "./Data/regionPaths.js";
+  import MapContainer from "./Components/MapContainer.svelte";
 </script>
 
 <MapContainer>
   {#each regions as { name, svgPath }}
-    <path d="{svgPath}" />
+  <path d="{svgPath}" />
   {/each}
 </MapContainer>
 ```
@@ -327,38 +351,39 @@ You may notice that the map is too big. We can do a few things to fix this, firs
   <div class="map-container">
     <MapContainer>
       {#each regions as { name, svgPath }}
-        <path d="{svgPath}" />
+      <path d="{svgPath}" />
       {/each}
     </MapContainer>
   </div>
 </main>
 ```
+
 and then add the following styles:
 
 ```css
+.app {
+  display: flex;
+}
+
+.map-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
   .app {
-    display: flex;
+    flex-direction: column;
   }
 
   .map-container {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
+    position: relative;
   }
-
-  @media (max-width: 860px) {
-    .app {
-      flex-direction: column;
-    }
-
-    .map-container {
-      position: relative;
-    }
-  }
+}
 ```
 
 Once you've done that, we can use the `onMount` function that Svelte provides to run some code when our component is added to the page. This code should get the bounding box of our SVG once it has content inside of it and then update the width and height to fit that bounding box.
@@ -367,7 +392,7 @@ In the `MapContainer.svelte` file, start by importing the `onMount` function fro
 
 ```html
 <script>
-  import { onMount } from "svelte"
+  import { onMount } from "svelte";
 </script>
 ```
 
@@ -375,7 +400,7 @@ and then create a local variable for the width, height and then a variable to ho
 
 ```html
 <script>
-  import { onMount } from "svelte"
+  import { onMount } from "svelte";
 
   let svg;
   let width = "0";
@@ -403,10 +428,17 @@ next, create a function called `resizeSVG` that updates the width and height var
   onMount(resizeSVG);
 </script>
 ```
+
 finally, in the HTML add the calculated attributes to the SVG element and bind the element to the `svg` variable:
 
 ```html
-<svg viewBox="0 0 {width} {height}" height={window.innerHeight - 10} bind:this={svg}>
+<svg
+  viewBox="0 0 {width} {height}"
+  height="{window.innerHeight"
+  -
+  10}
+  bind:this="{svg}"
+>
   <g class="regions">
     <slot />
   </g>
@@ -428,15 +460,21 @@ let windowHeight = 10;
 and then create a new element in the html that takes the `resizeSVG` function as a callback and also binds the inner height of the window to our `windowHeight` variable:
 
 ```html
-<svelte:window on:resize={resizeSVG} bind:innerHeight={windowHeight} />
+<svelte:window on:resize="{resizeSVG}" bind:innerHeight="{windowHeight}" />
 ```
 
 and also update the SVG element so it uses the new `windowHeight` variable instead of `window.innerHeight`:
 
 ```html
-<svelte:window on:resize={resizeSVG} bind:innerHeight={windowHeight} />
+<svelte:window on:resize="{resizeSVG}" bind:innerHeight="{windowHeight}" />
 
-<svg viewBox="0 0 {width} {height}" height={windowHeight - 10} bind:this={svg}>
+<svg
+  viewBox="0 0 {width} {height}"
+  height="{windowHeight"
+  -
+  10}
+  bind:this="{svg}"
+>
   <g class="regions">
     <slot />
   </g>
@@ -470,7 +508,7 @@ and then in the `App.svelte` file, import the new component and replace the dire
 ```html
 <MapContainer>
   {#each regions as { name, svgPath }}
-    <MapRegion {svgPath} />
+  <MapRegion {svgPath} />
   {/each}
 </MapContainer>
 ```
@@ -563,13 +601,17 @@ and then add the `transition:draw` attribute to the SVG path which tells it to d
 
 That results in an SVG that draws itself through each path drawing itself individually:
 
-![Basic Draw Transition](/lets-create-data-vis-svelte/basic-draw-transition.gif)
+<Video
+  src="/lets-create-data-vis-svelte/basic-draw-transition"
+  caption="Basic draw transition using Svelte"
+/>
 
 but we can make it better, let's start by specifying the speed at which we want to draw each path, we do this by changing the attribute to be:
 
 ```html
 transition:draw={{ duration: 1500 }}
 ```
+
 where `1500` is the time in milliseconds the animation should take.
 
 Now it's kind of hard to see the actual animation because of the conflicting colours. Let's flip the stroke colour and fill colour for the duration of the animation. We first start by defining a new variable in our script tags.
@@ -581,25 +623,16 @@ let transitionEnded = false;
 and then on the path, we can add an event listener that will set `transitionEnded` to true once the transition has ended. Svelte handles all of this for us as it knows when the draw transition finishes.
 
 ```html
-<path
-  transition:draw={{ duration: 1500 }}
-  on:introend={() => (transitionEnded = true)}
-  class="path"
-  d="{svgPath}"
-  fill="{fillColour}"
-  stroke="{strokeColour}"
-  style="stroke-width: {strokeWidth}"
-/>
+<path transition:draw={{ duration: 1500 }} on:introend={() => (transitionEnded =
+true)} class="path" d="{svgPath}" fill="{fillColour}" stroke="{strokeColour}"
+style="stroke-width: {strokeWidth}" />
 ```
 
 Now let's add a condition to the fill and stroke attributes to flip the colours if transitionEnded is false.
 
-
 ```html
-  <path 
-    fill={transitionEnded ? fillColour : strokeColour}
-    stroke={transitionEnded ? strokeColour : fillColour}
-  />
+<path fill={transitionEnded ? fillColour : strokeColour} stroke={transitionEnded
+? strokeColour : fillColour} />
 ```
 
 As a final touch, let's add a CSS transition to the fill attribute so that when the fill colour is set, it doesn't just flash onto the screen.
@@ -616,7 +649,10 @@ Add the following CSS rule to the `<style>` tags:
 
 If everything has gone smoothly, we should end up with something that looks like the following, excluding the choppy gif of course:
 
-![Final Draw Transition](/lets-create-data-vis-svelte/finished-draw-transition.gif)
+<Video
+  src="/lets-create-data-vis-svelte/finished-draw-transition"
+  caption="Final draw transition"
+/>
 
 ## Adding Interactivity 🖱️ → 🗺️
 
@@ -625,16 +661,10 @@ Now the map has some animations, let's take it a step further and make it intera
 First navigate to the `<MapRegion>` component and add an empty `on:click` event to the svg path.
 
 ```html
-<path 
-  on:click
-  transition:draw={{ duration: 1500 }}
-  on:introend={ () => (transitionEnded = true)}
-  d={svgPath}
-  class="path"
-  fill={transitionEnded ? fillColour : strokeColour}
-  stroke={transitionEnded ? strokeColour : fillColour}
-  style="stroke-width: {strokeWidth}"
- />
+<path on:click transition:draw={{ duration: 1500 }} on:introend={ () =>
+(transitionEnded = true)} d={svgPath} class="path" fill={transitionEnded ?
+fillColour : strokeColour} stroke={transitionEnded ? strokeColour : fillColour}
+style="stroke-width: {strokeWidth}" />
 ```
 
 This says we don't want to handle the `on:click` event in our `<MapRegion>` component, rather we want to bubble it up and instead handle it wherever our `<MapRegion>` component is used.
@@ -645,15 +675,9 @@ In the `App.svelte` file:
 
 ```html
 <MapContainer>
-  {#each regions as { name, svgPath }}
-  <MapRegion
-    on:click={() => { console.log(name + ' clicked!') }}
-    {svgPath}
-    fillColour="red"
-    strokeColour="white"
-    strokeWidth="1px"
-  />
-  {/each}
+  {#each regions as { name, svgPath }} <MapRegion on:click={() => {
+  console.log(name + ' clicked!') }} {svgPath} fillColour="red"
+  strokeColour="white" strokeWidth="1px" /> {/each}
 </MapContainer>
 ```
 
@@ -680,16 +704,9 @@ Finally, add a `<h1>` tag to the page that just contains the active region:
   <h1>{activeRegion}</h1>
   <div class="map-container">
     <MapContainer>
-      {#each Regions as { name, svgPath }}
-        <MapRegion
-          on:click={() => {
-            activeRegion = name;
-          }}
-          {svgPath}
-          fillColour="red"
-          strokeColour="white"
-          strokeWidth="1px" />
-      {/each}
+      {#each Regions as { name, svgPath }} <MapRegion on:click={() => {
+      activeRegion = name; }} {svgPath} fillColour="red" strokeColour="white"
+      strokeWidth="1px" /> {/each}
     </MapContainer>
   </div>
 </main>
@@ -705,27 +722,29 @@ Add the following CSS in the `<MapRegion>` component:
 
 ```css
 .path:hover {
-    fill: #333;
-  }
+  fill: #333;
+}
 ```
 
 and then in the `App.svelte` file replace the `fillColour` property of the `<MapRegion>` component with the following ternary conditon:
 
 ```html
-<MapRegion 
-  fillColour={activeRegion === name ? '#333' : 'red'}
-/>
+<MapRegion fillColour={activeRegion === name ? '#333' : 'red'} />
 ```
 
 this says that if the active region is equal to the name of the region being rendered, then fill it in with the grey colour, if not, fill it in red as normal.
 
 If you've done everything correctly, you should have something that looks like the following:
 
-![Interactive Map](/lets-create-data-vis-svelte/interactive-map.gif)
+<Video
+  src="/lets-create-data-vis-svelte/interactive-map"
+  caption="Interactive map being clicked on"
+/>
 
 In the next section we will be using the function we created at the very beginning to colour in the MapRegion components based on their contribution to the premier league.
 
 ## Visualizing the data 🔢
+
 Inside of the `App.svelte` file, import the `getRegionData` function in the `<script>` tags:
 
 ```javascript
@@ -735,26 +754,22 @@ import getRegionData from "./Data/getRegionData.js";
 and then for the fillColour property of each `<MapRegion>`, instead of passing in 'red', we can instead just call our function and access the .colour property on it like so:
 
 ```html
-<MapRegion
-  on:click={() => {
-    activeRegion = name;
-  }}
-  {svgPath}
-  fillColour={activeRegion === name ? '#333' : getRegionData(name).colour}
-  strokeColour="white"
-  strokeWidth="1px" />
+<MapRegion on:click={() => { activeRegion = name; }} {svgPath}
+fillColour={activeRegion === name ? '#333' : getRegionData(name).colour}
+strokeColour="white" strokeWidth="1px" />
 ```
 
 If you've done everything correctly, you should end up with a map that looks like this:
 
-![Map With Colour](/lets-create-data-vis-svelte/coloured-map.png)
+![Map With Colour](/lets-create-data-vis-svelte/coloured-map)
 
 This section was a brief one as we did all the work at the very beginning; In the remaining sections we will create a Svelte component that shows all of the data about the region you have clicked. We will also do some housekeeping and make sure everything is styled properly and then we are pretty much finished!
 
 ## The `<RegionInformation>` Component 🖱️ → 🗺️ → 🗃️
+
 In this section we will be creating a new Svelte component that shows us all the data about a region when we click it.
 
-Let's start by making a new component called `RegionInformation.svelte` in the Components folder. 
+Let's start by making a new component called `RegionInformation.svelte` in the Components folder.
 
 This component will be a modal that pops up when the user clicks on a region and has all of the information about the region inside of it.
 
@@ -776,24 +791,24 @@ In `RegionInformation.svelte`:
 Now inside of `App.svelte`, import the component and put one on the page to test it out:
 
 ```html
-  <script>
-    import RegionInformation from "./Components/RegionInformation.svelte";
-  </script>
-  <main class="app">
-    <h1>{activeRegion}</h1>
-    <RegionInformation region={getRegionData('Derbyshire')} />
-    ...
+<script>
+  import RegionInformation from "./Components/RegionInformation.svelte";
+</script>
+<main class="app">
+  <h1>{activeRegion}</h1>
+  <RegionInformation region={getRegionData('Derbyshire')} /> ...
+</main>
 ```
 
 You should see the something like the following on the page:
 
-![Example of RegionInformation component on the page](/lets-create-data-vis-svelte/info-for-derbyshire.png)
+![Example of RegionInformation component on the page](/lets-create-data-vis-svelte/info-for-derbyshire)
 
 Now let's build out the component using the data we have given it. First add the styles for the modal:
 
 ```html
 <style>
-.modal-overlay {
+  .modal-overlay {
     position: fixed;
     left: 0;
     top: 0;
@@ -887,7 +902,7 @@ next, create the HTML structure and use the data from the `region` object.
 We'll start with an empty div which will act as an overlay to dim the background when the modal is open:
 
 ```html
-  <div class="modal-overlay" />
+<div class="modal-overlay" />
 ```
 
 and then for the container that will hold the modal we want to import two functions from Svelte which will animate the modal in and out of the screen when it is added to the page. For that we will need both the `slide` transition and the `quintInOut` easing function. Simply import these at the top of the component:
@@ -909,23 +924,22 @@ and then create the container:
 Inside of the container we want to create a div for the modal which will have a header and body inside of it:
 
 ```html
-  <div class="modal">
-    <header class="header">
-    </header>
-    <section class="body">
-    </section>
-  </div>
+<div class="modal">
+  <header class="header"></header>
+  <section class="body"></section>
+</div>
 ```
 
 Inside of the header put the following HTML:
 
 ```html
 <div class="header-back-button">
-  <button on:click={onClose}>
+  <button on:click="{onClose}">
     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
       <path
         fill="#333"
-        d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+        d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"
+      />
     </svg>
   </button>
 </div>
@@ -940,20 +954,19 @@ Inside of the body, we want to put the following HTML:
 
 ```html
 {#if region.overallAppearances > 0}
-  <div class="body-stats">
-    Number of appearances by players from this region during winning
-    seasons:
-    <b>{region.overallAppearances}</b>
-  </div>
+<div class="body-stats">
+  Number of appearances by players from this region during winning seasons:
+  <b>{region.overallAppearances}</b>
+</div>
 
-  <div class="body-players">
-    <h2>Players</h2>
-    <!--Put each player here-->
-  </div>
+<div class="body-players">
+  <h2>Players</h2>
+  <!--Put each player here-->
+</div>
 {:else}
-  <div class="body-stats">
-    This region hasn't contributed to the English Premier League 😢
-  </div>
+<div class="body-stats">
+  This region hasn't contributed to the English Premier League 😢
+</div>
 {/if}
 ```
 
@@ -981,13 +994,13 @@ Next, create a new component called `Player.svelte` and inside of that component
 <div class="container">
   <p class="name">{name}</p>
   {#each seasons.reverse() as { year, team, appearances }}
-    <p>
-      <b>{year}</b>
-      with
-      <b>{appearances}</b>
-      appearances for
-      <b>{team}</b>
-    </p>
+  <p>
+    <b>{year}</b>
+    with
+    <b>{appearances}</b>
+    appearances for
+    <b>{team}</b>
+  </p>
   {/each}
 </div>
 ```
@@ -1000,7 +1013,7 @@ To finalise this, back inside of the `RegionInformation` component, import the n
 
 ```html
 {#each players as { name, seasons }}
-  <Player {name} {seasons} />
+<Player {name} {seasons} />
 {/each}
 ```
 
@@ -1011,38 +1024,34 @@ const players = region.players.sort((player1, player2) => {
   let player1Appearances = 0;
   let player2Appearances = 0;
 
-  player1.seasons.forEach(
-    season => (player1Appearances += season.appearances)
-  );
-  player2.seasons.forEach(
-    season => (player2Appearances += season.appearances)
-  );
+  player1.seasons.forEach(season => (player1Appearances += season.appearances));
+  player2.seasons.forEach(season => (player2Appearances += season.appearances));
 
   return player2Appearances - player1Appearances;
 });
 ```
+
 which will order the player's in descending order according to their number of appearances.
 
 If you have done everything correctly, you should see something like this on the page:
 
-![Example of RegionInformation component on the page as a modal](/lets-create-data-vis-svelte/info-for-derbyshire-modal.png)
+![Example of RegionInformation component on the page as a modal](/lets-create-data-vis-svelte/info-for-derbyshire-modal)
 
 We don't want to show the modal when no region has been selected, so in `App.svelte`, start by giving `activeRegion` no default value and then in the markup, replace the current `RegionInformation` component and the temporary `<h1>` tag with the following:
 
 ```html
-{#if activeRegion}
-  <RegionInformation
-    region={getRegionData(activeRegion)}
-    onClose={() => {
-      activeRegion = undefined;
-    }} />
-{/if}
+{#if activeRegion} <RegionInformation region={getRegionData(activeRegion)}
+onClose={() => { activeRegion = undefined; }} /> {/if}
 ```
+
 This now hides the component if no region is selected, and will show the information for whichever region has been selected instead of just Derbyshire. Notice we also added an onClose function that just sets the activeRegion to undefined, this will happen when we click the back button on the modal.
 
 You should now be able to click on any region in the map and you should be shown all of the statistics for that region.
 
-![Gif of the RegionInformation component being used](/lets-create-data-vis-svelte/regioninformation-modal.gif)
+<Video
+  src="/lets-create-data-vis-svelte/regioninformation-modal"
+  caption="The RegionInformation component being used"
+/>
 
 ## Housekeeping 🏠
 
@@ -1053,11 +1062,11 @@ Let's start by creating a simple component that will fill up the whitespace on d
 Call the component `Overview.svelte` and give it the following javascript and markup:
 
 ```html
-  <script>
-    import { blur } from "svelte/transition";
-  </script>
+<script>
+  import { blur } from "svelte/transition";
+</script>
 
-  <div class="container" transition:blur|local>
+<div class="container" transition:blur|local>
   <h1>English Premier League</h1>
   <p>
     The Premier League, often referred to as the English Premier League or the
@@ -1069,8 +1078,7 @@ Call the component `Overview.svelte` and give it the following javascript and ma
     on British & Irish players that took part within winning teams.
   </p>
   <p class="key">
-    The colour of a region on the map is based on its contribution
-    which can be
+    The colour of a region on the map is based on its contribution which can be
     <span class="none">None</span>
     , or interpolated between
     <span class="low">Low</span>
@@ -1081,83 +1089,77 @@ Call the component `Overview.svelte` and give it the following javascript and ma
 </div>
 ```
 
-*The reason we write `transition:blur|local` instead of just `transition:blur` is that we only want this transition to run when the block this code belongs to is created/destroyed but not when any parent blocks are created or destroyed. This results in a less janky animation when we open or close the modal but just means that this transition won't run when the entire application first loads.
+\*The reason we write `transition:blur|local` instead of just `transition:blur` is that we only want this transition to run when the block this code belongs to is created/destroyed but not when any parent blocks are created or destroyed. This results in a less janky animation when we open or close the modal but just means that this transition won't run when the entire application first loads.
 
 Next, give it the following styles:
 
 ```css
+.container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+}
+
+@media (min-width: 940px) {
   .container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 300px;
-    padding: 20px;
+    display: block;
   }
+}
 
-  @media (min-width: 940px) {
-    .container {
-      display: block;
-    }
+@media (min-width: 1100px) {
+  .container {
+    max-width: 400px;
   }
+}
 
-  @media (min-width: 1100px) {
-    .container {
-      max-width: 400px;
-    }
+@media (min-width: 1500px) {
+  .container {
+    max-width: 600px;
   }
+}
 
-  @media (min-width: 1500px) {
-    .container {
-      max-width: 600px;
-    }
-  }
+.none,
+.low,
+.high {
+  font-weight: bold;
+}
 
-  .none,
-  .low,
-  .high {
-    font-weight: bold;
-  }
+.none {
+  background-color: rgba(51, 51, 51, 0.5);
+}
 
-  .none {
-    background-color: rgba(51, 51, 51, 0.5);
-  }
+.low {
+  background-color: #38003c;
+  color: #f5f5f5;
+}
 
-  .low {
-    background-color: #38003c;
-    color: #f5f5f5;
-  }
-
-  .high {
-    background-color: #00ff85;
-  }
+.high {
+  background-color: #00ff85;
+}
 ```
 
 Finally, import the new component into the `App.svelte` file and show it if no region is currently active like so:
 
 ```html
-  {#if activeRegion}
-    <RegionInformation
-      region={getRegionData(activeRegion)}
-      onClose={() => {
-        activeRegion = undefined;
-      }} />
-  {:else}
-    <Overview />
-  {/if}
+{#if activeRegion} <RegionInformation region={getRegionData(activeRegion)}
+onClose={() => { activeRegion = undefined; }} /> {:else}
+<Overview />
+{/if}
 ```
 
 You should now see some information and a key next to the map, this will only show on screens that are large enough:
 
-![Overview component](/lets-create-data-vis-svelte/overview-component.png)
+![Overview component](/lets-create-data-vis-svelte/overview-component)
 
 ## Conclusion 😎
 
 That's it! We've built a small data visualization using Svelte and explored some of the unique features of the framework and I hope the article didn't feel too long and that you can take this knowledge on to build bigger and better things!
 
 If you want to host your website, it's really quick and easy as Svelte just outputs static files:
-
 
 1. Run `npm run build` to generate the final js and css files.
 
@@ -1170,15 +1172,16 @@ None of the JavaScript has been transpiled to work on older browsers which is fi
 I am totally new to Svelte so take this article as a starting point and not as the definitive way to use Svelte.
 
 Lastly, Svelte is a fully fleshed out framework and we barely scratched the surface, here are some features of Svelte that we didn't utilise that you should definitely look into:
-  * [Reactive Declarations and Statements](https://svelte.dev/examples#reactive-declarations)
 
-  * [Await Blocks](https://svelte.dev/examples#await-blocks)
+- [Reactive Declarations and Statements](https://svelte.dev/examples#reactive-declarations)
 
-  * [Input Binding](https://svelte.dev/examples#text-inputs)
+- [Await Blocks](https://svelte.dev/examples#await-blocks)
 
-  * [Stores](https://svelte.dev/examples#writable-stores)
+- [Input Binding](https://svelte.dev/examples#text-inputs)
 
-  * [Tweening/Motion](https://svelte.dev/examples#tweened)
+- [Stores](https://svelte.dev/examples#writable-stores)
+
+- [Tweening/Motion](https://svelte.dev/examples#tweened)
 
 and that's just a few things that I think will be really useful in most applications, there's much more which can all be found [here](https://svelte.dev/examples).
 
