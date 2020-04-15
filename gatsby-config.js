@@ -12,7 +12,60 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-dark-mode`,
     `gatsby-transformer-json`,
-    "gatsby-plugin-sitemap",
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                if (!edge.node.frontmatter.isHidden) {
+                  return Object.assign({}, edge.node.frontmatter, {
+                    description: edge.node.excerpt,
+                    date: edge.node.frontmatter.date,
+                    url: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
+                    guid:
+                      site.siteMetadata.siteUrl + edge.node.frontmatter.path,
+                    custom_elements: [{ "content:encoded": edge.node.html }],
+                  });
+                }
+              });
+            },
+            query: `
+              {
+                allMdx(sort: {order: DESC, fields: [frontmatter___date]}, limit: 1000) {
+                  edges {
+                    node {
+                      excerpt
+                      frontmatter {
+                        date
+                        isHidden
+                        path
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Josh Jackson - @Pjaerr | RSS Feed",
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
