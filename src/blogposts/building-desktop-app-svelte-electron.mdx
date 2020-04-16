@@ -49,7 +49,7 @@ Now we have the boilerplate setup, let's connect our Svelte app with Electron by
 A basic Electron app consists of an `app` and a `BrowserWindow` so let's import these:
 
 ```javascript
-const { app, BrowserWindow } = require("electron");
+const {(app, BrowserWindow)} = require("electron");
 ```
 
 The `app` is what we use to handle the lifecycle of the application and the `BrowserWindow` is the actual window that will render our Svelte app.

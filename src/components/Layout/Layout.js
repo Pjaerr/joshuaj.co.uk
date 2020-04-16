@@ -31,6 +31,10 @@ const GlobalStyles = createGlobalStyle`
     --mobileNavTextColour: #fff;
     --mobileNavTextHoverColour: #2a2f36;
 
+    --codeHighlightColour: #feb;
+    --codeHighlightSidebarColour: #f99;
+    --codeTitleColour: #F5F6FA;
+
 
     font-weight: 500;
     background-color: var(--background);
@@ -49,6 +53,10 @@ const GlobalStyles = createGlobalStyle`
     --highlightColour: #01cbcb;
     --overlayBackground: rgba(63, 67, 77, 0.99);
     --mobileNavTextHoverColour: rgba(1, 163, 164, 0.99);
+
+    --codeHighlightColour: #1e2f3e;
+    --codeHighlightSidebarColour: #fbc531;
+    --codeTitleColour: #576574;
   }
 
   html.menu-open,
@@ -77,8 +85,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
-    padding-left: ${pagePadding};
-    padding-right: ${pagePadding};
+    margin-left: ${pagePadding};
+    margin-right: ${pagePadding};
     margin-bottom: 120px;
   }
 
@@ -86,7 +94,7 @@ const GlobalStyles = createGlobalStyle`
     @media (min-width: ${breakpoints.medium}) {
       display: flex;
       justify-content: center;
-      }
+    }
   }
 
   .layout-header {

@@ -1,8 +1,12 @@
 import styled from "styled-components";
+
+import mixins from "../mixins";
+
 import {
   blogHeadingFontSize,
   blogBodyFontSize,
   breakpoints,
+  pagePadding,
 } from "../constants";
 
 export const BlogpostContainer = styled.article`
@@ -67,7 +71,11 @@ export const BlogpostContent = styled.section`
   }
 
   img {
-    max-width: 100%;
+    ${mixins.fullWidth};
+
+    @media (min-width: ${breakpoints.medium}) {
+      ${mixins.constrainedWidth};
+    }
   }
 
   p,
@@ -84,19 +92,44 @@ export const BlogpostContent = styled.section`
     text-decoration: underline;
   }
 
-  /**This will be extracted out into a MDX component that will handle the styling */
-  .gatsby-highlight {
-    width: 96vw;
-    margin-left: calc(50% - 48vw);
+  .gatsby-code-title {
+    background-color: var(--codeTitleColour);
+    color: var(--bodyTextColour);
+    padding-top: 0.5em;
+    text-align: center;
+    padding-bottom: 0.5em;
+    margin-bottom: -8px;
+
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+
+    ${mixins.fullWidth};
 
     @media (min-width: ${breakpoints.medium}) {
-      width: 100%;
-      margin-left: 0;
+      ${mixins.constrainedWidth};
+    }
+  }
+
+  .gatsby-highlight {
+    ${mixins.fullWidth};
+
+    @media (min-width: ${breakpoints.medium}) {
+      ${mixins.constrainedWidth};
     }
 
     pre {
       border-radius: 0;
     }
+  }
+
+  .gatsby-highlight-code-line {
+    width: 100%;
+    background-color: var(--codeHighlightColour);
+    display: block;
+    padding-right: 1em;
+    padding-left: 0.75em;
+    margin-left: -1em;
+    border-left: 0.25em solid var(--codeHighlightSidebarColour);
   }
 
   /** Styled Numbers on Ordered Lists */

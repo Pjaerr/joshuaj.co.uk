@@ -1,6 +1,7 @@
 import React from "react";
 
 import styled from "styled-components";
+import mixins from "../../../mixins";
 import { blogBodyFontSize, breakpoints } from "../../../constants";
 
 const VideoContainer = styled.figure`
@@ -11,12 +12,10 @@ const VideoContainer = styled.figure`
   margin-top: 40px;
   margin-bottom: 40px;
 
-  width: 96vw;
-  margin-left: calc(50% - 48vw);
+  ${mixins.fullWidth};
 
   @media (min-width: ${breakpoints.medium}) {
-    width: 100%;
-    margin-left: 0;
+    ${mixins.constrainedWidth};
   }
 
   video {

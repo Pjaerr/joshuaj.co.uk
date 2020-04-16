@@ -111,6 +111,9 @@ module.exports = {
             },
           },
           {
+            resolve: "gatsby-remark-code-titles",
+          }, // IMPORTANT: this must be ahead of other plugins that use code blocks
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               // Class prefix for <pre> tags containing syntax highlighting;
