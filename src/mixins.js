@@ -1,14 +1,15 @@
-import styled, { css } from "styled-components";
-import { pagePadding } from "./constants";
+import { css } from "styled-components";
+import { pagePadding, breakpoints } from "./constants";
 
 export default {
   fullWidth: css`
     margin-left: -${pagePadding};
     width: calc(100% + (${pagePadding} * 2));
-  `,
-  constrainedWidth: css`
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
+
+    @media (min-width: ${breakpoints.medium}) {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+    }
   `,
 };
