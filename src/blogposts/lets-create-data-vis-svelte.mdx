@@ -623,16 +623,24 @@ let transitionEnded = false;
 and then on the path, we can add an event listener that will set `transitionEnded` to true once the transition has ended. Svelte handles all of this for us as it knows when the draw transition finishes.
 
 ```html
-<path transition:draw={{ duration: 1500 }} on:introend={() => (transitionEnded =
-true)} class="path" d="{svgPath}" fill="{fillColour}" stroke="{strokeColour}"
-style="stroke-width: {strokeWidth}" />
+<path
+  transition:draw="{{ duration: 1500 }}"
+  on:introend="{() => (transitionEnded = true)}"
+  class="path"
+  d="{svgPath}"
+  fill="{fillColour}"
+  stroke="{strokeColour}"
+  style="stroke-width: {strokeWidth}"
+/>
 ```
 
 Now let's add a condition to the fill and stroke attributes to flip the colours if transitionEnded is false.
 
 ```html
-<path fill={transitionEnded ? fillColour : strokeColour} stroke={transitionEnded
-? strokeColour : fillColour} />
+<path
+  fill="{transitionEnded ? fillColour : strokeColour}"
+  stroke="{transitionEnded ? strokeColour : fillColour}"
+/>
 ```
 
 As a final touch, let's add a CSS transition to the fill attribute so that when the fill colour is set, it doesn't just flash onto the screen.
@@ -661,10 +669,16 @@ Now the map has some animations, let's take it a step further and make it intera
 First navigate to the `<MapRegion>` component and add an empty `on:click` event to the svg path.
 
 ```html
-<path on:click transition:draw={{ duration: 1500 }} on:introend={ () =>
-(transitionEnded = true)} d={svgPath} class="path" fill={transitionEnded ?
-fillColour : strokeColour} stroke={transitionEnded ? strokeColour : fillColour}
-style="stroke-width: {strokeWidth}" />
+<path
+  on:click
+  transition:draw="{{ duration: 1500 }}"
+  on:introend="{ () => (transitionEnded = true)}"
+  d="{svgPath}"
+  class="path"
+  fill="{transitionEnded ? fillColour : strokeColour}"
+  stroke="{transitionEnded ? strokeColour : fillColour}"
+  style="stroke-width: {strokeWidth}"
+/>
 ```
 
 This says we don't want to handle the `on:click` event in our `<MapRegion>` component, rather we want to bubble it up and instead handle it wherever our `<MapRegion>` component is used.
@@ -675,9 +689,15 @@ In the `App.svelte` file:
 
 ```html
 <MapContainer>
-  {#each regions as { name, svgPath }} <MapRegion on:click={() => {
-  console.log(name + ' clicked!') }} {svgPath} fillColour="red"
-  strokeColour="white" strokeWidth="1px" /> {/each}
+  {#each regions as { name, svgPath }}
+  <MapRegion
+    on:click="{() => { console.log(name + ' clicked!') }}"
+    {svgPath}
+    fillColour="red"
+    strokeColour="white"
+    strokeWidth="1px"
+  />
+  {/each}
 </MapContainer>
 ```
 
@@ -704,9 +724,15 @@ Finally, add a `<h1>` tag to the page that just contains the active region:
   <h1>{activeRegion}</h1>
   <div class="map-container">
     <MapContainer>
-      {#each Regions as { name, svgPath }} <MapRegion on:click={() => {
-      activeRegion = name; }} {svgPath} fillColour="red" strokeColour="white"
-      strokeWidth="1px" /> {/each}
+      {#each Regions as { name, svgPath }}
+      <MapRegion
+        on:click="{() => { activeRegion = name; }}"
+        {svgPath}
+        fillColour="red"
+        strokeColour="white"
+        strokeWidth="1px"
+      />
+      {/each}
     </MapContainer>
   </div>
 </main>
@@ -729,7 +755,7 @@ Add the following CSS in the `<MapRegion>` component:
 and then in the `App.svelte` file replace the `fillColour` property of the `<MapRegion>` component with the following ternary conditon:
 
 ```html
-<MapRegion fillColour={activeRegion === name ? '#333' : 'red'} />
+<MapRegion fillColour="{activeRegion === name ? '#333' : 'red'}" />
 ```
 
 this says that if the active region is equal to the name of the region being rendered, then fill it in with the grey colour, if not, fill it in red as normal.
@@ -754,9 +780,13 @@ import getRegionData from "./Data/getRegionData.js";
 and then for the fillColour property of each `<MapRegion>`, instead of passing in 'red', we can instead just call our function and access the .colour property on it like so:
 
 ```html
-<MapRegion on:click={() => { activeRegion = name; }} {svgPath}
-fillColour={activeRegion === name ? '#333' : getRegionData(name).colour}
-strokeColour="white" strokeWidth="1px" />
+<MapRegion
+  on:click="{() => { activeRegion = name; }}"
+  {svgPath}
+  fillColour="{activeRegion === name ? '#333' : getRegionData(name).colour}"
+  strokeColour="white"
+  strokeWidth="1px"
+/>
 ```
 
 If you've done everything correctly, you should end up with a map that looks like this:
@@ -796,7 +826,7 @@ Now inside of `App.svelte`, import the component and put one on the page to test
 </script>
 <main class="app">
   <h1>{activeRegion}</h1>
-  <RegionInformation region={getRegionData('Derbyshire')} /> ...
+  <RegionInformation region="{getRegionData('Derbyshire')}" /> ...
 </main>
 ```
 
@@ -917,8 +947,10 @@ and then for the container that will hold the modal we want to import two functi
 and then create the container:
 
 ```html
-  <section class="container" transition:slide={{ duration: 200, easing: quintInOut }}>
-  </section>
+<section
+  class="container"
+  transition:slide="{{ duration: 200, easing: quintInOut }}"
+></section>
 ```
 
 Inside of the container we want to create a div for the modal which will have a header and body inside of it:
@@ -1040,8 +1072,12 @@ If you have done everything correctly, you should see something like this on the
 We don't want to show the modal when no region has been selected, so in `App.svelte`, start by giving `activeRegion` no default value and then in the markup, replace the current `RegionInformation` component and the temporary `<h1>` tag with the following:
 
 ```html
-{#if activeRegion} <RegionInformation region={getRegionData(activeRegion)}
-onClose={() => { activeRegion = undefined; }} /> {/if}
+{#if activeRegion}
+<RegionInformation
+  region="{getRegionData(activeRegion)}"
+  onClose="{() => { activeRegion = undefined; }}"
+/>
+{/if}
 ```
 
 This now hides the component if no region is selected, and will show the information for whichever region has been selected instead of just Derbyshire. Notice we also added an onClose function that just sets the activeRegion to undefined, this will happen when we click the back button on the modal.
@@ -1145,8 +1181,12 @@ Next, give it the following styles:
 Finally, import the new component into the `App.svelte` file and show it if no region is currently active like so:
 
 ```html
-{#if activeRegion} <RegionInformation region={getRegionData(activeRegion)}
-onClose={() => { activeRegion = undefined; }} /> {:else}
+{#if activeRegion}
+<RegionInformation
+  region="{getRegionData(activeRegion)}"
+  onClose="{() => { activeRegion = undefined; }}"
+/>
+{:else}
 <Overview />
 {/if}
 ```
@@ -1163,7 +1203,7 @@ If you want to host your website, it's really quick and easy as Svelte just outp
 
 1. Run `npm run build` to generate the final js and css files.
 
-2. Put the contents of the `public` folder onto a static file host. If you're using Github you can create a new branch called `gh-pages` and then just put the static files there. (Read me about this [here](https://pages.github.com/))
+2. Put the contents of the `public` folder onto a static file host. If you're using Github you can create a new branch called `gh-pages` and then just put the static files there. (Read more about this [here](https://pages.github.com/))
 
 **Some things to note:**
 

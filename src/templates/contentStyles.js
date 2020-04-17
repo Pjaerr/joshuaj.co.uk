@@ -76,23 +76,20 @@ export const lists = css`
       align-items: baseline;
       line-height: 32px;
       margin-bottom: 25px;
+      font-size: ${blogBodyFontSize.small};
 
-      div {
-        font-size: ${blogBodyFontSize.small};
+      @media (min-width: ${breakpoints.medium}) {
+        font-size: ${blogBodyFontSize.large};
+      }
 
-        @media (min-width: ${breakpoints.medium}) {
-          font-size: ${blogBodyFontSize.large};
-        }
+      p {
+        display: inline;
+        font-size: inherit;
+      }
 
-        p {
-          display: inline;
-          font-size: inherit;
-        }
-
-        * {
-          margin-right: 4px;
-          margin-left: 4px;
-        }
+      * {
+        margin-right: 4px;
+        margin-left: 4px;
       }
     }
   }
