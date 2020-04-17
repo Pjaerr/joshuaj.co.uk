@@ -14,17 +14,13 @@ const VideoContainer = styled.figure`
 
   ${mixins.fullWidth};
 
-  @media (min-width: ${breakpoints.medium}) {
-    ${mixins.constrainedWidth};
-  }
-
   video {
     max-width: 100%;
     margin-bottom: 10px;
   }
 
   figcaption {
-    font-family: "Inconsolata";
+    font-family: "Fira Mono";
     font-size: ${blogBodyFontSize.extraSmall};
   }
 `;

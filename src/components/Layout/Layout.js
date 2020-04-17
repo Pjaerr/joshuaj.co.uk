@@ -17,8 +17,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
-    /* overflow-x: hidden;
-    box-sizing: border-box; */
+
     font-family: "IBM Plex Sans", sans-serif;
   }
 
