@@ -111,6 +111,7 @@ export const BlogpostContent = styled.section`
   }
 
   .gatsby-highlight {
+    font-weight: 500;
     ${mixins.fullWidth};
 
     @media (min-width: ${breakpoints.medium}) {
@@ -189,8 +190,8 @@ export const BlogpostContent = styled.section`
       }
 
       * {
-        margin-right: 2.5px;
-        margin-left: 2.5px;
+        margin-right: 4px;
+        margin-left: 4px;
       }
 
       code {
