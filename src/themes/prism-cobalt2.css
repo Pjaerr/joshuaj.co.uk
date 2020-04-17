@@ -9,7 +9,7 @@ body.dark code[class*="language-"],
 body.dark pre[class*="language-"] {
   color: #f8f8f2;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: "Inconsolata", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+  font-family: "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
     monospace;
   direction: ltr;
   text-align: left;

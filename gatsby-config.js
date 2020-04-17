@@ -186,8 +186,8 @@ module.exports = {
             variants: [`400`, `500`, `700`],
           },
           {
-            family: `Inconsolata`,
-            variants: [`400`, `700`],
+            family: `Fira Mono`,
+            variants: [`500`, `700`],
           },
         ],
       },

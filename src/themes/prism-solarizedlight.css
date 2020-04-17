@@ -31,7 +31,7 @@ green     #859900
 code[class*="language-"],
 pre[class*="language-"] {
   color: #1e272e; /* base00 */
-  font-family: "Inconsolata", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+  font-family: "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
     monospace;
   font-size: 1em;
   text-align: left;
