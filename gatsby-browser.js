@@ -1,15 +1,14 @@
 import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 
-import Image from "./src/components/blog/Image/Image";
+import Image from "./src/components/mdx/Image/Image";
+import ListItem from "./src/components/mdx/ListItem/ListItem";
+import SubHeading from "./src/components/mdx/SubHeading/SubHeading";
 
 const components = {
   img: Image,
-  li: props => (
-    <li {...props}>
-      <div>{props.children}</div>
-    </li>
-  ),
+  li: ListItem,
+  h2: SubHeading,
 };
 
 export const wrapRootElement = ({ element }) => (

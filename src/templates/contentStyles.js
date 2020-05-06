@@ -154,17 +154,17 @@ export const codeBlocks = css`
 
     pre {
       border-radius: 0;
+
+      code {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
     }
   }
 
   .gatsby-highlight-code-line {
-    /* width: calc(100% + (${pagePadding} * 2));
-
-    @media (min-width: ${breakpoints.medium}) {
-      width: 100%;
-    } */
-
-    /* background-color: var(--codeHighlightColour); */
+    width: 100%;
+    background-color: var(--codeHighlightColour);
     display: block;
     padding-right: 1em;
     padding-left: 0.75em;

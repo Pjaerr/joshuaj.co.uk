@@ -1,0 +1,37 @@
+/*Comment Box*/
+body.dark .GithubIssueComments-comment-box {
+  border: none;
+  color: #24292e;
+}
+
+/*Comment Box Body*/
+body.dark .GithubIssueComments-comment-box-body {
+  background-color: #ffffff;
+}
+
+/*Loading Icon Animation*/
+body.dark .GithubIssueComments-loading-icon {
+  background-color: #fff;
+}
+
+/*Show Comments Button*/
+body.dark .GithubIssueComments-show-comments-button {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+}
+
+body.dark .GithubIssueComments-show-comments-button:hover {
+  background-color: #fff;
+  color: #586069;
+}
+
+/*Refresh Comments Button*/
+body.dark .GithubIssueComments-refresh-comments-button {
+  color: #fff;
+}
+
+/*Pagination*/
+body.dark .GithubIssueComments-pagination-button {
+  color: #fff;
+}

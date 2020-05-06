@@ -4,7 +4,8 @@
   flex-direction: column;
   width: 100%;
   font-size: 0.8em;
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 @media (min-width: 480px) {
@@ -18,7 +19,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 /*Comment Profile Avatar*/
@@ -26,6 +27,12 @@
   width: 20px;
   height: 20px;
   margin-right: 5px;
+}
+
+@media (max-width: 380px) {
+  .GithubIssueComments-comment-user-avatar {
+    display: none;
+  }
 }
 
 @media (min-width: 480px) {
@@ -40,6 +47,7 @@
   width: 100%;
   height: 100%;
   border-radius: 3px;
+  object-fit: cover;
 }
 
 /*Comment Box*/
@@ -195,6 +203,8 @@ code {
   color: #586069;
   text-decoration: underline;
   font-size: 0.8em;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 .GithubIssueComments-refresh-comments-button:hover {

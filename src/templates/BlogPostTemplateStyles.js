@@ -48,15 +48,3 @@ export const BlogpostContent = styled.section`
   ${contentStyles.codeBlocks}
   ${contentStyles.lists}
 `;
-
-export const BlogpostEnd = styled.section``;
-
-export const BlogpostEndLinks = styled.p`
-  margin-top: 120px;
-  text-align: center;
-  font-size: ${blogBodyFontSize.small};
-
-  @media (min-width: ${breakpoints.medium}) {
-    font-size: ${blogBodyFontSize.large};
-  }
-`;

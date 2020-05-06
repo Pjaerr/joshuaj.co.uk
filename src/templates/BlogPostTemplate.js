@@ -9,6 +9,7 @@ import { BlogPostLayout } from "../components/Layout/Layout";
 import SEO from "../components/seo";
 
 import GithubIssueComments from "../components/GithubIssueComments/GithubIssueComments";
+import BlogpostEnd from "../components/BlogpostEnd/BlogpostEnd";
 
 import * as styled from "./BlogPostTemplateStyles";
 
@@ -32,14 +33,12 @@ export default function Template({
         <styled.BlogpostContent>
           <MDXRenderer>{body}</MDXRenderer>
         </styled.BlogpostContent>
-        <styled.BlogpostEnd>
-          {/* <GithubIssueComments issueUri={frontmatter.issueLink} /> */}
-          <styled.BlogpostEndLinks>
-            If you enjoyed this post you can read my other blog posts{" "}
-            <a href="/blog">here</a> or follow me on twitter{" "}
-            <a href="https://twitter.com/Pjaerr">@Pjaerr</a>
-          </styled.BlogpostEndLinks>
-        </styled.BlogpostEnd>
+
+        <BlogpostEnd />
+        <GithubIssueComments
+          issueUri={frontmatter.issueLink}
+          commentsPerPage={5}
+        />
       </styled.BlogpostContainer>
     </BlogPostLayout>
   );
