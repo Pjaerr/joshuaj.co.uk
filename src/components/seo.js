@@ -59,22 +59,29 @@ function SEO({ description, lang, meta, title, image }) {
           property: `og:image`,
           content:
             typeof window !== "undefined"
-              ? "https://" + location.host + image
+              ? "http://" + location.host + image
               : image,
         },
         {
-          name: `twitter:image`,
+          property: `og:image:secure`,
           content:
             typeof window !== "undefined"
               ? "https://" + location.host + image
               : image,
         },
         {
-          name: `og:image:width`,
+          property: `twitter:image`,
+          content:
+            typeof window !== "undefined"
+              ? "https://" + location.host + image
+              : image,
+        },
+        {
+          property: `og:image:width`,
           content: `980`,
         },
         {
-          name: `og:image:height`,
+          property: `og:image:height`,
           content: `525`,
         },
         {
