@@ -15,7 +15,7 @@ export const Nav = styled.nav`
   transition-timing-function: ease-out;
 
   background-color: ${props =>
-    props.isMenuOpen ? `var(--overlayBackground)` : "initial"};
+    props.isMenuOpen ? `var(--colour-mobile-menu-background)` : "initial"};
 
   position: absolute;
   top: 0;
@@ -61,16 +61,16 @@ export const NavHeader = styled.div`
     font-weight: bold;
     color: ${props =>
       props.isMenuOpen
-        ? `var(--mobileNavTextColour)`
-        : `var(--headingTextColour)`};
+        ? `var(--colour-mobile-menu-text)`
+        : `var(--colour-text-heading)`};
 
     font-weight: bold;
 
     &:hover {
       color: ${props =>
         props.isMenuOpen
-          ? `var(--mobileNavTextHoverColour)`
-          : `var(--highlightColour)`};
+          ? `var(--colour-mobile-menu-text-hover)`
+          : `var(----colour-highlight)`};
     }
   }
 
@@ -92,8 +92,8 @@ export const NavHeader = styled.div`
       height: 32px;
       fill: ${props =>
         props.isMenuOpen
-          ? `var(--mobileNavTextColour)`
-          : `var(--headingTextColour)`};
+          ? `var(--colour-mobile-menu-text)`
+          : `var(--colour-text-heading)`};
     }
   }
 
@@ -111,10 +111,10 @@ export const NavHeader = styled.div`
     }
 
     a {
-      color: var(--headingTextColour);
+      color: var(--colour-text-heading);
 
       &:hover {
-        color: var(--highlightColour);
+        color: var(--colour-highlight);
       }
     }
   }
@@ -140,18 +140,18 @@ export const NavLinks = styled.div`
 
       a {
         font-size: ${headingFontSize.large};
-        color: var(--mobileNavTextColour);
+        color: var(--colour-mobile-menu-text);
         font-weight: bold;
 
         &:hover {
-          color: var(--mobileNavTextHoverColour);
+          color: var(--colour-mobile-menu-text-hover);
         }
 
         svg {
-          fill: var(--mobileNavTextColour);
+          fill: var(--colour-mobile-menu-text);
 
           &:hover {
-            fill: var(--mobileNavTextHoverColour);
+            fill: var(--colour-mobile-menu-text-hover);
           }
         }
       }
@@ -178,20 +178,20 @@ export const NavLinks = styled.div`
       li {
         a {
           font-size: ${headingFontSize.small};
-          color: var(--headingTextColour);
+          color: var(--colour-text-heading);
           font-weight: bold;
 
           &:hover {
-            color: var(--highlightColour);
+            color: var(--colour-highlight);
           }
 
           svg {
-            fill: var(--headingTextColour);
+            fill: var(--colour-text-heading);
             width: 32px;
             height: 32px;
 
             &:hover {
-              fill: var(--highlightColour);
+              fill: var(--colour-highlight);
             }
           }
         }
@@ -228,8 +228,8 @@ export const MenuIcon = styled.span`
   &:before {
     background-color: ${props =>
       props.isMenuOpen
-        ? `var(--mobileNavTextColour)`
-        : `var(--headingTextColour)`};
+        ? `var(--colour-mobile-menu-text)`
+        : `var(--colour-text-heading)`};
     transition: transform 0.2s ease-in;
     content: "";
     width: 26px;
@@ -244,8 +244,8 @@ export const MenuIcon = styled.span`
   &:after {
     background-color: ${props =>
       props.isMenuOpen
-        ? `var(--mobileNavTextColour)`
-        : `var(--headingTextColour)`};
+        ? `var(--colour-mobile-menu-text)`
+        : `var(--colour-text-heading)`};
     transition: transform 0.25s ease-in;
     content: "";
     width: 26px;

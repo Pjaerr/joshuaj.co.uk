@@ -15,7 +15,7 @@ const Container = styled.div`
     transition: color ${animationSpeed} ease;
 
     &:hover {
-      color: var(--highlightColour);
+      color: var(--colour-highlight);
     }
   }
 

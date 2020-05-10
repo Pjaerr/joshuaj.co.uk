@@ -6,7 +6,7 @@ export const BookPreviewContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: var(--headingTextColour);
+  color: var(--colour-text-heading);
   width: 100%;
   margin: 0 auto;
   margin-bottom: 40px;
@@ -56,7 +56,7 @@ export const BookPreviewDescription = styled.div`
 
   :first-child {
     font-weight: normal;
-    color: var(--highlightColour);
+    color: var(--colour-highlight);
   }
 `;
 
@@ -67,6 +67,6 @@ export const BookPreviewInfoMeta = styled.div`
 
 export const BookPreviewInfoMetaTitle = styled.p`
   font-weight: normal;
-  color: var(--highlightColour);
+  color: var(--colour-highlight);
   margin-right: 40px;
 `;

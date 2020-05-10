@@ -11,7 +11,7 @@ const Container = styled.div`
 
   div {
     height: 4px;
-    background: var(--highlightColour);
+    background: var(--colour-highlight);
     width: 0%;
   }
 `;

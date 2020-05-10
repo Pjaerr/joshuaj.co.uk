@@ -8,7 +8,7 @@ const HomepageTitle = styled.h1`
   font-size: ${headingFontSize.small};
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--highlightColour);
+  color: var(--colour-highlight);
 
   @media (min-width: ${breakpoints.small}) {
     margin-bottom: 25px;

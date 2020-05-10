@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const SVG = styled.svg`
-  fill: var(--bodyTextColour);
+  fill: var(--colour-text-body);
 
   &:hover {
-    ${props => props.isHoverable && `fill: var(--highlightColour)`}
+    ${props => props.isHoverable && `fill: var(----colour-highlight)`}
   }
 `;
 

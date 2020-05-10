@@ -17,8 +17,8 @@ export const selectedElements = css`
   em,
   b {
     &::selection {
-      color: var(--background);
-      background-color: var(--headingTextColour);
+      color: var(--colour-background);
+      background-color: var(--colour-text-heading);
     }
   }
 `;
@@ -99,7 +99,7 @@ export const lists = css`
       &::before {
         content: "꘎";
         padding-right: 16px;
-        color: var(--highlightColour);
+        color: var(--colour-highlight);
         font-size: ${blogBodyFontSize.large};
         font-weight: bold;
       }
@@ -115,7 +115,7 @@ export const lists = css`
       &::before {
         content: counter(list-number) ".";
         padding-right: 16px;
-        color: var(--highlightColour);
+        color: var(--colour-highlight);
         font-size: ${blogBodyFontSize.large};
         font-style: italic;
         font-weight: bold;
@@ -134,8 +134,8 @@ export const inlineCodeBlocks = css`
 
 export const codeBlocks = css`
   .gatsby-code-title {
-    background-color: var(--codeTitleColour);
-    color: var(--bodyTextColour);
+    background-color: var(--colour-code-title);
+    color: var(--colour-text-body);
     padding-top: 0.5em;
     text-align: center;
     padding-bottom: 0.5em;
@@ -164,11 +164,11 @@ export const codeBlocks = css`
 
   .gatsby-highlight-code-line {
     width: 100%;
-    background-color: var(--codeHighlightColour);
+    background-color: var(--colour-code-highlight);
     display: block;
     padding-right: 1em;
     padding-left: 0.75em;
     margin-left: -1em;
-    border-left: 0.25em solid var(--codeHighlightSidebarColour);
+    border-left: 0.25em solid var(--colour-code-highlight-sidebar);
   }
 `;

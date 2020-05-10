@@ -4,7 +4,7 @@ import { headingFontSize, bodyFontSize, breakpoints } from "../../constants";
 
 export const ProjectTechnology = styled.p`
   margin-right: 15px;
-  font-size: ${bodyFontSize.medium};
+  font-size: var(--fontsize-body);
 
   span {
     display: inline-block;
@@ -34,7 +34,7 @@ export const ProjectContent = styled.div`
   height: 100%;
   max-height: 215px;
 
-  background-color: var(--background);
+  background-color: var(--colour-background);
   transition: background-color 0.2s ease-out;
 
   padding: 20px 25px 25px 10px;
@@ -49,15 +49,15 @@ export const ProjectContent = styled.div`
   }
 
   p {
-    font-size: ${bodyFontSize.medium};
-    color: var(--bodyTextColour);
+    font-size: var(--fontsize-body);
+    color: var(--colour-text-body);
   }
 `;
 
 export const ProjectTechnologies = styled.div`
   display: flex;
   flex-direction: row;
-  font-size: ${bodyFontSize.medium};
+  font-size: var(--bodyFontSize);
 `;
 
 export const ProjectLinks = styled.div`
@@ -71,13 +71,13 @@ export const ProjectLinks = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: var(--bodyTextColour);
+    color: var(--colour-text-body);
 
     &:hover {
-      color: var(--highlightColour);
+      color: var(--colour-highlight);
 
       svg {
-        fill: var(--highlightColour);
+        fill: var(--colour-highlight);
       }
     }
   }

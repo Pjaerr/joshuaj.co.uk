@@ -22,40 +22,57 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    --background: #fff;
-    --headingTextColour: #2a2f36;
-    --bodyTextColour: #353b48;
-    --highlightColour: #0097A7;
-    --overlayBackground: rgba(1, 163, 164, 0.99);
-    --mobileNavTextColour: #fff;
-    --mobileNavTextHoverColour: #2a2f36;
+    --colour-background: #fff;
+    --colour-text-heading: #2a2f36;
+    --colour-text-body: #353b48;
+    --colour-highlight: #0097A7;
+    --colour-mobile-menu-background: rgba(1, 163, 164, 0.99);
+    --colour-mobile-menu-text: #fff;
+    --colour-mobile-menu-text-hover: #2a2f36;
+    --colour-code-highlight: #feb;
+    --colour-code-highlight-sidebar: #f99;
+    --colour-code-title: #F5F6FA;
 
-    --codeHighlightColour: #feb;
-    --codeHighlightSidebarColour: #f99;
-    --codeTitleColour: #F5F6FA;
+    --fontsize-body: 0.75em;
+
+    /*Small*/
+    @media (min-width: 480px) {
+      
+    }
+
+    /*Medium*/
+    @media (min-width: 768px) {
+      --fontsize-body: 0.875em;
+    }
+
+    /*Large*/
+    @media (min-width: 980px) {
+      --fontsize-body: 1em;
+    }
+
 
 
     font-weight: 500;
-    background-color: var(--background);
-    color: var(--bodyTextColour);
+    background-color: var(--colour-background);
+    color: var(--colour-text-body);
     transition-property: background-color, color;
     transition-duration: ${animationSpeed};
     transition-timing-function: ease-out;
 
-    font-size: ${bodyFontSize.large}
+    font-size: var(--fontsize-body);
   }
 
   body.dark {
-    --background: #282c35;
-    --headingTextColour: #fff;
-    --bodyTextColour: #dcdde1;
-    --highlightColour: #01cbcb;
-    --overlayBackground: rgba(63, 67, 77, 0.99);
-    --mobileNavTextHoverColour: rgba(1, 163, 164, 0.99);
+    --colour-background: #282c35;
+    --colour-text-heading: #fff;
+    --colour-text-body: #dcdde1;
+    --colour-highlight: #01cbcb;
+    --colour-mobile-menu-background: rgba(63, 67, 77, 0.99);
+    --colour-mobile-menu-text-hover: rgba(1, 163, 164, 0.99);
 
-    --codeHighlightColour: #1e2f3e;
-    --codeHighlightSidebarColour: #fbc531;
-    --codeTitleColour: #576574;
+    --colour-code-highlight: #1e2f3e;
+    --colour-code-highlight-sidebar: #fbc531;
+    --colour-code-title: #576574;
   }
 
   html.menu-open,
@@ -70,16 +87,16 @@ const GlobalStyles = createGlobalStyle`
   h4,
   h5 {
     margin: 0;
-    color: var(--headingTextColour);
+    color: var(--colour-text-heading);
   }
 
   a {
-    color: var(--highlightColour);
+    color: var(----colour-highlight);
     text-decoration: none;
     transition: color ${animationSpeed} ease;
 
     &:hover {
-      color: var(--bodyTextColour);
+      color: var(----colour-text-body);
     }
   }
 

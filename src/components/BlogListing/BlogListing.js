@@ -29,7 +29,7 @@ const ViewAllPostsLink = styled.a`
   width: 120px;
   height: 40px;
 
-  border: 1.5px solid var(--bodyTextColour);
+  border: 1.5px solid var(--colour-text-body);
   border-radius: 3px;
 
   transition-property: border-color, color;
@@ -38,11 +38,11 @@ const ViewAllPostsLink = styled.a`
 
   font-weight: bold;
 
-  color: var(--bodyTextColour);
+  color: var(--colour-text-body);
 
   &:hover {
-    color: var(--highlightColour);
-    border-color: var(--highlightColour);
+    color: var(--colour-highlight);
+    border-color: var(--colour-highlight);
   }
 `;
 
