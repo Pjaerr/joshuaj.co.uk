@@ -59,18 +59,11 @@ function SEO({ description, lang, meta, title, image }) {
           property: `og:image`,
           content:
             typeof window !== "undefined"
-              ? "http://" + location.host + image
-              : image,
-        },
-        {
-          property: `og:image:secure`,
-          content:
-            typeof window !== "undefined"
               ? "https://" + location.host + image
               : image,
         },
         {
-          property: `twitter:image`,
+          name: `twitter:image`,
           content:
             typeof window !== "undefined"
               ? "https://" + location.host + image
@@ -86,7 +79,7 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
