@@ -70,6 +70,14 @@ function SEO({ description, lang, meta, title, image }) {
               : image,
         },
         {
+          name: `og:image:width`,
+          content: `980`,
+        },
+        {
+          name: `og:image:height`,
+          content: `525`,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
