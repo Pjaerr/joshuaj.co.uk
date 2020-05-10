@@ -57,11 +57,11 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           property: `og:image`,
-          content: site.siteMetadata.siteUrl + image,
+          content: "https://joshuaj.co.uk/" + image,
         },
         {
           name: `twitter:image`,
-          content: site.siteMetadata.siteUrl + image,
+          content: "https://joshuaj.co.uk/" + image,
         },
         {
           property: `og:image:width`,
