@@ -41,6 +41,10 @@ export const headings = css`
       font-size: ${blogHeadingFontSize.medium};
     }
   }
+
+  .heading-link-icon {
+    margin-right: 10px;
+  }
 `;
 
 export const paragraphs = css`

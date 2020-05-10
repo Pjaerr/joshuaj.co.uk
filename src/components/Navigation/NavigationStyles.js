@@ -127,7 +127,7 @@ export const NavLinks = styled.div`
 
   ul {
     display: grid;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto;
     grid-row-gap: 25px;
     justify-content: center;
     align-items: center;
@@ -164,12 +164,12 @@ export const NavLinks = styled.div`
     grid-template-columns: auto auto;
     grid-template-rows: auto;
 
-    grid-column-gap: 25px;
+    grid-column-gap: 50px;
     justify-content: end;
     align-items: center;
 
     ul {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 25px;
       grid-row-gap: 0;
       justify-content: center;

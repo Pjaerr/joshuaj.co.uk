@@ -32,7 +32,7 @@ export const ProjectContent = styled.div`
   grid-row-gap: 5px;
 
   height: 100%;
-  max-height: 215px;
+  max-height: 230px;
 
   background-color: var(--colour-background);
   transition: background-color 0.2s ease-out;

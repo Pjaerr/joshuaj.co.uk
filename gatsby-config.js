@@ -81,7 +81,7 @@ module.exports = {
         background_color: `#f5f5f5`,
         theme_color: `#01a3a4`,
         display: `minimal-ui`,
-        icon: `static/me.jpg`,
+        icon: `static/josh_icon.png`,
       },
     },
     {

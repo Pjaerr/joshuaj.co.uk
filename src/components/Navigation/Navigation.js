@@ -10,14 +10,11 @@ import {
   TwitterSVGIcon,
   ThemeSwitcherSVGIcon,
 } from "../SVGIcon/SVGIcon";
-import playSound from "../../utils/playSound";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    //Potential issue on IOS with this?
-
     !isMenuOpen
       ? [document.body, document.documentElement].forEach(elem =>
           elem.classList.add("menu-open")
@@ -33,21 +30,19 @@ const Navigation = () => {
     <styled.Nav isMenuOpen={isMenuOpen}>
       <styled.NavHeader isMenuOpen={isMenuOpen}>
         <a href="/">Josh Jackson</a>
-        <button onClick={toggleMenu}>
+        <button onClick={toggleMenu} aria-label="open mobile menu">
           <styled.MenuIcon isMenuOpen={isMenuOpen}></styled.MenuIcon>
         </button>
       </styled.NavHeader>
       <styled.NavLinks isMenuOpen={isMenuOpen}>
         <ul>
           <li>
-            <a href="/about">About</a>
-          </li>
-          <li>
             <a
               aria-label="Github Link"
               href="https://github.com/pjaerr"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="visit my github page"
             >
               <GithubSVGIcon size="48" />
             </a>
@@ -59,6 +54,7 @@ const Navigation = () => {
               href="https://www.linkedin.com/in/joshua-jackson-53b9bb14b/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="visit my linkedin profile"
             >
               <LinkedInSVGIcon size="48" />
             </a>
@@ -70,6 +66,7 @@ const Navigation = () => {
               href="https://twitter.com/Pjaerr"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="visit my twitter profile"
             >
               <TwitterSVGIcon size="48" />
             </a>
@@ -77,12 +74,11 @@ const Navigation = () => {
         </ul>
         <ThemeToggler>
           {({ theme, toggleTheme }) => (
-            <styled.ThemeSwitcherLabel>
+            <styled.ThemeSwitcherLabel aria-label="toggle light theme">
               <input
                 type="checkbox"
                 onChange={e => {
                   toggleTheme(e.target.checked ? "dark" : "light");
-                  // playSound(e.target.checked);
                 }}
                 checked={theme === "dark"}
                 className="theme-switcher-checkbox"
