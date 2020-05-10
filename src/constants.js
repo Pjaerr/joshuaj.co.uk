@@ -23,8 +23,6 @@ export const blogBodyFontSize = {
   large: "1.25em",
 };
 
-export const highlightColour = "#01a3a4";
-
 export const pagePadding = "10%";
 
 export const animationSpeed = "0.25s";
