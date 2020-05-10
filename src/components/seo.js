@@ -57,7 +57,17 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           property: `og:image`,
-          content: image,
+          content:
+            typeof window !== "undefined"
+              ? "https://" + location.host + image
+              : image,
+        },
+        {
+          name: `twitter:image`,
+          content:
+            typeof window !== "undefined"
+              ? "https://" + location.host + image
+              : image,
         },
         {
           name: `twitter:card`,
