@@ -19,6 +19,7 @@ function SEO({ description, lang, meta, title, image }) {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -57,11 +58,11 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           property: `og:image`,
-          content: "https://joshuaj.co.uk/" + image,
+          content: site.siteMetadata.siteUrl + image,
         },
         {
           name: `twitter:image`,
-          content: "https://joshuaj.co.uk/" + image,
+          content: site.siteMetadata.siteUrl + image,
         },
         {
           property: `og:image:width`,
