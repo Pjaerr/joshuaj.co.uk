@@ -30,7 +30,7 @@ const Navigation = () => {
     <styled.Nav isMenuOpen={isMenuOpen}>
       <styled.NavHeader isMenuOpen={isMenuOpen}>
         <a href="/">Josh Jackson</a>
-        <button onClick={toggleMenu} aria-label="open mobile menu">
+        <button onClick={toggleMenu} aria-label="toggle mobile menu">
           <styled.MenuIcon isMenuOpen={isMenuOpen}></styled.MenuIcon>
         </button>
       </styled.NavHeader>
