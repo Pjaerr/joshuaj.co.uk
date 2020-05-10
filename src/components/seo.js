@@ -57,11 +57,11 @@ function SEO({ description, lang, meta, title, image }) {
         },
         {
           property: `og:image`,
-          content: "https://zen-allen-634527.netlify.app/" + image,
+          content: site.siteMetadata.siteUrl + image,
         },
         {
           name: `twitter:image`,
-          content: "https://zen-allen-634527.netlify.app/" + image,
+          content: site.siteMetadata.siteUrl + image,
         },
         {
           property: `og:image:width`,
