@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import "./GithubIssueComments.css";
+import "./GithubIssueCommentsDark.css";
 
 /**
  * Utilise an existing Github Issue as a comment thread
@@ -23,7 +24,7 @@ const GithubIssueComments = ({
   issueUri,
   useShowCommentsButton = true,
   allowRefreshingComments = true,
-  commentsPerPage
+  commentsPerPage,
 }) => {
   const [showComments, setShowComments] = useState(!useShowCommentsButton);
 
@@ -50,7 +51,7 @@ const GithubIssueComments = ({
 const GithubIssueCommentsCore = ({
   issueUri,
   commentsPerPage,
-  allowRefreshingComments
+  allowRefreshingComments,
 }) => {
   const [comments, setComments] = useState([]);
   const [commentsHaveLoaded, setCommentsHaveLoaded] = useState(false);
@@ -63,8 +64,8 @@ const GithubIssueCommentsCore = ({
       fetch(`https://api.github.com/repos/${issueUri}/comments`, {
         method: "GET",
         headers: {
-          Accept: "application/vnd.github.v3.html+json"
-        }
+          Accept: "application/vnd.github.v3.html+json",
+        },
       })
         .then(res => {
           return res.json();
@@ -94,9 +95,9 @@ const GithubIssueCommentsCore = ({
                 user: {
                   username: comment.user.login,
                   avatarUrl: comment.user["avatar_url"],
-                  isRepositoryOwner: comment["author_association"] === "OWNER"
+                  isRepositoryOwner: comment["author_association"] === "OWNER",
                 },
-                createdAt: comment["created_at"]
+                createdAt: comment["created_at"],
               });
 
               //If we've reached the maximum number of comments in a page

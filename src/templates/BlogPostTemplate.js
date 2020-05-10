@@ -1,45 +1,47 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import "../themes/prism-solarizedlight.css";
+import "../themes/prism-cobalt2.css";
 
-import Layout from "../components/Layout/Layout"
-import ScrollProgressBar from "../components/ScrollProgressBar/ScrollProgressBar"
+import React from "react";
+import { graphql } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
-import "./BlogPostTemplate.scss"
-import BlogPostAuthor from "../components/BlogPostAuthor/BlogPostAuthor"
-import SEO from "../components/seo"
+import { BlogPostLayout } from "../components/Layout/Layout";
+import SEO from "../components/seo";
 
-import GithubIssueComments from "../components/GithubIssueComments/GithubIssueComments"
+import GithubIssueComments from "../components/GithubIssueComments/GithubIssueComments";
+import BlogpostEnd from "../components/BlogpostEnd/BlogpostEnd";
+
+import * as styled from "./BlogPostTemplateStyles";
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { mdx } = data // data.markdownRemark holds your post data
-  const { frontmatter, body } = mdx
+  const { mdx } = data;
+  const { frontmatter, body } = mdx;
 
   return (
-    <Layout>
+    <BlogPostLayout>
       <SEO
         description={frontmatter.description}
         lang="en"
         title={frontmatter.title}
         image={frontmatter.image}
       />
-      <div>
-        <ScrollProgressBar />
-        <div className="blog-post">
-          <article className="blog-post-container">
-            <h1 className="sub-page-title">{frontmatter.title}</h1>
-            <section className="blog-post-content">
-              <MDXRenderer>{body}</MDXRenderer>
-            </section>
-            <GithubIssueComments issueUri={frontmatter.issueLink} />
-            <BlogPostAuthor />
-          </article>
-        </div>
-      </div>
-    </Layout>
-  )
+      <styled.BlogpostContainer>
+        <styled.BlogpostTitle>{frontmatter.title}</styled.BlogpostTitle>
+        <styled.BlogpostDate>{frontmatter.date}</styled.BlogpostDate>
+        <styled.BlogpostContent>
+          <MDXRenderer>{body}</MDXRenderer>
+        </styled.BlogpostContent>
+
+        <BlogpostEnd />
+        <GithubIssueComments
+          issueUri={frontmatter.issueLink}
+          commentsPerPage={5}
+        />
+      </styled.BlogpostContainer>
+    </BlogPostLayout>
+  );
 }
 
 export const pageQuery = graphql`
@@ -56,4 +58,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

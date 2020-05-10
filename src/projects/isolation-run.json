@@ -1,0 +1,25 @@
+{
+    "order": 1,
+    "title": "Isolation Run",
+    "description": "Use your phone's accelerometer to only play a video whilst you're running.",
+    "technologies": [
+        {
+            "colour": "#ff3e00",
+            "name": "Svelte"
+        },
+        {
+            "colour": "#43853D",
+            "name": "Node.js"
+        },
+        {
+            "colour": "#29abe2",
+            "name": "WebSockets"
+        }
+    ],
+    "gradient": {
+        "start": "#F6D365",
+        "end": "#FDA085"
+    },
+    "githubLink": "https://github.com/Pjaerr/Isolation-Run",
+    "demoLink": "https://isolation-run.herokuapp.com/"
+}

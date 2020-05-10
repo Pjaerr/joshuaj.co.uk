@@ -1,39 +1,66 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
 
-import Layout from "../components/Layout/Layout"
-import SEO from "../components/seo"
-import BlogPostLink from "../components/BlogPostLink/BlogPostLink"
+//Components
+import { Layout } from "../components/Layout/Layout";
+import SEO from "../components/seo";
 
-import "./blog.scss"
+import BlogpostLink from "../components/BlogpostLink/BlogpostLink";
 
-const Blog = ({
+//Styles
+import styled from "styled-components";
+import { headingFontSize, breakpoints } from "../constants";
+import HomepageTitle from "../styles/HomepageTitle";
+
+const Container = styled.div`
+  display: grid;
+  grid-row-gap: 60px;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-content: center;
+
+  @media (min-width: ${breakpoints.small}) {
+    grid-row-gap: 15px;
+  }
+
+  h1 {
+    font-size: ${headingFontSize.medium};
+  }
+`;
+
+const BlogPage = ({
   data: {
     allMdx: { edges },
   },
 }) => {
-  const Posts = edges
+  const blogposts = edges
     .filter(
       edge => !!edge.node.frontmatter.date && !edge.node.frontmatter.isHidden
     )
-    .map(edge => <BlogPostLink key={edge.node.id} post={edge.node} />)
+    .map(edge => (
+      <BlogpostLink
+        key={edge.node.id}
+        title={edge.node.frontmatter.title}
+        date={edge.node.frontmatter.date}
+        description={edge.node.frontmatter.description}
+        href={edge.node.frontmatter.path}
+      />
+    ));
+
   return (
-    <Layout activePage="Blog">
+    <Layout>
       <SEO
-        description="Personal Site and Blog for Josh Jackson - @Pjaerr"
         lang="en"
         title="Blog"
         image="/me.jpg"
+        description="Blog | Josh Jackson - @Pjaerr"
       />
-      <h1 className="blog-listing-title">Blog</h1>
-      <div className="blog-posts">
-        {Posts.length > 0 ? Posts : "🙃 No blog posts found!"}
-      </div>
+      <Container>
+        <HomepageTitle>All Blogposts</HomepageTitle>
+        {blogposts}
+      </Container>
     </Layout>
-  )
-}
-
-export default Blog
+  );
+};
 
 export const pageQuery = graphql`
   query {
@@ -52,4 +79,6 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
+
+export default BlogPage;

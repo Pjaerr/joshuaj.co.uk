@@ -1,9 +1,14 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import React from "react";
+import { MDXProvider } from "@mdx-js/react";
 
-// You can delete this file if you're not using it
+import Image from "./src/components/mdx/Image/Image";
+import ListItem from "./src/components/mdx/ListItem/ListItem";
 
-require("prismjs/themes/prism-solarizedlight.css")
+const components = {
+  img: Image,
+  li: ListItem,
+};
+
+export const wrapRootElement = ({ element }) => (
+  <MDXProvider components={components}>{element}</MDXProvider>
+);
