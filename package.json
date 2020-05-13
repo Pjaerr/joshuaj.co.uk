@@ -50,7 +50,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "deploy": "npm run test && gh-pages -d public",
+    "deploy": "npm run test && cp CNAME public/CNAME && gh-pages -d public",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
