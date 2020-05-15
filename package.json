@@ -38,6 +38,7 @@
     "unist-util-visit": "^2.0.2"
   },
   "devDependencies": {
+    "cy-view": "^1.0.9",
     "cypress": "^4.3.0",
     "gatsby-plugin-sass": "^2.2.1",
     "gh-pages": "^2.2.0",
