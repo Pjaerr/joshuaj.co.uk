@@ -34,12 +34,20 @@ module.exports = {
               return allMdx.edges.map(edge => {
                 if (!edge.node.frontmatter.isHidden) {
                   return Object.assign({}, edge.node.frontmatter, {
-                    description: edge.node.excerpt,
+                    title: edge.node.frontmatter.title,
+                    description: edge.node.frontmatter.description,
                     date: edge.node.frontmatter.date,
                     url: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
                     guid:
                       site.siteMetadata.siteUrl + edge.node.frontmatter.path,
-                    custom_elements: [{ "content:encoded": edge.node.html }],
+                    custom_elements: [
+                      {
+                        "content:encoded": `${
+                          edge.node.excerpt
+                        }<br></br> <a href="${site.siteMetadata.siteUrl +
+                          edge.node.frontmatter.path}">Continue Reading</a>`,
+                      },
+                    ],
                   });
                 }
               });
@@ -51,6 +59,8 @@ module.exports = {
                     node {
                       excerpt
                       frontmatter {
+                        title
+                        description
                         date
                         isHidden
                         path
