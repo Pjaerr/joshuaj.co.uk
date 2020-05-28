@@ -73,7 +73,7 @@ As our website will be communicating with a server we can't just open the `index
 
 This can be done in many ways, one way is to use the node package called [http-server](https://www.npmjs.com/package/http-server). You will need Node.js installed for this, but we'll be using node later anyway so you might as well install it now, you can do that [here](https://nodejs.org/en/).
 
-Once you've installed node you can use this package by navigating to your `client` folder and running `npx http-server -c-1`, this will make your index.html file availble by visiting `http://localhost:8080` in your browser.
+Once you've installed node <small>(You may need to restart your terminal)</small> you can use this package by navigating to your `client` folder and running `npx http-server -c-1`, this will make your index.html file availble by visiting `http://localhost:8080` in your browser.
 
 To make sure our JavaScript has loaded, open your console (F12) and make sure that "Hello World!" is being printed.
 
@@ -90,7 +90,7 @@ const ctx = canvas.getContext("2d");
 
 and then we set the fill colour to be a random colour from an array of colours:
 
-```javascript{4-13}:title=client/main.js
+```javascript{4,5,6,7,8,9,10,11,12,13,14,16}:title=client/main.js
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -103,12 +103,15 @@ const colours = [
   "#ecf0f1",
 ];
 
-ctx.fillStyle = colours[Math.floor(Math.random() * (colours.length - 1 + 1))];
+const thisColour =
+  colours[Math.floor(Math.random() * (colours.length - 1 + 1))];
+
+ctx.fillStyle = thisColour;
 ```
 
 Finally, we store whether the mouse is being clicked, and if it is we set `isMouseDown` to true and then inside of a "mousemove" event listener, we check if the mouse is currently being clicked and if it is, we draw a rectangle onto the canvas at the current position of the mouse with a width and height of 15:
 
-```javascript{15-24}:title=client/main.js
+```javascript{15,17,18,19,20,21,22,23,24}:title=client/main.js
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -153,11 +156,11 @@ By default, when a client connects to the websocket server, they send a "connect
 
 ### The Code
 
-Let's start by setting up the server. For the server we will be using Node.js and a node implementation of the underlying websockets called [ws](https://github.com/websockets/ws), for the clientside (which we will get to later on) we will be using websockets that are [native to the browser](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
+Let's start by setting up the server. For the server we will be using Node.js and a node implementation of the underlying websocket protocol called [ws](https://github.com/websockets/ws), for the clientside (which we will get to later on) we will be using websockets that are [native to the browser](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
 
 Before getting started, make sure you have [Node.js](https://nodejs.org/en/) installed if you didn't do it earlier.
 
-1. Start by navigating to the _server_ folder in your terminal and run `npm init -y` which allows us to install local node packages using the Node Package Manager (NPM). <small>_\*You may need to stop your web server or open a new terminal_</small>
+1. Start by navigating to the _server_ folder in your terminal and run `npm init -y` which allows us to install local node packages using the Node Package Manager (NPM). <small>_\*You'll need to stop your web server or open a new terminal_</small>
 
 2. Next, run `npm install ws` to install the ws package.
 
@@ -169,7 +172,7 @@ The `ws` package is now a package that our project depends on, you can see this 
   }
 ```
 
-Next, create a `main.js` file inside of the _server_ folder, this will hold the code for our server. Write the following code inside of it:
+Next, create a `main.js` file inside of the _server_ folder, this will hold the code for our server. Write the following inside of it:
 
 ```javascript:title=server/main.js
 const http = require("http");
@@ -217,9 +220,9 @@ WebSocketServer.on("connection", ws => {
 server.listen(1234);
 ```
 
-finally, we use the `ws` module to create a WebSocket server on the http server we just created and then add a listener that will be triggered when a client connects to it.
+finally, we use the `ws` module to create a WebSocket server that sits on top of the http server we just created and then we add a listener that will be triggered when a client connects to it.
 
-```javascript{5-9}:title=server/main.js
+```javascript{5,7,8,9}:title=server/main.js
 const http = require("http");
 const WebSocket = require("ws");
 
@@ -252,3 +255,155 @@ If you run your server by navigating to the _server_ folder and running `node ma
 Now, when you visit your client on `http://localhost:8080` you should see "New Connection" printed out into the terminal that is running the server.
 
 That's all you need to setup a client -> server connection.
+
+## Sending Messages from the Client to the Server
+
+Let's add some code to our server that listens for messages from the clients.
+
+In the _server/main.js_ file, add the following to the `WebSocketServer.on` listener:
+
+```javascript{4,5,6}:title=server/main.js
+WebSocketServer.on("connection", ws => {
+  console.log("New Connection");
+
+  ws.on("message", message => {
+    console.log(message);
+  });
+});
+```
+
+This will, when a client connects, add a listener that listens for if they send a message to the server, it will then just console log whatever that message is.
+
+Now on the client we can write some code that sends a message to the server when the user clicks their mouse.
+
+Modify the existing event listener:
+
+```javascript:title=client/main.js
+canvas.addEventListener("mousedown", () => {
+  isMouseDown = true;
+
+  socket.send("Client is clicking their mouse!");
+});
+```
+
+and then restart your server (by cancelling the process and running `node main.js` in the _server_ folder) and then visit your site, refresh the page, and then click anywhere on the page. If you look at your terminal that is running the server, you should see the message printed out: "Client is clicking their mouse!".
+
+If you put the terminal and browser side by side and then click, you can see this work in realtime.
+
+### Making it a bit more realistic
+
+So we can tell the server that we're clicking, is there any limit to our power?
+
+Let's make it a bit more realistic to our use case by telling the server that we're drawing, and let it know where we a drawing on the canvas and what colour we are.
+
+In the _client/main.js_ file, first remove the `socket.send` we wrote above.
+
+Then, inside of the "mousemove" event listener, add the following code:
+
+```javascript{5,6,7,8,9,10,11}:title=client/main.js
+canvas.addEventListener("mousemove", (e) => {
+  if (isMouseDown) {
+    ctx.fillRect(e.offsetX, e.offsetY, 15, 15);
+
+    socket.send(
+      JSON.stringify({
+        x: e.offsetX,
+        y: e.offsetY,
+        colour: ctx.fillStyle,
+      });
+    );
+  }
+});
+```
+
+This sends a string of JSON to the server whenever we draw on the canvas, this string just tells the server where on the canvas we drew (x, y) and what the colour of our client is.
+
+Now, in the server code, we can edit our message listener to print out the more detailed message:
+
+```javascript{5,7}:title=server/main.js
+WebSocketServer.on("connection", ws => {
+  console.log("New Connection");
+
+  ws.on("message", message => {
+    const { x, y, colour } = JSON.parse(message);
+
+    console.log(`Client is drawing at (${x}, ${y}) with the colour: ${colour}`);
+  });
+});
+```
+
+Here we just parse the JSON so we get it back as a JavaScript object, we then [destructure](https://wesbos.com/destructuring-objects) the object to pull out all of the values we need, we then just log them to the console.
+
+If you restart your server and refresh your browser, when you start drawing on the canvas, the terminal that is running your server should be logging all of the relevant information.
+
+## Receiving Messages from the Server
+
+We almost have multiplayer drawing implemented. The next step is to, when the server gets a message from a client, tell all of the other clients about it so that they can use that data to draw on their own canvas.
+
+Let's update the server code so that we do two things:
+
+Firstly, everytime a client connects to our server, we should store it inside of an array.
+
+```javascript{1,6}:title=server/main.js
+const clients = [];
+
+WebSocketServer.on("connection", ws => {
+  console.log("New Connection");
+
+  clients.push(ws);
+
+  ws.on("message", message => {
+    const { x, y, colour } = JSON.parse(message);
+
+    console.log(`Client is drawing at (${x}, ${y}) with the colour: ${colour}`);
+  });
+});
+```
+
+Secondly, whenever we receive a message from a client, we should send it to all of the other clients:
+
+```javascript{7,8,9,10,11}:title=server/main.js
+WebSocketServer.on("connection", ws => {
+  console.log("New Connection");
+
+  clients.push(ws);
+
+  ws.on("message", message => {
+    clients.forEach(client => {
+      if (client !== ws) {
+        client.send(message);
+      }
+    });
+  });
+});
+```
+
+Here we're just looping through our array of clients, and sending the message along to every client that isn't the client that actually sent the message.
+
+In the next section we will add a listener on the client that will react to this message by drawing it to the canvas.
+
+## Drawing Networked Data to the Canvas
+
+Anywhere in the _client/main.js_ file, add the following code:
+
+```javascript:title=client/main.js
+socket.onopen = e => {
+  if (socket.readyState === WebSocket.OPEN) {
+    socket.onmessage = message => {
+      const { x, y, colour } = JSON.parse(message.data);
+
+      ctx.fillStyle = colour;
+      ctx.fillRect(x, y, 15, 15);
+      ctx.fillStyle = thisColour;
+    };
+  }
+};
+```
+
+Here we are adding a listener to our socket, first to check if it has connected to the server sucessfully, and then for if it has received a message.
+
+We then destructure the data from the message, and then draw to the canvas using it.
+
+That's it!
+
+Restart your server and refresh your browser, make sure to open two tabs (side by side if possible) and start drawing, you should see the result on both tabs at the same time!
