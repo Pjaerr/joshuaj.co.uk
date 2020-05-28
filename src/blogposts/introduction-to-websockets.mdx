@@ -1,0 +1,254 @@
+---
+isHidden: false
+path: "/blog/introduction-to-websockets"
+date: "2020-05-29"
+title: "Introduction to Websockets"
+description: ""
+issueLink: ""
+image: ""
+---
+
+import Video from "../components/mdx/Video/Video";
+
+_This guide is an introduction to websockets and is a precursor to my upcoming tutorial on making a multiplayer quiz game using react and websockets._
+
+In this blogpost we will be going over the basics of websockets by creating a website where users are assigned a colour and can paint on the screen with all other users being able to see what they are drawing in real time. We will expand on this a bit more by implementing the notion of "rooms" where users can choose to host a room or join an existing room.
+
+<Video
+  src="/introduction-to-websockets/finished-website"
+  caption="The finished website"
+/>
+
+### Prerequisities
+
+Before we get started it is assumed that you have a basic knowledge of HTML, CSS and JavaScript and have atleast heard of Node and the Node Package Manager (NPM)
+
+## Getting Setup
+
+1. Create a folder somewhere on your computer: `mkdir intro-to-websockets`
+
+2. Inside of that folder, create two more folders named _client_ and _server_: `cd intro-to-websockets && mkdir client && mkdir server`
+
+3. Finally, inside of the _client_ folder, create an index.html file and main.js file with the following content:
+
+```html:title=client/index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro To Websockets</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      canvas {
+        background-color: #333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Paint with Friends!</h1>
+    <!--The <canvas> is what we will be drawing on-->
+    <canvas width="800" height="600"></canvas>
+    <script src="./main.js"></script>
+  </body>
+</html>
+```
+
+```javascript:title=client/main.js
+console.log("Hello World!");
+```
+
+### Serving the files locally
+
+As our website will be communicating with a server we can't just open the `index.html` file in the browser, we will instead need it to be hosted on a server, we could host the clientside from the server we will eventually be creating for our websockets, but to keep things simple for development, let's just host it via a local web server.
+
+This can be done in many ways, one way is to use the node package called [http-server](https://www.npmjs.com/package/http-server). You will need Node.js installed for this, but we'll be using node later anyway so you might as well install it now, you can do that [here](https://nodejs.org/en/).
+
+Once you've installed node you can use this package by navigating to your `client` folder and running `npx http-server -c-1`, this will make your index.html file availble by visiting `http://localhost:8080` in your browser.
+
+To make sure our JavaScript has loaded, open your console (F12) and make sure that "Hello World!" is being printed.
+
+## Implementing the clientside painting functionality
+
+Before we even deal with websockets, we should implement the clientside functionality that allows a user to draw on the screen.
+
+First we grab the canvas element and the context required to draw to the canvas:
+
+```javascript{1,2}:title=client/main.js
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+```
+
+and then we set the fill colour to be a random colour from an array of colours:
+
+```javascript{4-13}:title=client/main.js
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+
+const colours = [
+  "#2ecc71",
+  "#3498db",
+  "#e74c3c",
+  "#9b59b6",
+  "#f39c12",
+  "#ecf0f1",
+];
+
+ctx.fillStyle = colours[Math.floor(Math.random() * (colours.length - 1 + 1))];
+```
+
+Finally, we store whether the mouse is being clicked, and if it is we set `isMouseDown` to true and then inside of a "mousemove" event listener, we check if the mouse is currently being clicked and if it is, we draw a rectangle onto the canvas at the current position of the mouse with a width and height of 15:
+
+```javascript{15-24}:title=client/main.js
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+
+const colours = [
+  "#2ecc71",
+  "#3498db",
+  "#e74c3c",
+  "#9b59b6",
+  "#f39c12",
+  "#ecf0f1",
+];
+
+ctx.fillStyle = colours[Math.floor(Math.random() * (colours.length - 1 + 1))];
+
+let isMouseDown = false;
+
+canvas.addEventListener("mousedown", () => (isMouseDown = true));
+canvas.addEventListener("mouseup", () => (isMouseDown = false));
+
+canvas.addEventListener("mousemove", e => {
+  if (isMouseDown) {
+    ctx.fillRect(e.offsetX, e.offsetY, 15, 15);
+  }
+});
+```
+
+Refresh your browser and try drawing on the canvas to make sure everything works.
+
+## Setting up a Websocket Server
+
+### The general idea
+
+Setting up a websocket server isn't overly complicated, but can be confusing if you don't understand websockets work so let's first cover the basics of websockets and then setup a simple server using Node.js.
+
+When using websockets, it is key to understand that the clients don't directly talk to other clients, rather they talk to the server which can then forward their message onto all of the other clients that are connected.
+
+Each client can then listen for a message from the server and then do something in response to it. In the context of our website, when our user draws a rectangle on the canvas, we will tell the server where that rectangle has been drawn and then the server will relay that to all of the other clients who will then draw the same rectangle on their canvases.
+
+![Websockets General Idea Diagram](/introduction-to-websockets/websockets-client-server-idea)
+
+By default, when a client connects to the websocket server, they send a "connection" message, beyond that the clients can send messages to the server and the server can also send messages to the client without another client having triggered it (eg. the server sending the current state of a timer to all clients every second).
+
+### The Code
+
+Let's start by setting up the server. For the server we will be using Node.js and a node implementation of the underlying websockets called [ws](https://github.com/websockets/ws), for the clientside (which we will get to later on) we will be using websockets that are [native to the browser](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
+
+Before getting started, make sure you have [Node.js](https://nodejs.org/en/) installed if you didn't do it earlier.
+
+1. Start by navigating to the _server_ folder in your terminal and run `npm init -y` which allows us to install local node packages using the Node Package Manager (NPM). <small>_\*You may need to stop your web server or open a new terminal_</small>
+
+2. Next, run `npm install ws` to install the ws package.
+
+The `ws` package is now a package that our project depends on, you can see this in your `package.json`.
+
+```json:title=server/package.json
+"dependencies": {
+    "ws": "^7.3.0"
+  }
+```
+
+Next, create a `main.js` file inside of the _server_ folder, this will hold the code for our server. Write the following code inside of it:
+
+```javascript:title=server/main.js
+const http = require("http");
+const WebSocket = require("ws");
+
+const server = http.createServer();
+const WebSocketServer = new WebSocket.Server({ server });
+
+WebSocketServer.on("connection", ws => {
+  console.log("New Connection");
+});
+
+server.listen(1234);
+```
+
+This is pretty basic right now, first we import the node.js `http` module which allows us to start a web server and then we import the `ws` module we installed earlier:
+
+```javascript{1,2}:title=server/main.js
+const http = require("http");
+const WebSocket = require("ws");
+
+const server = http.createServer();
+const WebSocketServer = new WebSocket.Server({ server });
+
+WebSocketServer.on("connection", ws => {
+  console.log("New Connection");
+});
+
+server.listen(1234);
+```
+
+Next we use the `http` module to create and then start a http server on port 1234:
+
+```javascript{4,11}:title=server/main.js
+const http = require("http");
+const WebSocket = require("ws");
+
+const server = http.createServer();
+const WebSocketServer = new WebSocket.Server({ server });
+
+WebSocketServer.on("connection", ws => {
+  console.log("New Connection");
+});
+
+server.listen(1234);
+```
+
+finally, we use the `ws` module to create a WebSocket server on the http server we just created and then add a listener that will be triggered when a client connects to it.
+
+```javascript{5-9}:title=server/main.js
+const http = require("http");
+const WebSocket = require("ws");
+
+const server = http.createServer();
+const WebSocketServer = new WebSocket.Server({ server });
+
+WebSocketServer.on("connection", ws => {
+  console.log("New Connection");
+});
+
+server.listen(1234);
+```
+
+and that's it for a basic websocket server. In the next section we'll write the code that allows clients to connect to the websocket server.
+
+## Setting up a Websocket Client
+
+So now we've got a server, all that's needed is just one line of code to connect to the server.
+
+At the top of your _client/main.js_ file, put the following:
+
+```javascript:title=client/main.js
+const socket = new WebSocket("ws://localhost:1234");
+```
+
+This line of code connects the client to the server that is at `ws://localhost:1234`. You might be thinking that this looks like a normal URL, and that's because it is similar, the only difference is that instead of using the `http` protocol, we are using the `ws` (websocket) protocol which enables two-way communication between a client to a remote server. Similarly to `https`, there is a `wss` protocol which we'll cover later on.
+
+If you run your server by navigating to the _server_ folder and running `node main.js` and then, in a different terminal, navigate to the _client_ folder and restart your http server (if you closed it) by running `npx http-server -c-1`.
+
+Now, when you visit your client on `http://localhost:8080` you should see "New Connection" printed out into the terminal that is running the server.
+
+That's all you need to setup a client -> server connection.
