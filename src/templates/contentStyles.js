@@ -144,6 +144,7 @@ export const codeBlocks = css`
     text-align: center;
     padding-bottom: 0.5em;
     margin-bottom: -8px;
+    margin-top: 20px;
 
     border-top-left-radius: 0.3em;
     border-top-right-radius: 0.3em;
@@ -153,6 +154,8 @@ export const codeBlocks = css`
 
   .gatsby-highlight {
     font-weight: 500;
+
+    margin-bottom: 20px;
 
     ${mixins.fullWidth};
 
