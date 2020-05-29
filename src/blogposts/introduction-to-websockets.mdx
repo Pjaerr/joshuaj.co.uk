@@ -305,7 +305,7 @@ If you put the terminal and browser side by side and then click, you can see thi
 
 So we can tell the server that we're clicking, is there any limit to our power?
 
-Let's make it a bit more realistic to our use case by telling the server that we're drawing, and let it know where we a drawing on the canvas and what colour we are.
+Let's make it a bit more realistic to our use case by telling the server that we're drawing, and let it know where we are drawing on the canvas and what colour we are.
 
 In the _client/main.js_ file, first remove the `socket.send` we wrote above.
 
@@ -423,7 +423,7 @@ Restart your server and refresh your browser, make sure to open two tabs (side b
 
 Right now, if a client disconnects from the server, we still store them inside of the `clients` array in _server/main.js_. This isn't an issue for this use case, but it is always good to clean up after ourselves.
 
-We can do this easily as, when a websocket disconnects, it sends a "close" message to the server. Let's use this to remove it from the array.
+We can do this easily as, when a websocket disconnects, it sends a "close" message to the server. Let's use this to remove it from the array in the same place we have our `.on("message")` listener:
 
 ```javascript:title=server/main.js
 ws.on("close", () => {
@@ -443,7 +443,7 @@ Although for this simple example it doesn't matter, sometimes the link between t
 
 Another gotcha that we didn't account for is a client disconnecting and then reconnecting when a session has already started. In its current state nothing will break, but if any of the clients have drawn on the canvas, any new clients (or rejoining clients) won't be shown the existing drawings.
 
-This may or may not be your desired functionality, but a possible solution would be to store a queue of actions on the server and, every time a client sends a message, add it to the queue. Then, when a new/rejoining client connects, send them the queue so that they can draw it on their canvas but I'll leave it up to you to implement a solution.
+This may or may not be your desired functionality, but a possible solution would be to store a queue of actions on the server and, every time a client sends a message, add it to the queue. Then, when a new/rejoining client connects, send them the queue so that they can draw everything on their canvas and get up to date; I'll leave it up to you to implement a solution to this problem.
 
 ### Working over a secure connection (https)
 
