@@ -1,0 +1,37 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Navigation from "../../components/Navigation.svelte";
+import BlogPostList from "../../components/BlogPostList.svelte";
+
+const title = "blogposts - joshuaj.co.uk";
+
+const blogposts = await Astro.glob("./*.md");
+---
+
+<html lang="en">
+  <head>
+    <BaseHead {title} />
+
+    <style>
+      .section-heading {
+        color: var(--colour-highlight);
+        letter-spacing: 2px;
+        font-size: 1.125rem;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="site-container">
+      <Navigation />
+
+      <main class="global-centered-layout">
+        <div class="blogposts-section">
+          <h2 class="section-heading">Blogposts</h2>
+          <BlogPostList {blogposts} />
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

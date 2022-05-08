@@ -1,0 +1,97 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.svelte";
+import BlogPostList from "../components/BlogPostList.svelte";
+import ProjectList from "../components/ProjectList.svelte";
+
+const title = "joshuaj.co.uk";
+
+const blogposts = await Astro.glob("./blog/*.md");
+
+const projects = [
+  {
+    name: "Isolation Run",
+    description:
+      "Use your phone's accelerometer to only play a video whilst you're running.",
+    technologies: ["svelte", "nodejs", "websockets"],
+    githubLink: "https://github.com/Pjaerr/Isolation-Run",
+    demoLink: "https://isolation-run.herokuapp.com/",
+  },
+  {
+    name: "Pub Name Generator",
+    description: "Generates random pub names using a local words list",
+    technologies: ["html", "javascript", "css"],
+    githubLink: "https://github.com/Pjaerr/Pub-Name-Generator",
+    demoLink: "https://pjaerr.github.io/Pub-Name-Generator/",
+  },
+  {
+    name: "Svelte Github Issue Comments Component",
+    description:
+      "A Svelte component that lets you use a github issue as a no-backend comments system for a static site/blog",
+    technologies: ["svelte", "typescript"],
+    githubLink: "https://github.com/Pjaerr/svelte-github-issue-comments-component",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <BaseHead {title} />
+
+    <style>
+      main {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-gap: 48px;
+      }
+
+      hr {
+        width: 100%;
+        opacity: 0.25;
+      }
+
+      /* Desktop */
+      @media only screen and (min-width: 1048px) {
+      }
+
+      .section-heading {
+        color: var(--colour-highlight);
+        letter-spacing: 2px;
+        font-size: 1.125rem;
+        text-transform: uppercase;
+      }
+
+      .see-all-posts {
+        display: inline-block;
+        margin-top: 24px;
+        font-weight: bold;
+        font-size: 1.125rem;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="site-container">
+      <Navigation />
+
+      <main class="global-centered-layout">
+        <div class="blogposts-section">
+          <h2 class="section-heading">Blogposts</h2>
+          <BlogPostList blogposts={blogposts.slice(0, 4)} />
+
+          {blogposts.length > 5 &&
+            (<a class="see-all-posts" href="/blog"> See all posts ➞ </a>)
+          }
+        </div>
+
+        <hr />
+
+        <div class="projects-section">
+          <h2 class="section-heading">Projects</h2>
+          <ProjectList {projects} />
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
