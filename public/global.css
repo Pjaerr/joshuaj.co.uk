@@ -68,14 +68,19 @@
     background: #223545;
   }
 
-  /* Inline code */
-  :not(pre) > code[class*="language-"] {
+ /* Inline code (CUSTOM)*/
+  :not(pre) > code {
     padding: 0.1em;
     border-radius: 0.3em;
     white-space: normal;
     color: #c7ecee;
   }
 
+  /* Inline code (CUSTOM)*/
+  :not(pre) > code {
+    background: #223545;
+  }
+    
   /* Language before */
   .prism-show-language {
     background: #1f4662;
@@ -340,11 +345,16 @@
     background-color: #fdf6e3; /* base3 */
   }
 
-  /* Inline code */
-  :not(pre) > code[class*="language-"] {
+  /* Inline code (CUSTOM)*/
+  :not(pre) > code {
     padding: 0.1em;
     border-radius: 0.3em;
     color: #1e272e;
+  }
+
+  /* Inline code (CUSTOM)*/
+  :not(pre) > code {
+    background-color: #fdf6e3; /* base3 */
   }
 
   .token.comment,
