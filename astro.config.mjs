@@ -7,7 +7,7 @@ import wrapListItemChildren from "./custom-plugins/rehype/wrap-list-item-childre
 export default defineConfig({
   integrations: [svelte(), sitemap()],
   markdown: {
-    remarkPlugins: [["remark-code-titles"], ["remark-prism"]],
+    remarkPlugins: ["remark-code-titles", "remark-prism"],
     rehypePlugins: [wrapListItemChildren],
     syntaxHighlight: "prism",
   },
