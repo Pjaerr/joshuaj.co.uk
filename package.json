@@ -6,7 +6,7 @@
     "build": "astro build",
     "serve": "astro preview",
     "build-and-serve": "npm run build && npm run serve",
-    "deploy": "npm run build && cp CNAME public/CNAME && gh-pages -d public"
+    "deploy": "npm run build && cp CNAME dist/CNAME && gh-pages -d dist"
   },
   "devDependencies": {
     "astro": "^1.0.0-beta.2",

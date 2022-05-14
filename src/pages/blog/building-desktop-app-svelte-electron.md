@@ -738,10 +738,7 @@ With very little code we've managed to build a very basic markdown editor using 
 
 **Some Extra Notes**
 
-- We used the Electron and Node APIs by sending messages between the Renderer process (Svelte) and the Main process (Electron) with a bridge between the two in the form of a `preload.js` file. As mentioned at the start of this post, you _can_ enable the direct use of node.js from within your Svelte files but this is generally bad practice for a whole host of reasons, some extra reading if you're interested:
-
-  - [https://stackoverflow.com/a/59814127](https://stackoverflow.com/a/59814127)
-  - [https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation](https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation)
+- We used the Electron and Node APIs by sending messages between the Renderer process (Svelte) and the Main process (Electron) with a bridge between the two in the form of a `preload.js` file. As mentioned at the start of this post, you _can_ enable the direct use of node.js from within your Svelte files but this is generally bad practice for a whole host of reasons, some extra reading if you're interested: [https://stackoverflow.com/a/59814127](https://stackoverflow.com/a/59814127) and [https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation](https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation)
 
 - This was my first experiment with Electron, please take this guide/tutorial as more of an intro to how it _could_ be used and not how it _should_ be used.
 
