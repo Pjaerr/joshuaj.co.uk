@@ -19,7 +19,7 @@ _If you just want a starter template to make your app without reading the blogpo
 
 This blogpost will walk you through creating a basic markdown editor for the desktop using Svelte and Electron. We will be able to edit markdown files and see a side-by-side preview as well as **Open Files**, **Create New Files** and **Save Files** using the Electron API and NodeJS.
 
-The finished product will look something like this:
+You can find the code for the finished product here: [https://github.com/Pjaerr/Svelte-Electron-Desktop-App](https://github.com/Pjaerr/Svelte-Electron-Desktop-App) which looks like:
 
 <Video
   src="/assets/blog/building-desktop-app-svelte-electron/finished-application-svelte-electron"

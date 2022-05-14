@@ -14,7 +14,7 @@
       <ProjectTech {technologies} />
 
       <div class="links">
-        <a href={githubLink} aria-label="Visit {name} on Github" title="Github">
+        <a href={githubLink} aria-label="Visit {name} on Github" title="Github" target="_blank">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -32,7 +32,7 @@
         </a>
 
         {#if demoLink}
-          <a href={demoLink} aria-label="Try the demo for {name}" title="Demo">
+          <a href={demoLink} aria-label="Try the demo for {name}" title="Demo" target="_blank">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
