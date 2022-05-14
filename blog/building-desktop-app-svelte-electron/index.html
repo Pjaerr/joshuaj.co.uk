@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.ico">
+
+<!-- Primary Meta Tags -->
+<title>Building a Desktop App using Svelte and Electron - joshuaj.co.uk</title>
+<meta name="title" content="Building a Desktop App using Svelte and Electron - joshuaj.co.uk">
+<meta name="description" content="In this blogpost I show you how easy it is to build a basic markdown editor for desktop using Svelte and Electron.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshuaj.co.uk/blog/building-desktop-app-svelte-electron">
+<meta property="og:title" content="Building a Desktop App using Svelte and Electron - joshuaj.co.uk">
+<meta property="og:description" content="In this blogpost I show you how easy it is to build a basic markdown editor for desktop using Svelte and Electron.">
+<meta property="og:image" content="/assets/blog/building-desktop-app-svelte-electron/cover_image.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://joshuaj.co.uk/blog/building-desktop-app-svelte-electron">
+<meta property="twitter:title" content="Building a Desktop App using Svelte and Electron - joshuaj.co.uk">
+<meta property="twitter:description" content="In this blogpost I show you how easy it is to build a basic markdown editor for desktop using Svelte and Electron.">
+<meta property="twitter:image" content="/assets/blog/building-desktop-app-svelte-electron/cover_image.jpg">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/global.css">
+
+<!-- Panelbear -->
+<script async src="https://cdn.panelbear.com/analytics.js?site=CmpPimYA1ck"></script>
+
+
+
+  <link rel="stylesheet" href="/assets/asset.a1ca7c82.css"></link><style astro-style="true">astro-root, astro-fragment { display: contents; }</style><script type="module" src="/entry.6f374cd04.js" astro-script="/blog/building-desktop-app-svelte-electron/script-0"></script>
+<script type="module" data-astro-component-hydration astro-script="/blog/building-desktop-app-svelte-electron/script-1">import setup from '../../entry.9125fc96.js';
+import 'data:text/javascript;charset=utf-8,//[no before-hydration script]';
+setup("77UnT", {name:"GithubIssueComments",value: true}, async () => {
+  const [{ default: Component }, { default: hydrate }] = await Promise.all([import("../../entry.8ff8db27.js"), import("../../entry.b4a7f7d7.js")]);
+  return (el, children) => hydrate(el)(Component, {"issueUri":"Pjaerr\u002FSvelte-Electron-Desktop-App\u002Fissues\u002F1","commentsPerPage":10,"useShowCommentsButton":false}, children);
+
+});
+</script>
+</head>
+
+  <body>
+    <nav class="svelte-bqr8pt"><div class="nav-inner global-centered-layout svelte-bqr8pt"><a href="/" title="Home" class="svelte-bqr8pt">Pjaerr</a>
+
+    <ul class="svelte-bqr8pt"><li class="svelte-bqr8pt"><a href="https://github.com/pjaerr" aria-label="Visit pjaerr on Github" title="Github" target="_blank" class="svelte-bqr8pt"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></li>
+
+      <li class="svelte-bqr8pt"><a href="https://twitter.com/pjaerr" aria-label="Visit pjaerr on Twitter" title="Twitter" target="_blank" class="svelte-bqr8pt"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></li></ul></div>
+</nav>
+
+    <article class="blog-post__container">
+      <h1 class="blog-post__title">Building a Desktop App using Svelte and Electron</h1>
+      <p class="blog-post__publish-date">
+        February 22, 2020
+      </p>
+
+      <div class="blog-post__content">
+        <p>I watched a <a href="https://www.youtube.com/watch?v=ZBe--JjrEL8">talk</a> the other day by Felix Riesberg who talked about using JavaScript and Electron to build desktop apps and it inspired me to see how easy using <a href="https://svelte.dev">Svelte</a> would be. Turns out it is super easy, and just works out of the box!</p><p><em>If you just want a starter template to make your app without reading the blogpost, I created a template <a href="https://github.com/Pjaerr/svelte-electron-template">here</a>.</em></p><p>This blogpost will walk you through creating a basic markdown editor for the desktop using Svelte and Electron. We will be able to edit markdown files and see a side-by-side preview as well as <strong>Open Files</strong>, <strong>Create New Files</strong> and <strong>Save Files</strong> using the Electron API and NodeJS.</p><p>You can find the code for the finished product here: <a href="https://github.com/Pjaerr/Svelte-Electron-Desktop-App">https://github.com/Pjaerr/Svelte-Electron-Desktop-App</a> which looks like:</p><figure class="blog-post__full-bleed svelte-xijruc"><video autoplay playsinline loop muted controls class="svelte-xijruc"><source src="/assets/blog/building-desktop-app-svelte-electron/finished-application-svelte-electron.webm" type="video/webm"><source src="/assets/blog/building-desktop-app-svelte-electron/finished-application-svelte-electron.mp4" type="video/mp4">
+    Sorry, your browser doesn&#39;t support embedded videos.
+  </video>
+
+  <figcaption class="svelte-xijruc">Finished Gif of Markdown Editor</figcaption>
+</figure><p>Let's get started!</p><h2 id="getting-setup-">Getting Setup 🐣</h2><ol>
+<li><div>
+<p>Clone the Svelte template: <code>npx degit sveltejs/template svelte-markdown-editor</code></p>
+</div></li>
+<li><div>
+<p>CD into the new directory and run <code>npm install</code> to install Svelte dependencies.</p>
+</div></li>
+<li><div>
+<p>Run <code>npm install electron marked</code> which will install Electron and then the marked library which we will use to convert our markdown into HTML.</p>
+</div></li>
+<li><div>
+<p>In the root of the project, create a <code>main.js</code> file, this will be our Electron entry point.</p>
+</div></li>
+<li><div>
+<p>Also in the root, create a <code>preload.js</code> file, this will be the file that allows our renderer (Svelte) to communicate with electron.</p>
+</div></li>
+<li><div>
+<p>Inside of the <code>package.json</code>, change the <code>start</code> script from <code>"sirv public --no-clear"</code> to <code>"npm run build &#x26;&#x26; electron main.js"</code> which will build the Svelte app and then tell Electron to run it.</p>
+</div></li>
+<li><div>
+<p>Edit the <code>public/index.html</code> file so that all paths have a <code>.</code> infront of them. EG: <code>/build/bundle.css</code> becomes <code>./build/bundle.css</code>. Electron won't be able to find these files otherwise.</p>
+</div></li>
+<li><div>
+<p>Finally, add the following meta tag to the head of the index.html file: <code>&#x3C;meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" /></code>. This won't cause us any issues for this small application, but we will get a warning in our console if not.
+Read more about this <a href="https://www.electronjs.org/docs/tutorial/security#csp-meta-tag">here</a></p>
+</div></li>
+</ol><h2 id="connecting-svelte-with-electron-️">Connecting Svelte with Electron 🖇️</h2><p>Now we have the boilerplate setup, let's connect our Svelte app with Electron by returning to the <code>main.js</code> file we previously created.</p><p>A basic Electron app consists of an <code>app</code> and a <code>BrowserWindow</code> so let's import these as well as the <code>path</code> module which we'll need to tell Electron where our <code>preload.js</code> file is:</p><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw><span class="token keyword">const</span> <span class="token punctuation">{</span> app<span class="token punctuation">,</span> <span class="token maybe-class-name">BrowserWindow</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"electron"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>The <code>app</code> is what we use to handle the lifecycle of the application and the <code>BrowserWindow</code> is the actual window that will render our Svelte app.</p><p>Start by creating a new <code>BrowserWindow </code>once the application is ready, we can also handle quitting the app once all windows are closed:</p><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">webPreferences</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">nodeIntegration</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">contextIsolation</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">preload</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"preload.js"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"window-all-closed"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token method function property-access">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Note we set <code>nodeIntegration</code> to false, this is the electron default. If we set <code>nodeIntegration</code> to true (and <code>contextIsolation</code> to false), it would allow us to use node.js directly within our Svelte files, this comes with security concerns and Electron officially recommends using a <code>preload.js</code> file to interact with node.js instead of doing it directly. More on this later.</p><p>We also use the <code>path</code> module to tell our <code>BrowserWindow</code> where to find the <code>preload.js</code> file.</p><p>Finally, underneath where you created your <code>BrowserWindow</code>, tell it to open the <code>index.html</code> file that Svelte outputs when built.</p><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">webPreferences</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">nodeIntegration</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">contextIsolation</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">preload</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"preload.js"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  mainWindow<span class="token punctuation">.</span><span class="token method function property-access">loadFile</span><span class="token punctuation">(</span><span class="token string">"./public/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Now, if you run <code>npm start</code>, a window should open showing the basic Hello World Svelte app.</p><picture><source srcset="/assets/blog/building-desktop-app-svelte-electron/basic-svelte-app.webp" type="image/webp">
+
+  <img src="/assets/blog/building-desktop-app-svelte-electron/basic-svelte-app.jpg" type="image/jpeg" alt="Screenshot of a basic Svelte app"></picture><h2 id="creating-a-basic-markdown-editor-">Creating a Basic Markdown Editor 📝</h2><p>Before we implement the ability to open, save and create new files using the Electron API, let's remove the Svelte boilerplate and implement a basic Markdown editor.</p><p>In the <code>src/main.js</code> file, remove the props argument:</p><div class="remark-code-title">src/main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">target</span><span class="token operator">:</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token property-access">body</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Next, create a component called <code>Editor.svelte</code>:</p><div class="remark-code-title">src/Editor.svelte</div><div class="remark-highlight"><pre class="language-html"><code class="language-html" is:raw><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword module">export</span> <span class="token keyword">let</span> markdown <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">section</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token unit">%</span><span class="token punctuation">;</span>
+    <span class="token property">min-height</span><span class="token punctuation">:</span> <span class="token number">95</span><span class="token unit">vh</span><span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token unit">rem</span> solid <span class="token hexcode color">#333</span><span class="token punctuation">;</span>
+    <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">1.5</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">textarea</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token unit">%</span><span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token unit">%</span><span class="token punctuation">;</span>
+    <span class="token property">min-height</span><span class="token punctuation">:</span> <span class="token number">95</span><span class="token unit">vh</span><span class="token punctuation">;</span>
+    <span class="token property">resize</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>style</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>section</span><span class="token punctuation">></span></span>
+  <span class="token comment">&#x3C;!-- svelte-ignore a11y-autofocus --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>textarea</span> <span class="token attr-name"><span class="token namespace">bind:</span>value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{markdown}<span class="token punctuation">"</span></span> <span class="token attr-name">autofocus</span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>section</span><span class="token punctuation">></span></span>
+</code></pre></div><p>This component takes a prop called <code>markdown</code> and binds it to a text area so that the markdown variable automatically updates when our text area is updated. We also autofocus the text area and remove the accessiblity warning as our application only has one input and it is the main focus of the application.</p><p>Next, create a component called <code>Preview.svelte</code>:</p><div class="remark-code-title">src/Preview.svelte</div><div class="remark-highlight"><pre class="language-html"><code class="language-html" is:raw><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> marked <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"marked"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword module">export</span> <span class="token keyword">let</span> markdown <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">section</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token unit">%</span><span class="token punctuation">;</span>
+    <span class="token property">min-height</span><span class="token punctuation">:</span> <span class="token number">95</span><span class="token unit">vh</span><span class="token punctuation">;</span>
+    <span class="token property">margin-left</span><span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token unit">rem</span><span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">0.2</span><span class="token unit">rem</span><span class="token punctuation">;</span>
+    <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode color">#f5f5f5</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">section <span class="token pseudo-class">:global</span><span class="token punctuation">(</span>*<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token property">word-break</span><span class="token punctuation">:</span> break-word<span class="token punctuation">;</span>
+    <span class="token property">white-space</span><span class="token punctuation">:</span> pre-wrap<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>style</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>section</span><span class="token punctuation">></span></span>{@html marked(markdown)}<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>section</span><span class="token punctuation">></span></span>
+</code></pre></div><p>This component takes some markdown text, and then uses the <a href="https://www.npmjs.com/package/marked">marked</a> library to convert it to html. We then directly output this onto the page using the Svelte <code>{@html}</code> tag.</p><p>There's nothing fancy with any of the styling, you'll note we use <code>:global(*)</code> to target everything under our section. This is because we want to target all of the HTML under the section but Svelte thinks that no HTML exists (because it is dynamically generated once we parse the markdown) so we would get the <code>css-unused-selector</code> warning if we just used <code>*</code>.</p><p>In the <code>App.svelte</code> file replace everything with:</p><div class="remark-code-title">src/App.svelte</div><div class="remark-highlight"><pre class="language-html"><code class="language-html" is:raw><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Editor</span></span> <span class="token keyword module">from</span> <span class="token string">"./Editor.svelte"</span><span class="token punctuation">;</span>
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Preview</span></span> <span class="token keyword module">from</span> <span class="token string">"./Preview.svelte"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> markdown <span class="token operator">=</span>
+    <span class="token string">"# You can enter markdown here\n\n**This text is bold**\n\n_This text is italic_"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> activeFilePath<span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">main</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector"><span class="token class">.file-path</span></span> <span class="token punctuation">{</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector"><span class="token class">.editor-and-preview</span></span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">flex-direction</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>style</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>main</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file-path<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    {activeFilePath ? activeFilePath : "Press 'Save' or hit 'CTRL + S' to save"}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>editor-and-preview<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>Editor</span> <span class="token attr-name"><span class="token namespace">bind:</span>markdown</span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>Preview</span> <span class="token attr-name">{markdown}</span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>main</span><span class="token punctuation">></span></span>
+</code></pre></div><p>Here we store a <code>markdown</code> variable and tell Svelte to bind it to whatever the value of <code>markdown</code> is inside of the <code>Editor</code> component which we know is bound to the text area input. So whatever we type is stored inside the <code>markdown</code> variable, which we then pass into the <code>Preview</code> component to be rendered as HTML.</p><p>We also store an <code>activeFilePath</code> variable, which we will use later on to show which file is open in the editor, for now, whilst no file path exists, just show the user a message telling them how to save.</p><p>Now if you run <code>npm start</code> you should have a usable markdown editor with a live updating preview.</p><h2 id="saving-files-with-electron-">Saving Files with Electron 💾</h2><p>Now we can write our markdown, let's give the user the ability to save what they've written.</p><p>We first need to do some setup to allow our renderer (Svelte files) to communicate with Electron.</p><p>In the <code>preload.js</code> file we created earlier, import two modules from electron:</p><div class="remark-code-title">preload.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw><span class="token keyword">const</span> <span class="token punctuation">{</span> contextBridge<span class="token punctuation">,</span> ipcRenderer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"electron"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p><code>contextBridge</code> allows us to expose functionality to our renderer, this is important as our <code>preload.js</code> file has direct access to node.js (and the functions required to communicate with Electron) whereas our renderer doesn't so we can use the <code>contextBridge</code> to provide a "bridge" between the two.</p><p><code>ipcRenderer</code> is the module we use to communicate with our main Electron process. This allows us to both listen for messages from Electron as well as send messages to Electron.</p><p>To start, we can create a wrapper that can be accessed by the renderer (Svelte). I'm going to call this <code>"api"</code> but you can call it anything. Inside of this we'll expose two functions <code>send()</code> and <code>on()</code> which will be used to send messages to electron and listen for messages back respectively:</p><div class="remark-code-title">preload.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw><span class="token keyword">const</span> <span class="token punctuation">{</span> contextBridge<span class="token punctuation">,</span> ipcRenderer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"electron"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">contextBridge<span class="token punctuation">.</span><span class="token method function property-access">exposeInMainWorld</span><span class="token punctuation">(</span><span class="token string">"api"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">  <span class="token function-variable function">send</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">message<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">    ipcRenderer<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">  <span class="token function-variable function">on</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">message<span class="token punctuation">,</span> listener</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">    ipcRenderer<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> listener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre></div><p>Now, inside of our <code>App.svelte</code> file, we can now access this via <code>window.api</code> without ever needing to use node.js directly.</p><p>Inside of <code>App.svelte</code> in the script tag, let's use the <code>window.api.on()</code> function to listen for a <code>"savefile"</code> message (the message name can be anything you want, it just has to match the event we send), we will eventually send this message from Electron when the user clicks a menu item or uses CTRL + S.</p><div class="remark-code-title">src/App.svelte</div><div class="remark-highlight"><pre class="language-html"><code class="language-html" is:raw><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Editor</span></span> <span class="token keyword module">from</span> <span class="token string">"./Editor.svelte"</span><span class="token punctuation">;</span>
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Preview</span></span> <span class="token keyword module">from</span> <span class="token string">"./Preview.svelte"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> markdown <span class="token operator">=</span>
+    <span class="token string">"# You can enter markdown here\n\n**This text is bold**\n\n_This text is italic_"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> activeFilePath<span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">api</span><span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"savefile"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre></div><p>When we receive a "savefile" message, it will run the callback we passed to it, inside of this function we want to first check if there is an <code>activeFilePath</code> and if there is, we want to send a message to Electron telling it to set the <code>markdown</code> variable to the contents of that file and if there isn't, we want to send a message telling Electron to ask the user where the file should be saved.</p><p>This looks like the following:</p><div class="remark-code-title">src/App.svelte</div><div class="remark-highlight"><pre class="language-html"><code class="language-html" is:raw><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Editor</span></span> <span class="token keyword module">from</span> <span class="token string">"./Editor.svelte"</span><span class="token punctuation">;</span>
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Preview</span></span> <span class="token keyword module">from</span> <span class="token string">"./Preview.svelte"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> markdown <span class="token operator">=</span>
+    <span class="token string">"# You can enter markdown here\n\n**This text is bold**\n\n_This text is italic_"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> activeFilePath<span class="token punctuation">;</span>
+
+  <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">api</span><span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"savefile"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+<span class="remark-highlight-code-line">  <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>activeFilePath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">    <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">api</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"saveexistingfile"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">path</span><span class="token operator">:</span> activeFilePath<span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">content</span><span class="token operator">:</span> markdown<span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">    <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">api</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"savenewfile"</span><span class="token punctuation">,</span> markdown<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span>
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre></div><p>This won't do anything yet, as we haven't implemented the corresponding message listeners and functionality in our main process (main process is what I have been calling "Electron"). Let's do that next, starting with saving a new file.</p><p>In the <code>main.js</code> file, import <code>Menu</code>, <code>MenuItem</code>, <code>ipcMain</code> and <code>dialog</code> from electron and <code>fs</code> from the nodejs standard library:</p><div class="remark-code-title">main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw><span class="token keyword">const</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">,</span>
+  <span class="token maybe-class-name">BrowserWindow</span><span class="token punctuation">,</span>
+<span class="remark-highlight-code-line">  <span class="token maybe-class-name">Menu</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">  <span class="token maybe-class-name">MenuItem</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">  ipcMain<span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">  dialog<span class="token punctuation">,</span>
+</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"electron"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line"><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre></div><p>next, create a function called <code>createNewFile</code> inside of the <code>app.whenReady().then</code> callback that takes a string, this function should open a dialog box to ask the user to name a file and select a location to which it should be saved and then save the file at that location, with the name containing the string provided.</p><p><em>*Documentation for <code>dialog</code> can be found at <a href="https://www.electronjs.org/docs/api/dialog">https://www.electronjs.org/docs/api/dialog</a></em></p><p>Inside of the <code>app.whenReady().then</code> callback:</p><div class="remark-code-title">main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">webPreferences</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">nodeIntegration</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">contextIsolation</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">preload</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"preload.js"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  mainWindow<span class="token punctuation">.</span><span class="token method function property-access">loadFile</span><span class="token punctuation">(</span><span class="token string">"./public/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  <span class="token keyword">const</span> <span class="token function-variable function">createNewFile</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">    dialog
+</span><span class="remark-highlight-code-line">      <span class="token punctuation">.</span><span class="token method function property-access">showSaveDialog</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Create New File"</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">        <span class="token literal-property property">properties</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"showOverwriteConfirmation"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">        <span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="remark-highlight-code-line">          <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">            <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Markdown Files"</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">            <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"md"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="remark-highlight-code-line">      <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> canceled<span class="token punctuation">,</span> filePath <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>canceled<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">
+</span><span class="remark-highlight-code-line">        fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span>filePath<span class="token punctuation">,</span> content<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">          <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>In the code above, we use <code>Electron.dialog</code> to open a save dialog that will only save (and show) markdown files and then, if the user didn't close the dialog, we use the <code>fs</code> module to write the file to the file path they selected.</p><p>Now we have the function, let's setup the code to call it when we receive a <code>"savenewfile"</code> message.</p><p>In the same place, write the following code:</p><div class="remark-code-title">main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">webPreferences</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">nodeIntegration</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">contextIsolation</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">preload</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"preload.js"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  mainWindow<span class="token punctuation">.</span><span class="token method function property-access">loadFile</span><span class="token punctuation">(</span><span class="token string">"./public/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">createNewFile</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    dialog
+      <span class="token punctuation">.</span><span class="token method function property-access">showSaveDialog</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Create New File"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">properties</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"showOverwriteConfirmation"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Markdown Files"</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"md"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> canceled<span class="token punctuation">,</span> filePath <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>canceled<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+
+        fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span>filePath<span class="token punctuation">,</span> content<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  ipcMain<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"savenewfile"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e<span class="token punctuation">,</span> content</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">    <span class="token function">createNewFile</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>There's one last step before we can save a new file, if you remember, the message listener above only triggers when our Svelte app sends a "savenewfile" message, which can only be sent when our Svelte app receives a "savefile" message. So we must send a "savefile" message from Electron when the user selects save from the menu or hits CTRL + S.</p><p>You do this by creating a new Menu inside of the <code>app.whenReady().then</code> callback and then adding MenuItem objects to it like so:</p><div class="remark-code-title">main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> mainWindow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BrowserWindow</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">600</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">webPreferences</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">nodeIntegration</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">contextIsolation</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">preload</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"preload.js"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  mainWindow<span class="token punctuation">.</span><span class="token method function property-access">loadFile</span><span class="token punctuation">(</span><span class="token string">"./public/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">createNewFile</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    dialog
+      <span class="token punctuation">.</span><span class="token method function property-access">showSaveDialog</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Create New File"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">properties</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"showOverwriteConfirmation"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Markdown Files"</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"md"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> canceled<span class="token punctuation">,</span> filePath <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>canceled<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+
+        fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span>filePath<span class="token punctuation">,</span> content<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  ipcMain<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"savenewfile"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e<span class="token punctuation">,</span> content</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">createNewFile</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  <span class="token keyword">const</span> menu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">
+</span><span class="remark-highlight-code-line">  menu<span class="token punctuation">.</span><span class="token method function property-access">append</span><span class="token punctuation">(</span>
+</span><span class="remark-highlight-code-line">    <span class="token keyword">new</span> <span class="token class-name">MenuItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">"Save"</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">accelerator</span><span class="token operator">:</span> <span class="token string">"CmdOrCtrl+S"</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">      <span class="token function-variable function">click</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> mainWindow<span class="token punctuation">.</span><span class="token property-access">webContents</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"savefile"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span>
+<span class="remark-highlight-code-line">  <span class="token maybe-class-name">Menu</span><span class="token punctuation">.</span><span class="token method function property-access">setApplicationMenu</span><span class="token punctuation">(</span>menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Here we are saying, when CTRL + S is pressed, or our menu item with the label "Save" is clicked, send a message to the BrowserWindow (our Svelte app) with the name <code>"savefile"</code>.</p><p>Now if you run <code>npm start</code>, type some markdown, and then hit CTRL + S (or the menu item). You should see a save dialog and when you enter a name and click save, your file should now have saved to the directory you chose.</p><p>The next part is adding the message listener for when we want to save an existing file. In the same place as the previous one, add the following:</p><div class="remark-code-title">main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token spread operator">...</span>
+
+  ipcMain<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"savenewfile"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e<span class="token punctuation">,</span> content</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">createNewFile</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  ipcMain<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"saveexistingfile"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e<span class="token punctuation">,</span> <span class="token punctuation">{</span> path<span class="token punctuation">,</span> content <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">    fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> content<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">      <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span>
+  <span class="token spread operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>This just uses the <code>fs</code> module to create a new file at an existing path which will overwrite the existing file with the new contents.</p><p><em>You can read more about how the Renderer and Main processes work <a href="https://www.electronjs.org/docs/tutorial/application-architecture#differences-between-main-process-and-renderer-process">here</a></em></p><p>Next we will add the ability to open/save an existing file, or to create a new one using the menu.</p><h2 id="openingsaving-existing-files--">Opening/Saving Existing Files 📂 💾</h2><p>This works in much the same way, I would say even easier!</p><p>Start by, in the <code>App.svelte</code> file, creating a new message listener that listens for a <code>"fileopened"</code> message that contains a file path and the content inside of the file. When we get this message, update the variables so that Svelte will update our HTML:</p><div class="remark-code-title">src/App.svelte</div><div class="remark-highlight"><pre class="language-html"><code class="language-html" is:raw><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Editor</span></span> <span class="token keyword module">from</span> <span class="token string">"./Editor.svelte"</span><span class="token punctuation">;</span>
+  <span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Preview</span></span> <span class="token keyword module">from</span> <span class="token string">"./Preview.svelte"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> markdown <span class="token operator">=</span>
+    <span class="token string">"# You can enter markdown here\n\n**This text is bold**\n\n_This text is italic_"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> activeFilePath<span class="token punctuation">;</span>
+
+  <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">api</span><span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"savefile"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>activeFilePath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">api</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"saveexistingfile"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">path</span><span class="token operator">:</span> activeFilePath<span class="token punctuation">,</span>
+        <span class="token literal-property property">content</span><span class="token operator">:</span> markdown<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+      <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">api</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"savenewfile"</span><span class="token punctuation">,</span> markdown<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">api</span><span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">"fileopened"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e<span class="token punctuation">,</span> <span class="token punctuation">{</span> path<span class="token punctuation">,</span> content <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">    activeFilePath <span class="token operator">=</span> path<span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">
+</span><span class="remark-highlight-code-line">    markdown <span class="token operator">=</span> content<span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre></div><p>and then in the <code>main.js</code> file, in the same place as the <code>createNewFile</code> function, create a <code>openFile</code> function that will present the user with similar dialog but for choosing an existing file:</p><div class="remark-code-title">main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token spread operator">...</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">createNewFile</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    dialog
+      <span class="token punctuation">.</span><span class="token method function property-access">showSaveDialog</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Create New File"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">properties</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"showOverwriteConfirmation"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Markdown Files"</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"md"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> canceled<span class="token punctuation">,</span> filePath <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>canceled<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+
+        fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span>filePath<span class="token punctuation">,</span> content<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  <span class="token keyword">const</span> <span class="token function-variable function">openFile</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">    <span class="token keyword">const</span> file <span class="token operator">=</span> dialog<span class="token punctuation">.</span><span class="token method function property-access">showOpenDialogSync</span><span class="token punctuation">(</span>mainWindow<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">properties</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"openFile"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Markdown Files"</span><span class="token punctuation">,</span> <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"md"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">
+</span><span class="remark-highlight-code-line">    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">      fs<span class="token punctuation">.</span><span class="token method function property-access">readFile</span><span class="token punctuation">(</span>file<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"utf8"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">
+</span><span class="remark-highlight-code-line">        mainWindow<span class="token punctuation">.</span><span class="token property-access">webContents</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"fileopened"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">          <span class="token literal-property property">path</span><span class="token operator">:</span> file<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">          <span class="token literal-property property">content</span><span class="token operator">:</span> data<span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="remark-highlight-code-line">    <span class="token punctuation">}</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</span>
+  <span class="token spread operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>We get the user's selection, read the file and file path and then send a <code>"fileopened"</code> message to our Svelte app. Whilst we're at it, let's also send a <code>"fileopened"</code> message in the <code>createNewFile</code> function so that when we save the new file, it updates the activeFilePath in the Svelte app:</p><div class="remark-code-title">main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token spread operator">...</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">createNewFile</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    dialog
+      <span class="token punctuation">.</span><span class="token method function property-access">showSaveDialog</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Create New File"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">properties</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"showOverwriteConfirmation"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Markdown Files"</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"md"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> canceled<span class="token punctuation">,</span> filePath <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>canceled<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+
+        fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span>filePath<span class="token punctuation">,</span> content<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">          mainWindow<span class="token punctuation">.</span><span class="token property-access">webContents</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"fileopened"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">            <span class="token literal-property property">path</span><span class="token operator">:</span> filePath<span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">            content
+</span><span class="remark-highlight-code-line">          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span>        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">openFile</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> file <span class="token operator">=</span> dialog<span class="token punctuation">.</span><span class="token method function property-access">showOpenDialogSync</span><span class="token punctuation">(</span>mainWindow<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">properties</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"openFile"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Markdown Files"</span><span class="token punctuation">,</span> <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"md"</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      fs<span class="token punctuation">.</span><span class="token method function property-access">readFile</span><span class="token punctuation">(</span>file<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"utf8"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword control-flow">return</span><span class="token punctuation">;</span>
+
+        mainWindow<span class="token punctuation">.</span><span class="token property-access">webContents</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"fileopened"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">path</span><span class="token operator">:</span> file<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">content</span><span class="token operator">:</span> data<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token spread operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Next, let's add a menu item and keyboard shortcut for opening files:</p><div class="remark-code-title">main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token spread operator">...</span>
+
+  <span class="token keyword">const</span> menu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  menu<span class="token punctuation">.</span><span class="token method function property-access">append</span><span class="token punctuation">(</span>
+    <span class="token keyword">new</span> <span class="token class-name">MenuItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">"Save"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">accelerator</span><span class="token operator">:</span> <span class="token string">"CmdOrCtrl+S"</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">click</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> mainWindow<span class="token punctuation">.</span><span class="token property-access">webContents</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"savefile"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  menu<span class="token punctuation">.</span><span class="token method function property-access">append</span><span class="token punctuation">(</span>
+</span><span class="remark-highlight-code-line">    <span class="token keyword">new</span> <span class="token class-name">MenuItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">"Open"</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">accelerator</span><span class="token operator">:</span> <span class="token string">"CmdOrCtrl+O"</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">click</span><span class="token operator">:</span> openFile<span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span>
+  <span class="token maybe-class-name">Menu</span><span class="token punctuation">.</span><span class="token method function property-access">setApplicationMenu</span><span class="token punctuation">(</span>menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Now if you run <code>npm start</code>, you should be able to click the "open" button in the menu or hit CTRL + O and be presented with a file browser dialog. If you select an existing markdown file, it should open in the editor. We're pretty much there!</p><p>Finally, add a new menu item that will create a new markdown file with some template content:</p><div class="remark-code-title">main.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw>app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token spread operator">...</span>
+
+  <span class="token keyword">const</span> menu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  menu<span class="token punctuation">.</span><span class="token method function property-access">append</span><span class="token punctuation">(</span>
+    <span class="token keyword">new</span> <span class="token class-name">MenuItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">"Save"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">accelerator</span><span class="token operator">:</span> <span class="token string">"CmdOrCtrl+S"</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">click</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> mainWindow<span class="token punctuation">.</span><span class="token property-access">webContents</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">"savefile"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  menu<span class="token punctuation">.</span><span class="token method function property-access">append</span><span class="token punctuation">(</span>
+    <span class="token keyword">new</span> <span class="token class-name">MenuItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">"Open"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">accelerator</span><span class="token operator">:</span> <span class="token string">"CmdOrCtrl+O"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">click</span><span class="token operator">:</span> openFile<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="remark-highlight-code-line">  menu<span class="token punctuation">.</span><span class="token method function property-access">append</span><span class="token punctuation">(</span>
+</span><span class="remark-highlight-code-line">    <span class="token keyword">new</span> <span class="token class-name">MenuItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">label</span><span class="token operator">:</span> <span class="token string">"Create New File"</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">      <span class="token literal-property property">accelerator</span><span class="token operator">:</span> <span class="token string">"CmdOrCtrl+N"</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">      <span class="token function-variable function">click</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span>
+</span><span class="remark-highlight-code-line">        <span class="token function">createNewFile</span><span class="token punctuation">(</span>
+</span><span class="remark-highlight-code-line">          <span class="token string">"# You can enter markdown here\n\n**This text is bold**\n\n_This text is italic_"</span>
+</span><span class="remark-highlight-code-line">        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+</span><span class="remark-highlight-code-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="remark-highlight-code-line">  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span>
+  <span class="token maybe-class-name">Menu</span><span class="token punctuation">.</span><span class="token method function property-access">setApplicationMenu</span><span class="token punctuation">(</span>menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>🎉 You should now have a working markdown editor!</p><h2 id="building-for-your-current-platform-️">Building for your current platform 🏗️</h2><p>To package the app, we can use a CLI tool called <a href="https://www.npmjs.com/package/electron-packager">electron-packager</a></p><ol>
+<li><div>
+<p>First start by installing the package locally: <code>npm install electron-packager --save-dev</code></p>
+</div></li>
+<li><div>
+<p>Then remove the <code>sirv-cli</code> package from the package.json file (we don't need this for an electron app).</p>
+</div></li>
+<li><div>
+<p>Move the <code>electron</code> package into the <code>devDependencies</code></p>
+</div></li>
+<li><div>
+<p>Add a "main" property to the package json that points to the entry file: <code>"main": "./main.js"</code></p>
+</div></li>
+<li><div>
+<p>Add a "productName" property to the package json: <code>"productName": "markdown-editor"</code></p>
+</div></li>
+<li><div>
+<p>Add a "package" script to the scripts: <code>"package": "npm install &#x26;&#x26; npm run build &#x26;&#x26; electron-packager ."</code></p>
+</div></li>
+<li><div>
+<p>Run <code>npm run package</code> to build your electron app for your current platform</p>
+</div></li>
+</ol><p>This will create a folder with your executable in (on windows) and the relevant files if on mac os. You can check out the electron-packager docs <a href="https://www.npmjs.com/package/electron-packager">here</a> for more information.</p><h2 id="conclusion">Conclusion</h2><p>With very little code we've managed to build a very basic markdown editor using Svelte and Electron. This blogpost was really just a whistle-stop tour of how to get started, if you want to properly make something, please use the official Electron <a href="https://www.electronjs.org/docs">docs</a> or more indepth <a href="https://www.electronjs.org/docs/tutorial">tutorials</a>.</p><p><strong>Some Extra Notes</strong></p><ul>
+<li><div>
+<p>We used the Electron and Node APIs by sending messages between the Renderer process (Svelte) and the Main process (Electron) with a bridge between the two in the form of a <code>preload.js</code> file. As mentioned at the start of this post, you <em>can</em> enable the direct use of node.js from within your Svelte files but this is generally bad practice for a whole host of reasons, some extra reading if you're interested:</p>
+<ul>
+<li><div><a href="https://stackoverflow.com/a/59814127">https://stackoverflow.com/a/59814127</a></div></li>
+<li><div><a href="https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation">https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation</a></div></li>
+</ul>
+</div></li>
+<li><div>
+<p>This was my first experiment with Electron, please take this guide/tutorial as more of an intro to how it <em>could</em> be used and not how it <em>should</em> be used.</p>
+</div></li>
+</ul><p>PS: I gave a lightning talk on this at the <a href="https://www.meetup.com/svelte/events/268428373/">Svelte London Meetup</a>.</p>
+      </div>
+
+      <div class="blog-post__footer">
+        <astro-root uid="77UnT"><section class="github-issue-comments svelte-1fblg6g"><div class="github-issue-comments__loading-icon svelte-1fblg6g"></div>
+
+    <button class="github-issue-comments__refresh-comments-button svelte-1fblg6g" >Check for new comments
+      </button>
+
+    <a class="github-issue-comments__new-comment-button svelte-1fblg6g" href="https://github.com/Pjaerr/Svelte-Electron-Desktop-App/issues/1#issue-comment-box" target="_blank" rel="noopener noreferrer">Write a Comment via Github
+    </a>
+</section></astro-root>
+      </div>
+    </article>
+  
+</body></html>
