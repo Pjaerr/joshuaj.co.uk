@@ -84,6 +84,16 @@ const { title, description, publishDate, path, image, issueUri } = content;
     > * {
       grid-column: 2;
     }
+
+    
+    a {
+      font-weight: bold;
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--colour-highlight);
+      }
+    }
   }
 
   .blog-post__footer {
@@ -119,15 +129,6 @@ const { title, description, publishDate, path, image, issueUri } = content;
       max-width: 100%;
       word-break: break-word;
       line-height: 30px;
-    }
-
-    a {
-      font-weight: bold;
-      text-decoration: underline;
-
-      &:hover {
-        color: var(--colour-highlight);
-      }
     }
 
     ul,
