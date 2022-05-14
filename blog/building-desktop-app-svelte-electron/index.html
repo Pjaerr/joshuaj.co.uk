@@ -602,11 +602,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
 </div></li>
 </ol><p>This will create a folder with your executable in (on windows) and the relevant files if on mac os. You can check out the electron-packager docs <a href="https://www.npmjs.com/package/electron-packager">here</a> for more information.</p><h2 id="conclusion">Conclusion</h2><p>With very little code we've managed to build a very basic markdown editor using Svelte and Electron. This blogpost was really just a whistle-stop tour of how to get started, if you want to properly make something, please use the official Electron <a href="https://www.electronjs.org/docs">docs</a> or more indepth <a href="https://www.electronjs.org/docs/tutorial">tutorials</a>.</p><p><strong>Some Extra Notes</strong></p><ul>
 <li><div>
-<p>We used the Electron and Node APIs by sending messages between the Renderer process (Svelte) and the Main process (Electron) with a bridge between the two in the form of a <code>preload.js</code> file. As mentioned at the start of this post, you <em>can</em> enable the direct use of node.js from within your Svelte files but this is generally bad practice for a whole host of reasons, some extra reading if you're interested:</p>
-<ul>
-<li><div><a href="https://stackoverflow.com/a/59814127">https://stackoverflow.com/a/59814127</a></div></li>
-<li><div><a href="https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation">https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation</a></div></li>
-</ul>
+<p>We used the Electron and Node APIs by sending messages between the Renderer process (Svelte) and the Main process (Electron) with a bridge between the two in the form of a <code>preload.js</code> file. As mentioned at the start of this post, you <em>can</em> enable the direct use of node.js from within your Svelte files but this is generally bad practice for a whole host of reasons, some extra reading if you're interested: <a href="https://stackoverflow.com/a/59814127">https://stackoverflow.com/a/59814127</a> and <a href="https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation">https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation</a></p>
 </div></li>
 <li><div>
 <p>This was my first experiment with Electron, please take this guide/tutorial as more of an intro to how it <em>could</em> be used and not how it <em>should</em> be used.</p>
