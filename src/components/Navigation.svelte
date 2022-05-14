@@ -8,6 +8,7 @@
           href="https://github.com/pjaerr"
           aria-label="Visit pjaerr on Github"
           title="Github"
+          target="_blank"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +32,7 @@
           href="https://twitter.com/pjaerr"
           aria-label="Visit pjaerr on Twitter"
           title="Twitter"
+          target="_blank"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
