@@ -109,6 +109,20 @@
     hyphens: none;
   }
 
+  pre[class*="language-"]::-moz-selection,
+  pre[class*="language-"] ::-moz-selection,
+  code[class*="language-"]::-moz-selection,
+  code[class*="language-"] ::-moz-selection {
+    background: #60a3bc;
+  }
+
+  pre[class*="language-"]::selection,
+  pre[class*="language-"] ::selection,
+  code[class*="language-"]::selection,
+  code[class*="language-"] ::selection {
+    background: #60a3bc;
+  }
+
   /* Code blocks */
   pre[class*="language-"] {
     padding: 1em;
@@ -379,14 +393,14 @@
   pre[class*="language-"] ::-moz-selection,
   code[class*="language-"]::-moz-selection,
   code[class*="language-"] ::-moz-selection {
-    background: #073642; /* base02 */
+    background: #82ccdd;
   }
 
   pre[class*="language-"]::selection,
   pre[class*="language-"] ::selection,
   code[class*="language-"]::selection,
   code[class*="language-"] ::selection {
-    background: #073642; /* base02 */
+    background: #82ccdd;
   }
 
   /* Code blocks */
