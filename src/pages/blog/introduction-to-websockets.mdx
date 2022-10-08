@@ -1,17 +1,15 @@
 ---
 layout: "../../layouts/BlogPostLayout.astro"
-
 title: "Introduction to Websockets"
-publishDate: "2020-05-29"
+publishDate: 2020-05-29
 description: "In this blogpost I will be covering the basics of websockets by creating a website using HTML, CSS, JavaScript and Node.js that allows users to paint on a canvas with other users in realtime."
 path: "blog/introduction-to-websockets"
 issueUri: "Pjaerr/Personal-Website/issues/6"
 image: "/assets/blog/introduction-to-websockets/cover_image.jpg"
-
-setup: |
-  import Video from '../../components/blog/Video.svelte'
-  import Image from '../../components/blog/Image.svelte'
 ---
+
+import Video from "../../components/blog/Video.svelte";
+import Image from "../../components/blog/Image.svelte";
 
 In this blogpost I will be covering the basics of websockets by creating a website that allows users to paint on a canvas with other users in realtime. We won't be using any frameworks in this post, just normal HTML, CSS and JavaScript with some Node.js for the websocket server.
 
@@ -158,7 +156,10 @@ When using websockets, it is key to understand that the clients don't directly t
 
 Each client can then listen for a message from the server and then do something in response to it. In the context of our website, when our user draws a rectangle on the canvas, we will tell the server where that rectangle has been drawn and then the server will relay that to all of the other clients who will then draw the same rectangle on their canvases.
 
-<Image src="/assets/blog/introduction-to-websockets/websockets-client-server-idea" alt="Websockets General Idea Diagram"/>
+<Image
+  src="/assets/blog/introduction-to-websockets/websockets-client-server-idea"
+  alt="Websockets General Idea Diagram"
+/>
 
 By default, when a client connects to the websocket server, they send a "connection" message, the clients can then send any messages to the server and the server can also send messages to the client.
 

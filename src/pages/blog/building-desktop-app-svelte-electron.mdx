@@ -1,17 +1,15 @@
 ---
 layout: "../../layouts/BlogPostLayout.astro"
-
 title: "Building a Desktop App using Svelte and Electron"
 publishDate: "2020-02-22"
 description: "In this blogpost I show you how easy it is to build a basic markdown editor for desktop using Svelte and Electron."
 path: "blog/building-desktop-app-svelte-electron"
 issueUri: "Pjaerr/Svelte-Electron-Desktop-App/issues/1"
 image: "/assets/blog/building-desktop-app-svelte-electron/cover_image.jpg"
-
-setup: |
-  import Video from '../../components/blog/Video.svelte'
-  import Image from '../../components/blog/Image.svelte'
 ---
+
+import Video from "../../components/blog/Video.svelte";
+import Image from "../../components/blog/Image.svelte";
 
 I watched a [talk](https://www.youtube.com/watch?v=ZBe--JjrEL8) the other day by Felix Riesberg who talked about using JavaScript and Electron to build desktop apps and it inspired me to see how easy using [Svelte](https://svelte.dev) would be. Turns out it is super easy, and just works out of the box!
 
@@ -105,7 +103,10 @@ app.whenReady().then(() => {
 
 Now, if you run `npm start`, a window should open showing the basic Hello World Svelte app.
 
-<Image src="/assets/blog/building-desktop-app-svelte-electron/basic-svelte-app" alt="Screenshot of a basic Svelte app"/>
+<Image
+  src="/assets/blog/building-desktop-app-svelte-electron/basic-svelte-app"
+  alt="Screenshot of a basic Svelte app"
+/>
 
 ## Creating a Basic Markdown Editor 📝
 

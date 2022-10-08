@@ -1,17 +1,15 @@
 ---
 layout: "../../layouts/BlogPostLayout.astro"
-
 title: "Lets Create: A Data Visualization using Svelte"
-publishDate: "2020-01-08"
+publishDate: 2020-01-08
 description: "In this article we'll create a data visualization using the Svelte.js framework that shows, on a map of the UK, which regions have contributed most to English Premier League title wins since its creation in 1992."
 path: "blog/lets-create-data-vis-svelte"
 issueUri: "Pjaerr/Svelte-Data-Vis-Premier-League/issues/2"
 image: "/assets/blog/lets-create-data-vis-svelte/cover_image.jpg"
-
-setup: |
-  import Video from '../../components/blog/Video.svelte'
-  import Image from '../../components/blog/Image.svelte'
 ---
+
+import Video from "../../components/blog/Video.svelte";
+import Image from "../../components/blog/Image.svelte";
 
 If you haven't heard of [Svelte](https://svelte.dev/), it is a relatively new JavaScript framework that challenges the norm by shifting the bulk of the work from the browser to the compile/build step.
 
@@ -112,7 +110,10 @@ The end goal of this data visualization is to have a map of the UK where each re
 
 We'll be using the following colour palette where green = higher contribution:
 
-<Image src="/assets/blog/lets-create-data-vis-svelte/colour-palette" alt="Colour Palette"/>
+<Image
+  src="/assets/blog/lets-create-data-vis-svelte/colour-palette"
+  alt="Colour Palette"
+/>
 
 In the `getRegionData.js` file underneath the code you've already written, store the colours in an array:
 
@@ -794,7 +795,10 @@ and then for the fillColour property of each `<MapRegion>`, instead of passing i
 
 If you've done everything correctly, you should end up with a map that looks like this:
 
-<Image src="/assets/blog/lets-create-data-vis-svelte/coloured-map" alt="Map With Colour"/>
+<Image
+  src="/assets/blog/lets-create-data-vis-svelte/coloured-map"
+  alt="Map With Colour"
+/>
 
 This section was a brief one as we did all the work at the very beginning; In the remaining sections we will create a Svelte component that shows all of the data about the region you have clicked. We will also do some housekeeping and make sure everything is styled properly and then we are pretty much finished!
 
@@ -835,7 +839,10 @@ Now inside of `App.svelte`, import the component and put one on the page to test
 
 You should see the something like the following on the page:
 
-<Image src="/assets/blog/lets-create-data-vis-svelte/info-for-derbyshire" alt="Example of RegionInformation component on the page"/>
+<Image
+  src="/assets/blog/lets-create-data-vis-svelte/info-for-derbyshire"
+  alt="Example of RegionInformation component on the page"
+/>
 
 Now let's build out the component using the data we have given it. First add the styles for the modal:
 
@@ -1074,7 +1081,10 @@ which will order the player's in descending order according to their number of a
 
 If you have done everything correctly, you should see something like this on the page:
 
-<Image src="/assets/blog/lets-create-data-vis-svelte/info-for-derbyshire-modal" alt="Example of RegionInformation component on the page as a modal"/>
+<Image
+  src="/assets/blog/lets-create-data-vis-svelte/info-for-derbyshire-modal"
+  alt="Example of RegionInformation component on the page as a modal"
+/>
 
 We don't want to show the modal when no region has been selected, so in `App.svelte`, start by giving `activeRegion` no default value and then in the markup, replace the current `RegionInformation` component and the temporary `<h1>` tag with the following:
 
@@ -1200,7 +1210,10 @@ Finally, import the new component into the `App.svelte` file and show it if no r
 
 You should now see some information and a key next to the map, this will only show on screens that are large enough:
 
-<Image src="/assets/blog/lets-create-data-vis-svelte/overview-component" alt="Overview component"/>
+<Image
+  src="/assets/blog/lets-create-data-vis-svelte/overview-component"
+  alt="Overview component"
+/>
 
 ## Conclusion 😎
 

@@ -1,3 +1,5 @@
+import rehypeRewrite from "rehype-rewrite";
+
 /**
  * Takes every <li> outputted by the markdown parser and wraps its children in a <div>...this is used for alignment purposes
  * when giving the <li> display flex and wanting to easily align the content with the ::before pseudo element, it is hard to
@@ -5,7 +7,7 @@
  */
 
 export default [
-  "rehype-rewrite",
+  rehypeRewrite,
   {
     selector: "li",
     rewrite: (node) => {
