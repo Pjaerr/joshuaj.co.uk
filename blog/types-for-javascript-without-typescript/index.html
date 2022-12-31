@@ -33,16 +33,8 @@
 
 
 
-  <link rel="stylesheet" href="/assets/asset.53e8c4fb.css"></link><style astro-style="true">astro-root, astro-fragment { display: contents; }</style><script type="module" src="/entry.6f374cd03.js" astro-script="/blog/types-for-javascript-without-typescript/script-0"></script>
-<script type="module" data-astro-component-hydration astro-script="/blog/types-for-javascript-without-typescript/script-1">import setup from '../../entry.9125fc96.js';
-import 'data:text/javascript;charset=utf-8,//[no before-hydration script]';
-setup("ZfQgY9", {name:"GithubIssueComments",value: true}, async () => {
-  const [{ default: Component }, { default: hydrate }] = await Promise.all([import("../../entry.8ff8db27.js"), import("../../entry.b4a7f7d7.js")]);
-  return (el, children) => hydrate(el)(Component, {"issueUri":"Pjaerr\u002FPersonal-Website\u002Fissues\u002F9","commentsPerPage":10,"useShowCommentsButton":false}, children);
-
-});
-</script>
-</head>
+  <link rel="stylesheet" href="/assets/blender-december-winter-cabin-scene.8d81fe00.css" /><script type="module">window.panelbear=window.panelbear||function(){(window.panelbear.q=window.panelbear.q||[]).push(arguments)};panelbear("config",{site:"CmpPimYA1ck"});
+</script></head>
 
   <body>
     <nav class="svelte-bqr8pt"><div class="nav-inner global-centered-layout svelte-bqr8pt"><a href="/" title="Home" class="svelte-bqr8pt">Pjaerr</a>
@@ -59,7 +51,12 @@ setup("ZfQgY9", {name:"GithubIssueComments",value: true}, async () => {
       </p>
 
       <div class="blog-post__content">
-        <p>The other day I was working on a side project and I wanted a way to define the properties an object being passed into a function was supposed to have so that I could get good intellisense when working within the function.</p><p>I instinctively thought of using TypeScript, afterall isn't needing types a good reason to use TypeScript?</p><p>After much deliberation (5 minutes of thinking about it) I decided TypeScript was a bit overkill and went with simple JSDOC comments.</p><p>JSDOC comments are great, you put a simple comment above whatever it is you're typing and you'll magically get intellisense, it also documents whatever you've typed too!</p><p>As an example, let's say we have a function that takes a list of <code>tasks</code>. Here's how you could type it using JSDOC comments:</p><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw><span class="token doc-comment comment">/** <span class="token keyword">@typedef</span> <span class="token class-name"><span class="token punctuation">{</span><span class="token punctuation">{</span>
+        <p>The other day I was working on a side project and I wanted a way to define the properties an object being passed into a function was supposed to have so that I could get good intellisense when working within the function.</p>
+<p>I instinctively thought of using TypeScript, afterall isn&#39;t needing types a good reason to use TypeScript?</p>
+<p>After much deliberation (5 minutes of thinking about it) I decided TypeScript was a bit overkill and went with simple JSDOC comments.</p>
+<p>JSDOC comments are great, you put a simple comment above whatever it is you&#39;re typing and you&#39;ll magically get intellisense, it also documents whatever you&#39;ve typed too!</p>
+<p>As an example, let&#39;s say we have a function that takes a list of <code>tasks</code>. Here&#39;s how you could type it using JSDOC comments:</p>
+<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token doc-comment comment">/** <span class="token keyword">@typedef</span> <span class="token class-name"><span class="token punctuation">{</span><span class="token punctuation">{</span>
  <span class="token operator">*</span>  id<span class="token operator">:</span> number<span class="token punctuation">,</span>
  <span class="token operator">*</span>  name<span class="token operator">:</span> string<span class="token punctuation">,</span>
  <span class="token operator">*</span>  due<span class="token operator">:</span> <span class="token punctuation">{</span> date<span class="token operator">:</span> <span class="token punctuation">(</span>string <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">,</span> time<span class="token operator">:</span> <span class="token punctuation">(</span>string <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -72,33 +69,49 @@ setup("ZfQgY9", {name:"GithubIssueComments",value: true}, async () => {
  * <span class="token keyword">@param</span> <span class="token class-name"><span class="token punctuation">{</span>Task<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span> <span class="token parameter">tasks</span>
  */</span>
 <span class="token keyword">function</span> <span class="token function">exampleFunction</span><span class="token punctuation">(</span><span class="token parameter">tasks</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-</code></pre></div><p>We've defined the type <code>Task</code> as being an object with all of those properties. The function has a simple comment above it telling it that the parameter <code>tasks</code> has a type of <code>Task[]</code>, meaning an array of <code>Task</code> objects.</p><p>Atleast when using VSCode, when we use <code>tasks</code> inside that function, it will give us proper intellisense. These kind of comments also work outside of vanilla JavaScript, I've used them in both Svelte and React projects without any issues.</p><h2 id="using-jsdoc-typedef-comments-from-one-file-in-another-file">Using JSDoc @typedef comments from one file in another file</h2><p>So this works, but what happens if we wanted to use this <code>Task</code> type somewhere else in the codebase? Right now we'd have to copy and paste the <code>@typedef</code> comment wherever we want to use it as our editor only knows about what it can see.</p><p>Fortunately this is quite easy to solve, we can do this by putting our typedefs in a folder (either in separate js files or in a single js file) and then, at the root of our project, create a <code>jsconfig.json</code> file that points our editor to those files.</p><p>So assuming we have the following file:</p><div class="remark-code-title">src/types.js</div><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw><span class="token doc-comment comment">/** <span class="token keyword">@typedef</span> <span class="token class-name"><span class="token punctuation">{</span><span class="token punctuation">{</span>
+</code></pre></div>
+<p>We&#39;ve defined the type <code>Task</code> as being an object with all of those properties. The function has a simple comment above it telling it that the parameter <code>tasks</code> has a type of <code>Task[]</code>, meaning an array of <code>Task</code> objects.</p>
+<p>Atleast when using VSCode, when we use <code>tasks</code> inside that function, it will give us proper intellisense. These kind of comments also work outside of vanilla JavaScript, I&#39;ve used them in both Svelte and React projects without any issues.</p>
+<h2 id="using-jsdoc-typedef-comments-from-one-file-in-another-file">Using JSDoc @typedef comments from one file in another file</h2>
+<p>So this works, but what happens if we wanted to use this <code>Task</code> type somewhere else in the codebase? Right now we&#39;d have to copy and paste the <code>@typedef</code> comment wherever we want to use it as our editor only knows about what it can see.</p>
+<p>Fortunately this is quite easy to solve, we can do this by putting our typedefs in a folder (either in separate js files or in a single js file) and then, at the root of our project, create a <code>jsconfig.json</code> file that points our editor to those files.</p>
+<p>So assuming we have the following file:</p>
+<div class="remark-code-title">src/types.js</div>
+<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token doc-comment comment">/** <span class="token keyword">@typedef</span> <span class="token class-name"><span class="token punctuation">{</span><span class="token punctuation">{</span>
  <span class="token operator">*</span>  id<span class="token operator">:</span> number<span class="token punctuation">,</span>
  <span class="token operator">*</span>  name<span class="token operator">:</span> string<span class="token punctuation">,</span>
  <span class="token operator">*</span>  due<span class="token operator">:</span> <span class="token punctuation">{</span> date<span class="token operator">:</span> <span class="token punctuation">(</span>string <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">,</span> time<span class="token operator">:</span> <span class="token punctuation">(</span>string <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
  <span class="token operator">*</span>  isRepeating<span class="token operator">:</span> boolean<span class="token punctuation">,</span>
  <span class="token operator">*</span>  subTasks<span class="token operator">:</span> Task<span class="token punctuation">[</span><span class="token punctuation">]</span>
  <span class="token operator">*</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span> <span class="token class-name">Task</span> */</span>
-</code></pre></div><p>we would create a <code>jsconfig.json</code> file in the root of the project that looks like the following:</p><div class="remark-code-title">jsconfig.json</div><div class="remark-highlight"><pre class="language-json"><code class="language-json" is:raw><span class="token punctuation">{</span>
-  <span class="token property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"src/types.js"</span><span class="token punctuation">]</span>
+</code></pre></div>
+<p>we would create a <code>jsconfig.json</code> file in the root of the project that looks like the following:</p>
+<div class="remark-code-title">jsconfig.json</div>
+<div class="remark-highlight"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;include&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;src/types.js&quot;</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
-</code></pre></div><p>If you had your types in separate files, you could put them in a folder and, in the jsconfig.json file reference like: <code>src/types/*.js</code></p><p>Now we can use these types anywhere in our codebase just like we did in the example above, except we don't need to define the type in the same file:</p><div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript" is:raw><span class="token doc-comment comment">/**
+</code></pre></div>
+<p>If you had your types in separate files, you could put them in a folder and, in the jsconfig.json file reference like: <code>src/types/*.js</code></p>
+<p>Now we can use these types anywhere in our codebase just like we did in the example above, except we don&#39;t need to define the type in the same file:</p>
+<div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token doc-comment comment">/**
  * Takes a list of tasks and does something with them
  * <span class="token keyword">@param</span> <span class="token class-name"><span class="token punctuation">{</span>Task<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span> <span class="token parameter">tasks</span>
  */</span>
 <span class="token keyword">function</span> <span class="token function">exampleFunction</span><span class="token punctuation">(</span><span class="token parameter">tasks</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-</code></pre></div><p>and that's essentially it! I could have used TypeScript, but for something so simple TypeScript seemed overkill.</p><p>You can do so much more with JSDOC comments than what I've shown here, for more information their <a href="https://jsdoc.app/">documentation</a> is great.</p>
+</code></pre></div>
+<p>and that&#39;s essentially it! I could have used TypeScript, but for something so simple TypeScript seemed overkill.</p>
+<p>You can do so much more with JSDOC comments than what I&#39;ve shown here, for more information their <a href="https://jsdoc.app/">documentation</a> is great.</p>
       </div>
 
       <div class="blog-post__footer">
-        <astro-root uid="ZfQgY9"><section class="github-issue-comments svelte-1fblg6g"><div class="github-issue-comments__loading-icon svelte-1fblg6g"></div>
+        <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="15b0pM" component-url="/GithubIssueComments.b0e25a1e.js" component-export="default" renderer-url="/client.788af3ea.js" props="{&quot;issueUri&quot;:[0,&quot;Pjaerr/joshuaj.co.uk/issues/9&quot;],&quot;commentsPerPage&quot;:[0,10],&quot;useShowCommentsButton&quot;:[0,false]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;GithubIssueComments&quot;,&quot;value&quot;:true}" await-children=""><section class="github-issue-comments svelte-mg28a7"><div class="github-issue-comments__loading-icon svelte-mg28a7"></div>
 
-    <button class="github-issue-comments__refresh-comments-button svelte-1fblg6g" >Check for new comments
+    <button class="github-issue-comments__refresh-comments-button svelte-mg28a7" >Check for new comments
       </button>
 
-    <a class="github-issue-comments__new-comment-button svelte-1fblg6g" href="https://github.com/Pjaerr/Personal-Website/issues/9#issue-comment-box" target="_blank" rel="noopener noreferrer">Write a Comment via Github
+    <a class="github-issue-comments__new-comment-button svelte-mg28a7" href="https://github.com/Pjaerr/joshuaj.co.uk/issues/9#issue-comment-box" target="_blank" rel="noopener noreferrer">Write a Comment via Github
     </a>
-</section></astro-root>
+</section></astro-island>
       </div>
     </article>
   
