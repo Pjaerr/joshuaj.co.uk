@@ -57,6 +57,8 @@ const { title, description, publishDate, path, image, issueUri } = content;
   }
 
   .blog-post__title {
+    @include full-bleed;
+
     font-size: 1.563rem;
 
     @media (min-width: $breakpointSmall) {
@@ -65,6 +67,8 @@ const { title, description, publishDate, path, image, issueUri } = content;
   }
 
   .blog-post__publish-date {
+    @include full-bleed;
+    
     margin-bottom: 35px;
 
     @media (min-width: $breakpointMedium) {
