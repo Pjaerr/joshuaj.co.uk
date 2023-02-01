@@ -1,0 +1,100 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.svelte";
+
+//TODO: Using blogpost styles as they already work, but should make them more generic for use here
+import '../styles/blog-post.scss';
+
+const title = "Blender | joshuaj.co.uk";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead {title} />
+
+    <style>
+      figure {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+
+      video {
+        max-width: 100%;
+        margin-bottom: 10px;
+      }
+
+      figcaption {
+        font-family: "Fira Mono";
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <Navigation />
+
+      <main class="blog-post__container">
+        <h1 class="blog-post__title">Blender Projects</h1>
+
+        <div class="blog-post__content">
+
+        <p>A collection of things made using Blender each month in an effort to learn 3D modelling</p>
+
+        <section>
+          <h2>January 2023 - Food Cart</h2>
+
+          <figure>
+            <img src="/assets/blender/january-food-cart/food_cart_render.png" alt="a 3d render of a food cart with colourful string lights and Malaysian flags that would be serving an array of colourful dimsum (if I actually finished the project)"/>
+
+            <figcaption>
+              The final render
+            </figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>December 2022 - Winter Cabin Scene</h2>
+
+          <figure>
+            <img src="/assets/blender/december-winter-cabin-scene/winter_cabin_scene_final.png" alt="a 3d render of a cosy winter scene in which a wooden cabin sits in the middle of a vast snowy wilderness with glowing windows, a snow covered roof and a smoking chimney. It is surrounded by various items such as wooden barrels and a pile of logs, all covered in a thick blanket of snow. There are two trees to the left of the cabin, also covered in a thick blanket of snow."/>
+
+            <figcaption>
+              The final render, without any effects applied
+            </figcaption>
+          </figure>
+
+
+          <figure>
+            <img src="/assets/blender/december-winter-cabin-scene/winter_cabin_scene_final--pixelated.png" alt="a 3d render of a cosy winter scene in which a wooden cabin sits in the middle of a vast snowy wilderness with glowing windows, a snow covered roof and a smoking chimney. It is surrounded by various items such as wooden barrels and a pile of logs, all covered in a thick blanket of snow. There are two trees to the left of the cabin, also covered in a thick blanket of snow. The image has an effect applied over-top which makes it look as if it were drawn in the style of pixel art."/>
+
+            <figcaption>
+              A pixelated effect achieved using compositor nodes
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="/assets/blender/december-winter-cabin-scene/pixel_art_compositor_nodes.png" alt="screenshot of Blender compositor nodes that result in a pixel art style output"/>
+
+            <figcaption>
+              The compositor nodes used to achieve the pixelated effect
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="/assets/blender/december-winter-cabin-scene/winter_cabin_scene_final--clay.png" alt="a 3d render of a cosy winter scene in which a wooden cabin sits in the middle of a vast snowy wilderness with glowing windows, a snow covered roof and a smoking chimney. It is surrounded by various items such as wooden barrels and a pile of logs, all covered in a thick blanket of snow. There are two trees to the left of the cabin, also covered in a thick blanket of snow. The image is shown as a clay render, without any textures or materials applied."/>
+
+            <figcaption>
+              Clay render
+            </figcaption>
+          </figure>
+        </section>
+      </div>
+      </main>
+    </div>
+  </body>
+</html>
