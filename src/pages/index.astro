@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Navigation from "../components/Navigation.svelte";
 import BlogPostList from "../components/BlogPostList.svelte";
 import ProjectList from "../components/ProjectList.svelte";
+import OtherList from "../components/OtherList.svelte";
 
 const title = "joshuaj.co.uk";
 
@@ -90,6 +91,14 @@ const projects = [
         <div class="projects-section">
           <h2 class="section-heading">Projects</h2>
           <ProjectList {projects} />
+        </div>
+
+        <hr />
+
+        <div class="other-section">
+          <h2 class="section-heading">Other Stuff</h2>
+
+          <OtherList/>
         </div>
       </main>
     </div>
