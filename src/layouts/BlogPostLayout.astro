@@ -3,7 +3,8 @@ import BaseHead from "../components/BaseHead.astro";
 import Navigation from "../components/Navigation.svelte";
 import formatDate from "../utils/format-date.js";
 import GithubIssueComments from "svelte-github-issue-comments-component/GithubIssueComments/GithubIssueComments.svelte";
-import '../styles/blog-post.scss';
+
+import '../styles/page.scss';
 
 const { content } = Astro.props;
 
@@ -18,17 +19,17 @@ const { title, description, publishDate, path, image, issueUri } = content;
   <body>
     <Navigation />
 
-    <article class="blog-post__container">
-      <h1 class="blog-post__title">{title}</h1>
-      <p class="blog-post__publish-date">
+    <article class="page__container">
+      <h1 class="page__title">{title}</h1>
+      <p class="page__subtitle">
         {formatDate(publishDate, "MMMM dd, yyyy")}
       </p>
 
-      <div class="blog-post__content">
+      <div class="page__content blog-post__content">
         <slot />
       </div>
 
-      <div class="blog-post__footer">
+      <div class="page__footer">
         <GithubIssueComments
           {issueUri}
           commentsPerPage={10}

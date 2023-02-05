@@ -3,7 +3,7 @@
   export let caption;
 </script>
 
-<figure class="blog-post__full-bleed">
+<figure class="video">
   <video autoplay playsinline loop muted controls>
     <source src={`${src}.webm`} type="video/webm" />
     <source src={`${src}.mp4`} type="video/mp4" />
