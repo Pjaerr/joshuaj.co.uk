@@ -19,6 +19,8 @@
         return "rgb(86, 61, 124)";
       case "typescript":
         return "rgb(43, 116, 137)";
+      case "express":
+        return "rgb(37, 157, 255)";
     }
   }
 </script>
@@ -34,13 +36,11 @@
 
 <style>
   .project-tech {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    grid-row-gap: 12px;
-    grid-column-gap: 24px;
-    justify-content: start;
     align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+    margin-bottom: 6px;
   }
 
   p {
