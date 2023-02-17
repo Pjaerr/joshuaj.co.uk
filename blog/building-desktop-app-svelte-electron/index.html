@@ -31,11 +31,9 @@
 <!-- Panelbear -->
 <script async src="https://cdn.panelbear.com/analytics.js?site=CmpPimYA1ck"></script>
 
-
-
-  <link rel="stylesheet" href="/assets/building-desktop-app-svelte-electron.0c6aba36.css" />
-<link rel="stylesheet" href="/assets/building-desktop-app-svelte-electron.6ffd82c1.css" />
-<link rel="stylesheet" href="/assets/building-desktop-app-svelte-electron.15f5e39d.css" /><script type="module">window.panelbear=window.panelbear||function(){(window.panelbear.q=window.panelbear.q||[]).push(arguments)};panelbear("config",{site:"CmpPimYA1ck"});
+  <link rel="stylesheet" href="/_astro/building-desktop-app-svelte-electron.eae55109.css" />
+<link rel="stylesheet" href="/_astro/building-desktop-app-svelte-electron.6ffd82c1.css" />
+<link rel="stylesheet" href="/_astro/building-desktop-app-svelte-electron.15f5e39d.css" /><script type="module">window.panelbear=window.panelbear||function(){(window.panelbear.q=window.panelbear.q||[]).push(arguments)};panelbear("config",{site:"CmpPimYA1ck"});
 </script></head>
 
   <body>
@@ -46,24 +44,24 @@
       <li class="svelte-bqr8pt"><a href="https://twitter.com/pjaerr" aria-label="Visit pjaerr on Twitter" title="Twitter" target="_blank" class="svelte-bqr8pt"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></li></ul></div>
 </nav>
 
-    <article class="blog-post__container">
-      <h1 class="blog-post__title">Building a Desktop App using Svelte and Electron</h1>
-      <p class="blog-post__publish-date">
+    <article class="page__container">
+      <h1 class="page__title">Building a Desktop App using Svelte and Electron</h1>
+      <p class="page__subtitle">
         February 22, 2020
       </p>
 
-      <div class="blog-post__content">
+      <div class="page__content blog-post__content">
         <p>I watched a <a href="https://www.youtube.com/watch?v=ZBe--JjrEL8">talk</a> the other day by Felix Riesberg who talked about using JavaScript and Electron to build desktop apps and it inspired me to see how easy using <a href="https://svelte.dev">Svelte</a> would be. Turns out it is super easy, and just works out of the box!</p>
 <p><em>If you just want a starter template to make your app without reading the blogpost, I created a template <a href="https://github.com/Pjaerr/svelte-electron-template">here</a>.</em></p>
 <p>This blogpost will walk you through creating a basic markdown editor for the desktop using Svelte and Electron. We will be able to edit markdown files and see a side-by-side preview as well as <strong>Open Files</strong>, <strong>Create New Files</strong> and <strong>Save Files</strong> using the Electron API and NodeJS.</p>
 <p>You can find the code for the finished product here: <a href="https://github.com/Pjaerr/Svelte-Electron-Desktop-App">https://github.com/Pjaerr/Svelte-Electron-Desktop-App</a> which looks like:</p>
-<figure class="blog-post__full-bleed svelte-1jzqgso"><video autoplay playsinline loop muted controls class="svelte-1jzqgso"><source src="/assets/blog/building-desktop-app-svelte-electron/finished-application-svelte-electron.webm" type="video/webm"><source src="/assets/blog/building-desktop-app-svelte-electron/finished-application-svelte-electron.mp4" type="video/mp4">
+<figure class="video svelte-1jzqgso"><video autoplay playsinline loop muted controls class="svelte-1jzqgso"><source src="/assets/blog/building-desktop-app-svelte-electron/finished-application-svelte-electron.webm" type="video/webm"><source src="/assets/blog/building-desktop-app-svelte-electron/finished-application-svelte-electron.mp4" type="video/mp4">
     Sorry, your browser doesn&#39;t support embedded videos.
   </video>
 
   <figcaption class="svelte-1jzqgso">Finished Gif of Markdown Editor</figcaption>
 </figure>
-<p>Let&#39;s get started!</p>
+<p>Let’s get started!</p>
 <h2 id="getting-setup">Getting Setup 🐣</h2>
 <ol>
 <li><div>
@@ -85,16 +83,16 @@
 <p>Inside of the <code>package.json</code>, change the <code>start</code> script from <code>&quot;sirv public --no-clear&quot;</code> to <code>&quot;npm run build &amp;&amp; electron main.js&quot;</code> which will build the Svelte app and then tell Electron to run it.</p>
 </div></li>
 <li><div>
-<p>Edit the <code>public/index.html</code> file so that all paths have a <code>.</code> infront of them. EG: <code>/build/bundle.css</code> becomes <code>./build/bundle.css</code>. Electron won&#39;t be able to find these files otherwise.</p>
+<p>Edit the <code>public/index.html</code> file so that all paths have a <code>.</code> infront of them. EG: <code>/build/bundle.css</code> becomes <code>./build/bundle.css</code>. Electron won’t be able to find these files otherwise.</p>
 </div></li>
 <li><div>
-<p>Finally, add the following meta tag to the head of the index.html file: <code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;script-src &#39;self&#39; &#39;unsafe-inline&#39;;&quot; /&gt;</code>. This won&#39;t cause us any issues for this small application, but we will get a warning in our console if not.
+<p>Finally, add the following meta tag to the head of the index.html file: <code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;script-src &#39;self&#39; &#39;unsafe-inline&#39;;&quot; /&gt;</code>. This won’t cause us any issues for this small application, but we will get a warning in our console if not.
 Read more about this <a href="https://www.electronjs.org/docs/tutorial/security#csp-meta-tag">here</a></p>
 </div></li>
 </ol>
 <h2 id="connecting-svelte-with-electron-️">Connecting Svelte with Electron 🖇️</h2>
-<p>Now we have the boilerplate setup, let&#39;s connect our Svelte app with Electron by returning to the <code>main.js</code> file we previously created.</p>
-<p>A basic Electron app consists of an <code>app</code> and a <code>BrowserWindow</code> so let&#39;s import these as well as the <code>path</code> module which we&#39;ll need to tell Electron where our <code>preload.js</code> file is:</p>
+<p>Now we have the boilerplate setup, let’s connect our Svelte app with Electron by returning to the <code>main.js</code> file we previously created.</p>
+<p>A basic Electron app consists of an <code>app</code> and a <code>BrowserWindow</code> so let’s import these as well as the <code>path</code> module which we’ll need to tell Electron where our <code>preload.js</code> file is:</p>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> app<span class="token punctuation">,</span> <span class="token maybe-class-name">BrowserWindow</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;electron&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;path&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -139,7 +137,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
 
   <img src="/assets/blog/building-desktop-app-svelte-electron/basic-svelte-app.jpg" type="image/jpeg" alt="Screenshot of a basic Svelte app"></picture>
 <h2 id="creating-a-basic-markdown-editor">Creating a Basic Markdown Editor 📝</h2>
-<p>Before we implement the ability to open, save and create new files using the Electron API, let&#39;s remove the Svelte boilerplate and implement a basic Markdown editor.</p>
+<p>Before we implement the ability to open, save and create new files using the Electron API, let’s remove the Svelte boilerplate and implement a basic Markdown editor.</p>
 <p>In the <code>src/main.js</code> file, remove the props argument:</p>
 <div class="remark-code-title">src/main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -203,7 +201,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">&gt;</span></span>{@html marked(markdown)}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div>
 <p>This component takes some markdown text, and then uses the <a href="https://www.npmjs.com/package/marked">marked</a> library to convert it to html. We then directly output this onto the page using the Svelte <code>{@html}</code> tag.</p>
-<p>There&#39;s nothing fancy with any of the styling, you&#39;ll note we use <code>:global(*)</code> to target everything under our section. This is because we want to target all of the HTML under the section but Svelte thinks that no HTML exists (because it is dynamically generated once we parse the markdown) so we would get the <code>css-unused-selector</code> warning if we just used <code>*</code>.</p>
+<p>There’s nothing fancy with any of the styling, you’ll note we use <code>:global(*)</code> to target everything under our section. This is because we want to target all of the HTML under the section but Svelte thinks that no HTML exists (because it is dynamically generated once we parse the markdown) so we would get the <code>css-unused-selector</code> warning if we just used <code>*</code>.</p>
 <p>In the <code>App.svelte</code> file replace everything with:</p>
 <div class="remark-code-title">src/App.svelte</div>
 <div class="remark-highlight"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
@@ -247,15 +245,15 @@ app<span class="token punctuation">.</span><span class="token method function pr
 <p>We also store an <code>activeFilePath</code> variable, which we will use later on to show which file is open in the editor, for now, whilst no file path exists, just show the user a message telling them how to save.</p>
 <p>Now if you run <code>npm start</code> you should have a usable markdown editor with a live updating preview.</p>
 <h2 id="saving-files-with-electron">Saving Files with Electron 💾</h2>
-<p>Now we can write our markdown, let&#39;s give the user the ability to save what they&#39;ve written.</p>
+<p>Now we can write our markdown, let’s give the user the ability to save what they’ve written.</p>
 <p>We first need to do some setup to allow our renderer (Svelte files) to communicate with Electron.</p>
 <p>In the <code>preload.js</code> file we created earlier, import two modules from electron:</p>
 <div class="remark-code-title">preload.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> contextBridge<span class="token punctuation">,</span> ipcRenderer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;electron&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p><code>contextBridge</code> allows us to expose functionality to our renderer, this is important as our <code>preload.js</code> file has direct access to node.js (and the functions required to communicate with Electron) whereas our renderer doesn&#39;t so we can use the <code>contextBridge</code> to provide a &quot;bridge&quot; between the two.</p>
+<p><code>contextBridge</code> allows us to expose functionality to our renderer, this is important as our <code>preload.js</code> file has direct access to node.js (and the functions required to communicate with Electron) whereas our renderer doesn’t so we can use the <code>contextBridge</code> to provide a “bridge” between the two.</p>
 <p><code>ipcRenderer</code> is the module we use to communicate with our main Electron process. This allows us to both listen for messages from Electron as well as send messages to Electron.</p>
-<p>To start, we can create a wrapper that can be accessed by the renderer (Svelte). I&#39;m going to call this <code>&quot;api&quot;</code> but you can call it anything. Inside of this we&#39;ll expose two functions <code>send()</code> and <code>on()</code> which will be used to send messages to electron and listen for messages back respectively:</p>
+<p>To start, we can create a wrapper that can be accessed by the renderer (Svelte). I’m going to call this <code>&quot;api&quot;</code> but you can call it anything. Inside of this we’ll expose two functions <code>send()</code> and <code>on()</code> which will be used to send messages to electron and listen for messages back respectively:</p>
 <div class="remark-code-title">preload.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> contextBridge<span class="token punctuation">,</span> ipcRenderer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;electron&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -269,7 +267,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
 </span><span class="remark-highlight-code-line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></code></pre></div>
 <p>Now, inside of our <code>App.svelte</code> file, we can now access this via <code>window.api</code> without ever needing to use node.js directly.</p>
-<p>Inside of <code>App.svelte</code> in the script tag, let&#39;s use the <code>window.api.on()</code> function to listen for a <code>&quot;savefile&quot;</code> message (the message name can be anything you want, it just has to match the event we send), we will eventually send this message from Electron when the user clicks a menu item or uses CTRL + S.</p>
+<p>Inside of <code>App.svelte</code> in the script tag, let’s use the <code>window.api.on()</code> function to listen for a <code>&quot;savefile&quot;</code> message (the message name can be anything you want, it just has to match the event we send), we will eventually send this message from Electron when the user clicks a menu item or uses CTRL + S.</p>
 <div class="remark-code-title">src/App.svelte</div>
 <div class="remark-highlight"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword module">import</span> <span class="token imports"><span class="token maybe-class-name">Editor</span></span> <span class="token keyword module">from</span> <span class="token string">&quot;./Editor.svelte&quot;</span><span class="token punctuation">;</span>
@@ -283,7 +281,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
 <span class="remark-highlight-code-line">  <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">api</span><span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">&quot;savefile&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div>
-<p>When we receive a &quot;savefile&quot; message, it will run the callback we passed to it, inside of this function we want to first check if there is an <code>activeFilePath</code> and if there is, we want to send a message to Electron telling it to set the <code>markdown</code> variable to the contents of that file and if there isn&#39;t, we want to send a message telling Electron to ask the user where the file should be saved.</p>
+<p>When we receive a “savefile” message, it will run the callback we passed to it, inside of this function we want to first check if there is an <code>activeFilePath</code> and if there is, we want to send a message to Electron telling it to set the <code>markdown</code> variable to the contents of that file and if there isn’t, we want to send a message telling Electron to ask the user where the file should be saved.</p>
 <p>This looks like the following:</p>
 <div class="remark-code-title">src/App.svelte</div>
 <div class="remark-highlight"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
@@ -307,7 +305,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
 </span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div>
-<p>This won&#39;t do anything yet, as we haven&#39;t implemented the corresponding message listeners and functionality in our main process (main process is what I have been calling &quot;Electron&quot;). Let&#39;s do that next, starting with saving a new file.</p>
+<p>This won’t do anything yet, as we haven’t implemented the corresponding message listeners and functionality in our main process (main process is what I have been calling “Electron”). Let’s do that next, starting with saving a new file.</p>
 <p>In the <code>main.js</code> file, import <code>Menu</code>, <code>MenuItem</code>, <code>ipcMain</code> and <code>dialog</code> from electron and <code>fs</code> from the nodejs standard library:</p>
 <div class="remark-code-title">main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span>
@@ -362,8 +360,8 @@ app<span class="token punctuation">.</span><span class="token method function pr
 </span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>In the code above, we use <code>Electron.dialog</code> to open a save dialog that will only save (and show) markdown files and then, if the user didn&#39;t close the dialog, we use the <code>fs</code> module to write the file to the file path they selected.</p>
-<p>Now we have the function, let&#39;s setup the code to call it when we receive a <code>&quot;savenewfile&quot;</code> message.</p>
+<p>In the code above, we use <code>Electron.dialog</code> to open a save dialog that will only save (and show) markdown files and then, if the user didn’t close the dialog, we use the <code>fs</code> module to write the file to the file path they selected.</p>
+<p>Now we have the function, let’s setup the code to call it when we receive a <code>&quot;savenewfile&quot;</code> message.</p>
 <p>In the same place, write the following code:</p>
 <div class="remark-code-title">main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -405,7 +403,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
 </span><span class="remark-highlight-code-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>There&#39;s one last step before we can save a new file, if you remember, the message listener above only triggers when our Svelte app sends a &quot;savenewfile&quot; message, which can only be sent when our Svelte app receives a &quot;savefile&quot; message. So we must send a &quot;savefile&quot; message from Electron when the user selects save from the menu or hits CTRL + S.</p>
+<p>There’s one last step before we can save a new file, if you remember, the message listener above only triggers when our Svelte app sends a “savenewfile” message, which can only be sent when our Svelte app receives a “savefile” message. So we must send a “savefile” message from Electron when the user selects save from the menu or hits CTRL + S.</p>
 <p>You do this by creating a new Menu inside of the <code>app.whenReady().then</code> callback and then adding MenuItem objects to it like so:</p>
 <div class="remark-code-title">main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -459,7 +457,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
 <span class="remark-highlight-code-line">  <span class="token maybe-class-name">Menu</span><span class="token punctuation">.</span><span class="token method function property-access">setApplicationMenu</span><span class="token punctuation">(</span>menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>Here we are saying, when CTRL + S is pressed, or our menu item with the label &quot;Save&quot; is clicked, send a message to the BrowserWindow (our Svelte app) with the name <code>&quot;savefile&quot;</code>.</p>
+<p>Here we are saying, when CTRL + S is pressed, or our menu item with the label “Save” is clicked, send a message to the BrowserWindow (our Svelte app) with the name <code>&quot;savefile&quot;</code>.</p>
 <p>Now if you run <code>npm start</code>, type some markdown, and then hit CTRL + S (or the menu item). You should see a save dialog and when you enter a name and click save, your file should now have saved to the directory you chose.</p>
 <p>The next part is adding the message listener for when we want to save an existing file. In the same place as the previous one, add the following:</p>
 <div class="remark-code-title">main.js</div>
@@ -560,7 +558,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
   <span class="token spread operator">...</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>We get the user&#39;s selection, read the file and file path and then send a <code>&quot;fileopened&quot;</code> message to our Svelte app. Whilst we&#39;re at it, let&#39;s also send a <code>&quot;fileopened&quot;</code> message in the <code>createNewFile</code> function so that when we save the new file, it updates the activeFilePath in the Svelte app:</p>
+<p>We get the user’s selection, read the file and file path and then send a <code>&quot;fileopened&quot;</code> message to our Svelte app. Whilst we’re at it, let’s also send a <code>&quot;fileopened&quot;</code> message in the <code>createNewFile</code> function so that when we save the new file, it updates the activeFilePath in the Svelte app:</p>
 <div class="remark-code-title">main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token spread operator">...</span>
@@ -612,7 +610,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
   <span class="token spread operator">...</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>Next, let&#39;s add a menu item and keyboard shortcut for opening files:</p>
+<p>Next, let’s add a menu item and keyboard shortcut for opening files:</p>
 <div class="remark-code-title">main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token spread operator">...</span>
@@ -638,7 +636,7 @@ app<span class="token punctuation">.</span><span class="token method function pr
   <span class="token maybe-class-name">Menu</span><span class="token punctuation">.</span><span class="token method function property-access">setApplicationMenu</span><span class="token punctuation">(</span>menu<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>Now if you run <code>npm start</code>, you should be able to click the &quot;open&quot; button in the menu or hit CTRL + O and be presented with a file browser dialog. If you select an existing markdown file, it should open in the editor. We&#39;re pretty much there!</p>
+<p>Now if you run <code>npm start</code>, you should be able to click the “open” button in the menu or hit CTRL + O and be presented with a file browser dialog. If you select an existing markdown file, it should open in the editor. We’re pretty much there!</p>
 <p>Finally, add a new menu item that will create a new markdown file with some template content:</p>
 <div class="remark-code-title">main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token method function property-access">whenReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -684,19 +682,19 @@ app<span class="token punctuation">.</span><span class="token method function pr
 <p>First start by installing the package locally: <code>npm install electron-packager --save-dev</code></p>
 </div></li>
 <li><div>
-<p>Then remove the <code>sirv-cli</code> package from the package.json file (we don&#39;t need this for an electron app).</p>
+<p>Then remove the <code>sirv-cli</code> package from the package.json file (we don’t need this for an electron app).</p>
 </div></li>
 <li><div>
 <p>Move the <code>electron</code> package into the <code>devDependencies</code></p>
 </div></li>
 <li><div>
-<p>Add a &quot;main&quot; property to the package json that points to the entry file: <code>&quot;main&quot;: &quot;./main.js&quot;</code></p>
+<p>Add a “main” property to the package json that points to the entry file: <code>&quot;main&quot;: &quot;./main.js&quot;</code></p>
 </div></li>
 <li><div>
-<p>Add a &quot;productName&quot; property to the package json: <code>&quot;productName&quot;: &quot;markdown-editor&quot;</code></p>
+<p>Add a “productName” property to the package json: <code>&quot;productName&quot;: &quot;markdown-editor&quot;</code></p>
 </div></li>
 <li><div>
-<p>Add a &quot;package&quot; script to the scripts: <code>&quot;package&quot;: &quot;npm install &amp;&amp; npm run build &amp;&amp; electron-packager .&quot;</code></p>
+<p>Add a “package” script to the scripts: <code>&quot;package&quot;: &quot;npm install &amp;&amp; npm run build &amp;&amp; electron-packager .&quot;</code></p>
 </div></li>
 <li><div>
 <p>Run <code>npm run package</code> to build your electron app for your current platform</p>
@@ -704,11 +702,11 @@ app<span class="token punctuation">.</span><span class="token method function pr
 </ol>
 <p>This will create a folder with your executable in (on windows) and the relevant files if on mac os. You can check out the electron-packager docs <a href="https://www.npmjs.com/package/electron-packager">here</a> for more information.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>With very little code we&#39;ve managed to build a very basic markdown editor using Svelte and Electron. This blogpost was really just a whistle-stop tour of how to get started, if you want to properly make something, please use the official Electron <a href="https://www.electronjs.org/docs">docs</a> or more indepth <a href="https://www.electronjs.org/docs/tutorial">tutorials</a>.</p>
+<p>With very little code we’ve managed to build a very basic markdown editor using Svelte and Electron. This blogpost was really just a whistle-stop tour of how to get started, if you want to properly make something, please use the official Electron <a href="https://www.electronjs.org/docs">docs</a> or more indepth <a href="https://www.electronjs.org/docs/tutorial">tutorials</a>.</p>
 <p><strong>Some Extra Notes</strong></p>
 <ul>
 <li><div>
-<p>We used the Electron and Node APIs by sending messages between the Renderer process (Svelte) and the Main process (Electron) with a bridge between the two in the form of a <code>preload.js</code> file. As mentioned at the start of this post, you <em>can</em> enable the direct use of node.js from within your Svelte files but this is generally bad practice for a whole host of reasons, some extra reading if you&#39;re interested: <a href="https://stackoverflow.com/a/59814127">https://stackoverflow.com/a/59814127</a> and <a href="https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation">https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation</a></p>
+<p>We used the Electron and Node APIs by sending messages between the Renderer process (Svelte) and the Main process (Electron) with a bridge between the two in the form of a <code>preload.js</code> file. As mentioned at the start of this post, you <em>can</em> enable the direct use of node.js from within your Svelte files but this is generally bad practice for a whole host of reasons, some extra reading if you’re interested: <a href="https://stackoverflow.com/a/59814127">https://stackoverflow.com/a/59814127</a> and <a href="https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation">https://www.electronjs.org/docs/tutorial/context-isolation#context-isolation</a></p>
 </div></li>
 <li><div>
 <p>This was my first experiment with Electron, please take this guide/tutorial as more of an intro to how it <em>could</em> be used and not how it <em>should</em> be used.</p>
@@ -717,8 +715,8 @@ app<span class="token punctuation">.</span><span class="token method function pr
 <p>PS: I gave a lightning talk on this at the <a href="https://www.meetup.com/svelte/events/268428373/">Svelte London Meetup</a>.</p>
       </div>
 
-      <div class="blog-post__footer">
-        <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="JIdSg" component-url="/GithubIssueComments.b0e25a1e.js" component-export="default" renderer-url="/client.788af3ea.js" props="{&quot;issueUri&quot;:[0,&quot;Pjaerr/Svelte-Electron-Desktop-App/issues/1&quot;],&quot;commentsPerPage&quot;:[0,10],&quot;useShowCommentsButton&quot;:[0,false]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;GithubIssueComments&quot;,&quot;value&quot;:true}" await-children=""><section class="github-issue-comments svelte-mg28a7"><div class="github-issue-comments__loading-icon svelte-mg28a7"></div>
+      <div class="page__footer">
+        <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="JIdSg" component-url="/_astro/GithubIssueComments.ffe57b96.js" component-export="default" renderer-url="/_astro/client.0a29acc0.js" props="{&quot;issueUri&quot;:[0,&quot;Pjaerr/Svelte-Electron-Desktop-App/issues/1&quot;],&quot;commentsPerPage&quot;:[0,10],&quot;useShowCommentsButton&quot;:[0,false]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;GithubIssueComments&quot;,&quot;value&quot;:true}" await-children=""><section class="github-issue-comments svelte-mg28a7"><div class="github-issue-comments__loading-icon svelte-mg28a7"></div>
 
     <button class="github-issue-comments__refresh-comments-button svelte-mg28a7" >Check for new comments
       </button>

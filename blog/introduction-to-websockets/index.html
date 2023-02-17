@@ -31,11 +31,9 @@
 <!-- Panelbear -->
 <script async src="https://cdn.panelbear.com/analytics.js?site=CmpPimYA1ck"></script>
 
-
-
-  <link rel="stylesheet" href="/assets/building-desktop-app-svelte-electron.0c6aba36.css" />
-<link rel="stylesheet" href="/assets/building-desktop-app-svelte-electron.6ffd82c1.css" />
-<link rel="stylesheet" href="/assets/building-desktop-app-svelte-electron.15f5e39d.css" /><script type="module">window.panelbear=window.panelbear||function(){(window.panelbear.q=window.panelbear.q||[]).push(arguments)};panelbear("config",{site:"CmpPimYA1ck"});
+  <link rel="stylesheet" href="/_astro/building-desktop-app-svelte-electron.eae55109.css" />
+<link rel="stylesheet" href="/_astro/building-desktop-app-svelte-electron.6ffd82c1.css" />
+<link rel="stylesheet" href="/_astro/building-desktop-app-svelte-electron.15f5e39d.css" /><script type="module">window.panelbear=window.panelbear||function(){(window.panelbear.q=window.panelbear.q||[]).push(arguments)};panelbear("config",{site:"CmpPimYA1ck"});
 </script></head>
 
   <body>
@@ -46,15 +44,15 @@
       <li class="svelte-bqr8pt"><a href="https://twitter.com/pjaerr" aria-label="Visit pjaerr on Twitter" title="Twitter" target="_blank" class="svelte-bqr8pt"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></li></ul></div>
 </nav>
 
-    <article class="blog-post__container">
-      <h1 class="blog-post__title">Introduction to Websockets</h1>
-      <p class="blog-post__publish-date">
+    <article class="page__container">
+      <h1 class="page__title">Introduction to Websockets</h1>
+      <p class="page__subtitle">
         May 29, 2020
       </p>
 
-      <div class="blog-post__content">
-        <p>In this blogpost I will be covering the basics of websockets by creating a website that allows users to paint on a canvas with other users in realtime. We won&#39;t be using any frameworks in this post, just normal HTML, CSS and JavaScript with some Node.js for the websocket server.</p>
-<figure class="blog-post__full-bleed svelte-1jzqgso"><video autoplay playsinline loop muted controls class="svelte-1jzqgso"><source src="/assets/blog/introduction-to-websockets/finished-website.webm" type="video/webm"><source src="/assets/blog/introduction-to-websockets/finished-website.mp4" type="video/mp4">
+      <div class="page__content blog-post__content">
+        <p>In this blogpost I will be covering the basics of websockets by creating a website that allows users to paint on a canvas with other users in realtime. We won’t be using any frameworks in this post, just normal HTML, CSS and JavaScript with some Node.js for the websocket server.</p>
+<figure class="video svelte-1jzqgso"><video autoplay playsinline loop muted controls class="svelte-1jzqgso"><source src="/assets/blog/introduction-to-websockets/finished-website.webm" type="video/webm"><source src="/assets/blog/introduction-to-websockets/finished-website.mp4" type="video/mp4">
     Sorry, your browser doesn&#39;t support embedded videos.
   </video>
 
@@ -109,11 +107,11 @@
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">&quot;Hello World!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
 <h3 id="serving-the-files-locally">Serving the files locally</h3>
-<p>During development our website will be communicating with a server (once we implement websockets) and the server will expect the communications to be coming from <em>another</em> server, and not a local file. This means we can&#39;t just open our <code>index.html</code> file in the browser, instead we need to host the file via a local web server.</p>
-<p>This can be done in many ways, one way is to use a node package called <a href="https://www.npmjs.com/package/http-server">http-server</a>. You will need Node.js installed for this to work. We&#39;ll be using Node.js later anyway so you might as well install it now, you can do that <a href="https://nodejs.org/en/">here</a>.</p>
-<p>Once you&#39;ve installed node, you&#39;ll probably need to restart your terminal (You can check that node is installed by running <code>node -v</code>).</p>
+<p>During development our website will be communicating with a server (once we implement websockets) and the server will expect the communications to be coming from <em>another</em> server, and not a local file. This means we can’t just open our <code>index.html</code> file in the browser, instead we need to host the file via a local web server.</p>
+<p>This can be done in many ways, one way is to use a node package called <a href="https://www.npmjs.com/package/http-server">http-server</a>. You will need Node.js installed for this to work. We’ll be using Node.js later anyway so you might as well install it now, you can do that <a href="https://nodejs.org/en/">here</a>.</p>
+<p>Once you’ve installed node, you’ll probably need to restart your terminal (You can check that node is installed by running <code>node -v</code>).</p>
 <p>If node is sucessfully installed, you can use the <code>http-server</code> package by navigating to your <code>client</code> folder and running <code>npx http-server -c-1</code>, this will make your index.html file available when you visit <code>http://localhost:8080</code> in your browser.</p>
-<p>To make sure our JavaScript has loaded, open your console (F12) and make sure that &quot;Hello World!&quot; is being printed.</p>
+<p>To make sure our JavaScript has loaded, open your console (F12) and make sure that “Hello World!” is being printed.</p>
 <h2 id="implementing-the-clientside-painting-functionality">Implementing the clientside painting functionality</h2>
 <p>Before we even deal with websockets, we should implement the clientside functionality that allows a user to draw on the screen.</p>
 <p>First, inside of the <em>client/main.js</em> file, start by grabbing the canvas element and the context required to draw to the canvas:</p>
@@ -140,8 +138,8 @@
 </span>
 <span class="remark-highlight-code-line">ctx<span class="token punctuation">.</span><span class="token property-access">fillStyle</span> <span class="token operator">=</span> thisColour<span class="token punctuation">;</span>
 </span></code></pre></div>
-<p>Finally, we store whether the mouse is being clicked by setting <code>isMouseDown</code> to true when the &quot;mousedown&quot; event is triggered and false when the &quot;mouseup&quot; event is triggered.</p>
-<p>Then, inside of a &quot;mousemove&quot; event listener, we check if the mouse is currently being clicked and if it is, we draw a rectangle onto the canvas at the current position of the mouse with a width and height of 15:</p>
+<p>Finally, we store whether the mouse is being clicked by setting <code>isMouseDown</code> to true when the “mousedown” event is triggered and false when the “mouseup” event is triggered.</p>
+<p>Then, inside of a “mousemove” event listener, we check if the mouse is currently being clicked and if it is, we draw a rectangle onto the canvas at the current position of the mouse with a width and height of 15:</p>
 <div class="remark-code-title">client/main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">querySelector</span><span class="token punctuation">(</span><span class="token string">&quot;canvas&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> ctx <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token method function property-access">getContext</span><span class="token punctuation">(</span><span class="token string">&quot;2d&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -174,20 +172,20 @@ ctx<span class="token punctuation">.</span><span class="token property-access">f
 <p>Refresh your browser and try drawing on the canvas to make sure everything works.</p>
 <h2 id="setting-up-a-websocket-server">Setting up a Websocket Server</h2>
 <h3 id="the-general-idea">The general idea</h3>
-<p>Setting up a websocket server isn&#39;t overly complicated, but can be confusing if you don&#39;t understand how websockets work so let&#39;s first cover the basics of websockets and then setup a simple server using Node.js.</p>
-<p>When using websockets, it is key to understand that the clients don&#39;t directly talk to other clients, rather they have a persistent connection with the server through which they can send and receive messages. The server can then forward their messages onto all of the other clients that are connected.</p>
+<p>Setting up a websocket server isn’t overly complicated, but can be confusing if you don’t understand how websockets work so let’s first cover the basics of websockets and then setup a simple server using Node.js.</p>
+<p>When using websockets, it is key to understand that the clients don’t directly talk to other clients, rather they have a persistent connection with the server through which they can send and receive messages. The server can then forward their messages onto all of the other clients that are connected.</p>
 <p>Each client can then listen for a message from the server and then do something in response to it. In the context of our website, when our user draws a rectangle on the canvas, we will tell the server where that rectangle has been drawn and then the server will relay that to all of the other clients who will then draw the same rectangle on their canvases.</p>
 <picture><source srcset="/assets/blog/introduction-to-websockets/websockets-client-server-idea.webp" type="image/webp">
 
   <img src="/assets/blog/introduction-to-websockets/websockets-client-server-idea.jpg" type="image/jpeg" alt="Websockets General Idea Diagram"></picture>
-<p>By default, when a client connects to the websocket server, they send a &quot;connection&quot; message, the clients can then send any messages to the server and the server can also send messages to the client.</p>
+<p>By default, when a client connects to the websocket server, they send a “connection” message, the clients can then send any messages to the server and the server can also send messages to the client.</p>
 <h3 id="the-code">The Code</h3>
-<p>Let&#39;s start by setting up the server. For the server we will be using Node.js and a node implementation of the underlying websocket protocol called <a href="https://github.com/websockets/ws">ws</a>, for the clientside (which we will get to later on) we will be using websockets that are <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">native to the browser</a>.</p>
-<p>Before getting started, make sure you have <a href="https://nodejs.org/en/">Node.js</a> installed if you didn&#39;t do it earlier.</p>
+<p>Let’s start by setting up the server. For the server we will be using Node.js and a node implementation of the underlying websocket protocol called <a href="https://github.com/websockets/ws">ws</a>, for the clientside (which we will get to later on) we will be using websockets that are <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket">native to the browser</a>.</p>
+<p>Before getting started, make sure you have <a href="https://nodejs.org/en/">Node.js</a> installed if you didn’t do it earlier.</p>
 <ol>
 <li><div>
 <p>Start by navigating to the <em>server</em> folder in your terminal and run <code>npm init -y</code> which allows us to install local node packages using the Node Package Manager (NPM).
-<em>*You&#39;ll need to stop your web server or open a new terminal</em></p>
+<em>*You’ll need to stop your web server or open a new terminal</em></p>
 </div></li>
 <li><div>
 <p>Next, run <code>npm install ws</code> to install the ws package.</p>
@@ -255,20 +253,20 @@ server<span class="token punctuation">.</span><span class="token method function
 </span>
 server<span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span><span class="token number">1234</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>and that&#39;s it for a basic websocket server. In the next section we&#39;ll write the code that allows clients to connect to it.</p>
+<p>and that’s it for a basic websocket server. In the next section we’ll write the code that allows clients to connect to it.</p>
 <h2 id="setting-up-a-websocket-client">Setting up a Websocket Client</h2>
-<p>So now we&#39;ve got a server, all that&#39;s needed is just one line of code to connect to the server.</p>
+<p>So now we’ve got a server, all that’s needed is just one line of code to connect to the server.</p>
 <p>At the top of your <em>client/main.js</em> file, put the following:</p>
 <div class="remark-code-title">client/main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">&quot;ws://localhost:1234&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>This line of code connects the client to the server that is at <code>ws://localhost:1234</code>. You might be thinking that this looks like a regular URL, and that&#39;s because it is similar, the only difference is that instead of using the <code>http</code> protocol, we are using the <code>ws</code> (websocket) protocol which enables two-way communication between a client to a remote server. Similarly to <code>https</code>, there is a <code>wss</code> protocol which we&#39;ll cover later on.</p>
+<p>This line of code connects the client to the server that is at <code>ws://localhost:1234</code>. You might be thinking that this looks like a regular URL, and that’s because it is similar, the only difference is that instead of using the <code>http</code> protocol, we are using the <code>ws</code> (websocket) protocol which enables two-way communication between a client to a remote server. Similarly to <code>https</code>, there is a <code>wss</code> protocol which we’ll cover later on.</p>
 <p>Run your server by navigating to the <em>server</em> folder and running <code>node main.js</code>.</p>
-<p>If you stopped your client http-server earlier you can restart it by running <code>npx http-server -c-1</code> inside of the <em>client</em> folder. You&#39;ll need to do this in a seperate terminal from the one running your server.</p>
-<p>Now, when you visit your client on <code>http://localhost:8080</code> you should see &quot;New Connection&quot; printed out into the terminal that is running the server.</p>
-<p>That&#39;s all you need to setup a client -&gt; server connection.</p>
+<p>If you stopped your client http-server earlier you can restart it by running <code>npx http-server -c-1</code> inside of the <em>client</em> folder. You’ll need to do this in a seperate terminal from the one running your server.</p>
+<p>Now, when you visit your client on <code>http://localhost:8080</code> you should see “New Connection” printed out into the terminal that is running the server.</p>
+<p>That’s all you need to setup a client -&gt; server connection.</p>
 <h2 id="sending-messages-from-the-client-to-the-server">Sending Messages from the Client to the Server</h2>
-<p>Let&#39;s add some code to our server that listens for messages from the clients.</p>
+<p>Let’s add some code to our server that listens for messages from the clients.</p>
 <p>In the <em>server/main.js</em> file, add the following to the <code>WebSocketServer.on</code> listener:</p>
 <div class="remark-code-title">server/main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="token maybe-class-name">WebSocketServer</span><span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">&quot;connection&quot;</span><span class="token punctuation">,</span> <span class="token parameter">ws</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -290,13 +288,13 @@ server<span class="token punctuation">.</span><span class="token method function
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
 <p>and then restart your server (by cancelling the process and running <code>node main.js</code> in the <em>server</em> folder)</p>
-<p>Visit <code>http://localhost:8080</code>, refresh the page, and then click anywhere on the page. If you look at the terminal that is running your server (the one you ran <code>node main.js</code> in), you should see &quot;Client is clicking their mouse!&quot; being printed out.</p>
+<p>Visit <code>http://localhost:8080</code>, refresh the page, and then click anywhere on the page. If you look at the terminal that is running your server (the one you ran <code>node main.js</code> in), you should see “Client is clicking their mouse!” being printed out.</p>
 <p>If you put the terminal and browser side by side and then click, you can see this work in realtime.</p>
 <h3 id="making-it-a-bit-more-realistic">Making it a bit more realistic</h3>
-<p>So we can tell the server that we&#39;re clicking, is there any limit to our power?</p>
-<p>Let&#39;s make it a bit more realistic to our use case by telling the server that we&#39;re drawing, and let it know where we are drawing on the canvas and what colour we are.</p>
+<p>So we can tell the server that we’re clicking, is there any limit to our power?</p>
+<p>Let’s make it a bit more realistic to our use case by telling the server that we’re drawing, and let it know where we are drawing on the canvas and what colour we are.</p>
 <p>In the <em>client/main.js</em> file, first remove the <code>socket.send</code> we wrote above.</p>
-<p>Then, inside of the &quot;mousemove&quot; event listener, add the following code:</p>
+<p>Then, inside of the “mousemove” event listener, add the following code:</p>
 <div class="remark-code-title">client/main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript">canvas<span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">&quot;mousemove&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>isMouseDown<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -329,7 +327,7 @@ server<span class="token punctuation">.</span><span class="token method function
 <p>If you restart your server and refresh your browser, when you start drawing on the canvas, the terminal that is running your server should be logging all of the relevant information about what is being drawn.</p>
 <h2 id="receiving-messages-from-the-server">Receiving Messages from the Server</h2>
 <p>We almost have multiplayer drawing implemented. The next step is to, when the server gets a message from a client, tell all of the other clients about it so that they can use that data to draw on their own canvas.</p>
-<p>Let&#39;s update the server code so that we do two things:</p>
+<p>Let’s update the server code so that we do two things:</p>
 <p>Firstly, everytime a client connects to our server, we should store it inside of an array.</p>
 <div class="remark-code-title">server/main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript"><span class="remark-highlight-code-line"><span class="token keyword">let</span> clients <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -362,7 +360,7 @@ server<span class="token punctuation">.</span><span class="token method function
 </span>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>Here we&#39;re just looping through our array of clients, and sending the message along to every client that isn&#39;t the client that actually sent the message.</p>
+<p>Here we’re just looping through our array of clients, and sending the message along to every client that isn’t the client that actually sent the message.</p>
 <p>In the next section we will add a listener on the client that will react to this message by drawing it to the canvas.</p>
 <h2 id="drawing-networked-data-to-the-canvas">Drawing Networked Data to the Canvas</h2>
 <p>In the <em>client/main.js</em> file (somewhere at the top-level of the file), add the following code:</p>
@@ -381,23 +379,23 @@ server<span class="token punctuation">.</span><span class="token method function
 </code></pre></div>
 <p>Here we are adding a listener to our socket, first to check if it has connected to the server sucessfully, and then for if it has received a message.</p>
 <p>We then destructure the data from the message, and then draw to the canvas using it.</p>
-<p>That&#39;s it!</p>
+<p>That’s it!</p>
 <p>Restart your server and refresh your browser, make sure to open two tabs (side by side if possible) and start drawing, you should see the result on both tabs at the same time!</p>
 <h2 id="housekeeping">Housekeeping</h2>
-<p>Right now, if a client disconnects from the server, we still store them inside of the <code>clients</code> array in <em>server/main.js</em>. This isn&#39;t an issue for this use case, but it is always good to clean up after ourselves.</p>
-<p>We can do this easily as, when a websocket disconnects, it sends a &quot;close&quot; message to the server. Let&#39;s use this to remove it from the array in the same place we have our <code>.on(&quot;message&quot;)</code> listener:</p>
+<p>Right now, if a client disconnects from the server, we still store them inside of the <code>clients</code> array in <em>server/main.js</em>. This isn’t an issue for this use case, but it is always good to clean up after ourselves.</p>
+<p>We can do this easily as, when a websocket disconnects, it sends a “close” message to the server. Let’s use this to remove it from the array in the same place we have our <code>.on(&quot;message&quot;)</code> listener:</p>
 <div class="remark-code-title">server/main.js</div>
 <div class="remark-highlight"><pre class="language-javascript"><code class="language-javascript">ws<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">&quot;close&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
   clients <span class="token operator">=</span> clients<span class="token punctuation">.</span><span class="token method function property-access">filter</span><span class="token punctuation">(</span><span class="token parameter">client</span> <span class="token arrow operator">=&gt;</span> client <span class="token operator">!==</span> ws<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre></div>
-<p>This just loops through the clients array, and filters it so that only the clients that aren&#39;t our client that just disconnected are returned.</p>
+<p>This just loops through the clients array, and filters it so that only the clients that aren’t our client that just disconnected are returned.</p>
 <h2 id="some-things-to-be-aware-of">Some things to be aware of</h2>
 <h3 id="dealing-with-broken-connections">Dealing with broken connections</h3>
-<p>Although for this simple example it doesn&#39;t matter, sometimes the link between the server and the client can be interrupted with both of them being unaware of the broken connection. The way to combat this is to use something called a <strong>heartbeat</strong> which periodically <em>pings</em> the client and expects a <em>pong</em> in return which verifies that it is still connected (or <em>alive</em> if you prefer). You can read more on how to implement this <a href="https://github.com/websockets/ws#how-to-detect-and-close-broken-connections">here</a>.</p>
+<p>Although for this simple example it doesn’t matter, sometimes the link between the server and the client can be interrupted with both of them being unaware of the broken connection. The way to combat this is to use something called a <strong>heartbeat</strong> which periodically <em>pings</em> the client and expects a <em>pong</em> in return which verifies that it is still connected (or <em>alive</em> if you prefer). You can read more on how to implement this <a href="https://github.com/websockets/ws#how-to-detect-and-close-broken-connections">here</a>.</p>
 <h3 id="maintaining-state-across-connections">Maintaining state across connections</h3>
-<p>Another gotcha that we didn&#39;t account for is a client disconnecting and then reconnecting when a session has already started. In its current state nothing will break, but if any of the clients have drawn on the canvas, any new clients (or rejoining clients) won&#39;t be shown the existing drawings.</p>
-<p>This may or may not be your desired functionality, but a possible solution would be to store a queue of actions on the server and, every time a client sends a message, add it to the queue. Then, when a new/rejoining client connects, send them the queue so that they can draw everything on their canvas and get up to date; I&#39;ll leave it up to you to implement a solution to this problem.</p>
+<p>Another gotcha that we didn’t account for is a client disconnecting and then reconnecting when a session has already started. In its current state nothing will break, but if any of the clients have drawn on the canvas, any new clients (or rejoining clients) won’t be shown the existing drawings.</p>
+<p>This may or may not be your desired functionality, but a possible solution would be to store a queue of actions on the server and, every time a client sends a message, add it to the queue. Then, when a new/rejoining client connects, send them the queue so that they can draw everything on their canvas and get up to date; I’ll leave it up to you to implement a solution to this problem.</p>
 <h3 id="working-over-a-secure-connection-https">Working over a secure connection (https)</h3>
 <p>Finally, on the client we are currently connecting to the websocket server by writing <code>ws://localhost:1234</code> and it all works as expected. However this only works as our websocket server is on an unsecure connection (<code>http</code>). If our server was using <code>https</code> we would need to update the url to be <code>wss://localhost:1234</code>.</p>
 <p>It is important to be aware of this as if you decide to host your server on something like <a href="https://heroku.com/">heroku</a>, it will default to <code>https</code>.</p>
@@ -405,8 +403,8 @@ server<span class="token punctuation">.</span><span class="token method function
 <p>Thanks for reading, I hope this blogpost gave you a good, practical, introduction to websockets. There is much more to them, but this should be enough to get started. If you want a more comprehensive solution to websockets, there are libraries like <a href="https://socket.io/">socket.io</a>.</p>
       </div>
 
-      <div class="blog-post__footer">
-        <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2pgSEn" component-url="/GithubIssueComments.b0e25a1e.js" component-export="default" renderer-url="/client.788af3ea.js" props="{&quot;issueUri&quot;:[0,&quot;Pjaerr/joshuaj.co.uk/issues/6&quot;],&quot;commentsPerPage&quot;:[0,10],&quot;useShowCommentsButton&quot;:[0,false]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;GithubIssueComments&quot;,&quot;value&quot;:true}" await-children=""><section class="github-issue-comments svelte-mg28a7"><div class="github-issue-comments__loading-icon svelte-mg28a7"></div>
+      <div class="page__footer">
+        <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).visible=(s,c,n)=>{const r=async()=>{await(await s())()};let i=new IntersectionObserver(e=>{for(const t of e)if(!!t.isIntersecting){i.disconnect(),r();break}});for(let e=0;e<n.children.length;e++){const t=n.children[e];i.observe(t)}},window.dispatchEvent(new Event("astro:visible"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><astro-island uid="2pgSEn" component-url="/_astro/GithubIssueComments.ffe57b96.js" component-export="default" renderer-url="/_astro/client.0a29acc0.js" props="{&quot;issueUri&quot;:[0,&quot;Pjaerr/joshuaj.co.uk/issues/6&quot;],&quot;commentsPerPage&quot;:[0,10],&quot;useShowCommentsButton&quot;:[0,false]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;GithubIssueComments&quot;,&quot;value&quot;:true}" await-children=""><section class="github-issue-comments svelte-mg28a7"><div class="github-issue-comments__loading-icon svelte-mg28a7"></div>
 
     <button class="github-issue-comments__refresh-comments-button svelte-mg28a7" >Check for new comments
       </button>
