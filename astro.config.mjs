@@ -15,7 +15,6 @@ export default defineConfig({
     syntaxHighlight: "prism",
   },
   publicDir: "./public",
-  base: "/",
   site: "https://joshuaj.co.uk",
   server: { port: 1234, host: false },
 });
