@@ -6,20 +6,20 @@
     "build": "astro build",
     "serve": "astro preview",
     "build-and-serve": "npm run build && npm run serve",
-    "deploy": "npm run build && cp CNAME dist/CNAME && gh-pages -d dist"
+    "update-all-deps": "npx npm-check-updates -u && npm install"
   },
   "devDependencies": {
-    "astro": "^2.0.6",
+    "astro": "^2.0.16",
     "gh-pages": "^5.0.0",
     "postcss-load-config": "^4.0.1",
     "prettier-plugin-astro": "^0.8.0",
-    "sass": "^1.58.0"
+    "sass": "^1.58.3"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^2.0.1",
-    "@astrojs/mdx": "^0.16.0",
-    "@astrojs/sitemap": "^1.0.1",
-    "@astrojs/svelte": "^2.0.1",
+    "@astrojs/mdx": "^0.17.2",
+    "@astrojs/sitemap": "^1.1.0",
+    "@astrojs/svelte": "^2.0.2",
     "date-fns": "^2.29.3",
     "rehype-rewrite": "^3.0.6",
     "remark-code-titles": "^0.1.2",
