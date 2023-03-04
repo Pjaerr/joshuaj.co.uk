@@ -12,6 +12,7 @@
     "astro": "^2.0.16",
     "gh-pages": "^5.0.0",
     "postcss-load-config": "^4.0.1",
+    "prettier": "^2.8.4",
     "prettier-plugin-astro": "^0.8.0",
     "sass": "^1.58.3"
   },
