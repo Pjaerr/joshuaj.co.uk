@@ -1,5 +1,5 @@
 <nav>
-  <div class="nav-inner global-centered-layout">
+  <div class="nav-inner">
     <a href="/" title="Home">Pjaerr</a>
 
     <ul>
@@ -55,6 +55,8 @@
 </nav>
 
 <style lang="scss">
+  @use "../styles/mixins";
+
   nav {
     position: sticky;
     top: 0;
@@ -66,6 +68,8 @@
   }
 
   .nav-inner {
+    @include mixins.centered;
+
     display: flex;
     justify-content: space-between;
     align-items: center;

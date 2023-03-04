@@ -1,0 +1,34 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Navigation from "../components/Navigation.svelte";
+
+interface Props {
+  head: {
+    title: string;
+    description: string;
+    permalink: string;
+    image: string;
+  };
+}
+
+const { head } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={head.title}
+      description={head.description}
+      permalink={head.permalink}
+      image={head.image}
+    />
+  </head>
+
+  <body>
+    <Navigation />
+
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

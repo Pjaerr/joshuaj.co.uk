@@ -1,37 +1,36 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Navigation from "../../components/Navigation.svelte";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPostList from "../../components/BlogPostList.svelte";
-
-const title = "blogposts - joshuaj.co.uk";
 
 const blogposts = await Astro.glob("./*.mdx");
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead {title} />
+<style lang="scss">
+  @use "../../styles/mixins";
 
-    <style>
-      .section-heading {
-        color: var(--colour-highlight);
-        letter-spacing: 2px;
-        font-size: 1.125rem;
-        text-transform: uppercase;
-      }
-    </style>
-  </head>
+  .container {
+    @include mixins.centered;
+  }
 
-  <body>
-    <div class="site-container">
-      <Navigation />
+  .section-heading {
+    color: var(--colour-highlight);
+    letter-spacing: 2px;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+  }
+</style>
 
-      <main class="global-centered-layout">
-        <div class="blogposts-section">
-          <h2 class="section-heading">Blogposts</h2>
-          <BlogPostList {blogposts} />
-        </div>
-      </main>
-    </div>
-  </body>
-</html>
+<BaseLayout
+  head={{
+    title: "Blogposts - joshuaj.co.uk",
+    description:
+      "Frontend developer occasionally writing blogposts about JavaScript and friends",
+    image: "/assets/cover_image.png",
+    permalink: "https://joshuaj.co.uk/blog",
+  }}
+>
+  <div class="container">
+    <h2 class="section-heading">Blogposts</h2>
+    <BlogPostList blogposts={blogposts} />
+  </div>
+</BaseLayout>

@@ -1,95 +1,98 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Figure from "../components/Figure.svelte";
-import Navigation from "../components/Navigation.svelte";
-
-import '../styles/page.scss';
-
-const title = "Blender | joshuaj.co.uk";
+import ArticleLayout from "../layouts/ArticleLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead {title} />
+<style>
+  figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 
-    <style>
-      figure {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 40px;
-        margin-bottom: 40px;
-      }
+  figcaption {
+    font-family: "Fira Mono";
+    font-size: 0.875rem;
+  }
+</style>
 
-      figcaption {
-        font-family: "Fira Mono";
-        font-size: 0.875rem;
-      }
-    </style>
-  </head>
+<BaseLayout
+  head={{
+    title: "Blender - joshuaj.co.uk",
+    description:
+      "A collection of things made using Blender each month in an effort to learn 3D modelling",
+    image: "/assets/cover_image.png",
+    permalink: "https://joshuaj.co.uk/blender",
+  }}
+>
+  <ArticleLayout>
+    <Fragment slot="title">Blender Projects</Fragment>
 
-  <body>
-    <div>
-      <Navigation />
+    <Fragment slot="subtitle">
+      A collection of things made using Blender each month in an effort to learn
+      3D modelling
+    </Fragment>
 
-      <main class="page__container">
-        <h1 class="page__title">Blender Projects</h1>
+    <Fragment slot="content">
+      <section>
+        <h2>January 2023 - Food Cart</h2>
 
-        <div class="page__content">
+        <figure>
+          <img
+            src="/assets/blender/january-food-cart/food_cart_render.png"
+            alt="a 3d render of a food cart with colourful string lights and Malaysian flags that would be serving an array of colourful dimsum (if I actually finished the project)"
+          />
 
-        <p>A collection of things made using Blender each month in an effort to learn 3D modelling</p>
+          <figcaption>The final render</figcaption>
+        </figure>
+      </section>
 
-        <section>
-          <h2>January 2023 - Food Cart</h2>
+      <section>
+        <h2>December 2022 - Winter Cabin Scene</h2>
 
-          <figure>
-            <img src="/assets/blender/january-food-cart/food_cart_render.png" alt="a 3d render of a food cart with colourful string lights and Malaysian flags that would be serving an array of colourful dimsum (if I actually finished the project)"/>
+        <figure>
+          <img
+            src="/assets/blender/december-winter-cabin-scene/winter_cabin_scene_final.png"
+            alt="a 3d render of a cosy winter scene in which a wooden cabin sits in the middle of a vast snowy wilderness with glowing windows, a snow covered roof and a smoking chimney. It is surrounded by various items such as wooden barrels and a pile of logs, all covered in a thick blanket of snow. There are two trees to the left of the cabin, also covered in a thick blanket of snow."
+          />
 
-            <figcaption>
-              The final render
-            </figcaption>
-          </figure>
-        </section>
+          <figcaption>The final render, without any effects applied</figcaption>
+        </figure>
 
-        <section>
-          <h2>December 2022 - Winter Cabin Scene</h2>
+        <figure>
+          <img
+            src="/assets/blender/december-winter-cabin-scene/winter_cabin_scene_final--pixelated.png"
+            alt="a 3d render of a cosy winter scene in which a wooden cabin sits in the middle of a vast snowy wilderness with glowing windows, a snow covered roof and a smoking chimney. It is surrounded by various items such as wooden barrels and a pile of logs, all covered in a thick blanket of snow. There are two trees to the left of the cabin, also covered in a thick blanket of snow. The image has an effect applied over-top which makes it look as if it were drawn in the style of pixel art."
+          />
 
-          <figure>
-            <img src="/assets/blender/december-winter-cabin-scene/winter_cabin_scene_final.png" alt="a 3d render of a cosy winter scene in which a wooden cabin sits in the middle of a vast snowy wilderness with glowing windows, a snow covered roof and a smoking chimney. It is surrounded by various items such as wooden barrels and a pile of logs, all covered in a thick blanket of snow. There are two trees to the left of the cabin, also covered in a thick blanket of snow."/>
+          <figcaption>
+            A pixelated effect achieved using compositor nodes
+          </figcaption>
+        </figure>
 
-            <figcaption>
-              The final render, without any effects applied
-            </figcaption>
-          </figure>
+        <figure>
+          <img
+            src="/assets/blender/december-winter-cabin-scene/pixel_art_compositor_nodes.png"
+            alt="screenshot of Blender compositor nodes that result in a pixel art style output"
+          />
 
+          <figcaption>
+            The compositor nodes used to achieve the pixelated effect
+          </figcaption>
+        </figure>
 
-          <figure>
-            <img src="/assets/blender/december-winter-cabin-scene/winter_cabin_scene_final--pixelated.png" alt="a 3d render of a cosy winter scene in which a wooden cabin sits in the middle of a vast snowy wilderness with glowing windows, a snow covered roof and a smoking chimney. It is surrounded by various items such as wooden barrels and a pile of logs, all covered in a thick blanket of snow. There are two trees to the left of the cabin, also covered in a thick blanket of snow. The image has an effect applied over-top which makes it look as if it were drawn in the style of pixel art."/>
+        <figure>
+          <img
+            src="/assets/blender/december-winter-cabin-scene/winter_cabin_scene_final--clay.png"
+            alt="a 3d render of a cosy winter scene in which a wooden cabin sits in the middle of a vast snowy wilderness with glowing windows, a snow covered roof and a smoking chimney. It is surrounded by various items such as wooden barrels and a pile of logs, all covered in a thick blanket of snow. There are two trees to the left of the cabin, also covered in a thick blanket of snow. The image is shown as a clay render, without any textures or materials applied."
+          />
 
-            <figcaption>
-              A pixelated effect achieved using compositor nodes
-            </figcaption>
-          </figure>
-
-          <figure>
-            <img src="/assets/blender/december-winter-cabin-scene/pixel_art_compositor_nodes.png" alt="screenshot of Blender compositor nodes that result in a pixel art style output"/>
-
-            <figcaption>
-              The compositor nodes used to achieve the pixelated effect
-            </figcaption>
-          </figure>
-
-          <figure>
-            <img src="/assets/blender/december-winter-cabin-scene/winter_cabin_scene_final--clay.png" alt="a 3d render of a cosy winter scene in which a wooden cabin sits in the middle of a vast snowy wilderness with glowing windows, a snow covered roof and a smoking chimney. It is surrounded by various items such as wooden barrels and a pile of logs, all covered in a thick blanket of snow. There are two trees to the left of the cabin, also covered in a thick blanket of snow. The image is shown as a clay render, without any textures or materials applied."/>
-
-            <figcaption>
-              Clay render
-            </figcaption>
-          </figure>
-        </section>
-      </div>
-      </main>
-    </div>
-  </body>
-</html>
+          <figcaption>Clay render</figcaption>
+        </figure>
+      </section>
+    </Fragment>
+  </ArticleLayout>
+</BaseLayout>
