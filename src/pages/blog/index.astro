@@ -1,8 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPostList from "../../components/BlogPostList.svelte";
 
-const blogposts = await Astro.glob("./*.mdx");
+const blogposts = await getCollection("blog");
 ---
 
 <style lang="scss">
@@ -30,7 +31,6 @@ const blogposts = await Astro.glob("./*.mdx");
   }}
 >
   <div class="container">
-    <h2 class="section-heading">Blogposts</h2>
     <BlogPostList blogposts={blogposts} />
   </div>
 </BaseLayout>
