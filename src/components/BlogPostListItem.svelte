@@ -7,7 +7,7 @@
 
 <div class="blogpost" class:pinned={blogpost.data.pinned}>
   <h3>
-    <a href={blogpost.slug}>
+    <a href="blog/{blogpost.slug}">
       {blogpost.data.title}
     </a>
   </h3>

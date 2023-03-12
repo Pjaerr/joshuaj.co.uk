@@ -1,0 +1,55 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import formatDate from "../../utils/format-date.js";
+import GithubIssueComments from "svelte-github-issue-comments-component/GithubIssueComments/GithubIssueComments.svelte";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const blogpost: CollectionEntry<"blog"> = Astro.props.entry;
+
+const { Content } = await blogpost.render();
+
+const { title, description, image, issueUri, permalink, publishDate } =
+  blogpost.data;
+---
+
+<BaseLayout
+  head={{
+    title: `${title} - joshuaj.co.uk`,
+    description,
+    permalink,
+    image,
+  }}
+>
+  <ArticleLayout>
+    <Fragment slot="title">
+      {title}
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      {formatDate(publishDate, "MMMM dd, yyyy")}
+    </Fragment>
+
+    <Fragment slot="content">
+      <Content />
+    </Fragment>
+
+    <Fragment slot="footer">
+      <GithubIssueComments
+        issueUri={issueUri}
+        commentsPerPage={10}
+        useShowCommentsButton={false}
+        client:visible
+      />
+    </Fragment>
+  </ArticleLayout>
+</BaseLayout>
