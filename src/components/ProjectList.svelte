@@ -14,7 +14,12 @@
       <ProjectTech {technologies} />
 
       <div class="links">
-        <a href={githubLink} aria-label="Visit {name} on Github" title="Github" target="_blank">
+        <a
+          href={githubLink}
+          aria-label="Visit {name} on Github"
+          title="Github"
+          target="_blank"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -32,7 +37,12 @@
         </a>
 
         {#if demoLink}
-          <a href={demoLink} aria-label="Try the demo for {name}" title="Demo" target="_blank">
+          <a
+            href={demoLink}
+            aria-label="Try the demo for {name}"
+            title="Demo"
+            target="_blank"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -60,10 +70,6 @@
 </ul>
 
 <style>
-  .projects {
-    padding-top: 32px;
-  }
-
   .project {
     display: grid;
     grid-row-gap: 6px;
@@ -84,7 +90,6 @@
   ul {
     display: grid;
     padding: 0;
-    padding-top: 48px;
     grid-template-columns: auto;
     grid-gap: 48px;
   }

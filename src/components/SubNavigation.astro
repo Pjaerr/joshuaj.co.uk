@@ -1,0 +1,44 @@
+---
+export interface Props {
+  activeRoute: string;
+}
+
+const { activeRoute } = Astro.props;
+---
+
+<style lang="scss">
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    display: flex;
+    font-size: 1.125rem;
+    font-family: "IBM Plex Mono", "IBM Plex Sans";
+    opacity: 0.8;
+  }
+
+  .active {
+    a {
+      opacity: 1;
+      font-weight: bold;
+      color: var(--colour-highlight);
+    }
+  }
+</style>
+
+<ul>
+  <li class:list={{ active: activeRoute === "/" }}>
+    <a href="/">Blogposts</a>
+  </li>
+  <li class:list={{ active: activeRoute === "/projects" }}>
+    <a href="/projects">Projects</a>
+  </li>
+</ul>

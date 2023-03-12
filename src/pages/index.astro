@@ -2,8 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPostList from "../components/BlogPostList.svelte";
-import ProjectList from "../components/ProjectList.svelte";
-import OtherList from "../components/OtherList.svelte";
+import SubNavigation from "../components/SubNavigation.astro";
 
 const blogposts = await getCollection("blog");
 ---
@@ -16,27 +15,7 @@ const blogposts = await getCollection("blog");
 
     display: grid;
     grid-template-rows: auto auto;
-    grid-gap: 48px;
-  }
-
-  hr {
-    width: 100%;
-    opacity: 0.25;
-  }
-
-  .section-heading {
-    color: var(--colour-highlight);
-    letter-spacing: 2px;
-    font-size: 1.125rem;
-    text-transform: uppercase;
-  }
-
-  .see-all-posts {
-    display: inline-block;
-    margin-top: 24px;
-    font-weight: bold;
-    font-size: 1.125rem;
-    text-decoration: underline;
+    grid-gap: 32px;
   }
 </style>
 
@@ -50,32 +29,9 @@ const blogposts = await getCollection("blog");
   }}
 >
   <div class="container">
-    <div class="blogposts-section">
-      <h2 class="section-heading">Blogposts</h2>
-      <BlogPostList blogposts={blogposts.slice(0, 4)} />
+    <SubNavigation activeRoute="/" />
 
-      {
-        blogposts.length > 5 && (
-          <a class="see-all-posts" href="/blog">
-            See all posts ➞
-          </a>
-        )
-      }
-    </div>
-
-    <hr />
-
-    <div class="projects-section">
-      <h2 class="section-heading">Projects</h2>
-      <ProjectList {projects} />
-    </div>
-
-    <hr />
-
-    <div class="other-section">
-      <h2 class="section-heading">Other Stuff</h2>
-
-      <OtherList />
-    </div>
+    <!-- TODO: If blogposts get over a certain length, should do some sort of infinite scroll here (probably don't need to worry about that for a while though) -->
+    <BlogPostList blogposts={blogposts} />
   </div>
 </BaseLayout>

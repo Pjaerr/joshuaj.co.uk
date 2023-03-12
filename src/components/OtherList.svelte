@@ -15,7 +15,6 @@
   ul {
     display: grid;
     padding: 0;
-    padding-top: 48px;
     grid-template-columns: auto;
     grid-gap: 48px;
   }
