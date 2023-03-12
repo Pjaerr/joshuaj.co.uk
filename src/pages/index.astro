@@ -1,44 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPostList from "../components/BlogPostList.svelte";
 import ProjectList from "../components/ProjectList.svelte";
 import OtherList from "../components/OtherList.svelte";
 
-const blogposts = await Astro.glob("./blog/*.mdx");
-
-const projects = [
-  {
-    name: "Isolation Run",
-    description:
-      "Use your phone's accelerometer to only play a video whilst you're running.",
-    technologies: ["svelte", "nodejs", "websockets"],
-    githubLink: "https://github.com/Pjaerr/Isolation-Run",
-    demoLink: "https://isolation-run.onrender.com/",
-  },
-  {
-    name: "Pub Name Generator",
-    description: "Generates random pub names using a local words list",
-    technologies: ["html", "javascript", "css"],
-    githubLink: "https://github.com/Pjaerr/Pub-Name-Generator",
-    demoLink: "https://pjaerr.github.io/Pub-Name-Generator/",
-  },
-  {
-    name: "Svelte Github Issue Comments Component",
-    description:
-      "A Svelte component that lets you use a github issue as a no-backend comments system for a static site/blog",
-    technologies: ["svelte", "typescript"],
-    githubLink:
-      "https://github.com/Pjaerr/svelte-github-issue-comments-component",
-  },
-  {
-    name: "Findr",
-    description:
-      "A tinder-like swiping application but for things to do nearby.",
-    technologies: ["react", "nodejs", "express"],
-    githubLink: "https://github.com/Pjaerr/Findr",
-    demoLink: "https://findr-rebuild.netlify.app/",
-  },
-];
+const blogposts = await getCollection("blog");
 ---
 
 <style lang="scss">

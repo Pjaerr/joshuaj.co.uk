@@ -1,35 +1,38 @@
-<script>
-  import formatDate from "../utils/format-date.js";
-  import sortByDate from "../utils/sort-by-date.js";
+<script lang="ts">
+  import type { CollectionEntry } from "astro:content";
+  import byDate from "../utils/sort-by-date.js";
+  import BlogPostListItem from "./BlogPostListItem.svelte";
 
-  export let blogposts = [];
+  export let blogposts: CollectionEntry<"blog">[] = [];
+
+  const pinnedBlogpost = blogposts.find(({ data }) => data.pinned);
+
+  const sortedBlogposts = blogposts
+    .filter((post) => post.id !== pinnedBlogpost?.id)
+    .sort(byDate);
 </script>
 
+{#if pinnedBlogpost}
+  <BlogPostListItem blogpost={pinnedBlogpost} />
+
+  <hr />
+{/if}
+
 <ul>
-  {#each sortByDate(blogposts, "desc") as { url, frontmatter }}
-    <li class="blogpost">
-      <h3>
-        <a href={url}>
-          {frontmatter.title}
-        </a>
-      </h3>
-
-      <p class="published-date">
-        {formatDate(frontmatter.publishDate, "MMMM dd, yyyy")}
-      </p>
-
-      <p>{frontmatter.description}</p>
+  {#each sortedBlogposts as blogpost}
+    <li>
+      <BlogPostListItem {blogpost} />
     </li>
   {/each}
 </ul>
 
-<style>
+<style lang="scss">
   ul {
     display: grid;
     padding: 0;
-    padding-top: 48px;
     grid-template-columns: auto;
-    grid-gap: 48px;
+    grid-gap: 64px;
+    list-style: none;
   }
 
   /* Desktop */
@@ -39,16 +42,8 @@
     }
   }
 
-  .blogpost h3 {
-    font-size: 1.5rem;
-  }
-
-  .blogpost {
-    max-width: 550px;
-    list-style: none;
-  }
-
-  .published-date {
-    font-size: 0.875rem;
+  hr {
+    width: 100%;
+    opacity: 0.25;
   }
 </style>
