@@ -15,6 +15,7 @@ const { activeRoute } = Astro.props;
   }
 
   li {
+    position: relative;
     list-style: none;
   }
 
@@ -22,14 +23,28 @@ const { activeRoute } = Astro.props;
     display: flex;
     font-size: 1.125rem;
     font-family: "IBM Plex Mono", "IBM Plex Sans";
+    font-weight: bold;
     opacity: 0.8;
   }
 
   .active {
     a {
       opacity: 1;
-      font-weight: bold;
       color: var(--colour-highlight);
+    }
+
+    $indicator-size: 4px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -#{$indicator-size * 2};
+      left: calc(50% - $indicator-size);
+      width: 0;
+      height: 0;
+      border-left: $indicator-size solid transparent;
+      border-right: $indicator-size solid transparent;
+      border-top: $indicator-size solid var(--colour-highlight);
     }
   }
 </style>
