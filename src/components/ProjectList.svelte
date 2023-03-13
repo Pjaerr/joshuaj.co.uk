@@ -7,7 +7,7 @@
 <ul class="projects">
   {#each projects as { name, description, technologies, githubLink, demoLink }}
     <li class="project">
-      <h3>{name}</h3>
+      <h2>{name}</h2>
 
       <p>{description}</p>
 

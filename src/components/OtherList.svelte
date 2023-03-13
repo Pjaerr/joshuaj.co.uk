@@ -1,8 +1,8 @@
 <ul>
   <li>
-    <h3>
+    <h2>
       <a href="/blender"> Blender Projects </a>
-    </h3>
+    </h2>
 
     <p>
       A collection of things made using Blender each month in an effort to learn
@@ -24,10 +24,6 @@
     ul {
       grid-template-columns: 1fr 1fr;
     }
-  }
-
-  h3 {
-    font-size: 1.5rem;
   }
 
   li {

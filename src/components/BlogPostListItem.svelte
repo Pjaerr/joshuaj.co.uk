@@ -6,11 +6,11 @@
 </script>
 
 <div class="blogpost" class:pinned={blogpost.data.pinned}>
-  <h3>
+  <h2>
     <a href="blog/{blogpost.slug}">
       {blogpost.data.title}
     </a>
-  </h3>
+  </h2>
 
   <p class="published-date">
     {formatDate(blogpost.data.publishDate, "MMMM dd, yyyy")}
@@ -20,7 +20,7 @@
 </div>
 
 <style lang="scss">
-  .blogpost h3 {
+  .blogpost h2 {
     font-size: 1.5rem;
   }
 

@@ -11,13 +11,10 @@ const blogposts = await getCollection("blog");
 
   .container {
     @include mixins.centered;
-  }
 
-  .section-heading {
-    color: var(--colour-highlight);
-    letter-spacing: 2px;
-    font-size: 1.125rem;
-    text-transform: uppercase;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-gap: 32px;
   }
 </style>
 
