@@ -1,0 +1,148 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const books = [
+  {
+    title: "A Gentleman In Moscow",
+    author: "Amor Towles",
+    cover: "/assets/books/a_gentleman_in_moscow.webp",
+  },
+  {
+    title: "The Way Home: Tales from a life without technology",
+    author: "Mark Boyle",
+    cover: "/assets/books/the_way_home.jpeg",
+  },
+  {
+    title: "Conquerors: How Portugal Forged the First Global Empire",
+    author: "Roger Crowley",
+    cover: "/assets/books/conquerors.jpeg",
+  },
+  {
+    title: "Rules of Civility",
+    author: "Amor Towles",
+    cover: "/assets/books/rules_of_civility.jpeg",
+  },
+  {
+    title: "Fluent Forever: How to Learn Any Language Fast and Never Forget It",
+    author: "Gabriel Wyner",
+    cover: "/assets/books/fluent_forever.jpeg",
+  },
+  {
+    title: "Hitler's Forgotten Children: My Life Inside The Lebensborn",
+    author: "Ingrid von Oelhafen",
+    cover: "/assets/books/hitlers_forgotten_children.jpg",
+  },
+  {
+    title: "Educated",
+    author: "Tara Westover",
+    cover: "/assets/books/educated.jpg",
+  },
+  {
+    title: "This is Going to Hurt: Secret Diaries of a Junior Doctor",
+    author: "Adam Kay",
+    cover: "/assets/books/this_is_going_to_hurt.jpg",
+  },
+  {
+    title: "The Adventures of Sherlock Holmes, and Other Stories",
+    author: "Arthur Conan Doyle",
+    cover: "/assets/books/sherlock_holmes.jpg",
+  },
+  {
+    title: "The Hitler Years: Triumph 1933–1939",
+    author: "Frank McDonough",
+    cover: "/assets/books/hitler_years_triumph.jpg",
+  },
+  {
+    title: "The Hitler Years: Disaster 1940-1945",
+    author: "Frank McDonough",
+    cover: "/assets/books/hitler_years_disaster.jpg",
+  },
+];
+---
+
+<style lang="scss">
+  @use "../styles/mixins";
+
+  .container {
+    @include mixins.centered;
+
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    flex-basis: 300px;
+  }
+
+  .page-description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    max-width: 300px;
+  }
+
+  .book__cover {
+    max-width: 100%;
+    height: 460px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  .book__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      padding: 0;
+    }
+  }
+</style>
+
+<BaseLayout
+  head={{
+    title: "Books - joshuaj.co.uk",
+    description: "Books that I've read and rate 5/5 stars.",
+    image: "/assets/cover_image.png",
+    permalink: "https://joshuaj.co.uk/projects",
+  }}
+>
+  <div class="container">
+    <!-- <SubNavigation activeRoute="/projects" /> -->
+
+    <div class="page-description">
+      <h1>Books</h1>
+      <p>
+        I've read a lot of books, but this list is the books that I would either
+        read again, or have already read multiple times.
+      </p>
+    </div>
+
+    {
+      books.map((book) => (
+        <div class="book">
+          <img
+            class="book__cover"
+            src={book.cover}
+            alt={`The cover of ${book.title}`}
+          />
+          <div class="book__details">
+            <h2>{book.title}</h2>
+            <p>{book.author}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>
