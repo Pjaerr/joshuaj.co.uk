@@ -1,0 +1,40 @@
+<style lang="scss">
+  .outer {
+    --outer-border-radius: 8px;
+    --border-width: 2px;
+
+    --inner-border-radius: calc(
+      var(--outer-border-radius) - var(--border-width)
+    );
+
+    background-image: linear-gradient(
+      192deg,
+      #ff4757 5.4%,
+      #3742fa 33.68%,
+      #2ed573 67.8%,
+      #1e90ff 95.59%
+    );
+
+    border: var(--border-width) solid transparent;
+    border-radius: var(--outer-border-radius);
+
+    box-shadow: var(--colour-background) 0 110px inset;
+
+    background-clip: border-box;
+    background-origin: border-box;
+  }
+
+  .inner {
+    padding: 16px;
+    border-radius: var(--inner-border-radius);
+  }
+</style>
+
+<div class="outer" style="width: 300px; margin: 0 auto;">
+  <div class="inner">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </div>
+</div>
