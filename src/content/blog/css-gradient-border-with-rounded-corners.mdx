@@ -1,0 +1,151 @@
+---
+title: "How to create a gradient border with rounded corners using CSS"
+publishDate: "2024-03-23"
+description: "A quick guide on creating a gradient border with CSS that still allows you to use border-radius."
+permalink: "https://joshuaj.co.uk/blog/css-gradient-border-with-rounded-corners"
+issueUri: "Pjaerr/joshuaj.co.uk/issues/18"
+image: "/assets/blog/css-gradient-border-with-rounded-corners/cover_image.png"
+---
+
+import EndResult from '../../components/blog/css-gradient-border-with-rounded-corners/EndResult.astro';
+import InProgress from '../../components/blog/css-gradient-border-with-rounded-corners/InProgress.astro';
+import HalfWayShadow from '../../components/blog/css-gradient-border-with-rounded-corners/HalfWayShadow.astro';
+import RedShadow from '../../components/blog/css-gradient-border-with-rounded-corners/RedShadow.astro';
+
+
+I recently needed to create a shiny gradient border for a box that had rounded corners and while there are [a few different approaches](https://css-tricks.com/gradient-borders-in-css/), I couldn't find anything documenting using an inset `box-shadow` to achieve the effect, so that's what this short post is about.
+
+If you don't need rounded corners using `border-radius` then the [border-image property](https://www.digitalocean.com/community/tutorials/css-gradient-borders-pure-css) is probably the easiest approach.
+
+
+This is what the end result will look like:
+
+<EndResult/>
+
+If you don't care about the specifics, here's a [Codepen](https://codepen.io/Joshua-Jackson-the-builder/pen/poBPOQw)
+
+This approach works by setting the background of the box to a gradient and then applying an inset box shadow, starting at the top of the box and stretching to the bottom of the box, that is the same colour as the background of the page, that shadow then fills the box all the way to the edges leaving only the border showing the gradient, instead of the entire background.
+
+<div style="display: flex; gap: 12px;">
+    <InProgress/>
+    <HalfWayShadow/>
+    <EndResult/>
+</div>
+
+First you'll need an outer wrapper and an inner wrapper.
+
+```html
+<div class="outer">
+  <div class="inner">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </div>
+</div>
+```
+
+Then, define your border width and border radius (I'm using css variables to make it easier to read, but feel free to just put the numbers inline)
+
+```css
+.outer {
+    --outer-border-radius: 8px;
+    --border-width: 2px;
+}
+
+.inner {
+    padding: 16px;
+}
+```
+
+Work out the `border-radius` for the inner wrapper. (Approach taken from this article on [how to create perfect nested border radius](https://www.30secondsofcode.org/css/s/nested-border-radius/)) 
+
+```css{5-7}
+.outer {
+    --outer-border-radius: 8px;
+    --border-width: 2px;
+
+    --inner-border-radius: calc(
+      var(--outer-border-radius) - var(--border-width)
+    );
+}
+
+.inner {
+    padding: 16px;
+}
+```
+
+Set your gradient and apply the `border` and `border-radius`. Note we use a transparent border here, so that the gradient "background" can eventually show through.
+
+```css{9-18}
+.outer {
+    --outer-border-radius: 8px;
+    --border-width: 2px;
+
+    --inner-border-radius: calc(
+      var(--outer-border-radius) - var(--border-width)
+    );
+
+    background-image: linear-gradient(
+      192deg,
+      #ff4757 5.4%,
+      #3742fa 33.68%,
+      #2ed573 67.8%,
+      #1e90ff 95.59%
+    );
+
+    border: var(--border-width) solid transparent;
+    border-radius: var(--outer-border-radius);
+}
+
+.inner {
+    padding: 16px;
+    border-radius: var(--inner-border-radius);
+}
+```
+
+This should result in something like the following:
+
+<InProgress/>
+
+Now essentially all we need to do is hide everything _except_ the border. The key to this approach is to apply a `box-shadow` _inside_ of the box that then fills the entire box leaving only the border showing the gradient.
+
+For this you'll need a `inset` shadow with an `xOffset` of `0` and a `yOffset` of `100vh`. This is essentially a shadow starting at the top of the box and stretching all the way to the bottom (technically further than the bottom as we're using `vh` units). _Try changing it to something like `50px` to see how the effect works._
+
+We also include the `background-clip` and `background-origin` properties so that the shadow doesn't escape our box.
+
+```css{20-23}
+.outer {
+    --outer-border-radius: 8px;
+    --border-width: 2px;
+
+    --inner-border-radius: calc(
+      var(--outer-border-radius) - var(--border-width)
+    );
+
+    background-image: linear-gradient(
+      192deg,
+      #ff4757 5.4%,
+      #3742fa 33.68%,
+      #2ed573 67.8%,
+      #1e90ff 95.59%
+    );
+
+    border: var(--border-width) solid transparent;
+    border-radius: var(--outer-border-radius);
+
+    box-shadow: white 0 100vh inset;
+
+    background-clip: border-box;
+    background-origin: border-box;
+}
+
+.inner {
+    padding: 16px;
+    border-radius: var(--inner-border-radius);
+}
+```
+
+and that's it 🎉
+
+<EndResult/>
