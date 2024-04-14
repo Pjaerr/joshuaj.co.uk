@@ -14,27 +14,29 @@
       <ProjectTech {technologies} />
 
       <div class="links">
-        <a
-          href={githubLink}
-          aria-label="Visit {name} on Github"
-          title="Github"
-          target="_blank"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><polyline points="16 18 22 12 16 6" /><polyline
-              points="8 6 2 12 8 18"
-            /></svg
+        {#if githubLink}
+          <a
+            href={githubLink}
+            aria-label="Visit {name} on Github"
+            title="Github"
+            target="_blank"
           >
-        </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><polyline points="16 18 22 12 16 6" /><polyline
+                points="8 6 2 12 8 18"
+              /></svg
+            >
+          </a>
+        {/if}
 
         {#if demoLink}
           <a
