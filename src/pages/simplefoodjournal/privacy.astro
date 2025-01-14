@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+---
+
+<BaseLayout
+  head={{
+    title: "Privacy Policy - Simple Food Journal",
+    description: "Privacy policy for Simple Food Journal",
+    image: "/assets/cover_image.png",
+    permalink: "https://joshuaj.co.uk/simplefoodjournal/privacy",
+  }}
+>
+  <ArticleLayout>
+    <Fragment slot="title"> Privacy Policy for Simple Food Journal </Fragment>
+
+    <Fragment slot="subtitle"> Last Updated: 12/01/2025 </Fragment>
+
+    <Fragment slot="content">
+      <section>
+        <h2>Information Collection and Use</h2>
+        <p>
+          Simple Food Journal operates entirely offline and does not collect any
+          personal information. All data you enter into the app (including food
+          journal entries) is:
+        </p>
+        <ul>
+          <li>Stored locally on your device</li>
+          <li>Never transmitted to external servers</li>
+          <li>Never shared with third parties</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>App Store Transactions</h2>
+        <p>
+          The only online functionality in our app involves App Store purchases
+          using the RevenueCat service. These transactions are handled directly
+          by Apple's App Store and are subject to Apple's privacy policy. For
+          the intents of the app, you are an anonymous customer.
+        </p>
+      </section>
+
+      <section>
+        <h2>Data Storage and Security</h2>
+        <ul>
+          <li>
+            All your journal entries and app data are stored locally on your
+            device
+          </li>
+          <li>
+            Your data remains on your device unless you choose to delete the app
+          </li>
+          <li>We have no access to your data</li>
+          <li>We do not collect analytics or crash reports</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Changes to this Privacy Policy</h2>
+        <p>
+          We may update Our Privacy Policy from time to time. We will notify You
+          of any changes by posting the new Privacy Policy on this page. We will
+          let You know via email and/or a prominent notice on Our Service, prior
+          to the change becoming effective and update the "Last updated" date at
+          the top of this Privacy Policy. You are advised to review this Privacy
+          Policy periodically for any changes. Changes to this Privacy Policy
+          are effective when they are posted on this page.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact Us</h2>
+        <p>
+          If you have any questions about this Privacy Policy, please contact us
+          at contact@joshuaj.co.uk.
+        </p>
+      </section>
+    </Fragment>
+  </ArticleLayout>
+</BaseLayout>
