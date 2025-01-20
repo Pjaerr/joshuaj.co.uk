@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+---
+
+<BaseLayout
+  head={{
+    title: "Simple Food Journal",
+    description: "Get support for Simple Food Journal",
+    image: "/assets/cover_image.png",
+    permalink: "https://joshuaj.co.uk/simplefoodjournal/support",
+  }}
+>
+  <ArticleLayout>
+    <Fragment slot="title">Simple Food Journal</Fragment>
+
+    <Fragment slot="subtitle">
+      Skip the calorie tracking and unlock a healthier relationship with your
+      food. By logging what you eat in a mindful way, you decide if your day has
+      been a success, which allows for flexibility with your diet and helps you
+      form a healthier, more intuitive, approach to eating.
+    </Fragment>
+
+    <Fragment slot="content">
+      <img
+        src="/assets/simplefoodjournal/icon.png"
+        alt="Simple Food Journal App Icon"
+        style="width: 100px; height: auto;"
+      />
+
+      <section>
+        <h2>Get Support</h2>
+
+        <p>
+          If you have any questions, feedback, or are running into issues -
+          please email me at
+
+          <a href="mailto:contact@joshuaj.co.uk">contact@joshuaj.co.uk</a>
+           and I'll do my best to help.
+        </p>
+      </section>
+    </Fragment>
+  </ArticleLayout>
+</BaseLayout>
