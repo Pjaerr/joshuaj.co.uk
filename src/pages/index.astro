@@ -1,14 +1,126 @@
 ---
 import { getCollection } from "astro:content";
+
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectList from "../components/ProjectList.svelte";
 import BlogPostList from "../components/BlogPostList.svelte";
-import SubNavigation from "../components/SubNavigation.astro";
 
 const blogposts = await getCollection("blog");
+
+const projects = [
+  {
+    name: "Simple Food Journal (iOS)",
+    description:
+      "A simple food logging app. Created for myself, as a mindful alternative to the complicated calorie tracking apps. Made using React Native, built only for iOS to keep the design focused.",
+    technologies: ["React Native", "TypeScript"],
+    link: "https://apps.apple.com/gb/app/simple-food-journal/id6739615392",
+  },
+  {
+    name: "Simple Mindmap",
+    description:
+      "A super simple online mind mapping tool. Created as all the other tools were either too clunky or required a signup. Made as a static site using Astro.",
+    technologies: ["React", "TypeScript", "Tailwind"],
+    link: "https://www.simplemindmap.com/",
+  },
+  {
+    name: "Static Site Comments - Svelte Component",
+    description:
+      "A Svelte component that lets you use a github issue as a no-backend comments system for a static site/blog.",
+    technologies: ["Svelte", "TypeScript"],
+    link: "https://github.com/Pjaerr/svelte-github-issue-comments-component",
+  },
+  {
+    name: "Isolation Run",
+    description:
+      "Use your phone's accelerometer to only play a video whilst you're running. Created during lockdown as a way to keep myself active.",
+    technologies: ["Svelte", "Node.js", "Websockets"],
+    link: "https://github.com/Pjaerr/Isolation-Run",
+  },
+  {
+    name: "Pub Name Generator",
+    description:
+      "Generates random pub names using a local words list. Made with a focus on nice colour and typography combinations.",
+    technologies: ["HTML", "JavaScript", "CSS"],
+    link: "https://pjaerr.github.io/Pub-Name-Generator/",
+  },
+
+  {
+    name: "Findr",
+    description:
+      "A tinder-like swiping application but for things to do nearby.",
+    technologies: ["React", "Node.js", "Express"],
+    link: "https://github.com/Pjaerr/Findr",
+  },
+];
 ---
 
 <style lang="scss">
   @use "../styles/mixins";
+
+  .introduction {
+    @include mixins.centered;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+    margin-bottom: 32px;
+
+    /* Desktop */
+    @media only screen and (min-width: 1048px) {
+      flex-direction: row;
+    }
+  }
+
+  .introduction__left {
+    flex: 1;
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      font-family: "IBM Plex Mono", monospace;
+    }
+  }
+
+  .introduction__right {
+    flex: 1;
+
+    p,
+    dl {
+      font-size: 1.15rem;
+
+      a {
+        text-decoration: underline;
+        text-decoration-style: dotted;
+      }
+    }
+
+    .introducton__wave-emoji {
+      font-size: 1.5rem;
+    }
+  }
+
+  .introduction__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+
+    a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
 
   .container {
     @include mixins.centered;
@@ -17,21 +129,188 @@ const blogposts = await getCollection("blog");
     grid-template-rows: auto auto;
     grid-gap: 32px;
   }
+
+  .divider {
+    width: 100%;
+    opacity: 0.1;
+    height: 1px;
+    background-color: var(--colour-text-body);
+  }
 </style>
 
 <BaseLayout
   head={{
-    title: "joshuaj.co.uk",
+    title: "Josh Jackson",
     description:
       "Frontend developer occasionally writing blogposts about JavaScript and friends",
     image: "/assets/cover_image.png",
-    permalink: "https://joshuaj.co.uk",
+    permalink: "https://joshuaj.co.uk/",
   }}
 >
-  <div class="container">
-    <SubNavigation activeRoute="/" />
+  <section class="introduction">
+    <div class="introduction__left">
+      <h1>Josh Jackson</h1>
 
-    <!-- TODO: If blogposts get over a certain length, should do some sort of infinite scroll here (probably don't need to worry about that for a while though) -->
+      <h2>Front End Developer</h2>
+
+      <ul class="introduction__links">
+        <li>
+          <a
+            href="https://github.com/Pjaerr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+              ></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg
+            >
+             GitHub
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://www.linkedin.com/in/josh-charles-jackson/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              ></path><rect width="4" height="12" x="2" y="9"></rect><circle
+                cx="4"
+                cy="4"
+                r="2"></circle></svg
+            >
+             LinkedIn
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://x.com/pjaerr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+              ></path></svg
+            >
+             Twitter
+          </a>
+        </li>
+
+        <li>
+          <a href="mailto:contact@joshuaj.co.uk">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-mail"
+              ><rect width="20" height="16" x="2" y="4" rx="2"></rect><path
+                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg
+            >
+             contact@joshuaj.co.uk
+          </a>
+        </li>
+
+        <li>
+          <a href="/books">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-library-big"
+              ><rect width="8" height="18" x="3" y="3" rx="1"></rect><path
+                d="M7 3v18"></path><path
+                d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z"
+              ></path></svg
+            >
+             My favourite books
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="introduction__right">
+      <p>
+        <span class="introducton__wave-emoji">👋</span> Hey, I'm Josh. A front
+        end developer based in Manchester.
+      </p>
+
+      <p>
+        I work with all sorts of tech, across the stack, but I have a particular
+        focus on the front end — building clean, easy to use, and accessible
+        websites and apps.
+      </p>
+
+      <p>
+        I currently work as a front end developer at <a
+          href="https://capsulecrm.com"
+          target="_blank"
+          rel="noopener noreferrer">Capsule</a
+        > where I mainly work with Ember and React.
+      </p>
+
+      <p>
+        Outside of work I'm building an iOS app called "Simple Budget" made with
+        React Native, alongside marketing my most recent project <a
+          href="https://apps.apple.com/gb/app/simple-food-journal/id6739615392"
+          target="_blank"
+          rel="noopener noreferrer">Simple Food Journal</a
+        >. I also occasionally write a blogpost or two.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div>
+      <ProjectList projects={projects} />
+    </div>
+
+    <div class="divider"></div>
+
     <BlogPostList blogposts={blogposts} />
   </div>
 </BaseLayout>

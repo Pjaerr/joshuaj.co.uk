@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HomeButton from "../components/HomeButton.astro";
 
 const books = [
   {
@@ -57,6 +58,16 @@ const books = [
     author: "Frank McDonough",
     cover: "/assets/books/hitler_years_disaster.jpg",
   },
+  {
+    title: "Command and Control",
+    author: "Eric Schlosser",
+    cover: "/assets/books/command_and_control.jpg",
+  },
+  {
+    title: "Chip War: The Fight for the World’s Most Critical Technology",
+    author: "Chris Miller",
+    cover: "/assets/books/chip_war.jpg",
+  },
 ];
 ---
 
@@ -112,15 +123,15 @@ const books = [
 
 <BaseLayout
   head={{
-    title: "Books - joshuaj.co.uk",
+    title: "Josh Jackson - Books",
     description: "Books that I've read and rate 5/5 stars.",
     image: "/assets/cover_image.png",
-    permalink: "https://joshuaj.co.uk/projects",
+    permalink: "https://joshuaj.co.uk/books",
   }}
 >
-  <div class="container">
-    <!-- <SubNavigation activeRoute="/projects" /> -->
+  <HomeButton />
 
+  <div class="container">
     <div class="page-description">
       <h1>Books</h1>
       <p>

@@ -5,18 +5,8 @@
 
   export let blogposts: CollectionEntry<"blog">[] = [];
 
-  const pinnedBlogpost = blogposts.find(({ data }) => data.pinned);
-
-  const sortedBlogposts = blogposts
-    .filter((post) => post.id !== pinnedBlogpost?.id)
-    .sort(byDate);
+  const sortedBlogposts = blogposts.sort(byDate);
 </script>
-
-{#if pinnedBlogpost}
-  <BlogPostListItem blogpost={pinnedBlogpost} />
-
-  <hr />
-{/if}
 
 <ul>
   {#each sortedBlogposts as blogpost}

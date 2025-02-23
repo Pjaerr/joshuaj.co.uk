@@ -59,6 +59,13 @@
     --colour-text-heading: #fff;
     --colour-text-body: #dcdde1;
     --colour-highlight: #01cbcb;
+    --box-background-gradient: linear-gradient(
+      180deg,
+      rgba(40, 44, 53, 0) 0%,
+      rgba(45, 49, 58, 1) 66.39%
+    );
+
+    --box-border: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -68,6 +75,12 @@
     --colour-text-heading: #2a2f36;
     --colour-text-body: #353b48;
     --colour-highlight: #128277;
+    --box-background-gradient: linear-gradient(
+      180deg,
+      rgba(252, 252, 253, 0) 0%,
+      #fcfcfd 66.39%
+    );
+    --box-border: rgba(12, 0, 32, 0.08);
   }
 }
 

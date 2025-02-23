@@ -2,12 +2,14 @@
   export let technologies;
 
   function getColourForTech(tech) {
-    switch (tech) {
+    switch (tech.toLowerCase()) {
       case "react":
+        return "rgb(97, 218, 251)";
+      case "react native":
         return "rgb(97, 218, 251)";
       case "svelte":
         return "rgb(255, 62, 0)";
-      case "nodejs":
+      case "node.js":
         return "rgb(67, 133, 61)";
       case "websockets":
         return "rgb(41, 171, 226)";
@@ -20,6 +22,10 @@
       case "typescript":
         return "rgb(43, 116, 137)";
       case "express":
+        return "rgb(37, 157, 255)";
+      case "astro":
+        return "rgb(255, 102, 0)";
+      case "tailwind":
         return "rgb(37, 157, 255)";
     }
   }
@@ -41,6 +47,8 @@
     gap: 12px;
     justify-content: flex-start;
     margin-bottom: 6px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.875rem;
   }
 
   p {

@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 import formatDate from "../../utils/format-date.js";
 import GithubIssueComments from "svelte-github-issue-comments-component/GithubIssueComments/GithubIssueComments.svelte";
+import HomeButton from "../../components/HomeButton.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -30,6 +31,8 @@ const { title, description, image, issueUri, permalink, publishDate } =
     image,
   }}
 >
+  <HomeButton />
+
   <ArticleLayout>
     <Fragment slot="title">
       {title}

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogPostList from "../../components/BlogPostList.svelte";
+import HomeButton from "../../components/HomeButton.astro";
 
 const blogposts = await getCollection("blog");
 ---
@@ -20,13 +21,15 @@ const blogposts = await getCollection("blog");
 
 <BaseLayout
   head={{
-    title: "Blogposts - joshuaj.co.uk",
+    title: "Josh Jackson - Blog",
     description:
       "Frontend developer occasionally writing blogposts about JavaScript and friends",
     image: "/assets/cover_image.png",
     permalink: "https://joshuaj.co.uk/blog",
   }}
 >
+  <HomeButton />
+
   <div class="container">
     <BlogPostList blogposts={blogposts} />
   </div>
