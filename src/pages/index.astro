@@ -9,6 +9,13 @@ const blogposts = await getCollection("blog");
 
 const projects = [
   {
+    name: "Simple Mindmap",
+    description:
+      "A super simple online mind mapping tool. Created as all the other tools were either too clunky or required a signup. Made as a static site using Astro.",
+    technologies: ["React", "TypeScript", "Tailwind"],
+    link: "https://www.simplemindmap.com/",
+  },
+  {
     name: "Simple Food Journal (iOS)",
     description:
       "A simple food logging app. Created for myself, as a mindful alternative to the complicated calorie tracking apps. Made using React Native, built only for iOS to keep the design focused.",
@@ -16,11 +23,11 @@ const projects = [
     link: "https://apps.apple.com/gb/app/simple-food-journal/id6739615392",
   },
   {
-    name: "Simple Mindmap",
+    name: "Simple Budget (iOS)",
     description:
-      "A super simple online mind mapping tool. Created as all the other tools were either too clunky or required a signup. Made as a static site using Astro.",
-    technologies: ["React", "TypeScript", "Tailwind"],
-    link: "https://www.simplemindmap.com/",
+      "A simple spending/savings tracking app. Built as a manual alternative to automated budgeting apps, without the ugliness of a spreadsheet.",
+    technologies: ["React Native", "TypeScript", "Swift"],
+    link: "https://apps.apple.com/us/app/budget-app-simple-spending/id6745130377",
   },
   {
     name: "Static Site Comments - Svelte Component",
@@ -286,7 +293,7 @@ const projects = [
       </p>
 
       <p>
-        I currently work as a front end developer at <a
+        I currently work as a senior front end developer at <a
           href="https://capsulecrm.com"
           target="_blank"
           rel="noopener noreferrer">Capsule</a
@@ -294,12 +301,10 @@ const projects = [
       </p>
 
       <p>
-        Outside of work I'm building an iOS app called "Simple Budget" made with
-        React Native, alongside marketing my most recent project <a
-          href="https://apps.apple.com/gb/app/simple-food-journal/id6739615392"
-          target="_blank"
-          rel="noopener noreferrer">Simple Food Journal</a
-        >. I also occasionally write a blogpost or two.
+        Outside of work I'm building a canvas-based productivity web app called
+        ‘Baremind’ (made with Svelte + Node.js), alongside various simple mobile
+        apps and a bit of game development. I also occasionally write a blogpost
+        or two.
       </p>
     </div>
   </section>

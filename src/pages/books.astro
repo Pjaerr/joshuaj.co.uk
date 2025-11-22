@@ -4,6 +4,36 @@ import HomeButton from "../components/HomeButton.astro";
 
 const books = [
   {
+    title: "Strange Pictures",
+    author: "Uketsu",
+    cover: "/assets/books/strange-pictures.jpg",
+  },
+  {
+    title: "Icebound",
+    author: "Andrea Pitzer",
+    cover: "/assets/books/icebound.jpg",
+  },
+  {
+    title: "Butter",
+    author: "Asako Yuzuki",
+    cover: "/assets/books/butter.jpg",
+  },
+  {
+    title: "Chip War: The Fight for the World’s Most Critical Technology",
+    author: "Chris Miller",
+    cover: "/assets/books/chip_war.jpg",
+  },
+  {
+    title: "Command and Control",
+    author: "Eric Schlosser",
+    cover: "/assets/books/command_and_control.jpg",
+  },
+  {
+    title: "Conquerors: How Portugal Forged the First Global Empire",
+    author: "Roger Crowley",
+    cover: "/assets/books/conquerors.jpeg",
+  },
+  {
     title: "A Gentleman In Moscow",
     author: "Amor Towles",
     cover: "/assets/books/a_gentleman_in_moscow.webp",
@@ -12,11 +42,6 @@ const books = [
     title: "The Way Home: Tales from a life without technology",
     author: "Mark Boyle",
     cover: "/assets/books/the_way_home.jpeg",
-  },
-  {
-    title: "Conquerors: How Portugal Forged the First Global Empire",
-    author: "Roger Crowley",
-    cover: "/assets/books/conquerors.jpeg",
   },
   {
     title: "Rules of Civility",
@@ -28,6 +53,7 @@ const books = [
     author: "Gabriel Wyner",
     cover: "/assets/books/fluent_forever.jpeg",
   },
+
   {
     title: "Hitler's Forgotten Children: My Life Inside The Lebensborn",
     author: "Ingrid von Oelhafen",
@@ -58,16 +84,6 @@ const books = [
     author: "Frank McDonough",
     cover: "/assets/books/hitler_years_disaster.jpg",
   },
-  {
-    title: "Command and Control",
-    author: "Eric Schlosser",
-    cover: "/assets/books/command_and_control.jpg",
-  },
-  {
-    title: "Chip War: The Fight for the World’s Most Critical Technology",
-    author: "Chris Miller",
-    cover: "/assets/books/chip_war.jpg",
-  },
 ];
 ---
 
@@ -88,6 +104,13 @@ const books = [
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .books {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    justify-content: center;
   }
 
   .book {
@@ -140,20 +163,22 @@ const books = [
       </p>
     </div>
 
-    {
-      books.map((book) => (
-        <div class="book">
-          <img
-            class="book__cover"
-            src={book.cover}
-            alt={`The cover of ${book.title}`}
-          />
-          <div class="book__details">
-            <h2>{book.title}</h2>
-            <p>{book.author}</p>
-          </div>
-        </div>
-      ))
-    }
+    <ul class="books">
+      {
+        books.map((book) => (
+          <li class="book">
+            <img
+              class="book__cover"
+              src={book.cover}
+              alt={`The cover of ${book.title}`}
+            />
+            <div class="book__details">
+              <h2>{book.title}</h2>
+              <p>{book.author}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </BaseLayout>

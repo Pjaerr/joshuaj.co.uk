@@ -27,6 +27,8 @@
         return "rgb(255, 102, 0)";
       case "tailwind":
         return "rgb(37, 157, 255)";
+      case "swift":
+        return "rgb(240, 81, 56)";
     }
   }
 </script>
