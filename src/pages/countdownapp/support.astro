@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+---
+
+<BaseLayout
+  head={{
+    title: "Countdown App",
+    description: "Get support for Countdown App",
+    image: "/assets/cover_image.png",
+    permalink: "https://joshuaj.co.uk/countdownapp/support",
+  }}
+>
+  <ArticleLayout>
+    <Fragment slot="title">Countdown App</Fragment>
+
+    <Fragment slot="subtitle">
+      A simple countdown app. Track important dates and events with an intuitive
+      and straightforward approach to countdowns.
+    </Fragment>
+
+    <Fragment slot="content">
+      <img
+        src="/assets/countdownapp/icon.png"
+        alt="Countdown App Icon"
+        style="width: 100px; height: auto;"
+      />
+
+      <section>
+        <h2>Get Support</h2>
+
+        <p>
+          If you have any questions, feedback, or are running into issues -
+          please email me at
+
+          <a href="mailto:contact@joshuaj.co.uk">contact@joshuaj.co.uk</a>
+           and I'll do my best to help.
+        </p>
+      </section>
+    </Fragment>
+  </ArticleLayout>
+</BaseLayout>
